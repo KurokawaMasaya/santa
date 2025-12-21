@@ -531,13 +531,12 @@ else:
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@700;900&family=Noto+Sans+SC:wght@400;700&display=swap');
 
-    /* 全局設定：防止邊距撐大容器 */
     * { box-sizing: border-box; }
 
     body {
         margin: 0;
         height: 100vh;
-        background-color: transparent; /* 改為透明背景，融入 Streamlit */
+        background-color: transparent;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -548,21 +547,19 @@ else:
     .interaction-container {
         position: relative;
         width: 100%;
-        height: 100%; /* 適配 iframe 高度 */
+        height: 100%;
         display: flex;
         justify-content: center;
         align-items: center;
     }
 
-    /* ================= STAGE 1: 2025 基層紅頭文件 ================= */
+    /* ================= STAGE 1: 2025 基层红头文件 ================= */
     #stage-1 {
         position: absolute;
-        /* 🔥 手機適配核心修改 🔥 */
-        width: 85%;           /* 手機上佔 85% 寬度 */
-        max-width: 340px;     /* 電腦上最大 340px */
-        /* --------------------- */
+        width: 85%;           /* 手机宽度适配 */
+        max-width: 340px;     /* 电脑最大宽度 */
         background: #fff;
-        padding: 40px 25px 60px 25px; /*稍微縮小內邊距以適應手機*/
+        padding: 40px 25px 60px 25px;
         box-shadow: 0 15px 40px rgba(0,0,0,0.5);
         transform: rotate(-0.5deg);
         z-index: 10;
@@ -580,20 +577,38 @@ else:
     .doc-footer { position: absolute; bottom: 40px; right: 30px; text-align: right; font-family: "FangSong", serif; line-height: 1.6; font-size: 14px; }
     .doc-stamp { position: absolute; top: -10px; right: -10px; width: 100px; height: 100px; opacity: 0.85; mix-blend-mode: multiply; pointer-events: none; transform: rotate(-8deg); }
     
-    /* 關閉按鈕：往內縮一點，防止手機螢幕邊緣切到 */
-    .close-btn { position: absolute; top: -12px; right: -12px; width: 30px; height: 30px; background: #333; color: #fff; border: 2px solid #fff; border-radius: 50%; font-size: 18px; font-weight: bold; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 10px rgba(0,0,0,0.3); transition: transform 0.2s; z-index: 20; }
-    .close-btn:hover { background: #d60000; transform: scale(1.1); }
+    /* 🔥 核心修改：按钮移到纸张内部 🔥 */
+    .close-btn { 
+        position: absolute; 
+        top: 10px;           /* 距离顶部 10px (内部) */
+        right: 10px;         /* 距离右侧 10px (内部) */
+        width: 32px; 
+        height: 32px; 
+        background: #f0f0f0; /* 改为浅灰色背景，不那么突兀 */
+        color: #333; 
+        border: 1px solid #ccc; 
+        border-radius: 50%; 
+        font-size: 20px; 
+        font-weight: bold; 
+        cursor: pointer; 
+        display: flex; 
+        align-items: center; 
+        justify-content: center; 
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1); 
+        transition: transform 0.2s; 
+        z-index: 20; 
+    }
+    .close-btn:hover { background: #d60000; color: #fff; transform: scale(1.1); border-color: #d60000; }
 
-    /* ================= STAGE 2: 攔截系統 ================= */
+    /* ================= STAGE 2: 拦截系统 ================= */
     #card-container { display: none; position: relative; z-index: 20; perspective: 1000px; width: 100%; display: flex; justify-content: center; }
-    /* 卡片也做同樣的適配 */
     .brutalist-card { 
         width: 85%; 
         max-width: 340px; 
         border: 4px solid #000; 
         background-color: #fff; 
         padding: 1.2rem; 
-        box-shadow: 10px 10px 0 #000; /* 手機上陰影稍微縮小 */
+        box-shadow: 10px 10px 0 #000;
         font-family: "Noto Sans SC", sans-serif; 
         transition: all 0.3s; 
         position: relative; 
@@ -609,7 +624,7 @@ else:
     .brutalist-card__button--read { background-color: #000; color: #fff; }
     .brutalist-card__button:active { transform: translate(2px, 2px); box-shadow: 2px 2px 0 #000; }
 
-    /* HACKED 狀態 */
+    /* HACKED 状态 */
     .hacked .brutalist-card { border-color: #d35400; box-shadow: 10px 10px 0 #e67e22; }
     .hacked .brutalist-card__icon { background-color: #d35400; }
     .hacked .brutalist-card__alert { color: #d35400; }
@@ -618,7 +633,6 @@ else:
     
     .quote-box { background-color: #f9f9f9; border-left: 4px solid #d35400; padding: 6px 10px; margin: 10px 0; font-style: italic; color: #555; font-family: "FangSong", serif; font-size: 0.85rem; }
 
-    /* 初始化隱藏卡片容器 */
     #card-container { display: none; }
     .pop-in { display: flex !important; animation: pop-in 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; }
     .fly-out { animation: fly-away 0.8s cubic-bezier(0.6, -0.28, 0.735, 0.045) forwards; pointer-events: none; }
