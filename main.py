@@ -910,7 +910,7 @@ else:
             elif any(t in user_input_lower for t in triggers_finland):
                 st.markdown("""
                 <style>
-                    .wrapper { width: 100%; height: 300px; position: relative; text-align: center; display: flex; align-items: center; justify-content: center; overflow: hidden; perspective: 1000px; margin-top: 10px; }
+                    .wrapper { width: 100%; height: 450px; position: relative; text-align: center; display: flex; align-items: center; justify-content: center; overflow: hidden; perspective: 1000px; margin-top: 10px; }
                     .inner { --w: 120px; --h: 180px; --quantity: 6; --translateZ: calc((var(--w) + var(--h)) + 20px); --rotateX: -10deg; position: absolute; width: var(--w); height: var(--h); z-index: 2; transform-style: preserve-3d; animation: rotating 25s linear infinite; }
                     @keyframes rotating { from { transform: rotateX(var(--rotateX)) rotateY(0); } to { transform: rotateX(var(--rotateX)) rotateY(1turn); } }
                     .card-carousel { position: absolute; border: 2px solid rgba(255, 255, 255, 0.8); border-radius: 12px; overflow: hidden; inset: 0; transform: rotateY(calc((360deg / var(--quantity)) * var(--index))) translateZ(var(--translateZ)); background: #000; box-shadow: 0 0 20px rgba(0, 255, 128, 0.3); }
