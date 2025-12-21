@@ -3,38 +3,28 @@ import google.generativeai as genai
 import random
 import time
 import unicodedata
-import opencc  # 💥 強制引入，不再 try-except！沒安裝就會報錯提示
+import opencc  # 🔥 必须在 requirements.txt 中包含 opencc-python-reimplemented
 
-# --- 1. 頁面基礎設定 ---
+# --- 1. 页面基础设定 ---
 st.set_page_config(page_title="Roast Santa AI", page_icon="🎅", layout="centered")
 
-# ==========================================
-# 🔧 核心工具：OpenCC 繁簡轉換 (強制啟用)
-# ==========================================
-
-# 初始化轉換器 (t2s = Traditional to Simplified)
-# 這裡會直接加載，如果庫沒裝好會直接報錯，方便 Debug
+# --- 🔧 核心工具：OpenCC 繁体 -> 简体 转换器 ---
+# 逻辑非常简单：初始化转换器，所有输入一律转为简体
 converter = opencc.OpenCC('t2s')
 
 def get_simplified_input(text: str) -> str:
     """
-    終極處理函數：
-    1. 標準化 (NFKC) - 處理全形字符
-    2. OpenCC 繁轉簡 - 核心邏輯
-    3. 轉小寫/去空格
+    终极处理函数：
+    1. 标准化 (NFKC) - 处理全角字符
+    2. OpenCC 繁转简 - 核心逻辑 (把 '洋節' 变成 '洋节')
+    3. 转小写/去空格
     """
     if text is None: return ""
-    
-    # 1. 基礎清洗
     s = unicodedata.normalize("NFKC", str(text))
-    
-    # 2. 繁轉簡 (例如：洋節 -> 洋节, 芬蘭 -> 芬兰)
-    s = converter.convert(s)
-    
-    # 3. 轉小寫並去空格
+    s = converter.convert(s)  # 🔥 强制转简
     return s.strip().lower()
 
-# --- 2. 語言字典 ---
+# --- 2. 语言字典 (已彻底删除日语、法语) ---
 LANG_DICT = {
     "English 🇬🇧🇺🇸": {
         "title": "🎅 Santa's Roast Room",
@@ -104,52 +94,6 @@ LANG_DICT = {
         "egg_food": "真香！既然你请我吃大餐，偷偷给你个线索：",
         "egg_bell": "叮叮当！🔔 这是幸运的声音！",
         "egg_finland": "Tervetuloa! (欢迎！) 你竟然找到了我的老家——芬兰 (Finland)！🇫🇮\n这里的桑拿房已经热好了，快来罗瓦涅米找我玩吧！"
-    },
-    "Japanese (日本語) 🇯🇵": {
-        "title": "🎅 サンタの毒舌部屋",
-        "subtitle": "ワシが... 論理であなたの夢を打ち砕いてやろう... 😏",
-        "sidebar_title": "🎅 設定",
-        "api_help": "キーはこのセッションでのみ使用されます。",
-        "game_rule": "💡 **遊び方:**\n欲しいものを入力して、7つのクリスマスの秘密を探そう！\n\n**ヒント:** ほとんどは**クリスマスアイテム**ですが、*恋愛*や*仕事*、*旅行*に関するものも...",
-        "input_placeholder": "欲しいものリスト (例: iPhone 17 pro max, 彼氏, 彼女, 大金...)",
-        "button": "🎁 リストを斬る",
-        "loading": "🎅 サンタがあなたの価値を査定中...",
-        "error_no_key": "先にAPIキーを入力してください！",
-        "error_no_text": "何か書いて！白紙じゃツッコミようがないよ。",
-        "success_title": "🔔 判決が出ました！",
-        "footer": "Powered by Google Gemini 3.0 Pro",
-        "secret_success": "🎅 ホーホーホー！ツリーを見つけたな！",
-        "secret_title": "### メリークリスマス！！！秘密の入り口はこちら 🎄",
-        "secret_button": "👉 クリックしてポータルに入る",
-        "hunt_title": "🏆 シークレットハント進捗",
-        "egg_single": "サンタのため息... 恋人がいない？この曲でも聴きなさい。",
-        "egg_deer": "見ろ！ルドルフが画面を這っているぞ！🔴🦌",
-        "egg_food": "うまい！食事のお礼にヒントをやろう：",
-        "egg_bell": "リンリン！🔔 幸運の音だ！",
-        "egg_finland": "Tervetuloa! (ようこそ!) ワシの故郷、フィンランドを見つけたな！🇫🇮\nサウナは温まっているぞ、ロヴァニエミにおいで！"
-    },
-    "French 🇫🇷": {
-        "title": "🎅 Salle de Rôtissage du Père Noël",
-        "subtitle": "Laissez le Père Noël écraser vos rêves... 😏",
-        "sidebar_title": "🎅 Paramètres",
-        "api_help": "La clé est utilisée uniquement pour cette session.",
-        "game_rule": "💡 **Comment jouer:**\nEntrez votre liste. Débloquez 7 secrets festifs !\n\n**Astuce :** La plupart sont liés à **Noël**, mais certains concernent *l'amour*, *le travail* ou *le voyage*...",
-        "input_placeholder": "Votre liste (ex: iPhone 17 pro max, un petit ami, une petite amie, beaucoup d'argent)",
-        "button": "🎁 Rôtir ma liste",
-        "loading": "🎅 Le Père Noël évalue votre valeur...",
-        "error_no_key": "Veuillez d'abord entrer votre clé API !",
-        "error_no_text": "Écrivez quelque chose ! Je ne peux pas rôtir une page blanche.",
-        "success_title": "🔔 Le verdict est là !",
-        "footer": "Propulsé par Google Gemini 3.0 Pro",
-        "secret_success": "🎅 Ho ho ho ! Vous avez trouvé l'arbre !",
-        "secret_title": "### JOYEUX NOËL !!! Voici le portail secret 🎄",
-        "secret_button": "👉 CLIQUEZ POUR ENTRER",
-        "hunt_title": "🏆 Chasse aux Secrets",
-        "egg_single": "Le Père Noël soupire... Pas d'amour ? Écoute ça.",
-        "egg_deer": "Regarde ! C'est Rodolphe qui grimpe sur ton écran ! 🔴🦌",
-        "egg_food": "Délicieux ! Voici un indice pour le prochain secret :",
-        "egg_bell": "Dring Dring ! 🔔 C'est le son de la chance !",
-        "egg_finland": "Tervetuloa ! Tu as trouvé ma maison : la Finlande ! 🇫🇮\nLe sauna est prêt, viens me voir à Rovaniemi !"
     }
 }
 
@@ -181,24 +125,6 @@ HOLIDAY_TEXT = {
         "valid": "(有效期：永久)",
         "roast_title": "不想上班？想放假？",
         "roast_body": "准奏！拿好這張【摸魚券】，告訴老闆是我批准的！"
-    },
-    "Japanese (日本語) 🇯🇵": {
-        "title": "🎫 サボり許可証",
-        "desc_1": "働きすぎです...",
-        "desc_2": "サンタの特別命令：",
-        "action": "今すぐ仕事を休め！",
-        "valid": "(有効期限：永遠)",
-        "roast_title": "休みが欲しい？",
-        "roast_body": "許可する！このチケットを上司に見せてきなさい！"
-    },
-    "French 🇫🇷": {
-        "title": "🎫 PERMIS DE PAUSE",
-        "desc_1": "Tu as l'air épuisé...",
-        "desc_2": "Ordre du Père Noël :",
-        "action": "ARRÊTE DE TRAVAILLER !",
-        "valid": "(Valide : Toujours)",
-        "roast_title": "Besoin de vacances ?",
-        "roast_body": "Accordé ! Prends ce billet et dis à ton patron que c'est de ma part."
     }
 }
 
@@ -209,18 +135,6 @@ CULTURE_EXPLAINER_TEXT = {
         "msg": "You triggered a keyword related to 'Ban Western Festivals'.",
         "desc": "In China, some local departments occasionally ban Christmas to 'resist cultural invasion'. This egg is a satire on that bureaucracy. **Please switch to CHINESE to see the full interactive experience!**",
         "btn": "Got it"
-    },
-    "Japanese (日本語) 🇯🇵": {
-        "title": "🥚 隠しイースターエッグ発見",
-        "msg": "「洋節（西洋の祭り）」に関するキーワードが検出されました。",
-        "desc": "近年、中国の一部の地方部門が「文化侵略を防ぐ」としてクリスマスを禁止する通知を出しています。これはその形式主義に対する風刺です。**中国語に切り替えると、完全なインタラクティブ体験ができます！**",
-        "btn": "わかった"
-    },
-    "French 🇫🇷": {
-        "title": "🥚 OEUF DE PÂQUES CACHÉ",
-        "msg": "Vous avez tapé un mot-clé lié à l'interdiction des 'Fêtes Occidentales'.",
-        "desc": "En Chine, certains départements locaux bannissent parfois Noël pour 'résister à l'invasion culturelle'. Ceci est une satire de cette bureaucratie. **Passez en CHINOIS pour voir l'expérience complète !**",
-        "btn": "Compris"
     }
 }
 
@@ -231,8 +145,6 @@ if 'ui_language' not in st.session_state:
     st.session_state['ui_language'] = "English 🇬🇧🇺🇸"
 
 # 🔥 核心逻辑：彩蛋 ID 映射 🔥
-# 1-7: 主线彩蛋
-# 8: 隐藏彩蛋 (Extra Bonus)
 MAIN_EGG_IDS = {1, 2, 3, 4, 5, 6, 7}
 
 if 'found_ids' not in st.session_state:
@@ -367,21 +279,22 @@ if not st.session_state['language_selected']:
     st.title("Welcome to Santa's Roast Room")
     st.subheader("Please select your language:")
     st.markdown("---")
-    col1, col2 = st.columns(2)
+    
+    # 🔥 语言按钮：仅保留 3 个 (已彻底删除日/法)
+    col1, col2, col3 = st.columns(3)
     with col1:
         st.button("English 🇬🇧🇺🇸", use_container_width=True, on_click=set_language, args=("English 🇬🇧🇺🇸",))
-        st.button("Simplified Chinese 🇨🇳", use_container_width=True, on_click=set_language, args=("Simplified Chinese (简体中文) 🇨🇳",))
     with col2:
-        st.button("Traditional Chinese 🇹🇼🇭🇰🇲🇴", use_container_width=True, on_click=set_language, args=("Traditional Chinese (繁體中文) 🇹🇼🇭🇰🇲🇴",))
-        st.button("Japanese 🇯🇵", use_container_width=True, on_click=set_language, args=("Japanese (日本語) 🇯🇵",))
-    st.button("French 🇫🇷", use_container_width=True, on_click=set_language, args=("French 🇫🇷",))
+        st.button("繁體中文 🇹🇼", use_container_width=True, on_click=set_language, args=("Traditional Chinese (繁體中文) 🇹🇼🇭🇰🇲🇴",))
+    with col3:
+        st.button("简体中文 🇨🇳", use_container_width=True, on_click=set_language, args=("Simplified Chinese (简体中文) 🇨🇳",))
 
 else:
     # --- 2. 主程式 (Main App) ---
     current_lang_key = st.session_state['ui_language']
     ui_text = LANG_DICT[current_lang_key]
 
-    # --- 侧边栏：仅保留设置 ---
+    # --- 侧边栏 ---
     with st.sidebar:
         st.image("https://img.icons8.com/color/96/santa.png", width=100)
         st.caption(f"Language: **{current_lang_key}**")
@@ -423,96 +336,76 @@ else:
         elif not gift_list:
             st.warning(ui_text["error_no_text"])
         else:
-            # 💡 核心修复：用户输入 -> (OpenCC 繁转简) -> 标准化 -> 匹配
-            # 这样输入 "洋節" 会变成 "洋节"，输入 "芬蘭" 会变成 "芬兰"
+            # 💡 核心修复：用户输入 -> (OpenCC 繁转简) -> 标准化
             user_input_normalized = get_simplified_input(gift_list)
 
-            # --- 1. 关键词库 (主要保留简体中文，因为输入已经被强转了) ---
+            # --- 1. 关键词库 (纯简体版) ---
             
             # [EXTRA BONUS] 🚫 Culture Roast (洋节/抵制)
             triggers_culture = [
                 "洋节", "抵制", "文化自信", "公文", "通知", "不许过", "崇洋媚外", "文化入侵", "不过洋节", "禁止", "平安果",
                 "文化渗透", "忘本", "圣诞节", "不准过", "发文", "假想敌", "中国人", # Simplified
-                "foreign festival", "ban", "invasion", "culture", "boycott", "western festival", # English
-                "西洋の祭り", "禁止", "文化侵略", "ボイコット", # Japanese
-                "fête étrangère", "interdire", "invasion culturelle", "boycott" # French
+                "foreign festival", "ban", "invasion", "culture", "boycott", "western festival" # English
             ]
 
             # [1] 🎄 Tree (树/装饰)
             triggers_tree = [
                 "tree", "christmas tree", "decoration", "ornament", "star", "pine",
-                "圣诞树", "树", "装饰", "挂件", "星星", "布置", "挂饰",
-                "ツリー", "クリスマスツリー", "飾り", "木", "スター", # Japanese
-                "sapin", "arbre", "décoration", "étoile" # French
+                "圣诞树", "树", "装饰", "挂件", "星星", "布置", "挂饰"
             ]
 
             # [2] 🐶 Single (单身/恋爱)
             triggers_single = [
                 "single", "boyfriend", "girlfriend", "partner", "lover", "dating", "bf", "gf", "love", "alone",
-                "脱单", "男朋友", "女朋友", "对象", "搞对象", "恋爱", "单身", "处对象", "谈恋爱", "伴侣", "单身狗",
-                "彼氏", "彼女", "恋人", "独身", "恋愛", "デート", "クリぼっち", # Japanese
-                "petit ami", "petite amie", "copain", "copine", "célibataire", "amour", "seul" # French
+                "脱单", "男朋友", "女朋友", "对象", "搞对象", "恋爱", "单身", "处对象", "谈恋爱", "伴侣", "单身狗"
             ]
 
             # [3] 🦌 Deer (鹿/雪橇)
             triggers_deer = [
                 "deer", "reindeer", "rudolph", "sleigh", "ride",
                 "麋鹿", "鹿", "驯鹿", "雪橇", "鲁道夫",
-                "トナカイ", "鹿", "シカ", "ソリ", "ルドルフ", # Japanese
-                "renne", "cerf", "traîneau", "rudolphe" # French
+                "トナカイ", "鹿", "シカ", "ソリ", "ルドルフ" # Keep Japanese for compatibility/fun
             ]
 
             # [4] 🍗 Food (食物/大餐)
             triggers_food = [
                 "cookie", "biscuit", "milk", "gingerbread", "turkey", "pudding", "pie", "cake", "food", "dinner", "feast", "eat", "hungry",
-                "饼干", "牛奶", "姜饼", "火鸡", "布丁", "大餐", "食物", "吃", "饿", "蛋糕", "晚餐",
-                "クッキー", "ビスケット", "ミルク", "ジンジャーブレッド", "七面鳥", "ケーキ", "食べ物", "食事", "ディナー", # Japanese
-                "biscuit", "lait", "pain d'épice", "dinde", "gâteau", "repas", "dîner", "manger" # French
+                "饼干", "牛奶", "姜饼", "火鸡", "布丁", "大餐", "食物", "吃", "饿", "蛋糕", "晚餐"
             ]
 
             # [5] 🔔 Bell (铃铛/音乐)
             triggers_bell = [
                 "bell", "jingle", "ring", "song", "music", "sing", "carol", "sound",
-                "铃铛", "铃", "钟", "响", "歌", "音乐", "叮当", "铃声", "钟声",
-                "ベル", "鈴", "鐘", "音楽", "歌", "ジングル", # Japanese
-                "cloche", "sonnette", "musique", "chanson", "chanter" # French
+                "铃铛", "铃", "钟", "响", "歌", "音乐", "叮当", "铃声", "钟声"
             ]
 
             # [6] 📅 Holiday (假期/工作)
             triggers_holiday = [
                 "holiday", "vacation", "work", "job", "leave", "break", "office", "boss", "tired",
-                "放假", "假期", "上班", "工作", "打工", "加班", "累", "请假", "老板", "休假",
-                "休み", "休暇", "仕事", "残業", "バイト", "疲れた", "冬休み", # Japanese
-                "vacances", "congé", "travail", "boulot", "fatigué", "patron" # French
+                "放假", "假期", "上班", "工作", "打工", "加班", "累", "请假", "老板", "休假"
             ]
 
             # [7] 🇫🇮 Finland (芬兰/旅行)
             triggers_finland = [
                 "finland", "suomi", "helsinki", "rovaniemi", "lapland", "travel", "trip", "north pole",
-                "芬兰", "赫尔辛基", "罗瓦涅米", "圣诞村", "旅行", "出去玩", "北极", "圣诞老人村", "旅游", "出国", "玩",
-                "フィンランド", "ヘルシンキ", "ロヴァニエミ", "ラップランド", "旅行", "北極点", # Japanese
-                "finlande", "laponie", "voyage", "pôle nord" # French
+                "芬兰", "赫尔辛基", "罗瓦涅米", "圣诞村", "旅行", "出去玩", "北极", "圣诞老人村", "旅游", "出国", "玩"
             ]
             
-            # 🔥 DEBUG: 诊断关键词匹配情况
+            # 🔥 DEBUG: 诊断
             if debug:
                 st.warning("⚠️ DEBUG MODE ACTIVE")
                 st.write("**Processed Input (Simp):**", repr(user_input_normalized))
                 st.write("**Hit 'Culture'?**", [t for t in triggers_culture if t in user_input_normalized])
-                st.write("**Hit 'Finland'?**", [t for t in triggers_finland if t in user_input_normalized])
 
-            # --- 2. 检测新发现 (Detection Logic) ---
+            # --- 2. 检测新发现 ---
             new_discovery = False
 
-            # Check Extra Bonus first (ID 8)
-            # 使用 normalize_text 处理触发词列表，以防万一
             if any(t in user_input_normalized for t in triggers_culture):
                 if 8 not in st.session_state['found_ids']:
                     st.session_state['found_ids'].add(8)
                     st.toast("👁️ HIDDEN TRUTH FOUND! (Extra Bonus)", icon="🔓")
                     new_discovery = True
 
-            # Check Main Eggs (ID 1-7)
             if any(t in user_input_normalized for t in triggers_tree):
                 if 1 not in st.session_state['found_ids']: st.session_state['found_ids'].add(1); new_discovery = True
             if any(t in user_input_normalized for t in triggers_single):
@@ -532,14 +425,13 @@ else:
                 update_hunt_progress(hunt_placeholder, ui_text)
 
             # ==========================================
-            # 🎭 3. 展示逻辑 (Display Logic - Priority Chain)
+            # 🎭 3. 展示逻辑 (Display Logic)
             # ==========================================
             
             # 🔥 PRIORITY 1: The Hidden Culture Roast (Extra Bonus)
-            # 放在第一个 if，绝对优先拦截，防止进入 AI
             if any(t in user_input_normalized for t in triggers_culture):
                 
-                # 特殊逻辑：只有中文语境才显示完整大戏，其他语言显示解释卡片
+                # 只有中文语境才显示完整大戏
                 is_chinese_ui = "Chinese" in st.session_state['ui_language'] or "中文" in st.session_state['ui_language']
                 
                 if is_chinese_ui:
@@ -659,7 +551,8 @@ else:
                                     <div class="quote-box">“洋节并不更可怕，更可怕的是中国人遗忘自己。”</div>
                                     当年央视就已严厉批判过这种行为。可2025年了，依旧有人<b>拿着鸡毛当令箭</b>，竖着“文化入侵”的假想敌重拳出击。<br><br>
                                     树立假想敌体现的不是自信，而是刻在骨子里的自卑。<br>
-                                    如今人们庆祝节日，只不过是想在<b>足够苦逼的人生中给自己找点光亮</b>，找点乐子让自己放松一下。<br>
+                                    生活已经够苦了，<b>我们只是借着节日的名义，去见想见的人，去吃顿热乎的饭。</b><br>
+                                    这不是崇洋媚外，这是<b>对生活的热爱</b>。
                                 `;
                                 document.getElementById('card-actions').innerHTML = `<a class="brutalist-card__button brutalist-card__button--read" style="background-color:#d35400; border-color:#d35400;">MERRY CHRISTMAS 🍎</a>`;
                             }, 600);
