@@ -13,8 +13,8 @@ LANG_DICT = {
         "subtitle": "Let The Great Santa judge your greedy soul... 😏",
         "sidebar_title": "🎅 Settings",
         "api_help": "Key is used for this session only.",
-        "game_rule": "💡 **How to play:**\nEnter your wishlist. Unlock 6 festive secrets!\n\n**Tip:** Most secrets are related to **Christmas items**, but some are about your *relationship* or *travel*...",
-        "input_placeholder": "Your wishlist (e.g., iPhone 17 pro max, a boyfriend, I want to go to Finland...)",
+        "game_rule": "💡 **How to play:**\nEnter your wishlist. Unlock 7 festive secrets!\n\n**Tip:** Most secrets are related to **Christmas items**, but some are about your *relationship*, *work* or *travel*...",
+        "input_placeholder": "Your wishlist (e.g., iPhone 17 pro max, a boyfriend, a girlfriend, lots of money)",
         "button": "🎁 Roast My List",
         "loading": "🎅 Santa is assessing your worth...",
         "error_no_key": "Please enter your API Key first!",
@@ -31,8 +31,8 @@ LANG_DICT = {
         "subtitle": "讓本聖誕老人... 用邏輯粉碎你的夢想... 😏",
         "sidebar_title": "🎅 設定",
         "api_help": "Key 僅用於本次連線，重新整理即消失。",
-        "game_rule": "💡 **玩法說明：**\n輸入願望清單。試著解鎖 6 個節日彩蛋！\n\n**提示：** 彩蛋多與**聖誕物品**有關，但也有關於*感情*或*旅行*的...",
-        "input_placeholder": "許願吧 (例如：iPhone 17 pro max、男朋友、去芬蘭...)",
+        "game_rule": "💡 **玩法說明：**\n輸入願望清單。試著解鎖 7 個節日彩蛋！\n\n**提示：** 彩蛋多與**聖誕物品**有關，但也有關於*感情*、*打工*或*旅行*的...",
+        "input_placeholder": "許願吧 (例如：iPhone 17 pro max、男朋友、女朋友、很多錢...)",
         "button": "🎁 吐槽我的願望",
         "loading": "🎅 本聖誕老人正在審視你的人生...",
         "error_no_key": "請先在上方輸入 Gemini API Key！",
@@ -49,8 +49,8 @@ LANG_DICT = {
         "subtitle": "让本圣诞老人... 用逻辑粉碎你的梦想... 😏",
         "sidebar_title": "🎅 设置",
         "api_help": "Key 仅用于本次会话。",
-        "game_rule": "💡 **玩法说明：**\n输入愿望清单。试着解锁 6 个节日彩蛋！\n\n**提示：** 彩蛋多与**圣诞物品**有关，但也有关于*感情*或*旅行*的...",
-        "input_placeholder": "许愿吧 (例如：iPhone 17 pro max、男朋友、去芬兰...)",
+        "game_rule": "💡 **玩法说明：**\n输入愿望清单。试着解锁 7 个节日彩蛋！\n\n**提示：** 彩蛋多与**圣诞物品**有关，但也有关于*感情*、*打工*或*旅行*的...",
+        "input_placeholder": "许愿吧 (例如：iPhone 17 pro max、男朋友、女朋友、很多钱...)",
         "button": "🎁 吐槽我的愿望",
         "loading": "🎅 本圣诞老人正在审视你的人生...",
         "error_no_key": "请先在上方输入 Gemini API Key！",
@@ -67,8 +67,8 @@ LANG_DICT = {
         "subtitle": "ワシが... 論理であなたの夢を打ち砕いてやろう... 😏",
         "sidebar_title": "🎅 設定",
         "api_help": "キーはこのセッションでのみ使用されます。",
-        "game_rule": "💡 **遊び方:**\n欲しいものを入力して、6つのクリスマスの秘密を探そう！\n\n**ヒント:** ほとんどは**クリスマスアイテム**ですが、*恋愛*や*旅行*に関するものも...",
-        "input_placeholder": "欲しいものリスト (例: iPhone 17 pro max, 彼氏, フィンランド...)",
+        "game_rule": "💡 **遊び方:**\n欲しいものを入力して、7つのクリスマスの秘密を探そう！\n\n**ヒント:** ほとんどは**クリスマスアイテム**ですが、*恋愛*や*仕事*、*旅行*に関するものも...",
+        "input_placeholder": "欲しいものリスト (例: iPhone 17 pro max, 彼氏, 彼女, 大金...)",
         "button": "🎁 リストを斬る",
         "loading": "🎅 サンタがあなたの価値を査定中...",
         "error_no_key": "先にAPIキーを入力してください！",
@@ -85,8 +85,8 @@ LANG_DICT = {
         "subtitle": "Laissez le Père Noël écraser vos rêves... 😏",
         "sidebar_title": "🎅 Paramètres",
         "api_help": "La clé est utilisée uniquement pour cette session.",
-        "game_rule": "💡 **Comment jouer:**\nEntrez votre liste. Débloquez 6 secrets festifs !\n\n**Astuce :** La plupart sont liés à **Noël**, mais certains concernent *l'amour* ou *le voyage*...",
-        "input_placeholder": "Votre liste (ex: iPhone 17 pro max, un petit ami, Finlande...)",
+        "game_rule": "💡 **Comment jouer:**\nEntrez votre liste. Débloquez 7 secrets festifs !\n\n**Astuce :** La plupart sont liés à **Noël**, mais certains concernent *l'amour*, *le travail* ou *le voyage*...",
+        "input_placeholder": "Votre liste (ex: iPhone 17 pro max, un petit ami, une petite amie, beaucoup d'argent)",
         "button": "🎁 Rôtir ma liste",
         "loading": "🎅 Le Père Noël évalue votre valeur...",
         "error_no_key": "Veuillez d'abord entrer votre clé API !",
@@ -100,32 +100,78 @@ LANG_DICT = {
     }
 }
 
+# --- 2.1 假期彩蛋多语言文案 (New) ---
+HOLIDAY_TEXT = {
+    "English 🇬🇧🇺🇸": {
+        "title": "🎫 SLACK OFF PERMIT",
+        "desc_1": "You look miserable.",
+        "desc_2": "Santa officially orders:",
+        "action": "STOP WORKING NOW!",
+        "valid": "(Valid: Forever)",
+        "roast_title": "Want a holiday?",
+        "roast_body": "Granted! Take this ticket and tell your boss Santa said so."
+    },
+    "Simplified Chinese (简体中文) 🇨🇳": {
+        "title": "🎫 摸鱼许可证",
+        "desc_1": "检测到你也太惨了...",
+        "desc_2": "本圣诞老人特批：",
+        "action": "即刻停止工作！",
+        "valid": "(有效期：永久)",
+        "roast_title": "不想上班？想放假？",
+        "roast_body": "准奏！拿好这张【摸鱼券】，告诉老板是我批准的！"
+    },
+    "Traditional Chinese (繁體中文) 🇹🇼🇭🇰🇲🇴": {
+        "title": "🎫 摸魚許可證",
+        "desc_1": "偵測到你也太慘了...",
+        "desc_2": "本聖誕老人特批：",
+        "action": "即刻停止工作！",
+        "valid": "(有效期：永久)",
+        "roast_title": "不想上班？想放假？",
+        "roast_body": "准奏！拿好這張【摸魚券】，告訴老闆是我批准的！"
+    },
+    "Japanese (日本語) 🇯🇵": {
+        "title": "🎫 サボり許可証",
+        "desc_1": "働きすぎです...",
+        "desc_2": "サンタの特別命令：",
+        "action": "今すぐ仕事を休め！",
+        "valid": "(有効期限：永遠)",
+        "roast_title": "休みが欲しい？",
+        "roast_body": "許可する！このチケットを上司に見せてきなさい！"
+    },
+    "French 🇫🇷": {
+        "title": "🎫 PERMIS DE PAUSE",
+        "desc_1": "Tu as l'air épuisé...",
+        "desc_2": "Ordre du Père Noël :",
+        "action": "ARRÊTE DE TRAVAILLER !",
+        "valid": "(Valide : Toujours)",
+        "roast_title": "Besoin de vacances ?",
+        "roast_body": "Accordé ! Prends ce billet et dis à ton patron que c'est de ma part."
+    }
+}
+
 # --- 3. 初始化 Session State ---
 if 'language_selected' not in st.session_state:
     st.session_state['language_selected'] = False
 if 'ui_language' not in st.session_state:
     st.session_state['ui_language'] = "English 🇬🇧🇺🇸"
 
-# 🔥 核心逻辑：彩蛋 ID 映射 (6个) 🔥
-# 1: Tree, 2: Single, 3: Deer, 4: Food, 5: Bell, 7: Finland
-ALL_EGG_IDS = {1, 2, 3, 4, 5, 7}
+# 🔥 核心逻辑：彩蛋 ID 映射 (7个) 🔥
+# 1: Tree, 2: Single, 3: Deer, 4: Food, 5: Bell, 6: Holiday, 7: Finland
+ALL_EGG_IDS = {1, 2, 3, 4, 5, 6, 7}
 
 if 'found_ids' not in st.session_state:
-    st.session_state['found_ids'] = set()
+    st.session_state['found_ids'] = set() 
 
 if 'fixed_hint_msg' not in st.session_state:
     st.session_state['fixed_hint_msg'] = None
-
 
 # --- 定義切換語言的動作 ---
 def set_language(lang_key):
     st.session_state['ui_language'] = lang_key
     st.session_state['language_selected'] = True
 
-
 def reset_language():
     st.session_state['language_selected'] = False
-
 
 # --- 4. 視覺特效裝飾 ---
 def add_christmas_magic():
@@ -172,7 +218,6 @@ def add_christmas_magic():
         snow_html += f'<div class="snowflake" style="left: {random.randint(0, 100)}vw; animation-duration: {random.uniform(5, 15)}s; animation-delay: -{random.uniform(0, 10)}s; font-size: {random.uniform(0.5, 1.2)}em;">❄</div>'
     st.markdown(snow_html, unsafe_allow_html=True)
 
-
 def trigger_jackpot_effect():
     st.markdown("""
     <style>
@@ -187,9 +232,7 @@ def trigger_jackpot_effect():
         steam_html += f'<div class="white-steam" style="margin-left: {random.randint(-300, 300)}px; animation-delay: {random.uniform(0, 2.0)}s;"></div>'
     st.markdown(steam_html, unsafe_allow_html=True)
 
-
 add_christmas_magic()
-
 
 # ==========================================
 # 🔧 工具函數：更新主頁面進度條
@@ -197,35 +240,34 @@ add_christmas_magic()
 def update_hunt_progress(placeholder_obj, ui_text):
     found_count = len(st.session_state['found_ids'])
     total_eggs = len(ALL_EGG_IDS)
-
+    
     with placeholder_obj.container():
         st.markdown('<div class="hunt-panel">', unsafe_allow_html=True)
         col1, col2 = st.columns([3, 1])
         with col1:
             st.markdown(f"#### {ui_text['hunt_title']}")
         with col2:
-            st.markdown(f"<h4 style='text-align: right; color: #FFD700;'>{found_count} / {total_eggs}</h4>",
-                        unsafe_allow_html=True)
-
+            st.markdown(f"<h4 style='text-align: right; color: #FFD700;'>{found_count} / {total_eggs}</h4>", unsafe_allow_html=True)
+        
         st.progress(found_count / total_eggs)
-
-        # 勋章展示区 (6 个)
+        
+        # 勋章展示区 (7 个)
         medals = ""
         medals += "🎄 " if 1 in st.session_state['found_ids'] else "⚪ "
         medals += "🐶 " if 2 in st.session_state['found_ids'] else "⚪ "
         medals += "🦌 " if 3 in st.session_state['found_ids'] else "⚪ "
         medals += "🍗 " if 4 in st.session_state['found_ids'] else "⚪ "
         medals += "🔔 " if 5 in st.session_state['found_ids'] else "⚪ "
-        medals += "🇫🇮 " if 7 in st.session_state['found_ids'] else "⚪ "
-
+        medals += "📅 " if 6 in st.session_state['found_ids'] else "⚪ " 
+        medals += "🇫🇮 " if 7 in st.session_state['found_ids'] else "⚪ " 
+        
         st.caption(f"Collection: {medals}")
-
+        
         if found_count == total_eggs:
             st.balloons()
             st.success("🎉 Santa Master! You unlocked EVERYTHING!")
-
+        
         st.markdown('</div>', unsafe_allow_html=True)
-
 
 # ==========================================
 # 🔥 頁面路由
@@ -243,11 +285,9 @@ if not st.session_state['language_selected']:
     col1, col2 = st.columns(2)
     with col1:
         st.button("English 🇬🇧🇺🇸", use_container_width=True, on_click=set_language, args=("English 🇬🇧🇺🇸",))
-        st.button("Simplified Chinese 🇨🇳", use_container_width=True, on_click=set_language,
-                  args=("Simplified Chinese (简体中文) 🇨🇳",))
+        st.button("Simplified Chinese 🇨🇳", use_container_width=True, on_click=set_language, args=("Simplified Chinese (简体中文) 🇨🇳",))
     with col2:
-        st.button("Traditional Chinese 🇹🇼🇭🇰🇲🇴", use_container_width=True, on_click=set_language,
-                  args=("Traditional Chinese (繁體中文) 🇹🇼🇭🇰🇲🇴",))
+        st.button("Traditional Chinese 🇹🇼🇭🇰🇲🇴", use_container_width=True, on_click=set_language, args=("Traditional Chinese (繁體中文) 🇹🇼🇭🇰🇲🇴",))
         st.button("Japanese 🇯🇵", use_container_width=True, on_click=set_language, args=("Japanese (日本語) 🇯🇵",))
     st.button("French 🇫🇷", use_container_width=True, on_click=set_language, args=("French 🇫🇷",))
 
@@ -272,17 +312,17 @@ else:
         if not api_key:
             st.warning("Enter Key to activate AI features")
             api_key = st.text_input("Gemini API Key", type="password")
-
+            
         st.sidebar.caption(ui_text["api_help"])
 
     # --- 主区域 ---
     st.title(ui_text["title"])
     st.subheader(ui_text["subtitle"])
-
+    
     # 顶部进度条
     hunt_placeholder = st.empty()
     update_hunt_progress(hunt_placeholder, ui_text)
-
+    
     # 输入框
     gift_list = st.text_area(ui_text["input_placeholder"], height=150)
 
@@ -306,10 +346,9 @@ else:
                 "petit ami", "petite amie", "copain", "copine"
             ]
             triggers_deer = ["deer", "reindeer", "rudolph", "sleigh", "麋鹿", "鹿", "驯鹿", "雪橇", "renne", "トナカイ"]
-            triggers_food = ["cookie", "biscuit", "milk", "gingerbread", "turkey", "pudding", "pie", "cake", "food",
-                             "dinner", "feast", "饼干", "牛奶", "姜饼", "火鸡", "布丁", "大餐", "食物", "吃"]
+            triggers_food = ["cookie", "biscuit", "milk", "gingerbread", "turkey", "pudding", "pie", "cake", "food", "dinner", "feast", "饼干", "牛奶", "姜饼", "火鸡", "布丁", "大餐", "食物", "吃"]
             triggers_bell = ["bell", "jingle", "ring", "song", "music", "sing", "铃铛", "铃", "钟", "响", "cloche"]
-            # triggers_holiday (Removed)
+            triggers_holiday = ["holiday", "vacation", "work", "job", "leave", "break", "放假", "假期", "上班", "工作", "打工", "加班"]
             triggers_finland = ["finland", "suomi", "helsinki", "rovaniemi", "lapland", "芬兰", "赫尔辛基", "罗瓦涅米", "圣诞村"]
 
             # --- 检测新发现 ---
@@ -329,7 +368,7 @@ else:
                 if 3 not in st.session_state['found_ids']:
                     st.session_state['found_ids'].add(3)
                     new_discovery = True
-
+            
             elif any(t in user_input_lower for t in triggers_food):
                 if 4 not in st.session_state['found_ids']:
                     st.session_state['found_ids'].add(4)
@@ -338,6 +377,11 @@ else:
             elif any(t in user_input_lower for t in triggers_bell):
                 if 5 not in st.session_state['found_ids']:
                     st.session_state['found_ids'].add(5)
+                    new_discovery = True
+            
+            elif any(t in user_input_lower for t in triggers_holiday):
+                if 6 not in st.session_state['found_ids']:
+                    st.session_state['found_ids'].add(6)
                     new_discovery = True
 
             elif any(t in user_input_lower for t in triggers_finland):
@@ -363,7 +407,7 @@ else:
                     st.audio("bgm.mp3", format="audio/mp3", start_time=0, autoplay=True)
                 except:
                     st.warning("🎵 Music file missing.")
-
+                
                 st.markdown("""
                 <div class='roast-box'>
                 🎅 <b>本圣诞老人</b>的判决：<br><br>
@@ -423,7 +467,7 @@ else:
                     </div>
                 </div>
                 """, unsafe_allow_html=True)
-
+                
                 st.markdown("""
                 <div class='roast-box gold-mode' style='border-left: 5px solid #8B4513 !important;'>
                 🎅 <b>本圣诞老人</b>的判决：<br><br>
@@ -437,12 +481,12 @@ else:
             # --- 4. 🍗 FOOD (Balloons + Steam) ---
             elif any(t in user_input_lower for t in triggers_food):
                 st.balloons()
-                trigger_jackpot_effect()
+                trigger_jackpot_effect() 
 
                 if st.session_state['fixed_hint_msg'] is None:
                     missing_ids = list(ALL_EGG_IDS - st.session_state['found_ids'])
                     if 4 in missing_ids: missing_ids.remove(4)
-
+                    
                     if not missing_ids:
                         hint_msg = "嗝... 吃饱了！你已经发现了所有秘密！(No more hints)"
                     else:
@@ -450,20 +494,16 @@ else:
                             target = 2
                         else:
                             target = random.choice(missing_ids)
-
-                        if target == 1:
-                            hint_msg = "🤫 线索：冬天穿绿衣，满身挂彩灯。它不在天上，而在屋里..."
-                        elif target == 2:
-                            hint_msg = "🤫 线索：有些人成双成对，而你... 只有一个人。你最想要什么？"
-                        elif target == 3:
-                            hint_msg = "🤫 线索：谁长着红鼻子，在天上帮本圣诞老人拉车？"
-                        elif target == 5:
-                            hint_msg = "🤫 线索：摇一摇，叮当响。Jingle _____ ?"
-                        elif target == 7:
-                            hint_msg = "🤫 线索：圣诞老人的老家在哪里？(Country)"
-
+                            
+                        if target == 1: hint_msg = "🤫 线索：冬天穿绿衣，满身挂彩灯。它不在天上，而在屋里..."
+                        elif target == 2: hint_msg = "🤫 线索：有些人成双成对，而你... 只有一个人。你最想要什么？"
+                        elif target == 3: hint_msg = "🤫 线索：谁长着红鼻子，在天上帮本圣诞老人拉车？"
+                        elif target == 5: hint_msg = "🤫 线索：摇一摇，叮当响。Jingle _____ ?"
+                        elif target == 6: hint_msg = "🤫 线索：除了礼物，打工人最想要的是什么？(Ticket)"
+                        elif target == 7: hint_msg = "🤫 线索：圣诞老人的老家在哪里？(Country)"
+                    
                     st.session_state['fixed_hint_msg'] = hint_msg
-
+                
                 final_hint = st.session_state['fixed_hint_msg']
 
                 st.markdown(f"""
@@ -493,7 +533,7 @@ else:
                     @keyframes bell-loop-ring { 0% { transform: rotate(0deg); } 25% { transform: rotate(15deg); } 75% { transform: rotate(-15deg); } 100% { transform: rotate(0deg); } }
                     @keyframes clapper-loop-swing { 0% { transform: translateX(-50%) rotate(0deg); } 25% { transform: translateX(-50%) rotate(-30deg); } 75% { transform: translateX(-50%) rotate(30deg); } 100% { transform: translateX(-50%) rotate(0deg); } }
                 </style>
-
+                
                 <div class="slot-machine-container">
                     <div class="bell-wrapper"><div class="bell-main"><div class="bell-anchor"><div class="bell-handle"></div><div class="bell-shape"></div><div class="bell-clapper"></div></div></div></div>
                     <div class="bell-wrapper"><div class="bell-main"><div class="bell-anchor"><div class="bell-handle"></div><div class="bell-shape"></div><div class="bell-clapper"></div></div></div></div>
@@ -510,21 +550,58 @@ else:
                 </div>
                 """, unsafe_allow_html=True)
 
+            # --- 6. 📅 HOLIDAY (Permit Card + Balloons, No Snow) - [Dynamic Language] ---
+            elif any(t in user_input_lower for t in triggers_holiday):
+                st.balloons()
+                
+                # 🔥 获取当前语言文本
+                current_ui_lang = st.session_state['ui_language']
+                h_text = HOLIDAY_TEXT.get(current_ui_lang, HOLIDAY_TEXT["English 🇬🇧🇺🇸"]) # Default to English
+
+                st.markdown(f"""
+                <style>
+                    .card-container {{ display: flex; justify-content: center; margin: 20px 0; perspective: 1000px; }}
+                    .card {{ position: relative; width: 300px; height: 200px; background: linear-gradient(-45deg, #f89b29 0%, #ff0f7b 100% ); border-radius: 10px; display: flex; align-items: center; justify-content: center; overflow: hidden; transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1); cursor: pointer; }}
+                    .card svg {{ width: 48px; fill: #fff; transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1); }}
+                    .card:hover {{ transform: rotate(-5deg) scale(1.1); box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4); }}
+                    .card__content {{ position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%) rotate(-45deg); width: 100%; height: 100%; padding: 20px; box-sizing: border-box; background-color: #fff; opacity: 0; transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1); display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; }}
+                    .card:hover .card__content {{ transform: translate(-50%, -50%) rotate(0deg); opacity: 1; }}
+                    .card__title {{ margin: 0; font-size: 24px; color: #333; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }}
+                    .card__description {{ margin: 10px 0 0; font-size: 14px; color: #777; line-height: 1.6; }}
+                    .card:hover svg {{ scale: 0; transform: rotate(-45deg); }}
+                </style>
+                <div class="card-container">
+                    <div class="card">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 6h-4V4c0-1.11-.89-2-2-2h-4c-1.11 0-2 .89-2 2v2H4c-1.11 0-1.99.89-1.99 2L2 19c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2zm-6 0h-4V4h4v2z"/></svg>
+                        <div class="card__content">
+                            <p class="card__title">{h_text['title']}</p>
+                            <p class="card__description">{h_text['desc_1']}<br>{h_text['desc_2']}<br><b>{h_text['action']}</b><br>{h_text['valid']}</p>
+                        </div>
+                    </div>
+                </div>
+                """, unsafe_allow_html=True)
+
+                st.markdown(f"""
+                <div class='roast-box gold-mode' style='border-left: 5px solid #FFEB3B !important;'>
+                🎅 <b>本圣诞老人</b>的判决：<br><br>
+                {h_text['roast_title']}<br>
+                <b>{h_text['roast_body']}</b> 🎈
+                </div>
+                """, unsafe_allow_html=True)
+
             # --- 7. 🇫🇮 FINLAND (3D Carousel + Santa, Center Adjusted, No Snow) ---
             elif any(t in user_input_lower for t in triggers_finland):
                 st.markdown("""
                 <style>
-                    /* 调整 wrapper 高度为 300px，增加 margin-top 呼吸感 */
-                    .wrapper { width: 100%; height: 290px; position: relative; text-align: center; display: flex; align-items: center; justify-content: center; overflow: hidden; perspective: 1000px; margin-top: 10px; }
-                    /* 移除 top: -40px，让 flex 自动居中 */
+                    .wrapper { width: 100%; height: 300px; position: relative; text-align: center; display: flex; align-items: center; justify-content: center; overflow: hidden; perspective: 1000px; margin-top: 10px; }
                     .inner { --w: 120px; --h: 180px; --quantity: 6; --translateZ: calc((var(--w) + var(--h)) + 20px); --rotateX: -10deg; position: absolute; width: var(--w); height: var(--h); z-index: 2; transform-style: preserve-3d; animation: rotating 25s linear infinite; }
                     @keyframes rotating { from { transform: rotateX(var(--rotateX)) rotateY(0); } to { transform: rotateX(var(--rotateX)) rotateY(1turn); } }
-                    .card { position: absolute; border: 2px solid rgba(255, 255, 255, 0.8); border-radius: 12px; overflow: hidden; inset: 0; transform: rotateY(calc((360deg / var(--quantity)) * var(--index))) translateZ(var(--translateZ)); background: #000; box-shadow: 0 0 20px rgba(0, 255, 128, 0.3); }
+                    .card-carousel { position: absolute; border: 2px solid rgba(255, 255, 255, 0.8); border-radius: 12px; overflow: hidden; inset: 0; transform: rotateY(calc((360deg / var(--quantity)) * var(--index))) translateZ(var(--translateZ)); background: #000; box-shadow: 0 0 20px rgba(0, 255, 128, 0.3); }
                     .night-sky { position: relative; width: 100%; height: 100%; background: linear-gradient(to bottom, #020111 0%, #191f45 100%); overflow: hidden; }
                     .stars { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-image: radial-gradient(1px 1px at 10% 10%, white, transparent), radial-gradient(1.5px 1.5px at 50% 60%, white, transparent), radial-gradient(1px 1px at 80% 20%, white, transparent); background-size: 100% 100%; opacity: 0.6; animation: twinkle 4s infinite alternate; }
                     .aurora-container { position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; filter: blur(15px); opacity: 0.8; mix-blend-mode: screen; animation: rotate-aurora 15s linear infinite; }
                     .aurora-beam { position: absolute; width: 100%; height: 100%; background: radial-gradient(ellipse at center, rgba(0, 255, 170, 0.5) 0%, rgba(138, 43, 226, 0.3) 40%, transparent 70%); transform: scaleY(0.6); }
-                    .card:nth-child(even) .aurora-beam { background: radial-gradient(ellipse at center, rgba(0, 255, 255, 0.4) 0%, rgba(0, 128, 0, 0.3) 50%, transparent 70%); animation-duration: 12s; }
+                    .card-carousel:nth-child(even) .aurora-beam { background: radial-gradient(ellipse at center, rgba(0, 255, 255, 0.4) 0%, rgba(0, 128, 0, 0.3) 50%, transparent 70%); animation-duration: 12s; }
                     .forest { position: absolute; bottom: 0; left: 0; width: 100%; height: 30px; background: #000; z-index: 10; clip-path: polygon(0% 100%, 10% 40%, 20% 100%, 30% 20%, 40% 100%, 50% 50%, 60% 100%, 70% 30%, 80% 100%, 90% 60%, 100% 100%); }
                     .flag-badge { position: absolute; top: 8px; right: 8px; width: 24px; height: 16px; background: white; z-index: 25; opacity: 0.9; }
                     .flag-badge::before { content: ''; position: absolute; left: 7px; top: 0; width: 5px; height: 100%; background: #003580; }
@@ -544,12 +621,12 @@ else:
                 </style>
                 <div class="wrapper">
                     <div class="inner">
-                        <div class="card" style="--index: 0;"><div class="night-sky"><div class="stars"></div><div class="aurora-container"><div class="aurora-beam"></div></div><div class="santa-flyer" style="animation-delay: 0s;"><div class="santa-body-bob"><div class="s-body"></div><div class="s-beard"></div><div class="s-face"></div><div class="s-hat"></div></div></div><div class="forest"></div><div class="flag-badge"></div><div class="caption-text">Finland</div></div></div>
-                        <div class="card" style="--index: 1;"><div class="night-sky"><div class="stars"></div><div class="aurora-container"><div class="aurora-beam"></div></div><div class="santa-flyer" style="animation-delay: 2s;"><div class="santa-body-bob"><div class="s-body"></div><div class="s-beard"></div><div class="s-face"></div><div class="s-hat"></div></div></div><div class="forest"></div><div class="flag-badge"></div><div class="caption-text">Suomi</div></div></div>
-                        <div class="card" style="--index: 2;"><div class="night-sky"><div class="stars"></div><div class="aurora-container"><div class="aurora-beam"></div></div><div class="santa-flyer" style="animation-delay: 4s;"><div class="santa-body-bob"><div class="s-body"></div><div class="s-beard"></div><div class="s-face"></div><div class="s-hat"></div></div></div><div class="forest"></div><div class="flag-badge"></div><div class="caption-text">Aurora</div></div></div>
-                        <div class="card" style="--index: 3;"><div class="night-sky"><div class="stars"></div><div class="aurora-container"><div class="aurora-beam"></div></div><div class="santa-flyer" style="animation-delay: 1.5s;"><div class="santa-body-bob"><div class="s-body"></div><div class="s-beard"></div><div class="s-face"></div><div class="s-hat"></div></div></div><div class="forest"></div><div class="flag-badge"></div><div class="caption-text">Lapland</div></div></div>
-                        <div class="card" style="--index: 4;"><div class="night-sky"><div class="stars"></div><div class="aurora-container"><div class="aurora-beam"></div></div><div class="santa-flyer" style="animation-delay: 5.5s;"><div class="santa-body-bob"><div class="s-body"></div><div class="s-beard"></div><div class="s-face"></div><div class="s-hat"></div></div></div><div class="forest"></div><div class="flag-badge"></div><div class="caption-text">Rovaniemi</div></div></div>
-                        <div class="card" style="--index: 5;"><div class="night-sky"><div class="stars"></div><div class="aurora-container"><div class="aurora-beam"></div></div><div class="santa-flyer" style="animation-delay: 3.2s;"><div class="santa-body-bob"><div class="s-body"></div><div class="s-beard"></div><div class="s-face"></div><div class="s-hat"></div></div></div><div class="forest"></div><div class="flag-badge"></div><div class="caption-text">Santa's Home</div></div></div>
+                        <div class="card-carousel" style="--index: 0;"><div class="night-sky"><div class="stars"></div><div class="aurora-container"><div class="aurora-beam"></div></div><div class="santa-flyer" style="animation-delay: 0s;"><div class="santa-body-bob"><div class="s-body"></div><div class="s-beard"></div><div class="s-face"></div><div class="s-hat"></div></div></div><div class="forest"></div><div class="flag-badge"></div><div class="caption-text">Finland</div></div></div>
+                        <div class="card-carousel" style="--index: 1;"><div class="night-sky"><div class="stars"></div><div class="aurora-container"><div class="aurora-beam"></div></div><div class="santa-flyer" style="animation-delay: 2s;"><div class="santa-body-bob"><div class="s-body"></div><div class="s-beard"></div><div class="s-face"></div><div class="s-hat"></div></div></div><div class="forest"></div><div class="flag-badge"></div><div class="caption-text">Suomi</div></div></div>
+                        <div class="card-carousel" style="--index: 2;"><div class="night-sky"><div class="stars"></div><div class="aurora-container"><div class="aurora-beam"></div></div><div class="santa-flyer" style="animation-delay: 4s;"><div class="santa-body-bob"><div class="s-body"></div><div class="s-beard"></div><div class="s-face"></div><div class="s-hat"></div></div></div><div class="forest"></div><div class="flag-badge"></div><div class="caption-text">Aurora</div></div></div>
+                        <div class="card-carousel" style="--index: 3;"><div class="night-sky"><div class="stars"></div><div class="aurora-container"><div class="aurora-beam"></div></div><div class="santa-flyer" style="animation-delay: 1.5s;"><div class="santa-body-bob"><div class="s-body"></div><div class="s-beard"></div><div class="s-face"></div><div class="s-hat"></div></div></div><div class="forest"></div><div class="flag-badge"></div><div class="caption-text">Lapland</div></div></div>
+                        <div class="card-carousel" style="--index: 4;"><div class="night-sky"><div class="stars"></div><div class="aurora-container"><div class="aurora-beam"></div></div><div class="santa-flyer" style="animation-delay: 5.5s;"><div class="santa-body-bob"><div class="s-body"></div><div class="s-beard"></div><div class="s-face"></div><div class="s-hat"></div></div></div><div class="forest"></div><div class="flag-badge"></div><div class="caption-text">Rovaniemi</div></div></div>
+                        <div class="card-carousel" style="--index: 5;"><div class="night-sky"><div class="stars"></div><div class="aurora-container"><div class="aurora-beam"></div></div><div class="santa-flyer" style="animation-delay: 3.2s;"><div class="santa-body-bob"><div class="s-body"></div><div class="s-beard"></div><div class="s-face"></div><div class="s-hat"></div></div></div><div class="forest"></div><div class="flag-badge"></div><div class="caption-text">Santa's Home</div></div></div>
                     </div>
                 </div>
                 """, unsafe_allow_html=True)
@@ -602,7 +679,7 @@ else:
                             st.success(ui_text["success_title"])
                             box_style = "roast-box gold-mode"
                         else:
-                            st.snow()  # 只有被骂的时候才下雪，凄凉感 MAX
+                            st.snow() # 只有被骂的时候才下雪，凄凉感 MAX
                             st.toast("🎅 Santa is judging you...", icon="😒")
                             box_style = "roast-box"
 
