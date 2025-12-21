@@ -516,20 +516,28 @@ else:
                 if is_chinese:
                     # ✅ 修復版：使用 components.html 生成獨立的 iframe，完美復刻 iconic.html 效果
                     # 這樣可以避免 Streamlit 的 markdown 渲染器破壞 SVG 和 JS
+                   # ✅ 修復版：增加手機適配 (Responsive) CSS
+                    # 1. 加入 * { box-sizing: border-box; } 確保寬度計算不溢出
+                    # 2. 將固定寬度 340px 改為 max-width: 340px; width: 90%;
+                    # 3. 調整 Close Button 位置，防止手機上被切掉
+                    
                     components.html("""
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Culture Roast Final: Love for Life</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Culture Roast Final</title>
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@700;900&family=Noto+Sans+SC:wght@400;700&display=swap');
+
+    /* 全局設定：防止邊距撐大容器 */
+    * { box-sizing: border-box; }
 
     body {
         margin: 0;
         height: 100vh;
-        background-color: #2c3e50;
+        background-color: transparent; /* 改為透明背景，融入 Streamlit */
         display: flex;
         justify-content: center;
         align-items: center;
@@ -540,7 +548,7 @@ else:
     .interaction-container {
         position: relative;
         width: 100%;
-        height: 100vh;
+        height: 100%; /* 適配 iframe 高度 */
         display: flex;
         justify-content: center;
         align-items: center;
@@ -549,69 +557,74 @@ else:
     /* ================= STAGE 1: 2025 基層紅頭文件 ================= */
     #stage-1 {
         position: absolute;
-        width: 340px;
+        /* 🔥 手機適配核心修改 🔥 */
+        width: 85%;           /* 手機上佔 85% 寬度 */
+        max-width: 340px;     /* 電腦上最大 340px */
+        /* --------------------- */
         background: #fff;
-        padding: 50px 35px 70px 35px;
+        padding: 40px 25px 60px 25px; /*稍微縮小內邊距以適應手機*/
         box-shadow: 0 15px 40px rgba(0,0,0,0.5);
         transform: rotate(-0.5deg);
         z-index: 10;
         transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
         color: #000;
         font-family: "FangSong", "SimSun", serif;
+        border-radius: 2px;
     }
 
-    .doc-header { text-align: center; color: #d60000; font-family: "SimSun", "SimHei", serif; font-size: 26px; font-weight: 500; letter-spacing: 1px; margin-bottom: 25px; }
-    .doc-title { text-align: center; font-size: 22px; font-weight: 500; margin-bottom: 10px; line-height: 1.4; font-family: "SimSun", serif; letter-spacing: 2px; }
-    .doc-serial { text-align: center; font-size: 14px; margin-bottom: 30px; font-family: "FangSong", serif; }
-    .doc-body { font-size: 15px; line-height: 1.8; text-align: justify; color: #222; margin-bottom: 40px; text-indent: 2em; font-family: "FangSong", serif; }
-    .doc-body p { margin: 0 0 10px 0; }
-    .doc-footer { position: absolute; bottom: 50px; right: 40px; text-align: right; font-family: "FangSong", serif; line-height: 1.6; font-size: 15px; }
-    .doc-stamp { position: absolute; top: -15px; right: 0px; width: 110px; height: 110px; opacity: 0.85; mix-blend-mode: multiply; pointer-events: none; transform: rotate(-8deg); }
+    .doc-header { text-align: center; color: #d60000; font-family: "SimSun", "SimHei", serif; font-size: 24px; font-weight: 500; letter-spacing: 1px; margin-bottom: 20px; }
+    .doc-title { text-align: center; font-size: 20px; font-weight: 500; margin-bottom: 10px; line-height: 1.4; font-family: "SimSun", serif; letter-spacing: 2px; }
+    .doc-serial { text-align: center; font-size: 12px; margin-bottom: 25px; font-family: "FangSong", serif; }
+    .doc-body { font-size: 14px; line-height: 1.6; text-align: justify; color: #222; margin-bottom: 30px; text-indent: 2em; font-family: "FangSong", serif; }
+    .doc-body p { margin: 0 0 8px 0; }
+    .doc-footer { position: absolute; bottom: 40px; right: 30px; text-align: right; font-family: "FangSong", serif; line-height: 1.6; font-size: 14px; }
+    .doc-stamp { position: absolute; top: -10px; right: -10px; width: 100px; height: 100px; opacity: 0.85; mix-blend-mode: multiply; pointer-events: none; transform: rotate(-8deg); }
     
-    .close-btn { position: absolute; top: -15px; right: -15px; width: 32px; height: 32px; background: #333; color: #fff; border: 2px solid #fff; border-radius: 50%; font-size: 20px; font-weight: bold; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 10px rgba(0,0,0,0.3); transition: transform 0.2s; z-index: 20; }
+    /* 關閉按鈕：往內縮一點，防止手機螢幕邊緣切到 */
+    .close-btn { position: absolute; top: -12px; right: -12px; width: 30px; height: 30px; background: #333; color: #fff; border: 2px solid #fff; border-radius: 50%; font-size: 18px; font-weight: bold; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 10px rgba(0,0,0,0.3); transition: transform 0.2s; z-index: 20; }
     .close-btn:hover { background: #d60000; transform: scale(1.1); }
 
     /* ================= STAGE 2: 攔截系統 ================= */
-    #card-container { display: none; position: relative; z-index: 20; perspective: 1000px; }
-    .brutalist-card { width: 340px; border: 4px solid #000; background-color: #fff; padding: 1.5rem; box-shadow: 15px 15px 0 #000; font-family: "Noto Sans SC", sans-serif; transition: all 0.3s; position: relative; }
+    #card-container { display: none; position: relative; z-index: 20; perspective: 1000px; width: 100%; display: flex; justify-content: center; }
+    /* 卡片也做同樣的適配 */
+    .brutalist-card { 
+        width: 85%; 
+        max-width: 340px; 
+        border: 4px solid #000; 
+        background-color: #fff; 
+        padding: 1.2rem; 
+        box-shadow: 10px 10px 0 #000; /* 手機上陰影稍微縮小 */
+        font-family: "Noto Sans SC", sans-serif; 
+        transition: all 0.3s; 
+        position: relative; 
+    }
+    
     .brutalist-card__header { display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem; border-bottom: 2px solid #000; padding-bottom: 1rem; }
     .brutalist-card__icon { flex-shrink: 0; display: flex; align-items: center; justify-content: center; background-color: #000; padding: 0.5rem; transition: background 0.3s; }
     .brutalist-card__icon svg { height: 1.5rem; width: 1.5rem; fill: #fff; }
-    .brutalist-card__alert { font-weight: 900; color: #000; font-size: 1.2rem; text-transform: uppercase; transition: color 0.3s; }
-    .brutalist-card__message { margin-top: 1rem; color: #000; font-size: 0.9rem; line-height: 1.6; border-bottom: 2px solid #000; padding-bottom: 1rem; font-weight: 600; min-height: 160px; }
-    .brutalist-card__actions { margin-top: 1rem; }
-    .brutalist-card__button { display: block; width: 100%; padding: 0.75rem; text-align: center; font-size: 1rem; font-weight: 700; text-transform: uppercase; border: 3px solid #000; background-color: #fff; color: #000; position: relative; transition: all 0.2s; box-shadow: 5px 5px 0 #000; text-decoration: none; margin-bottom: 0.8rem; cursor: pointer; box-sizing: border-box; }
+    .brutalist-card__alert { font-weight: 900; color: #000; font-size: 1.1rem; text-transform: uppercase; transition: color 0.3s; }
+    .brutalist-card__message { margin-top: 1rem; color: #000; font-size: 0.9rem; line-height: 1.6; border-bottom: 2px solid #000; padding-bottom: 1rem; font-weight: 600; min-height: 140px; }
+    .brutalist-card__actions { margin-top: 1rem; display: flex; flex-direction: column; gap: 10px; }
+    .brutalist-card__button { display: block; width: 100%; padding: 0.75rem; text-align: center; font-size: 0.95rem; font-weight: 700; text-transform: uppercase; border: 3px solid #000; background-color: #fff; color: #000; position: relative; transition: all 0.2s; box-shadow: 4px 4px 0 #000; text-decoration: none; cursor: pointer; box-sizing: border-box; }
     .brutalist-card__button--read { background-color: #000; color: #fff; }
-    .brutalist-card__button:hover { transform: translate(-2px, -2px); box-shadow: 7px 7px 0 #000; }
     .brutalist-card__button:active { transform: translate(2px, 2px); box-shadow: 2px 2px 0 #000; }
 
-    /* ================= STAGE 3: HACKED (Truth & Quote) ================= */
-    .hacked .brutalist-card { border-color: #d35400; box-shadow: 15px 15px 0 #e67e22; }
+    /* HACKED 狀態 */
+    .hacked .brutalist-card { border-color: #d35400; box-shadow: 10px 10px 0 #e67e22; }
     .hacked .brutalist-card__icon { background-color: #d35400; }
     .hacked .brutalist-card__alert { color: #d35400; }
     .hacked .brutalist-card__message { border-bottom-color: #d35400; font-family: "Noto Serif SC", serif; font-size: 0.85rem; line-height: 1.6; font-weight: normal; }
-    .hacked .brutalist-card__button--read { background-color: #d35400; border-color: #d35400; box-shadow: 5px 5px 0 #a04000; }
+    .hacked .brutalist-card__button--read { background-color: #d35400; border-color: #d35400; box-shadow: 4px 4px 0 #a04000; }
     
-    .truth-highlight { color: #c0392b; font-weight: bold; }
-    
-    /* 引用框樣式 */
-    .quote-box {
-        background-color: #f9f9f9;
-        border-left: 4px solid #d35400;
-        padding: 8px 10px;
-        margin: 10px 0;
-        font-style: italic;
-        color: #555;
-        font-family: "FangSong", serif;
-        font-size: 0.85rem;
-    }
+    .quote-box { background-color: #f9f9f9; border-left: 4px solid #d35400; padding: 6px 10px; margin: 10px 0; font-style: italic; color: #555; font-family: "FangSong", serif; font-size: 0.85rem; }
 
-    /* 動畫 */
+    /* 初始化隱藏卡片容器 */
+    #card-container { display: none; }
+    .pop-in { display: flex !important; animation: pop-in 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; }
     .fly-out { animation: fly-away 0.8s cubic-bezier(0.6, -0.28, 0.735, 0.045) forwards; pointer-events: none; }
-    .pop-in { display: block !important; animation: pop-in 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; }
     .glitching { animation: glitch-shake 0.3s cubic-bezier(.36,.07,.19,.97) both infinite; filter: invert(1); }
 
-    @keyframes fly-away { to { transform: translateY(100vh) rotate(20deg); opacity: 0; } }
+    @keyframes fly-away { to { transform: translateY(120vh) rotate(20deg); opacity: 0; } }
     @keyframes pop-in { from { opacity: 0; transform: scale(0.8); } to { opacity: 1; transform: scale(1); } }
     @keyframes glitch-shake {
         10%, 90% { transform: translate3d(-1px, 0, 0); }
@@ -619,31 +632,20 @@ else:
         30%, 50%, 70% { transform: translate3d(-4px, 0, 0); }
         40%, 60% { transform: translate3d(4px, 0, 0); }
     }
-
 </style>
 </head>
 <body>
-
     <div class="interaction-container">
-        
         <div id="stage-1">
             <button class="close-btn" onclick="triggerWarning()">×</button>
-            
             <div class="doc-header">XX县教育体育局</div>
-            
-            <div class="doc-title">
-                公　告
-            </div>
-            
+            <div class="doc-title">公　告</div>
             <div class="doc-serial">（XX教体字 2025 第 120 号）</div>
-            
             <div class="doc-body">
                 <p>根据上级关于传承优秀传统文化精神，为抵御西方宗教文化渗透，净化校园文化环境，现就有关事项通知如下：</p>
                 <p>一、<strong>严禁过“洋节”</strong>。全县各级各类学校、幼儿园严禁在校园内举办任何形式的圣诞节庆祝活动。</p>
                 <p>二、<strong>严禁摆放装饰</strong>。各班级不得在教室内摆放圣诞树、悬挂彩灯、张贴相关画像。</p>
-                <p>三、<strong>加强教育</strong>。各校要教育学生不互赠“平安果”、贺卡，自觉抵制文化侵蚀，树立文化自信。</p>
             </div>
-            
             <div class="doc-footer">
                 <p>XX县教育体育局</p>
                 <p>2025年12月20日</p>
@@ -653,13 +655,9 @@ else:
                     <text x="50" y="75" text-anchor="middle" fill="#d60000" font-size="8">行政章</text>
                     <path d="M35,50 L65,50" stroke="#d60000" stroke-width="2" />
                     <text fill="#d60000" font-size="8" font-weight="bold" letter-spacing="1">
-                        <textPath href="#circlePath" startOffset="50%" text-anchor="middle">
-                            严禁洋节 · 弘扬传统
-                        </textPath>
+                        <textPath href="#circlePath" startOffset="50%" text-anchor="middle">严禁洋节 · 弘扬传统</textPath>
                     </text>
-                    <defs>
-                        <path id="circlePath" d="M 50, 50 m -38, 0 a 38,38 0 1,1 76,0 a 38,38 0 1,1 -76,0" />
-                    </defs>
+                    <defs><path id="circlePath" d="M 50, 50 m -38, 0 a 38,38 0 1,1 76,0 a 38,38 0 1,1 -76,0" /></defs>
                 </svg>
             </div>
         </div>
@@ -672,70 +670,42 @@ else:
                     </div>
                     <div class="brutalist-card__alert" id="card-title">SYSTEM ALERT</div>
                 </div>
-                
                 <div class="brutalist-card__message" id="card-message">
                     检测到您试图关闭“禁止令”。<br><br>
                     警告：此行为被系统判定为 <b>[文化不自信]</b>。<br>
-                    风险：可能导致“崇洋媚外”标签植入。<br><br>
+                    风险：可能导致“崇洋媚外”标签植入。<br>
                 </div>
-                
                 <div class="brutalist-card__actions" id="card-actions">
                     <a class="brutalist-card__button brutalist-card__button--read" onclick="overrideSystem()">I WILL CELEBRATE (强制执行)</a>
                     <a class="brutalist-card__button" onclick="overrideSystem()">WHATEVER (配合演出)</a>
                 </div>
             </div>
         </div>
-
     </div>
 
     <script>
         function triggerWarning() {
             document.getElementById('stage-1').classList.add('fly-out');
-            setTimeout(() => {
-                document.getElementById('card-container').classList.add('pop-in');
-            }, 400);
+            setTimeout(() => { document.getElementById('card-container').classList.add('pop-in'); }, 400);
         }
 
         function overrideSystem() {
             var card = document.getElementById('main-card');
             var container = document.getElementById('card-container');
-            
-            // 1. 开始故障闪烁
             card.classList.add('glitching');
-            
-            // 2. 0.6秒后变身
             setTimeout(() => {
                 card.classList.remove('glitching');
-                container.classList.add('hacked'); // 添加橙色主题类
-                
-                // 修改图标 (變成聖誕樹)
+                container.classList.add('hacked');
                 document.getElementById('card-icon').innerHTML = '<svg viewBox="0 0 24 24"><path d="M12 2L8 7h3v3H7v3h3v4h-3v3h10v-3h-3v-4h3V10h-4V7h3L12 2z"/></svg>';
-                
-                // 修改標題
                 document.getElementById('card-title').innerText = "REALITY DECODED";
-                
-                // 修改內容 (核心昇華)
-                document.getElementById('card-message').innerHTML = `
-                    🎅 <b>圣诞老人的判决：</b><br>
-                     <div class="quote-box">“洋节并不更可怕，更可怕的是中国人遗忘自己。”</div>
-                    “不过洋节=文化自信”？这是对2014年冯骥才讲话的<b>断章取义</b>。当年央视就已严厉批判过这种行为。<br>
-                    2025年了，别再拿过时的鸡毛当令箭。树立假想敌的行为体现的不是文化自信，而是刻在骨子里的自卑。<br>
-                    生活已经够苦了，<b>我们只是借着节日的名义，去见想见的人，去吃顿热乎的饭。</b><br>
-                    这不是崇洋媚外，这是<b>对生活的热爱</b>。
-                `;
-                
-                // 修改按鈕 (送上祝福)
-                document.getElementById('card-actions').innerHTML = `
-                    <a class="brutalist-card__button brutalist-card__button--read" style="background-color:#d35400; border-color:#d35400;">MERRY CHRISTMAS 🍎</a>
-                `;
-                
+                document.getElementById('card-message').innerHTML = `🎅 <b>圣诞老人的判决：</b><br><div class="quote-box">“洋节并不更可怕，更可怕的是中国人遗忘自己。”</div>“不过洋节=文化自信”？这是对2014年冯骥才讲话的<b>断章取义</b>。<br>生活已经够苦了，<b>我们只是借着节日的名义，去见想见的人，去吃顿热乎的饭。</b><br>这不是崇洋媚外，这是<b>对生活的热爱</b>。`;
+                document.getElementById('card-actions').innerHTML = `<a class="brutalist-card__button brutalist-card__button--read" style="background-color:#d35400; border-color:#d35400;">MERRY CHRISTMAS 🍎</a>`;
             }, 600);
         }
     </script>
-
 </body>
 </html>
-                    """, height=600, scrolling=False)
+                    """, height=650, scrolling=False)
                 else:
                     # 非中文環境：顯示解釋卡片
                     explain_text = CULTURE_EXPLAINER_TEXT.get(current_lang_key, CULTURE_EXPLAINER_TEXT["English 🇬🇧🇺🇸"])
