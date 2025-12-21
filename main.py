@@ -400,15 +400,79 @@ else:
             user_input_lower = gift_list.lower()
 
             # --- 关键词库 ---
-            triggers_tree = ["tree", "christmas tree", "decoration", "ornament", "star", "圣诞树", "树", "sapin", "ツリー"]
-            triggers_single = ["脱单", "男朋友", "女朋友", "對象", "对象", "搞对象", "恋爱", "boyfriend", "girlfriend", "partner", "lover", "dating", "bf", "gf", "彼氏", "彼女", "恋人", "petit ami", "petite amie"]
-            triggers_deer = ["deer", "reindeer", "rudolph", "sleigh", "麋鹿", "鹿", "驯鹿", "雪橇", "renne", "トナカイ"]
-            triggers_food = ["cookie", "biscuit", "milk", "gingerbread", "turkey", "pudding", "pie", "cake", "food", "dinner", "feast", "饼干", "牛奶", "姜饼", "火鸡", "布丁", "大餐", "食物", "吃"]
-            triggers_bell = ["bell", "jingle", "ring", "song", "music", "sing", "铃铛", "铃", "钟", "响", "cloche"]
-            triggers_holiday = ["holiday", "vacation", "work", "job", "leave", "break", "放假", "假期", "上班", "工作", "打工", "加班"]
-            triggers_finland = ["finland", "suomi", "helsinki", "rovaniemi", "lapland", "芬兰", "赫尔辛基", "罗瓦涅米", "圣诞村"]
-            # 🔥 Extra Hidden Bonus Keywords
-            triggers_culture = ["洋节", "抵制", "文化自信", "公文", "通知", "不许过", "崇洋媚外", "foreign festival", "ban", "invasion", "文化入侵", "不过洋节"]
+            # --- 关键词库 (多语言扩充版) ---
+            
+            # 1. 🎄 Tree (树/装饰)
+            triggers_tree = [
+                "tree", "christmas tree", "decoration", "ornament", "star", "pine",
+                "圣诞树", "树", "装饰", "挂件", "星星",
+                "聖誕樹", "樹", "裝飾",  # Traditional Chinese
+                "ツリー", "クリスマスツリー", "飾り", "木", "スター", # Japanese
+                "sapin", "arbre", "décoration", "étoile" # French
+            ]
+
+            # 2. 🐶 Single (单身/恋爱)
+            triggers_single = [
+                "single", "boyfriend", "girlfriend", "partner", "lover", "dating", "bf", "gf", "love", "alone",
+                "脱单", "男朋友", "女朋友", "对象", "搞对象", "恋爱", "单身", "处对象",
+                "脫單", "對象", "談戀愛", "單身", # Traditional Chinese
+                "彼氏", "彼女", "恋人", "独身", "恋愛", "デート", "クリぼっち", # Japanese
+                "petit ami", "petite amie", "copain", "copine", "célibataire", "amour", "seul" # French
+            ]
+
+            # 3. 🦌 Deer (鹿/雪橇)
+            triggers_deer = [
+                "deer", "reindeer", "rudolph", "sleigh", "ride",
+                "麋鹿", "鹿", "驯鹿", "雪橇", "鲁道夫",
+                "馴鹿", "魯道夫", # Traditional Chinese
+                "トナカイ", "鹿", "シカ", "ソリ", "ルドルフ", # Japanese
+                "renne", "cerf", "traîneau", "rudolphe" # French
+            ]
+
+            # 4. 🍗 Food (食物/大餐)
+            triggers_food = [
+                "cookie", "biscuit", "milk", "gingerbread", "turkey", "pudding", "pie", "cake", "food", "dinner", "feast", "eat", "hungry",
+                "饼干", "牛奶", "姜饼", "火鸡", "布丁", "大餐", "食物", "吃", "饿", "蛋糕",
+                "餅乾", "薑餅", "火雞", "晚餐", "餓", # Traditional Chinese
+                "クッキー", "ビスケット", "ミルク", "ジンジャーブレッド", "七面鳥", "ケーキ", "食べ物", "食事", "ディナー", # Japanese
+                "biscuit", "lait", "pain d'épice", "dinde", "gâteau", "repas", "dîner", "manger" # French
+            ]
+
+            # 5. 🔔 Bell (铃铛/音乐)
+            triggers_bell = [
+                "bell", "jingle", "ring", "song", "music", "sing", "carol", "sound",
+                "铃铛", "铃", "钟", "响", "歌", "音乐", "叮当",
+                "鈴鐺", "鈴聲", "音樂", # Traditional Chinese
+                "ベル", "鈴", "鐘", "音楽", "歌", "ジングル", # Japanese
+                "cloche", "sonnette", "musique", "chanson", "chanter" # French
+            ]
+
+            # 6. 📅 Holiday (假期/工作)
+            triggers_holiday = [
+                "holiday", "vacation", "work", "job", "leave", "break", "office", "boss", "tired",
+                "放假", "假期", "上班", "工作", "打工", "加班", "累", "请假", "老板",
+                "休假", "請假", "老闆", # Traditional Chinese
+                "休み", "休暇", "仕事", "残業", "バイト", "疲れた", "冬休み", # Japanese
+                "vacances", "congé", "travail", "boulot", "fatigué", "patron" # French
+            ]
+
+            # 7. 🇫🇮 Finland (芬兰/旅行)
+            triggers_finland = [
+                "finland", "suomi", "helsinki", "rovaniemi", "lapland", "travel", "trip", "north pole",
+                "芬兰", "赫尔辛基", "罗瓦涅米", "圣诞村", "旅行", "出去玩", "北极",
+                "芬蘭", "赫爾辛基", "聖誕老人村", "旅遊", "北極", # Traditional Chinese
+                "フィンランド", "ヘルシンキ", "ロヴァニエミ", "ラップランド", "旅行", "北極点", # Japanese
+                "finlande", "laponie", "voyage", "pôle nord" # French
+            ]
+
+            # 8. 📜 Culture Roast (形式主义/洋节 - Extra Bonus)
+            triggers_culture = [
+                "foreign festival", "ban", "invasion", "culture", "boycott", "western festival",
+                "洋节", "抵制", "文化自信", "公文", "通知", "不许过", "崇洋媚外", "文化入侵", "不过洋节", "禁止",
+                "洋節", "文化滲透", "忘本", # Traditional Chinese
+                "西洋の祭り", "禁止", "文化侵略", "ボイコット", # Japanese
+                "fête étrangère", "interdire", "invasion culturelle", "boycott" # French
+            ]
 
             # --- 检测新发现 ---
             new_discovery = False
