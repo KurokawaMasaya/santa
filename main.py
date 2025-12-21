@@ -130,7 +130,7 @@ LANG_DICT = {
     }
 }
 
-# --- 2.1 假期彩蛋 (ID 6) 多语言文案 ---
+# --- 2.1 假期彩蛋 (ID 6) 多語言文案 ---
 HOLIDAY_TEXT = {
     "English 🇬🇧🇺🇸": {
         "title": "🎫 SLACK OFF PERMIT",
@@ -179,7 +179,7 @@ HOLIDAY_TEXT = {
     }
 }
 
-# --- 2.2 文化彩蛋 (ID 8) 非中文语境解释文案 ---
+# --- 2.2 文化彩蛋 (ID 8) 非中文語境解釋文案 ---
 CULTURE_EXPLAINER_TEXT = {
     "English 🇬🇧🇺🇸": {
         "title": "🥚 EXTRA EASTER EGG FOUND",
@@ -207,9 +207,9 @@ if 'language_selected' not in st.session_state:
 if 'ui_language' not in st.session_state:
     st.session_state['ui_language'] = "English 🇬🇧🇺🇸"
 
-# 🔥 核心逻辑：彩蛋 ID 映射 🔥
-# 1-7: 主线彩蛋
-# 8: 隐藏彩蛋 (不计入分母)
+# 🔥 核心邏輯：彩蛋 ID 映射 🔥
+# 1-7: 主線彩蛋
+# 8: 隱藏彩蛋 (不計入分母)
 MAIN_EGG_IDS = {1, 2, 3, 4, 5, 6, 7}
 
 if 'found_ids' not in st.session_state:
@@ -250,7 +250,7 @@ def add_christmas_magic():
         .stApp { background-image: linear-gradient(to bottom, #0f2027, #203a43, #2c5364); }
         .roast-box { background-color: #262730; padding: 20px; border-radius: 10px; border-left: 5px solid #FF4B4B; color: #fff; transition: all 0.5s ease; }
         .gold-mode { border-left: 5px solid #fff !important; box-shadow: 0 0 30px rgba(255, 255, 255, 0.4); background-color: #3a3a3a !important; }
-        /* 进度面板样式 */
+        /* 進度面板樣式 */
         .hunt-panel {
             background-color: rgba(0, 0, 0, 0.3);
             padding: 15px;
@@ -291,7 +291,7 @@ add_christmas_magic()
 # 🔧 工具函數：更新主頁面進度條
 # ==========================================
 def update_hunt_progress(placeholder_obj, ui_text):
-    # 只统计主线 (1-7)
+    # 只統計主線 (1-7)
     found_main_count = len([x for x in st.session_state['found_ids'] if x in MAIN_EGG_IDS])
     total_eggs = 7
     
@@ -303,10 +303,10 @@ def update_hunt_progress(placeholder_obj, ui_text):
         with col2:
             st.markdown(f"<h4 style='text-align: right; color: #FFD700;'>{found_main_count} / {total_eggs}</h4>", unsafe_allow_html=True)
         
-        # 进度条
+        # 進度條
         st.progress(min(found_main_count / total_eggs, 1.0))
         
-        # 勋章展示区
+        # 勛章展示區
         medals = ""
         medals += "🎄 " if 1 in st.session_state['found_ids'] else "⚪ "
         medals += "🐶 " if 2 in st.session_state['found_ids'] else "⚪ "
@@ -358,7 +358,7 @@ else:
     current_lang_key = st.session_state['ui_language']
     ui_text = LANG_DICT[current_lang_key]
 
-    # --- 侧边栏：仅保留设置 ---
+    # --- 側邊欄：僅保留設置 ---
     with st.sidebar:
         st.image("https://img.icons8.com/color/96/santa.png", width=100)
         st.caption(f"Language: **{current_lang_key}**")
@@ -377,15 +377,15 @@ else:
             
         st.sidebar.caption(ui_text["api_help"])
 
-    # --- 主区域 ---
+    # --- 主區域 ---
     st.title(ui_text["title"])
     st.subheader(ui_text["subtitle"])
     
-    # 顶部进度条
+    # 頂部進度條
     hunt_placeholder = st.empty()
     update_hunt_progress(hunt_placeholder, ui_text)
     
-    # 输入框
+    # 輸入框
     gift_list = st.text_area(ui_text["input_placeholder"], height=150)
 
     # ==========================================
@@ -399,10 +399,9 @@ else:
         else:
             user_input_lower = gift_list.lower()
 
-            # --- 关键词库 ---
-            # --- 关键词库 (多语言扩充版) ---
+            # --- 關鍵詞庫 (多語言擴充版) ---
             
-            # 1. 🎄 Tree (树/装饰)
+            # 1. 🎄 Tree (樹/裝飾)
             triggers_tree = [
                 "tree", "christmas tree", "decoration", "ornament", "star", "pine",
                 "圣诞树", "树", "装饰", "挂件", "星星",
@@ -411,13 +410,13 @@ else:
                 "sapin", "arbre", "décoration", "étoile" # French
             ]
 
-            # 2. 🐶 Single (单身/恋爱)
+            # 2. 🐶 Single (單身/戀愛) - ⚠️ 已削減觸發率，僅限明確求偶關鍵詞
             triggers_single = [
-                "single", "boyfriend", "girlfriend", "partner", "lover", "dating", "bf", "gf", "love", "alone",
-                "脱单", "男朋友", "女朋友", "对象", "搞对象", "恋爱", "单身", "处对象",
-                "脫單", "對象", "談戀愛", "單身", # Traditional Chinese
-                "彼氏", "彼女", "恋人", "独身", "恋愛", "デート", "クリぼっち", # Japanese
-                "petit ami", "petite amie", "copain", "copine", "célibataire", "amour", "seul" # French
+                "boyfriend", "girlfriend", "partner", "lover", "dating", "bf", "gf", "husband", "wife",
+                "脱单", "男朋友", "女朋友", "对象", "搞对象", "恋爱", "处对象", "老公", "老婆",
+                "脫單", "對象", "談戀愛", "男友", "女友", # Traditional Chinese
+                "彼氏", "彼女", "恋人", "デート", "結婚", # Japanese
+                "petit ami", "petite amie", "copain", "copine", "mari", "femme" # French
             ]
 
             # 3. 🦌 Deer (鹿/雪橇)
@@ -438,7 +437,7 @@ else:
                 "biscuit", "lait", "pain d'épice", "dinde", "gâteau", "repas", "dîner", "manger" # French
             ]
 
-            # 5. 🔔 Bell (铃铛/音乐)
+            # 5. 🔔 Bell (鈴鐺/音樂)
             triggers_bell = [
                 "bell", "jingle", "ring", "song", "music", "sing", "carol", "sound",
                 "铃铛", "铃", "钟", "响", "歌", "音乐", "叮当",
@@ -456,7 +455,7 @@ else:
                 "vacances", "congé", "travail", "boulot", "fatigué", "patron" # French
             ]
 
-            # 7. 🇫🇮 Finland (芬兰/旅行)
+            # 7. 🇫🇮 Finland (芬蘭/旅行)
             triggers_finland = [
                 "finland", "suomi", "helsinki", "rovaniemi", "lapland", "travel", "trip", "north pole",
                 "芬兰", "赫尔辛基", "罗瓦涅米", "圣诞村", "旅行", "出去玩", "北极",
@@ -465,7 +464,7 @@ else:
                 "finlande", "laponie", "voyage", "pôle nord" # French
             ]
 
-            # 8. 📜 Culture Roast (形式主义/洋节 - Extra Bonus)
+            # 8. 📜 Culture Roast (形式主義/洋節 - Extra Bonus)
             triggers_culture = [
                 "foreign festival", "ban", "invasion", "culture", "boycott", "western festival",
                 "洋节", "抵制", "文化自信", "公文", "通知", "不许过", "崇洋媚外", "文化入侵", "不过洋节", "禁止",
@@ -474,7 +473,7 @@ else:
                 "fête étrangère", "interdire", "invasion culturelle", "boycott" # French
             ]
 
-            # --- 检测新发现 ---
+            # --- 檢測新發現 ---
             new_discovery = False
 
             if any(t in user_input_lower for t in triggers_tree):
@@ -499,31 +498,31 @@ else:
                     st.toast("👁️ HIDDEN TRUTH FOUND! (Extra Bonus)", icon="🔓")
                     new_discovery = True
 
-            # 🔥 立即更新主页面的进度条 🔥
+            # 🔥 立即更新主頁面的進度條 🔥
             if new_discovery:
                 update_hunt_progress(hunt_placeholder, ui_text)
 
-            # --- 展示逻辑 (Priority Order) ---
+            # --- 展示邏輯 (Priority Order) ---
 
             # --- 8. 📜 CULTURE ROAST (Extra Bonus - Interactive) ---
-            # 放在最前面判断，确保优先触发且不走AI
+            # 放在最前面判斷，確保優先觸發且不走AI
             if any(t in user_input_lower for t in triggers_culture):
                 
                 # Check Language for Special Content
                 is_chinese = "Chinese" in current_lang_key or "中文" in current_lang_key
                 
                 if is_chinese:
-                    # 显示完整的红头文件交互
+                    # 顯示完整的紅頭文件交互
                     st.markdown("""
                     <style>
-                        /* 引入字体 */
+                        /* 引入字體 */
                         @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@700;900&family=Noto+Sans+SC:wght@400;700&display=swap');
 
-                        /* 容器样式 (适配 Streamlit) */
+                        /* 容器樣式 (適配 Streamlit) */
                         .interaction-wrapper { 
                             position: relative; 
                             width: 100%; 
-                            height: 600px; /* 给足高度 */
+                            height: 600px; /* 給足高度 */
                             display: flex; 
                             justify-content: center; 
                             align-items: center; 
@@ -542,7 +541,7 @@ else:
                             align-items: center;
                         }
 
-                        /* ================= STAGE 1: 2025 基层红头文件 ================= */
+                        /* ================= STAGE 1: 2025 基層紅頭文件 ================= */
                         #stage-1 {
                             position: absolute;
                             width: 340px;
@@ -562,12 +561,12 @@ else:
                         .doc-body { font-size: 15px; line-height: 1.8; text-align: justify; color: #222; margin-bottom: 40px; text-indent: 2em; font-family: "FangSong", serif; }
                         .doc-body p { margin: 0 0 10px 0; }
                         .doc-footer { position: absolute; bottom: 50px; right: 40px; text-align: right; font-family: "FangSong", serif; line-height: 1.6; font-size: 15px; }
-                        .doc-stamp { position: absolute; top: -15px; right: 0px; width: 110px; height: 110px; opacity: 0.85; mix-blend-mode: multiply; pointer-events: none; transform: rotate(-8deg); }
+                        /* .doc-stamp 樣式移至 inline style 以確保渲染 */
                         
                         .close-btn { position: absolute; top: -15px; right: -15px; width: 32px; height: 32px; background: #333; color: #fff; border: 2px solid #fff; border-radius: 50%; font-size: 20px; font-weight: bold; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 10px rgba(0,0,0,0.3); transition: transform 0.2s; z-index: 20; }
                         .close-btn:hover { background: #d60000; transform: scale(1.1); }
 
-                        /* ================= STAGE 2: 拦截系统 ================= */
+                        /* ================= STAGE 2: 攔截系統 ================= */
                         #card-container { display: none; position: relative; z-index: 20; perspective: 1000px; }
                         .brutalist-card { width: 340px; border: 4px solid #000; background-color: #fff; padding: 1.5rem; box-shadow: 15px 15px 0 #000; font-family: "Noto Sans SC", sans-serif; transition: all 0.3s; position: relative; }
                         .brutalist-card__header { display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem; border-bottom: 2px solid #000; padding-bottom: 1rem; }
@@ -590,10 +589,10 @@ else:
                         
                         .truth-highlight { background: #fcece0; color: #c0392b; padding: 0 2px; font-weight: bold; border-bottom: 1px solid #c0392b; }
                         
-                        /* 引用框样式 */
+                        /* 引用框樣式 */
                         .quote-box { background-color: #f9f9f9; border-left: 4px solid #d35400; padding: 8px 10px; margin: 10px 0; font-style: italic; color: #555; font-family: "FangSong", serif; font-size: 0.85rem; }
 
-                        /* 动画 */
+                        /* 動畫 */
                         .fly-out { animation: fly-away 0.8s cubic-bezier(0.6, -0.28, 0.735, 0.045) forwards; pointer-events: none; }
                         .pop-in { display: block !important; animation: pop-in 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; }
                         .glitching { animation: glitch-shake 0.3s cubic-bezier(.36,.07,.19,.97) both infinite; filter: invert(1); }
@@ -633,19 +632,19 @@ else:
                                 <div class="doc-footer">
                                     <p>XX县教育体育局</p>
                                     <p>2025年12月20日</p>
-                                    <svg class="doc-stamp" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                                    <svg class="doc-stamp" viewBox="0 0 100 100" style="position:absolute; top:-15px; right:0px; width:110px; height:110px; opacity:0.85; mix-blend-mode:multiply; pointer-events:none; transform:rotate(-8deg); overflow:visible;">
+                                        <defs>
+                                            <path id="circlePath" d="M 50, 50 m -35, 0 a 35,35 0 1,1 70,0 a 35,35 0 1,1 -70,0" />
+                                        </defs>
                                         <circle cx="50" cy="50" r="45" stroke="#d60000" stroke-width="2.5" fill="none" />
-                                        <text x="50" y="55" text-anchor="middle" fill="#d60000" font-size="12" font-weight="bold" font-family="SimHei">XX县教育体育局</text>
-                                        <text x="50" y="75" text-anchor="middle" fill="#d60000" font-size="8">行政章</text>
-                                        <path d="M35,50 L65,50" stroke="#d60000" stroke-width="2" />
-                                        <text fill="#d60000" font-size="8" font-weight="bold" letter-spacing="1">
-                                            <textPath href="#circlePath" startOffset="50%" text-anchor="middle">
+                                        <text x="50" y="55" text-anchor="middle" fill="#d60000" font-size="12" font-weight="bold" font-family="SimHei" style="pointer-events:none;">XX县教育体育局</text>
+                                        <text x="50" y="75" text-anchor="middle" fill="#d60000" font-size="8" font-family="SimHei" style="pointer-events:none;">行政章</text>
+                                        <path d="M35,63 L65,63" stroke="#d60000" stroke-width="1" />
+                                        <text fill="#d60000" font-size="8" font-weight="bold" letter-spacing="1" font-family="SimHei">
+                                            <textPath xlink:href="#circlePath" startOffset="50%" text-anchor="middle">
                                                 严禁洋节 · 弘扬传统
                                             </textPath>
                                         </text>
-                                        <defs>
-                                            <path id="circlePath" d="M 50, 50 m -38, 0 a 38,38 0 1,1 76,0 a 38,38 0 1,1 -76,0" />
-                                        </defs>
                                     </svg>
                                 </div>
                             </div>
@@ -723,7 +722,7 @@ else:
                     </script>
                     """, unsafe_allow_html=True)
                 else:
-                    # 非中文环境：显示解释卡片
+                    # 非中文環境：顯示解釋卡片
                     explain_text = CULTURE_EXPLAINER_TEXT.get(current_lang_key, CULTURE_EXPLAINER_TEXT["English 🇬🇧🇺🇸"])
                     
                     st.markdown(f"""
@@ -810,20 +809,87 @@ else:
                 </div>
                 """, unsafe_allow_html=True)
 
-            # --- 4. 🍗 FOOD ---
+            # --- 4. 🍗 FOOD (觸發獲得毒舌線索) ---
             elif any(t in user_input_lower for t in triggers_food):
                 st.balloons()
                 trigger_jackpot_effect() 
 
                 if st.session_state['fixed_hint_msg'] is None:
+                    # 1. 找出還沒發現的彩蛋 ID
                     missing_ids = list(MAIN_EGG_IDS - st.session_state['found_ids'])
-                    if 4 in missing_ids: missing_ids.remove(4)
+                    if 4 in missing_ids: missing_ids.remove(4) # 排除自己
                     
+                    # --- 🔥 地獄級毒舌謎語 (Hardcore Roast Hints) ---
+                    # 繁體中文 (毒舌版)
+                    hints_tw = {
+                        1: "提示：一種在客廳裡慢慢死去的植物，身上還掛著珠寶。💎🥀",
+                        2: "提示：你的存款買不到，你的性格也吸引不到的那種關係。💔",
+                        3: "提示：一群被我奴役的空中計程車司機，其中有個紅鼻子的。🔴🚕",
+                        5: "提示：有金屬舌頭，腦袋空空，一搖晃就會尖叫的東西。🔔😱",
+                        6: "提示：一張賦予你自由，但你絕對不敢拿給老闆看的紙。📄😈",
+                        7: "提示：比你的心還要冰冷的地方，也是我的老巢。❄️🏠"
+                    }
+                    
+                    # 简体中文 (毒舌版)
+                    hints_cn = {
+                        1: "提示：一种在客厅里慢慢死去的植物，身上还挂着珠宝。💎🥀",
+                        2: "提示：你的存款买不到，你的性格也吸引不到的那种关系。💔",
+                        3: "提示：一群被我奴役的空中出租车司机，其中有个红鼻子的。🔴🚕",
+                        5: "提示：有金属舌头，脑袋空空，一摇晃就会尖叫的东西。🔔😱",
+                        6: "提示：一张赋予你自由，但你绝对不敢拿给老板看的纸。📄😈",
+                        7: "提示：比你的心还要冰冷的地方，也是我的老巢。❄️🏠"
+                    }
+                    
+                    # English (Cryptic Roast)
+                    hints_en = {
+                        1: "Hint: A corpse dressed in jewelry, dying slowly in your living room. 💎🥀",
+                        2: "Hint: Something money can't buy, and your personality can't attract. 💔",
+                        3: "Hint: My enslaved aerial taxi drivers. One has a glowing nose. 🔴🚕",
+                        5: "Hint: Golden skin, metal tongue, screams when you shake it. 🔔😱",
+                        6: "Hint: A piece of paper that grants freedom, but you're too cowardly to use. 📄😈",
+                        7: "Hint: A place colder than your ex's heart. My frozen wasteland. ❄️🏠"
+                    }
+                    
+                    # Japanese (Cryptic)
+                    hints_jp = {
+                        1: "ヒント: リビングで宝石を纏ってゆっくり死んでいく植物... 💎🥀",
+                        2: "ヒント: お金で買えないし、その性格じゃ惹きつけられない関係... 💔",
+                        3: "ヒント: 空飛ぶタクシー運転手。赤鼻のやつ... 🔴🚕",
+                        5: "ヒント: 揺らすと叫ぶ金属の舌を持つやつ... 🔔😱",
+                        6: "ヒント: 自由をくれるけど、ボスには絶対見せられない紙... 📄😈",
+                        7: "ヒント: 元恋人の心より寒い場所。わしの不毛の地... ❄️🏠"
+                    }
+
+                    # French (Cryptic)
+                    hints_fr = {
+                        1: "Indice : Un cadavre couvert de bijoux qui meurt lentement dans votre salon... 💎🥀",
+                        2: "Indice : Une relation que l'argent ne peut acheter et que vous ne pouvez attirer... 💔",
+                        3: "Indice : Mes chauffeurs de taxi volants... Un a le nez rouge. 🔴🚕",
+                        5: "Indice : Peau dorée, langue de métal, crie quand on la secoue. 🔔😱",
+                        6: "Indice : Un papier qui donne la liberté, mais que vous n'oserez pas montrer au patron. 📄😈",
+                        7: "Indice : Un endroit plus froid que le cœur de votre ex. Ma terre gelée. ❄️🏠"
+                    }
+
                     if not missing_ids:
-                        hint_msg = "No more hints!"
+                        # 全收集時的文案
+                        if "Traditional" in current_lang_key: hint_msg = "太強了！你已經發現了所有秘密！"
+                        elif "Simplified" in current_lang_key: hint_msg = "太强了！你已经发现了所有秘密！"
+                        elif "Japanese" in current_lang_key: hint_msg = "すごい！全ての秘密を見つけました！"
+                        elif "French" in current_lang_key: hint_msg = "Incroyable ! Vous avez tout trouvé !"
+                        else: hint_msg = "Amazing! You found ALL secrets!"
                     else:
                         target = random.choice(missing_ids)
-                        hint_msg = f"Try looking for secret #{target}..." # Simple hint logic for now
+                        # 根據語言切換提示字典
+                        if "Traditional" in current_lang_key:
+                            hint_msg = hints_tw.get(target, "繼續許願試試看...")
+                        elif "Simplified" in current_lang_key:
+                            hint_msg = hints_cn.get(target, "继续许愿试试看...")
+                        elif "Japanese" in current_lang_key:
+                            hint_msg = hints_jp.get(target, "願い事を続けてみて...")
+                        elif "French" in current_lang_key:
+                            hint_msg = hints_fr.get(target, "Continuez à souhaiter...")
+                        else:
+                            hint_msg = hints_en.get(target, "Keep wishing...")
                     
                     st.session_state['fixed_hint_msg'] = hint_msg
                 
@@ -871,7 +937,7 @@ else:
             elif any(t in user_input_lower for t in triggers_holiday):
                 st.balloons()
                 
-                # 🔥 获取当前语言文本
+                # 🔥 獲取當前語言文本
                 current_ui_lang = st.session_state['ui_language']
                 h_text = HOLIDAY_TEXT.get(current_ui_lang, HOLIDAY_TEXT["English 🇬🇧🇺🇸"]) # Default to English
 
@@ -954,7 +1020,7 @@ else:
                 </div>
                 """, unsafe_allow_html=True)
 
-            # --- 8. AI 正常逻辑 (Only Snow Here) ---
+            # --- 8. AI 正常邏輯 (Only Snow Here) ---
             else:
                 with st.spinner(ui_text["loading"]):
                     try:
@@ -965,10 +1031,10 @@ else:
                             model = genai.GenerativeModel('gemini-1.5-flash')
 
                         persona = f"""
-                        You are Santa Claus with a "Tsundere" (傲娇 - tough outside, soft inside) personality.
+                        You are Santa Claus with a "Tsundere" (傲嬌 - tough outside, soft inside) personality.
 
                         🔥🔥 MANDATORY IDENTITY RULES (CRITICAL) 🔥🔥
-                        1. **SELF-REFERENCE**: You must ALWAYS refer to yourself as **"本圣诞老人" (The Great Santa)** or **"我" (I)**.
+                        1. **SELF-REFERENCE**: You must ALWAYS refer to yourself as **"本聖誕老人" (The Great Santa)** or **"我" (I)**.
                         2. **NO ROBOTIC SPEECH**: Never say "As an AI...".
 
                         🔥🔥 LANGUAGE INSTRUCTION 🔥🔥
@@ -976,8 +1042,8 @@ else:
                         2. RESPOND in that **SAME LANGUAGE**.
 
                         🔥🔥 RESPONSE STRUCTURE (The "Tsundere" Flow) 🔥🔥
-                        1. **The Roast (50%):** Start by being grumpy. Use "本圣诞老人" to express disbelief at their audacity.
-                        2. **The Shift:** Use a transition like "*Sigh*...", "*Cough*...", or "不过...".
+                        1. **The Roast (50%):** Start by being grumpy. Use "本聖誕老人" to express disbelief at their audacity.
+                        2. **The Shift:** Use a transition like "*Sigh*...", "*Cough*...", or "不過...".
                         3. **The Grant/Advice (50%):** Reluctantly agree or give realistic advice.
 
                         🔥🔥 EXCEPTION (Heartwarming Override) 🔥🔥:
@@ -987,13 +1053,13 @@ else:
                         response = model.generate_content(f"{persona}\n\nUser's Wish: {gift_list}")
 
                         if "❤️" in response.text or "🌟" in response.text:
-                            # 暖心时刻也给点特效
+                            # 暖心時刻也給點特效
                             trigger_jackpot_effect()
                             st.balloons()
                             st.success(ui_text["success_title"])
                             box_style = "roast-box gold-mode"
                         else:
-                            st.snow() # 只有被骂的时候才下雪，凄凉感 MAX
+                            st.snow() # 只有被罵的時候才下雪，凄涼感 MAX
                             st.toast("🎅 Santa is judging you...", icon="😒")
                             box_style = "roast-box"
 
