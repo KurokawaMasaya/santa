@@ -2,29 +2,11 @@ import streamlit as st
 import google.generativeai as genai
 import random
 import time
-import unicodedata
-import opencc  # 🔥 必须在 requirements.txt 中包含 opencc-python-reimplemented
 
-# --- 1. 页面基础设定 ---
+# --- 1. 頁面基礎設定 ---
 st.set_page_config(page_title="Roast Santa AI", page_icon="🎅", layout="centered")
 
-# --- 🔧 核心工具：OpenCC 繁体 -> 简体 转换器 ---
-# 逻辑非常简单：初始化转换器，所有输入一律转为简体
-converter = opencc.OpenCC('t2s')
-
-def get_simplified_input(text: str) -> str:
-    """
-    终极处理函数：
-    1. 标准化 (NFKC) - 处理全角字符
-    2. OpenCC 繁转简 - 核心逻辑 (把 '洋節' 变成 '洋节')
-    3. 转小写/去空格
-    """
-    if text is None: return ""
-    s = unicodedata.normalize("NFKC", str(text))
-    s = converter.convert(s)  # 🔥 强制转简
-    return s.strip().lower()
-
-# --- 2. 语言字典 (已彻底删除日语、法语) ---
+# --- 2. 語言與文案字典 ---
 LANG_DICT = {
     "English 🇬🇧🇺🇸": {
         "title": "🎅 Santa's Roast Room",
@@ -43,6 +25,7 @@ LANG_DICT = {
         "secret_title": "### Merry Christmas!!! Enter the Secret Portal 🎄",
         "secret_button": "👉 CLICK TO ENTER",
         "hunt_title": "🏆 Secret Hunt Progress",
+        # Egg Texts
         "egg_single": "Santa sighs... No lover? Here, listen to this song.",
         "egg_deer": "Look! It's Rudolph crawling on your screen! 🔴🦌",
         "egg_food": "Delicious! Since you fed me, here's a hint for the next secret:",
@@ -66,6 +49,7 @@ LANG_DICT = {
         "secret_title": "### 聖誕快樂！！！這是通往秘密基地的傳送門 🎄",
         "secret_button": "👉 點擊進入聖誕樹空間",
         "hunt_title": "🏆 彩蛋收集進度",
+        # Egg Texts
         "egg_single": "本聖誕老人嘆氣... 沒對象？聽聽這首歌吧。",
         "egg_deer": "看！是魯道夫在爬你的螢幕！🔴🦌",
         "egg_food": "真香！既然你請我吃大餐，偷偷給你個線索：",
@@ -89,11 +73,60 @@ LANG_DICT = {
         "secret_title": "### 圣诞快乐！！！这是通往秘密基地的传送门 🎄",
         "secret_button": "👉 点击进入圣诞树空间",
         "hunt_title": "🏆 彩蛋收集进度",
+        # Egg Texts
         "egg_single": "本圣诞老人叹气... 没对象？听听这首歌吧。",
         "egg_deer": "看！是鲁道夫在爬你的屏幕！🔴🦌",
         "egg_food": "真香！既然你请我吃大餐，偷偷给你个线索：",
         "egg_bell": "叮叮当！🔔 这是幸运的声音！",
         "egg_finland": "Tervetuloa! (欢迎！) 你竟然找到了我的老家——芬兰 (Finland)！🇫🇮\n这里的桑拿房已经热好了，快来罗瓦涅米找我玩吧！"
+    },
+    "Japanese (日本語) 🇯🇵": {
+        "title": "🎅 サンタの毒舌部屋",
+        "subtitle": "ワシが... 論理であなたの夢を打ち砕いてやろう... 😏",
+        "sidebar_title": "🎅 設定",
+        "api_help": "キーはこのセッションでのみ使用されます。",
+        "game_rule": "💡 **遊び方:**\n欲しいものを入力して、7つのクリスマスの秘密を探そう！\n\n**ヒント:** ほとんどは**クリスマスアイテム**ですが、*恋愛*や*仕事*、*旅行*に関するものも...",
+        "input_placeholder": "欲しいものリスト (例: iPhone 17 pro max, 彼氏, 彼女, 大金...)",
+        "button": "🎁 リストを斬る",
+        "loading": "🎅 サンタがあなたの価値を査定中...",
+        "error_no_key": "先にAPIキーを入力してください！",
+        "error_no_text": "何か書いて！白紙じゃツッコミようがないよ。",
+        "success_title": "🔔 判決が出ました！",
+        "footer": "Powered by Google Gemini 3.0 Pro",
+        "secret_success": "🎅 ホーホーホー！ツリーを見つけたな！",
+        "secret_title": "### メリークリスマス！！！秘密の入り口はこちら 🎄",
+        "secret_button": "👉 クリックしてポータルに入る",
+        "hunt_title": "🏆 シークレットハント進捗",
+        # Egg Texts
+        "egg_single": "サンタのため息... 恋人がいない？この曲でも聴きなさい。",
+        "egg_deer": "見ろ！ルドルフが画面を這っているぞ！🔴🦌",
+        "egg_food": "うまい！食事のお礼にヒントをやろう：",
+        "egg_bell": "リンリン！🔔 幸運の音だ！",
+        "egg_finland": "Tervetuloa! (ようこそ!) ワシの故郷、フィンランドを見つけたな！🇫🇮\nサウナは温まっているぞ、ロヴァニエミにおいで！"
+    },
+    "French 🇫🇷": {
+        "title": "🎅 Salle de Rôtissage du Père Noël",
+        "subtitle": "Laissez le Père Noël écraser vos rêves... 😏",
+        "sidebar_title": "🎅 Paramètres",
+        "api_help": "La clé est utilisée uniquement pour cette session.",
+        "game_rule": "💡 **Comment jouer:**\nEntrez votre liste. Débloquez 7 secrets festifs !\n\n**Astuce :** La plupart sont liés à **Noël**, mais certains concernent *l'amour*, *le travail* ou *le voyage*...",
+        "input_placeholder": "Votre liste (ex: iPhone 17 pro max, un petit ami, une petite amie, beaucoup d'argent)",
+        "button": "🎁 Rôtir ma liste",
+        "loading": "🎅 Le Père Noël évalue votre valeur...",
+        "error_no_key": "Veuillez d'abord entrer votre clé API !",
+        "error_no_text": "Écrivez quelque chose ! Je ne peux pas rôtir une page blanche.",
+        "success_title": "🔔 Le verdict est là !",
+        "footer": "Propulsé par Google Gemini 3.0 Pro",
+        "secret_success": "🎅 Ho ho ho ! Vous avez trouvé l'arbre !",
+        "secret_title": "### JOYEUX NOËL !!! Voici le portail secret 🎄",
+        "secret_button": "👉 CLIQUEZ POUR ENTRER",
+        "hunt_title": "🏆 Chasse aux Secrets",
+        # Egg Texts
+        "egg_single": "Le Père Noël soupire... Pas d'amour ? Écoute ça.",
+        "egg_deer": "Regarde ! C'est Rodolphe qui grimpe sur ton écran ! 🔴🦌",
+        "egg_food": "Délicieux ! Voici un indice pour le prochain secret :",
+        "egg_bell": "Dring Dring ! 🔔 C'est le son de la chance !",
+        "egg_finland": "Tervetuloa ! Tu as trouvé ma maison : la Finlande ! 🇫🇮\nLe sauna est prêt, viens me voir à Rovaniemi !"
     }
 }
 
@@ -125,16 +158,46 @@ HOLIDAY_TEXT = {
         "valid": "(有效期：永久)",
         "roast_title": "不想上班？想放假？",
         "roast_body": "准奏！拿好這張【摸魚券】，告訴老闆是我批准的！"
+    },
+    "Japanese (日本語) 🇯🇵": {
+        "title": "🎫 サボり許可証",
+        "desc_1": "働きすぎです...",
+        "desc_2": "サンタの特別命令：",
+        "action": "今すぐ仕事を休め！",
+        "valid": "(有効期限：永遠)",
+        "roast_title": "休みが欲しい？",
+        "roast_body": "許可する！このチケットを上司に見せてきなさい！"
+    },
+    "French 🇫🇷": {
+        "title": "🎫 PERMIS DE PAUSE",
+        "desc_1": "Tu as l'air épuisé...",
+        "desc_2": "Ordre du Père Noël :",
+        "action": "ARRÊTE DE TRAVAILLER !",
+        "valid": "(Valide : Toujours)",
+        "roast_title": "Besoin de vacances ?",
+        "roast_body": "Accordé ! Prends ce billet et dis à ton patron que c'est de ma part."
     }
 }
 
 # --- 2.2 文化彩蛋 (ID 8) 非中文语境解释文案 ---
 CULTURE_EXPLAINER_TEXT = {
     "English 🇬🇧🇺🇸": {
-        "title": "🥚 EXTRA HIDDEN EGG FOUND",
-        "msg": "You triggered a keyword related to 'Ban Western Festivals'.",
-        "desc": "In China, some local departments occasionally ban Christmas to 'resist cultural invasion'. This egg is a satire on that bureaucracy. **Please switch to CHINESE to see the full interactive experience!**",
+        "title": "🥚 EXTRA EASTER EGG FOUND",
+        "msg": "You typed a keyword related to the 'Western Festival Ban'.",
+        "desc": "In recent years, some local departments in China have issued notices banning Christmas to 'resist cultural invasion'. This is a satire on that bureaucracy. Switch to **Chinese** language to see the full interactive document!",
         "btn": "Got it"
+    },
+    "Japanese (日本語) 🇯🇵": {
+        "title": "🥚 隠しイースターエッグ発見",
+        "msg": "「洋節（西洋の祭り）」に関するキーワードが検出されました。",
+        "desc": "近年、中国の一部の地方部門が「文化侵略を防ぐ」としてクリスマスを禁止する通知を出しています。これはその形式主義に対する風刺です。**中国語**に切り替えると、完全なインタラクティブ体験ができます！",
+        "btn": "わかった"
+    },
+    "French 🇫🇷": {
+        "title": "🥚 OEUF DE PÂQUES CACHÉ",
+        "msg": "Vous avez tapé un mot-clé lié à l'interdiction des 'Fêtes Occidentales'.",
+        "desc": "Récemment, certains départements locaux en Chine ont banni Noël pour 'résister à l'invasion culturelle'. Ceci est une satire de cette bureaucratie. Passez en **Chinois** pour voir le document complet !",
+        "btn": "Compris"
     }
 }
 
@@ -145,6 +208,8 @@ if 'ui_language' not in st.session_state:
     st.session_state['ui_language'] = "English 🇬🇧🇺🇸"
 
 # 🔥 核心逻辑：彩蛋 ID 映射 🔥
+# 1-7: 主线彩蛋
+# 8: 隐藏彩蛋 (不计入分母)
 MAIN_EGG_IDS = {1, 2, 3, 4, 5, 6, 7}
 
 if 'found_ids' not in st.session_state:
@@ -238,7 +303,7 @@ def update_hunt_progress(placeholder_obj, ui_text):
         with col2:
             st.markdown(f"<h4 style='text-align: right; color: #FFD700;'>{found_main_count} / {total_eggs}</h4>", unsafe_allow_html=True)
         
-        # 进度条 (最大 100%)
+        # 进度条
         st.progress(min(found_main_count / total_eggs, 1.0))
         
         # 勋章展示区
@@ -279,31 +344,27 @@ if not st.session_state['language_selected']:
     st.title("Welcome to Santa's Roast Room")
     st.subheader("Please select your language:")
     st.markdown("---")
-    
-    # 🔥 语言按钮：仅保留 3 个 (已彻底删除日/法)
-    col1, col2, col3 = st.columns(3)
+    col1, col2 = st.columns(2)
     with col1:
         st.button("English 🇬🇧🇺🇸", use_container_width=True, on_click=set_language, args=("English 🇬🇧🇺🇸",))
+        st.button("Simplified Chinese 🇨🇳", use_container_width=True, on_click=set_language, args=("Simplified Chinese (简体中文) 🇨🇳",))
     with col2:
-        st.button("繁體中文 🇹🇼", use_container_width=True, on_click=set_language, args=("Traditional Chinese (繁體中文) 🇹🇼🇭🇰🇲🇴",))
-    with col3:
-        st.button("简体中文 🇨🇳", use_container_width=True, on_click=set_language, args=("Simplified Chinese (简体中文) 🇨🇳",))
+        st.button("Traditional Chinese 🇹🇼🇭🇰🇲🇴", use_container_width=True, on_click=set_language, args=("Traditional Chinese (繁體中文) 🇹🇼🇭🇰🇲🇴",))
+        st.button("Japanese 🇯🇵", use_container_width=True, on_click=set_language, args=("Japanese (日本語) 🇯🇵",))
+    st.button("French 🇫🇷", use_container_width=True, on_click=set_language, args=("French 🇫🇷",))
 
 else:
     # --- 2. 主程式 (Main App) ---
     current_lang_key = st.session_state['ui_language']
     ui_text = LANG_DICT[current_lang_key]
 
-    # --- 侧边栏 ---
+    # --- 侧边栏：仅保留设置 ---
     with st.sidebar:
         st.image("https://img.icons8.com/color/96/santa.png", width=100)
         st.caption(f"Language: **{current_lang_key}**")
         st.button("🔄 Change Language", on_click=reset_language)
         st.markdown("---")
         st.markdown(ui_text["game_rule"])
-        
-        # 🔥 Debug Mode Switch
-        debug = st.sidebar.checkbox("🛠️ DEBUG MODE", value=False)
 
         api_key = None
         try:
@@ -336,130 +397,115 @@ else:
         elif not gift_list:
             st.warning(ui_text["error_no_text"])
         else:
-            # 💡 核心修复：用户输入 -> (OpenCC 繁转简) -> 标准化
-            user_input_normalized = get_simplified_input(gift_list)
+            user_input_lower = gift_list.lower()
 
-            # --- 1. 关键词库 (纯简体版) ---
-            
-            # [EXTRA BONUS] 🚫 Culture Roast (洋节/抵制)
-            triggers_culture = [
-                "洋节", "抵制", "文化自信", "公文", "通知", "不许过", "崇洋媚外", "文化入侵", "不过洋节", "禁止", "平安果",
-                "文化渗透", "忘本", "圣诞节", "不准过", "发文", "假想敌", "中国人", # Simplified
-                "foreign festival", "ban", "invasion", "culture", "boycott", "western festival" # English
-            ]
+            # --- 关键词库 ---
+            triggers_tree = ["tree", "christmas tree", "decoration", "ornament", "star", "圣诞树", "树", "sapin", "ツリー"]
+            triggers_single = ["脱单", "男朋友", "女朋友", "對象", "对象", "搞对象", "恋爱", "boyfriend", "girlfriend", "partner", "lover", "dating", "bf", "gf", "彼氏", "彼女", "恋人", "petit ami", "petite amie"]
+            triggers_deer = ["deer", "reindeer", "rudolph", "sleigh", "麋鹿", "鹿", "驯鹿", "雪橇", "renne", "トナカイ"]
+            triggers_food = ["cookie", "biscuit", "milk", "gingerbread", "turkey", "pudding", "pie", "cake", "food", "dinner", "feast", "饼干", "牛奶", "姜饼", "火鸡", "布丁", "大餐", "食物", "吃"]
+            triggers_bell = ["bell", "jingle", "ring", "song", "music", "sing", "铃铛", "铃", "钟", "响", "cloche"]
+            triggers_holiday = ["holiday", "vacation", "work", "job", "leave", "break", "放假", "假期", "上班", "工作", "打工", "加班"]
+            triggers_finland = ["finland", "suomi", "helsinki", "rovaniemi", "lapland", "芬兰", "赫尔辛基", "罗瓦涅米", "圣诞村"]
+            # 🔥 Extra Hidden Bonus Keywords
+            triggers_culture = ["洋节", "抵制", "文化自信", "公文", "通知", "不许过", "崇洋媚外", "foreign festival", "ban", "invasion", "文化入侵", "不过洋节"]
 
-            # [1] 🎄 Tree (树/装饰)
-            triggers_tree = [
-                "tree", "christmas tree", "decoration", "ornament", "star", "pine",
-                "圣诞树", "树", "装饰", "挂件", "星星", "布置", "挂饰"
-            ]
-
-            # [2] 🐶 Single (单身/恋爱)
-            triggers_single = [
-                "single", "boyfriend", "girlfriend", "partner", "lover", "dating", "bf", "gf", "love", "alone",
-                "脱单", "男朋友", "女朋友", "对象", "搞对象", "恋爱", "单身", "处对象", "谈恋爱", "伴侣", "单身狗"
-            ]
-
-            # [3] 🦌 Deer (鹿/雪橇)
-            triggers_deer = [
-                "deer", "reindeer", "rudolph", "sleigh", "ride",
-                "麋鹿", "鹿", "驯鹿", "雪橇", "鲁道夫",
-                "トナカイ", "鹿", "シカ", "ソリ", "ルドルフ" # Keep Japanese for compatibility/fun
-            ]
-
-            # [4] 🍗 Food (食物/大餐)
-            triggers_food = [
-                "cookie", "biscuit", "milk", "gingerbread", "turkey", "pudding", "pie", "cake", "food", "dinner", "feast", "eat", "hungry",
-                "饼干", "牛奶", "姜饼", "火鸡", "布丁", "大餐", "食物", "吃", "饿", "蛋糕", "晚餐"
-            ]
-
-            # [5] 🔔 Bell (铃铛/音乐)
-            triggers_bell = [
-                "bell", "jingle", "ring", "song", "music", "sing", "carol", "sound",
-                "铃铛", "铃", "钟", "响", "歌", "音乐", "叮当", "铃声", "钟声"
-            ]
-
-            # [6] 📅 Holiday (假期/工作)
-            triggers_holiday = [
-                "holiday", "vacation", "work", "job", "leave", "break", "office", "boss", "tired",
-                "放假", "假期", "上班", "工作", "打工", "加班", "累", "请假", "老板", "休假"
-            ]
-
-            # [7] 🇫🇮 Finland (芬兰/旅行)
-            triggers_finland = [
-                "finland", "suomi", "helsinki", "rovaniemi", "lapland", "travel", "trip", "north pole",
-                "芬兰", "赫尔辛基", "罗瓦涅米", "圣诞村", "旅行", "出去玩", "北极", "圣诞老人村", "旅游", "出国", "玩"
-            ]
-            
-            # 🔥 DEBUG: 诊断
-            if debug:
-                st.warning("⚠️ DEBUG MODE ACTIVE")
-                st.write("**Processed Input (Simp):**", repr(user_input_normalized))
-                st.write("**Hit 'Culture'?**", [t for t in triggers_culture if t in user_input_normalized])
-
-            # --- 2. 检测新发现 ---
+            # --- 检测新发现 ---
             new_discovery = False
 
-            if any(t in user_input_normalized for t in triggers_culture):
+            if any(t in user_input_lower for t in triggers_tree):
+                if 1 not in st.session_state['found_ids']: st.session_state['found_ids'].add(1); new_discovery = True
+            elif any(t in user_input_lower for t in triggers_single):
+                if 2 not in st.session_state['found_ids']: st.session_state['found_ids'].add(2); new_discovery = True
+            elif any(t in user_input_lower for t in triggers_deer):
+                if 3 not in st.session_state['found_ids']: st.session_state['found_ids'].add(3); new_discovery = True
+            elif any(t in user_input_lower for t in triggers_food):
+                if 4 not in st.session_state['found_ids']: st.session_state['found_ids'].add(4); new_discovery = True
+            elif any(t in user_input_lower for t in triggers_bell):
+                if 5 not in st.session_state['found_ids']: st.session_state['found_ids'].add(5); new_discovery = True
+            elif any(t in user_input_lower for t in triggers_holiday):
+                if 6 not in st.session_state['found_ids']: st.session_state['found_ids'].add(6); new_discovery = True
+            elif any(t in user_input_lower for t in triggers_finland):
+                if 7 not in st.session_state['found_ids']: st.session_state['found_ids'].add(7); new_discovery = True
+            
+            # 🔥 Hidden Bonus Check (ID 8)
+            elif any(t in user_input_lower for t in triggers_culture):
                 if 8 not in st.session_state['found_ids']:
                     st.session_state['found_ids'].add(8)
                     st.toast("👁️ HIDDEN TRUTH FOUND! (Extra Bonus)", icon="🔓")
                     new_discovery = True
 
-            if any(t in user_input_normalized for t in triggers_tree):
-                if 1 not in st.session_state['found_ids']: st.session_state['found_ids'].add(1); new_discovery = True
-            if any(t in user_input_normalized for t in triggers_single):
-                if 2 not in st.session_state['found_ids']: st.session_state['found_ids'].add(2); new_discovery = True
-            if any(t in user_input_normalized for t in triggers_deer):
-                if 3 not in st.session_state['found_ids']: st.session_state['found_ids'].add(3); new_discovery = True
-            if any(t in user_input_normalized for t in triggers_food):
-                if 4 not in st.session_state['found_ids']: st.session_state['found_ids'].add(4); new_discovery = True
-            if any(t in user_input_normalized for t in triggers_bell):
-                if 5 not in st.session_state['found_ids']: st.session_state['found_ids'].add(5); new_discovery = True
-            if any(t in user_input_normalized for t in triggers_holiday):
-                if 6 not in st.session_state['found_ids']: st.session_state['found_ids'].add(6); new_discovery = True
-            if any(t in user_input_normalized for t in triggers_finland):
-                if 7 not in st.session_state['found_ids']: st.session_state['found_ids'].add(7); new_discovery = True
-            
+            # 🔥 立即更新主页面的进度条 🔥
             if new_discovery:
                 update_hunt_progress(hunt_placeholder, ui_text)
 
-            # ==========================================
-            # 🎭 3. 展示逻辑 (Display Logic)
-            # ==========================================
-            
-            # 🔥 PRIORITY 1: The Hidden Culture Roast (Extra Bonus)
-            if any(t in user_input_normalized for t in triggers_culture):
+            # --- 展示逻辑 (Priority Order) ---
+
+            # --- 8. 📜 CULTURE ROAST (Extra Bonus - Interactive) ---
+            # 放在最前面判断，确保优先触发且不走AI
+            if any(t in user_input_lower for t in triggers_culture):
                 
-                # 只有中文语境才显示完整大戏
-                is_chinese_ui = "Chinese" in st.session_state['ui_language'] or "中文" in st.session_state['ui_language']
+                # Check Language for Special Content
+                is_chinese = "Chinese" in current_lang_key or "中文" in current_lang_key
                 
-                if is_chinese_ui:
+                if is_chinese:
+                    # 显示完整的红头文件交互
                     st.markdown("""
-                    <!DOCTYPE html>
-                    <html lang="zh-CN">
-                    <head>
-                    <meta charset="UTF-8">
                     <style>
+                        /* 引入字体 */
                         @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@700;900&family=Noto+Sans+SC:wght@400;700&display=swap');
 
-                        .interaction-wrapper { position: relative; width: 100%; height: 600px; display: flex; justify-content: center; align-items: center; background-color: #2c3e50; border-radius: 10px; overflow: hidden; font-family: "Noto Sans SC", sans-serif; }
-                        .interaction-container { position: relative; width: 100%; height: 100%; display: flex; justify-content: center; align-items: center; }
+                        /* 容器样式 (适配 Streamlit) */
+                        .interaction-wrapper { 
+                            position: relative; 
+                            width: 100%; 
+                            height: 600px; /* 给足高度 */
+                            display: flex; 
+                            justify-content: center; 
+                            align-items: center; 
+                            background-color: #2c3e50; 
+                            border-radius: 10px;
+                            overflow: hidden;
+                            font-family: "Noto Sans SC", sans-serif;
+                        }
 
-                        /* STAGE 1: 2025 红头文件 */
-                        #stage-1 { position: absolute; width: 340px; background: #fff; padding: 50px 35px 70px 35px; box-shadow: 0 15px 40px rgba(0,0,0,0.5); transform: rotate(-0.5deg); z-index: 10; transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55); color: #000; font-family: "FangSong", "SimSun", serif; }
+                        .interaction-container {
+                            position: relative;
+                            width: 100%;
+                            height: 100%;
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                        }
+
+                        /* ================= STAGE 1: 2025 基层红头文件 ================= */
+                        #stage-1 {
+                            position: absolute;
+                            width: 340px;
+                            background: #fff;
+                            padding: 50px 35px 70px 35px;
+                            box-shadow: 0 15px 40px rgba(0,0,0,0.5);
+                            transform: rotate(-0.5deg);
+                            z-index: 10;
+                            transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+                            color: #000;
+                            font-family: "FangSong", "SimSun", serif;
+                        }
+
                         .doc-header { text-align: center; color: #d60000; font-family: "SimSun", "SimHei", serif; font-size: 26px; font-weight: 500; letter-spacing: 1px; margin-bottom: 25px; }
                         .doc-title { text-align: center; font-size: 22px; font-weight: 500; margin-bottom: 10px; line-height: 1.4; font-family: "SimSun", serif; letter-spacing: 2px; }
                         .doc-serial { text-align: center; font-size: 14px; margin-bottom: 30px; font-family: "FangSong", serif; }
                         .doc-body { font-size: 15px; line-height: 1.8; text-align: justify; color: #222; margin-bottom: 40px; text-indent: 2em; font-family: "FangSong", serif; }
+                        .doc-body p { margin: 0 0 10px 0; }
                         .doc-footer { position: absolute; bottom: 50px; right: 40px; text-align: right; font-family: "FangSong", serif; line-height: 1.6; font-size: 15px; }
                         .doc-stamp { position: absolute; top: -15px; right: 0px; width: 110px; height: 110px; opacity: 0.85; mix-blend-mode: multiply; pointer-events: none; transform: rotate(-8deg); }
+                        
                         .close-btn { position: absolute; top: -15px; right: -15px; width: 32px; height: 32px; background: #333; color: #fff; border: 2px solid #fff; border-radius: 50%; font-size: 20px; font-weight: bold; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 10px rgba(0,0,0,0.3); transition: transform 0.2s; z-index: 20; }
                         .close-btn:hover { background: #d60000; transform: scale(1.1); }
 
-                        /* STAGE 2: 拦截卡片 */
+                        /* ================= STAGE 2: 拦截系统 ================= */
                         #card-container { display: none; position: relative; z-index: 20; perspective: 1000px; }
-                        .brutalist-card { width: 340px; border: 4px solid #000; background-color: #fff; padding: 1.5rem; box-shadow: 15px 15px 0 #000; font-family: "Noto Sans SC", sans-serif; transition: all 0.3s; position: relative; text-align: left; }
+                        .brutalist-card { width: 340px; border: 4px solid #000; background-color: #fff; padding: 1.5rem; box-shadow: 15px 15px 0 #000; font-family: "Noto Sans SC", sans-serif; transition: all 0.3s; position: relative; }
                         .brutalist-card__header { display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem; border-bottom: 2px solid #000; padding-bottom: 1rem; }
                         .brutalist-card__icon { flex-shrink: 0; display: flex; align-items: center; justify-content: center; background-color: #000; padding: 0.5rem; transition: background 0.3s; }
                         .brutalist-card__icon svg { height: 1.5rem; width: 1.5rem; fill: #fff; }
@@ -471,22 +517,32 @@ else:
                         .brutalist-card__button:hover { transform: translate(-2px, -2px); box-shadow: 7px 7px 0 #000; }
                         .brutalist-card__button:active { transform: translate(2px, 2px); box-shadow: 2px 2px 0 #000; }
 
-                        /* STAGE 3: 真相 (Hacked) */
+                        /* ================= STAGE 3: HACKED (Truth & Quote) ================= */
                         .hacked .brutalist-card { border-color: #d35400; box-shadow: 15px 15px 0 #e67e22; }
                         .hacked .brutalist-card__icon { background-color: #d35400; }
                         .hacked .brutalist-card__alert { color: #d35400; }
-                        .hacked .brutalist-card__message { border-bottom-color: #d35400; font-family: "Noto Serif SC", serif; font-size: 0.9rem; line-height: 1.6; font-weight: normal; }
+                        .hacked .brutalist-card__message { border-bottom-color: #d35400; font-family: "Noto Serif SC", serif; font-size: 0.85rem; line-height: 1.6; font-weight: normal; }
                         .hacked .brutalist-card__button--read { background-color: #d35400; border-color: #d35400; box-shadow: 5px 5px 0 #a04000; }
+                        
+                        .truth-highlight { background: #fcece0; color: #c0392b; padding: 0 2px; font-weight: bold; border-bottom: 1px solid #c0392b; }
+                        
+                        /* 引用框样式 */
                         .quote-box { background-color: #f9f9f9; border-left: 4px solid #d35400; padding: 8px 10px; margin: 10px 0; font-style: italic; color: #555; font-family: "FangSong", serif; font-size: 0.85rem; }
-                        .truth-highlight { color: #c0392b; font-weight: bold; }
 
                         /* 动画 */
                         .fly-out { animation: fly-away 0.8s cubic-bezier(0.6, -0.28, 0.735, 0.045) forwards; pointer-events: none; }
                         .pop-in { display: block !important; animation: pop-in 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; }
                         .glitching { animation: glitch-shake 0.3s cubic-bezier(.36,.07,.19,.97) both infinite; filter: invert(1); }
+
                         @keyframes fly-away { to { transform: translateY(100vh) rotate(20deg); opacity: 0; } }
                         @keyframes pop-in { from { opacity: 0; transform: scale(0.8); } to { opacity: 1; transform: scale(1); } }
-                        @keyframes glitch-shake { 10%, 90% { transform: translate3d(-1px, 0, 0); } 20%, 80% { transform: translate3d(2px, 0, 0); } 30%, 50%, 70% { transform: translate3d(-4px, 0, 0); } 40%, 60% { transform: translate3d(4px, 0, 0); } }
+                        @keyframes glitch-shake {
+                            10%, 90% { transform: translate3d(-1px, 0, 0); }
+                            20%, 80% { transform: translate3d(2px, 0, 0); }
+                            30%, 50%, 70% { transform: translate3d(-4px, 0, 0); }
+                            40%, 60% { transform: translate3d(4px, 0, 0); }
+                        }
+
                     </style>
 
                     <div class="interaction-wrapper">
@@ -494,67 +550,110 @@ else:
                             
                             <div id="stage-1">
                                 <button class="close-btn" onclick="triggerWarning()">×</button>
+                                
                                 <div class="doc-header">XX县教育体育局</div>
-                                <div class="doc-title">公　告</div>
-                                <div class="doc-serial">（县教体发〔2025〕120号）</div>
+                                
+                                <div class="doc-title">
+                                    公　告
+                                </div>
+                                
+                                <div class="doc-serial">（XX教体字 2025 第 120 号）</div>
+                                
                                 <div class="doc-body">
                                     <p>根据上级关于传承优秀传统文化精神，为抵御西方宗教文化渗透，净化校园文化环境，现就有关事项通知如下：</p>
                                     <p>一、<strong>严禁过“洋节”</strong>。全县各级各类学校、幼儿园严禁在校园内举办任何形式的圣诞节庆祝活动。</p>
                                     <p>二、<strong>严禁摆放装饰</strong>。各班级不得在教室内摆放圣诞树、悬挂彩灯、张贴相关画像。</p>
                                     <p>三、<strong>加强教育</strong>。各校要教育学生不互赠“平安果”、贺卡，自觉抵制文化侵蚀，树立文化自信。</p>
                                 </div>
+                                
                                 <div class="doc-footer">
                                     <p>XX县教育体育局</p>
                                     <p>2025年12月20日</p>
-                                    <svg class="doc-stamp" viewBox="0 0 100 100"><circle cx="50" cy="50" r="45" stroke="#d60000" stroke-width="2.5" fill="none"/><text x="50" y="55" text-anchor="middle" fill="#d60000" font-size="12" font-weight="bold" font-family="SimHei">XX县教育体育局</text><text x="50" y="75" text-anchor="middle" fill="#d60000" font-size="8">行政章</text><path d="M35,50 L65,50" stroke="#d60000" stroke-width="2"/><text fill="#d60000" font-size="8" font-weight="bold" letter-spacing="1"><textPath href="#circlePath" startOffset="50%" text-anchor="middle">严禁洋节 · 弘扬传统</textPath></text><defs><path id="circlePath" d="M 50, 50 m -38, 0 a 38,38 0 1,1 76,0 a 38,38 0 1,1 -76,0"/></defs></svg>
+                                    <svg class="doc-stamp" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                                        <circle cx="50" cy="50" r="45" stroke="#d60000" stroke-width="2.5" fill="none" />
+                                        <text x="50" y="55" text-anchor="middle" fill="#d60000" font-size="12" font-weight="bold" font-family="SimHei">XX县教育体育局</text>
+                                        <text x="50" y="75" text-anchor="middle" fill="#d60000" font-size="8">行政章</text>
+                                        <path d="M35,50 L65,50" stroke="#d60000" stroke-width="2" />
+                                        <text fill="#d60000" font-size="8" font-weight="bold" letter-spacing="1">
+                                            <textPath href="#circlePath" startOffset="50%" text-anchor="middle">
+                                                严禁洋节 · 弘扬传统
+                                            </textPath>
+                                        </text>
+                                        <defs>
+                                            <path id="circlePath" d="M 50, 50 m -38, 0 a 38,38 0 1,1 76,0 a 38,38 0 1,1 -76,0" />
+                                        </defs>
+                                    </svg>
                                 </div>
                             </div>
 
                             <div id="card-container">
                                 <div class="brutalist-card" id="main-card">
                                     <div class="brutalist-card__header">
-                                        <div class="brutalist-card__icon" id="card-icon"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg></div>
+                                        <div class="brutalist-card__icon" id="card-icon">
+                                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>
+                                        </div>
                                         <div class="brutalist-card__alert" id="card-title">SYSTEM ALERT</div>
                                     </div>
+                                    
                                     <div class="brutalist-card__message" id="card-message">
                                         检测到您试图关闭“禁止令”。<br><br>
                                         警告：此行为被系统判定为 <b>[文化不自信]</b>。<br>
                                         风险：可能导致“崇洋媚外”标签植入。<br><br>
                                         是否强制执行快乐？
                                     </div>
+                                    
                                     <div class="brutalist-card__actions" id="card-actions">
                                         <a class="brutalist-card__button brutalist-card__button--read" onclick="overrideSystem()">I WILL CELEBRATE (强制执行)</a>
                                         <a class="brutalist-card__button" onclick="overrideSystem()">WHATEVER (配合演出)</a>
                                     </div>
                                 </div>
                             </div>
+
                         </div>
                     </div>
 
                     <script>
                         function triggerWarning() {
                             document.getElementById('stage-1').classList.add('fly-out');
-                            setTimeout(() => { document.getElementById('card-container').classList.add('pop-in'); }, 400);
+                            setTimeout(() => {
+                                document.getElementById('card-container').classList.add('pop-in');
+                            }, 400);
                         }
+
                         function overrideSystem() {
                             var card = document.getElementById('main-card');
                             var container = document.getElementById('card-container');
+                            
+                            // 1. 开始故障闪烁
                             card.classList.add('glitching');
+                            
+                            // 2. 0.6秒后变身
                             setTimeout(() => {
                                 card.classList.remove('glitching');
-                                container.classList.add('hacked');
+                                container.classList.add('hacked'); // 添加橙色主题类
+                                
+                                // 修改图标 (变成圣诞树)
                                 document.getElementById('card-icon').innerHTML = '<svg viewBox="0 0 24 24"><path d="M12 2L8 7h3v3H7v3h3v4h-3v3h10v-3h-3v-4h3V10h-4V7h3L12 2z"/></svg>';
+                                
+                                // 修改标题
                                 document.getElementById('card-title').innerText = "REALITY DECODED";
+                                
+                                // 修改内容 (核心升华)
                                 document.getElementById('card-message').innerHTML = `
                                     🎅 <b>圣诞老人的判决：</b><br>
                                     “不过洋节=文化自信”？这是对2014年冯骥才讲话的<b>断章取义</b>。<br>
                                     <div class="quote-box">“洋节并不更可怕，更可怕的是中国人遗忘自己。”</div>
-                                    当年央视就已严厉批判过这种行为。可2025年了，依旧有人<b>拿着鸡毛当令箭</b>，竖着“文化入侵”的假想敌重拳出击。<br><br>
+                                    当年央视就已严厉批判过这种行为。可2025年了，依旧有人拿着鸡毛当令箭，树立“文化入侵”的假想敌。<br><br>
                                     树立假想敌体现的不是自信，而是刻在骨子里的自卑。<br>
                                     生活已经够苦了，<b>我们只是借着节日的名义，去见想见的人，去吃顿热乎的饭。</b><br>
                                     这不是崇洋媚外，这是<b>对生活的热爱</b>。
                                 `;
-                                document.getElementById('card-actions').innerHTML = `<a class="brutalist-card__button brutalist-card__button--read" style="background-color:#d35400; border-color:#d35400;">MERRY CHRISTMAS 🍎</a>`;
+                                
+                                // 修改按钮 (送上祝福)
+                                document.getElementById('card-actions').innerHTML = `
+                                    <a class="brutalist-card__button brutalist-card__button--read" style="background-color:#d35400; border-color:#d35400;">MERRY CHRISTMAS 🍎</a>
+                                `;
+                                
                             }, 600);
                         }
                     </script>
@@ -562,26 +661,35 @@ else:
                 else:
                     # 非中文环境：显示解释卡片
                     explain_text = CULTURE_EXPLAINER_TEXT.get(current_lang_key, CULTURE_EXPLAINER_TEXT["English 🇬🇧🇺🇸"])
+                    
                     st.markdown(f"""
                     <div style='background-color: #222; padding: 20px; border-radius: 10px; border-left: 5px solid #ff4b4b; color: #fff;'>
                         <h3>{explain_text['title']}</h3>
                         <p>{explain_text['msg']}</p>
                         <p style='color: #ccc; font-size: 0.9em;'>{explain_text['desc']}</p>
-                        <a href="#" style="display:inline-block; margin-top:10px; padding:8px 15px; background:#ff4b4b; color:white; text-decoration:none; border-radius:5px;">{explain_text['btn']}</a>
                     </div>
                     """, unsafe_allow_html=True)
 
-            # --- [PRIORITY 2] 其他彩蛋 (保持原有逻辑) ---
+            # --- 1. 🎄 TREE ---
             elif any(t in user_input_lower for t in triggers_tree):
                 st.success(ui_text["secret_success"])
                 st.markdown(ui_text["secret_title"])
                 st.link_button(ui_text["secret_button"], "https://wkpsyvxy8njhxmuqyy6gpr.streamlit.app")
 
+            # --- 2. 🐶 SINGLE ---
             elif any(t in user_input_lower for t in triggers_single):
-                try: st.audio("bgm.mp3", format="audio/mp3", start_time=0, autoplay=True)
-                except: st.warning("🎵 Music file missing.")
-                st.markdown(f"<div class='roast-box'>{ui_text['egg_single']} 🎧</div>", unsafe_allow_html=True)
+                try:
+                    st.audio("bgm.mp3", format="audio/mp3", start_time=0, autoplay=True)
+                except:
+                    st.warning("🎵 Music file missing.")
+                
+                st.markdown(f"""
+                <div class='roast-box'>
+                {ui_text['egg_single']} 🎧
+                </div>
+                """, unsafe_allow_html=True)
 
+            # --- 3. 🦌 DEER ---
             elif any(t in user_input_lower for t in triggers_deer):
                 st.markdown("""
                 <style>
@@ -638,6 +746,7 @@ else:
                 </div>
                 """, unsafe_allow_html=True)
 
+            # --- 4. 🍗 FOOD ---
             elif any(t in user_input_lower for t in triggers_food):
                 st.balloons()
                 trigger_jackpot_effect() 
@@ -650,7 +759,7 @@ else:
                         hint_msg = "No more hints!"
                     else:
                         target = random.choice(missing_ids)
-                        hint_msg = f"Try looking for secret #{target}..." 
+                        hint_msg = f"Try looking for secret #{target}..." # Simple hint logic for now
                     
                     st.session_state['fixed_hint_msg'] = hint_msg
                 
@@ -663,6 +772,7 @@ else:
                 </div>
                 """, unsafe_allow_html=True)
 
+            # --- 5. 🔔 BELL ---
             elif any(t in user_input_lower for t in triggers_bell):
                 st.markdown("""
                 <style>
@@ -693,12 +803,13 @@ else:
                 </div>
                 """, unsafe_allow_html=True)
 
+            # --- 6. 📅 HOLIDAY (Permit Card) ---
             elif any(t in user_input_lower for t in triggers_holiday):
                 st.balloons()
                 
-                # 获取当前语言文本
+                # 🔥 获取当前语言文本
                 current_ui_lang = st.session_state['ui_language']
-                h_text = HOLIDAY_TEXT.get(current_ui_lang, HOLIDAY_TEXT["English 🇬🇧🇺🇸"])
+                h_text = HOLIDAY_TEXT.get(current_ui_lang, HOLIDAY_TEXT["English 🇬🇧🇺🇸"]) # Default to English
 
                 st.markdown(f"""
                 <style>
@@ -731,6 +842,7 @@ else:
                 </div>
                 """, unsafe_allow_html=True)
 
+            # --- 7. 🇫🇮 FINLAND ---
             elif any(t in user_input_lower for t in triggers_finland):
                 st.markdown("""
                 <style>
