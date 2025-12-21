@@ -506,23 +506,20 @@ else:
 
             # --- 8. 📜 CULTURE ROAST (Extra Bonus - Interactive) ---
             # 放在最前面判斷，確保優先觸發且不走AI
+           # --- 8. 📜 CULTURE ROAST (Extra Bonus - Interactive) ---
             if any(t in user_input_lower for t in triggers_culture):
                 
-                # Check Language for Special Content
                 is_chinese = "Chinese" in current_lang_key or "中文" in current_lang_key
                 
                 if is_chinese:
-                    # 顯示完整的紅頭文件交互
+                    # ✅ 修復版：移除了 f-string (前面的 f)，避免 CSS 的 {} 與 Python 變數衝突
                     st.markdown("""
                     <style>
-                        /* 引入字體 */
                         @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@700;900&family=Noto+Sans+SC:wght@400;700&display=swap');
-
-                        /* 容器樣式 (適配 Streamlit) */
                         .interaction-wrapper { 
                             position: relative; 
                             width: 100%; 
-                            height: 600px; /* 給足高度 */
+                            height: 600px; 
                             display: flex; 
                             justify-content: center; 
                             align-items: center; 
@@ -531,42 +528,26 @@ else:
                             overflow: hidden;
                             font-family: "Noto Sans SC", sans-serif;
                         }
-
-                        .interaction-container {
-                            position: relative;
-                            width: 100%;
-                            height: 100%;
-                            display: flex;
-                            justify-content: center;
-                            align-items: center;
-                        }
-
-                        /* ================= STAGE 1: 2025 基層紅頭文件 ================= */
+                        .interaction-container { position: relative; width: 100%; height: 100%; display: flex; justify-content: center; align-items: center; }
+                        
+                        /* 紅頭文件樣式 */
                         #stage-1 {
-                            position: absolute;
-                            width: 340px;
-                            background: #fff;
-                            padding: 50px 35px 70px 35px;
-                            box-shadow: 0 15px 40px rgba(0,0,0,0.5);
-                            transform: rotate(-0.5deg);
-                            z-index: 10;
-                            transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-                            color: #000;
+                            position: absolute; width: 340px; background: #fff; padding: 50px 35px 70px 35px;
+                            box-shadow: 0 15px 40px rgba(0,0,0,0.5); transform: rotate(-0.5deg); z-index: 10;
+                            transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55); color: #000;
                             font-family: "FangSong", "SimSun", serif;
                         }
-
                         .doc-header { text-align: center; color: #d60000; font-family: "SimSun", "SimHei", serif; font-size: 26px; font-weight: 500; letter-spacing: 1px; margin-bottom: 25px; }
                         .doc-title { text-align: center; font-size: 22px; font-weight: 500; margin-bottom: 10px; line-height: 1.4; font-family: "SimSun", serif; letter-spacing: 2px; }
                         .doc-serial { text-align: center; font-size: 14px; margin-bottom: 30px; font-family: "FangSong", serif; }
                         .doc-body { font-size: 15px; line-height: 1.8; text-align: justify; color: #222; margin-bottom: 40px; text-indent: 2em; font-family: "FangSong", serif; }
                         .doc-body p { margin: 0 0 10px 0; }
                         .doc-footer { position: absolute; bottom: 50px; right: 40px; text-align: right; font-family: "FangSong", serif; line-height: 1.6; font-size: 15px; }
-                        /* .doc-stamp 樣式移至 inline style 以確保渲染 */
                         
                         .close-btn { position: absolute; top: -15px; right: -15px; width: 32px; height: 32px; background: #333; color: #fff; border: 2px solid #fff; border-radius: 50%; font-size: 20px; font-weight: bold; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 10px rgba(0,0,0,0.3); transition: transform 0.2s; z-index: 20; }
                         .close-btn:hover { background: #d60000; transform: scale(1.1); }
 
-                        /* ================= STAGE 2: 攔截系統 ================= */
+                        /* 警告卡片樣式 */
                         #card-container { display: none; position: relative; z-index: 20; perspective: 1000px; }
                         .brutalist-card { width: 340px; border: 4px solid #000; background-color: #fff; padding: 1.5rem; box-shadow: 15px 15px 0 #000; font-family: "Noto Sans SC", sans-serif; transition: all 0.3s; position: relative; }
                         .brutalist-card__header { display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem; border-bottom: 2px solid #000; padding-bottom: 1rem; }
@@ -580,19 +561,15 @@ else:
                         .brutalist-card__button:hover { transform: translate(-2px, -2px); box-shadow: 7px 7px 0 #000; }
                         .brutalist-card__button:active { transform: translate(2px, 2px); box-shadow: 2px 2px 0 #000; }
 
-                        /* ================= STAGE 3: HACKED (Truth & Quote) ================= */
+                        /* HACKED 狀態 */
                         .hacked .brutalist-card { border-color: #d35400; box-shadow: 15px 15px 0 #e67e22; }
                         .hacked .brutalist-card__icon { background-color: #d35400; }
                         .hacked .brutalist-card__alert { color: #d35400; }
                         .hacked .brutalist-card__message { border-bottom-color: #d35400; font-family: "Noto Serif SC", serif; font-size: 0.85rem; line-height: 1.6; font-weight: normal; }
                         .hacked .brutalist-card__button--read { background-color: #d35400; border-color: #d35400; box-shadow: 5px 5px 0 #a04000; }
                         
-                        .truth-highlight { background: #fcece0; color: #c0392b; padding: 0 2px; font-weight: bold; border-bottom: 1px solid #c0392b; }
-                        
-                        /* 引用框樣式 */
                         .quote-box { background-color: #f9f9f9; border-left: 4px solid #d35400; padding: 8px 10px; margin: 10px 0; font-style: italic; color: #555; font-family: "FangSong", serif; font-size: 0.85rem; }
 
-                        /* 動畫 */
                         .fly-out { animation: fly-away 0.8s cubic-bezier(0.6, -0.28, 0.735, 0.045) forwards; pointer-events: none; }
                         .pop-in { display: block !important; animation: pop-in 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; }
                         .glitching { animation: glitch-shake 0.3s cubic-bezier(.36,.07,.19,.97) both infinite; filter: invert(1); }
@@ -605,45 +582,32 @@ else:
                             30%, 50%, 70% { transform: translate3d(-4px, 0, 0); }
                             40%, 60% { transform: translate3d(4px, 0, 0); }
                         }
-
                     </style>
 
                     <div class="interaction-wrapper">
                         <div class="interaction-container">
-                            
                             <div id="stage-1">
                                 <button class="close-btn" onclick="triggerWarning()">×</button>
-                                
                                 <div class="doc-header">XX县教育体育局</div>
-                                
-                                <div class="doc-title">
-                                    公　告
-                                </div>
-                                
+                                <div class="doc-title">公　告</div>
                                 <div class="doc-serial">（XX教体字 2025 第 120 号）</div>
-                                
                                 <div class="doc-body">
                                     <p>根据上级关于传承优秀传统文化精神，为抵御西方宗教文化渗透，净化校园文化环境，现就有关事项通知如下：</p>
                                     <p>一、<strong>严禁过“洋节”</strong>。全县各级各类学校、幼儿园严禁在校园内举办任何形式的圣诞节庆祝活动。</p>
                                     <p>二、<strong>严禁摆放装饰</strong>。各班级不得在教室内摆放圣诞树、悬挂彩灯、张贴相关画像。</p>
                                     <p>三、<strong>加强教育</strong>。各校要教育学生不互赠“平安果”、贺卡，自觉抵制文化侵蚀，树立文化自信。</p>
                                 </div>
-                                
                                 <div class="doc-footer">
                                     <p>XX县教育体育局</p>
                                     <p>2025年12月20日</p>
-                                    <svg class="doc-stamp" viewBox="0 0 100 100" style="position:absolute; top:-15px; right:0px; width:110px; height:110px; opacity:0.85; mix-blend-mode:multiply; pointer-events:none; transform:rotate(-8deg); overflow:visible;">
-                                        <defs>
-                                            <path id="circlePath" d="M 50, 50 m -35, 0 a 35,35 0 1,1 70,0 a 35,35 0 1,1 -70,0" />
-                                        </defs>
+                                    <svg viewBox="0 0 100 100" style="position:absolute; top:-15px; right:0px; width:110px; height:110px; opacity:0.85; mix-blend-mode:multiply; pointer-events:none; transform:rotate(-8deg); overflow:visible;">
+                                        <defs><path id="circlePath" d="M 50, 50 m -35, 0 a 35,35 0 1,1 70,0 a 35,35 0 1,1 -70,0" /></defs>
                                         <circle cx="50" cy="50" r="45" stroke="#d60000" stroke-width="2.5" fill="none" />
                                         <text x="50" y="55" text-anchor="middle" fill="#d60000" font-size="12" font-weight="bold" font-family="SimHei" style="pointer-events:none;">XX县教育体育局</text>
                                         <text x="50" y="75" text-anchor="middle" fill="#d60000" font-size="8" font-family="SimHei" style="pointer-events:none;">行政章</text>
                                         <path d="M35,63 L65,63" stroke="#d60000" stroke-width="1" />
                                         <text fill="#d60000" font-size="8" font-weight="bold" letter-spacing="1" font-family="SimHei">
-                                            <textPath xlink:href="#circlePath" startOffset="50%" text-anchor="middle">
-                                                严禁洋节 · 弘扬传统
-                                            </textPath>
+                                            <textPath xlink:href="#circlePath" startOffset="50%" text-anchor="middle">严禁洋节 · 弘扬传统</textPath>
                                         </text>
                                     </svg>
                                 </div>
@@ -657,69 +621,50 @@ else:
                                         </div>
                                         <div class="brutalist-card__alert" id="card-title">SYSTEM ALERT</div>
                                     </div>
-                                    
                                     <div class="brutalist-card__message" id="card-message">
                                         检测到您试图关闭“禁止令”。<br><br>
                                         警告：此行为被系统判定为 <b>[文化不自信]</b>。<br>
                                         风险：可能导致“崇洋媚外”标签植入。<br><br>
                                         是否强制执行快乐？
                                     </div>
-                                    
                                     <div class="brutalist-card__actions" id="card-actions">
                                         <a class="brutalist-card__button brutalist-card__button--read" onclick="overrideSystem()">I WILL CELEBRATE (强制执行)</a>
                                         <a class="brutalist-card__button" onclick="overrideSystem()">WHATEVER (配合演出)</a>
                                     </div>
                                 </div>
                             </div>
-
                         </div>
                     </div>
 
                     <script>
                         function triggerWarning() {
                             document.getElementById('stage-1').classList.add('fly-out');
-                            setTimeout(() => {
-                                document.getElementById('card-container').classList.add('pop-in');
-                            }, 400);
+                            setTimeout(() => { document.getElementById('card-container').classList.add('pop-in'); }, 400);
                         }
-
                         function overrideSystem() {
                             var card = document.getElementById('main-card');
                             var container = document.getElementById('card-container');
-                            
-                            // 1. 开始故障闪烁
                             card.classList.add('glitching');
-                            
-                            // 2. 0.6秒后变身
                             setTimeout(() => {
                                 card.classList.remove('glitching');
-                                container.classList.add('hacked'); // 添加橙色主题类
-                                
-                                // 修改图标 (变成圣诞树)
+                                container.classList.add('hacked');
                                 document.getElementById('card-icon').innerHTML = '<svg viewBox="0 0 24 24"><path d="M12 2L8 7h3v3H7v3h3v4h-3v3h10v-3h-3v-4h3V10h-4V7h3L12 2z"/></svg>';
-                                
-                                // 修改标题
                                 document.getElementById('card-title').innerText = "REALITY DECODED";
-                                
-                                // 修改内容 (核心升华)
-                                document.getElementById('card-message').innerHTML = `
-                                    🎅 <b>圣诞老人的判决：</b><br>
-                                    “不过洋节=文化自信”？这是对2014年冯骥才讲话的<b>断章取义</b>。<br>
-                                    <div class="quote-box">“洋节并不更可怕，更可怕的是中国人遗忘自己。”</div>
-                                    当年央视就已严厉批判过这种行为。可2025年了，依旧有人拿着鸡毛当令箭，树立“文化入侵”的假想敌。<br><br>
-                                    树立假想敌体现的不是自信，而是刻在骨子里的自卑。<br>
-                                    生活已经够苦了，<b>我们只是借着节日的名义，去见想见的人，去吃顿热乎的饭。</b><br>
-                                    这不是崇洋媚外，这是<b>对生活的热爱</b>。
-                                `;
-                                
-                                // 修改按钮 (送上祝福)
-                                document.getElementById('card-actions').innerHTML = `
-                                    <a class="brutalist-card__button brutalist-card__button--read" style="background-color:#d35400; border-color:#d35400;">MERRY CHRISTMAS 🍎</a>
-                                `;
-                                
+                                document.getElementById('card-message').innerHTML = `🎅 <b>圣诞老人的判决：</b><br>“不过洋节=文化自信”？这是对2014年冯骥才讲话的<b>断章取义</b>。<br><div class="quote-box">“洋节并不更可怕，更可怕的是中国人遗忘自己。”</div>当年央视就已严厉批判过这种行为。可2025年了，依旧有人拿着鸡毛当令箭，树立“文化入侵”的假想敌。<br><br>树立假想敌体现的不是自信，而是刻在骨子里的自卑。<br>生活已经够苦了，<b>我们只是借着节日的名义，去见想见的人，去吃顿热乎的饭。</b><br>这不是崇洋媚外，这是<b>对生活的热爱</b>。`;
+                                document.getElementById('card-actions').innerHTML = `<a class="brutalist-card__button brutalist-card__button--read" style="background-color:#d35400; border-color:#d35400;">MERRY CHRISTMAS 🍎</a>`;
                             }, 600);
                         }
                     </script>
+                    """, unsafe_allow_html=True)
+                else:
+                    # 非中文環境：顯示解釋卡片
+                    explain_text = CULTURE_EXPLAINER_TEXT.get(current_lang_key, CULTURE_EXPLAINER_TEXT["English 🇬🇧🇺🇸"])
+                    st.markdown(f"""
+                    <div style='background-color: #222; padding: 20px; border-radius: 10px; border-left: 5px solid #ff4b4b; color: #fff;'>
+                        <h3>{explain_text['title']}</h3>
+                        <p>{explain_text['msg']}</p>
+                        <p style='color: #ccc; font-size: 0.9em;'>{explain_text['desc']}</p>
+                    </div>
                     """, unsafe_allow_html=True)
                 else:
                     # 非中文環境：顯示解釋卡片
