@@ -230,7 +230,7 @@ if 'found_ids' not in st.session_state:
     st.session_state['found_ids'] = set() 
 
 # ⚠️ [V2 Fix] 使用新變數名 hint_msg_v2 防止舊緩存干擾
-# 這是為了確保切換語言時線索也會更新
+# 並確保變數初始化，防止 KeyError
 if 'hint_msg_v2' not in st.session_state:
     st.session_state['hint_msg_v2'] = None
 
@@ -759,7 +759,7 @@ else:
                 st.balloons()
                 trigger_jackpot_effect() 
 
-                # 🔥 這裡修復了變數名稱不一致的問題 🔥
+                # 🔥 這裡修正了變數名稱，確保使用 hint_msg_v2 🔥
                 if st.session_state['hint_msg_v2'] is None:
                     # 1. 找出還沒發現的彩蛋 ID
                     missing_ids = list(MAIN_EGG_IDS - st.session_state['found_ids'])
@@ -774,7 +774,7 @@ else:
                         6: "提示：一張賦予你自由，但你絕對不敢拿給老闆看的紙。📄😈",
                         7: "提示：比你的心還要冰冷的地方，也是我的老巢。❄️🏠",
                         9: "提示：試著直接呼喚我的名字，或者跟我要「那個」東西？🎁",
-                        10: "提示：一個紅色的、會旋轉的迷因生物... 試試 Padoru? 🧣"
+                        10: "提示：一個紅色的、會旋轉的迷因生物... 試試聖誕帽？ 🧣"
                     }
                     
                     hints_cn = {
@@ -785,7 +785,7 @@ else:
                         6: "提示：一张赋予你自由，但你绝对不敢拿给老板看的纸。📄😈",
                         7: "提示：比你的心还要冰冷的地方，也是我的老巢。❄️🏠",
                         9: "提示：试着直接呼唤我的名字，或者跟我要「那个」东西？🎁",
-                        10: "提示：一个红色的、会旋转的迷因生物... 试试 Padoru? 🧣"
+                        10: "提示：一个红色的、会旋转的迷因生物... 试试圣诞帽？ 🧣"
                     }
                     
                     hints_en = {
@@ -796,7 +796,7 @@ else:
                         6: "Hint: A piece of paper that grants freedom, but you're too cowardly to use. 📄😈",
                         7: "Hint: A place colder than your ex's heart. My frozen wasteland. ❄️🏠",
                         9: "Hint: Try calling my name directly, or asking for 'it'. 🎁",
-                        10: "Hint: A red, spinning meme creature... Try Padoru? 🧣"
+                        10: "Hint: A red, spinning meme creature... Try Santa hat? 🧣"
                     }
                     
                     hints_jp = {
@@ -807,7 +807,7 @@ else:
                         6: "ヒント: 自由をくれるけど、ボスには絶対見せられない紙... 📄😈",
                         7: "ヒント: 元恋人の心より寒い場所。わしの不毛の地... ❄️🏠",
                         9: "ヒント: ワシの名前を呼んでみろ。もしくは「あれ」をねだってみろ。🎁",
-                        10: "ヒント: 赤くて回転するミーム生物... パドル？ 🧣"
+                        10: "ヒント: 赤くて回転するミーム生物... サンタ帽を試してみて？ 🧣"
                     }
 
                     hints_fr = {
@@ -818,7 +818,7 @@ else:
                         6: "Indice : Un papier qui donne la liberté, mais que vous n'oserez pas montrer au patron. 📄😈",
                         7: "Indice : Un endroit plus froid que le cœur de votre ex. Ma terre gelée. ❄️🏠",
                         9: "Indice : Essayez de m'appeler par mon nom, ou demandez 'ça'. 🎁",
-                        10: "Indice : Une créature mème rouge qui tourne... Essayez Padoru ? 🧣"
+                        10: "Indice : Une créature mème rouge qui tourne... Essayez le chapeau de Père Noël ? 🧣"
                     }
 
                     if not missing_ids:
@@ -837,7 +837,6 @@ else:
                         elif "French" in current_lang_key: hint_msg = hints_fr.get(target, "Continuez à souhaiter...")
                         else: hint_msg = hints_en.get(target, "Keep wishing...")
                     
-                    # 🔥 這裡使用統一的新變數名
                     st.session_state['hint_msg_v2'] = hint_msg
                 
                 final_hint = st.session_state['hint_msg_v2']
