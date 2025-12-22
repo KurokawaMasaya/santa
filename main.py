@@ -8,6 +8,9 @@ import base64
 
 st.set_page_config(page_title="Roast Santa AI", page_icon="🎅", layout="centered")
 
+# ==========================================
+# 1. 核心配置与文案 (Updated)
+# ==========================================
 LANG_DICT = {
     "English 🇬🇧🇺🇸": {
         "title": "🎅 Santa's Roast Room",
@@ -37,8 +40,9 @@ LANG_DICT = {
         "egg_market": "🍷 Welcome to the Christmas Market! Hot Glühwein & Pretzels! 🥨",
         "egg_author": "👨‍💻 Creator found! Respect.",
         "hint_prefix": "💡 **New Riddle Unlocked:** ",
+        # --- 修改了这里的文案 ---
         "final_hint_title": "🔒 FINAL SEAL UNLOCKED",
-        "final_hint_msg": "You have gathered all 12 fragments. To reveal the forbidden truth, you must defy the ban.\n\n👉 **Type 'Merry Christmas' in the box and hit Roast Me!**"
+        "final_hint_msg": "🎅 **Ho ho ho! I found a 'treasure' from China. How ironic.**\n\nWant to see it? Type **Merry Christmas** to unlock the truth."
     },
     "Traditional Chinese (繁體中文) 🇹🇼🇭🇰🇲🇴": {
         "title": "🎅 聖誕老人吐槽大會",
@@ -68,8 +72,9 @@ LANG_DICT = {
         "egg_market": "🍷 歡迎來到聖誕集市！來杯熱紅酒配扭結餅吧！🥨",
         "egg_author": "👨‍💻 作者出現！致敬時刻...",
         "hint_prefix": "💡 **解鎖新謎題：** ",
+        # --- 修改了这里的文案 ---
         "final_hint_title": "🔒 最終封印已解除",
-        "final_hint_msg": "你已集齊所有 12 個碎片。想要揭開那個被禁止的真相，你必須大聲說出那句禁語。\n\n👉 **請在輸入框輸入「聖誕快樂」，然後點擊吐槽！**"
+        "final_hint_msg": "🎅 **吼吼吼，本聖誕老人找到了一份來自中國的寶貝，真是諷刺啊。**\n\n想看嗎？想看請輸入 **聖誕快樂**。"
     },
     "Simplified Chinese (简体中文) 🇨🇳": {
         "title": "🎅 圣诞老人吐槽大会",
@@ -99,8 +104,9 @@ LANG_DICT = {
         "egg_market": "🍷 欢迎来到圣诞集市！来杯热红酒配扭结饼吧！🥨",
         "egg_author": "👨‍💻 作者出现！致敬时刻...",
         "hint_prefix": "💡 **解锁新谜题：** ",
+        # --- 修改了这里的文案 ---
         "final_hint_title": "🔒 最终封印已解除",
-        "final_hint_msg": "你已集齐所有 12 个碎片。想要揭开那个被禁止的真相，你必须大声说出那句禁语。\n\n👉 **请在输入框输入“圣诞快乐”，然后点击吐槽！**"
+        "final_hint_msg": "🎅 **吼吼吼，本圣诞老人找到了一份来自中国的宝贝，真是讽刺啊。**\n\n想看吗？想看请输入 **圣诞快乐**。"
     }
 }
 
@@ -176,15 +182,6 @@ HOLIDAY_TEXT = {
         "valid": "(有效期：永久)",
         "roast_title": "不想上班？想放假？",
         "roast_body": "准奏！拿好這張【摸魚券】，告訴老闆是我批准的！"
-    }
-}
-
-CULTURE_EXPLAINER_TEXT = {
-    "English 🇬🇧🇺🇸": {
-        "title": "🥚 EXTRA EASTER EGG FOUND",
-        "msg": "You have unlocked the FINAL TRUTH.",
-        "desc": "This is a satire on certain policies. Switch to **Chinese** language to see the full interactive document!",
-        "btn": "Got it"
     }
 }
 
@@ -671,7 +668,8 @@ else:
 
             # === 显示对应彩蛋的内容 ===
             
-            # 1. 最终隐藏彩蛋触发逻辑 (必须集齐12个才能触发)
+            # 1. 最终隐藏彩蛋触发逻辑 (必须集齐12个 + 输入了圣诞快乐)
+            # =========================================================================
             if found_standard_count_now >= 12 and any(t in user_input_lower for t in triggers_final):
                 if 8 not in st.session_state['found_ids']:
                     st.session_state['found_ids'].add(8)
