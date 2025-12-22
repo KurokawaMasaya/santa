@@ -37,7 +37,7 @@ LANG_DICT = {
         "egg_padoru": "🎵 HASHIRE SORI YO... KAZE NO YOU NI... PADORU PADORU! 🧣",
         "egg_snow": "❄️ Let it snow! The world is quiet and beautiful now...",
         "egg_market": "🍷 Welcome to the Christmas Market! Hot Glühwein & Pretzels! 🥨",
-        "egg_author": "👨‍💻 Creator found! Sending respect..."
+        "egg_author": "👨‍💻 Creator found! Respect."
     },
     "Traditional Chinese (繁體中文) 🇹🇼🇭🇰🇲🇴": {
         "title": "🎅 聖誕老人吐槽大會",
@@ -153,7 +153,7 @@ LANG_DICT = {
         "egg_padoru": "🎵 PADORU PADORU !!! 🧣",
         "egg_snow": "❄️ Qu'il neige ! Le monde est calme maintenant...",
         "egg_market": "🍷 Bienvenue au Marché de Noël ! Vin chaud et bretzels ! 🥨",
-        "egg_author": "👨‍💻 Créateur trouvé ! Respect..."
+        "egg_author": "👨‍💻 Vous avez trouvé le créateur ! Respect..."
     }
 }
 
@@ -531,7 +531,7 @@ else:
                 "cadeau", "père noël", "surprise" # French
             ]
 
-            # 10. 🧣 Padoru
+            # 10. 🧣 Padoru (新增 - Padoru)
             triggers_padoru = [
                 "padoru", "hashire sori yo", "nero", "fate", "tsukimihara",
                 "帕多鲁", "帕多露", "聖誕帽", "圣诞帽", "帽子",
@@ -611,6 +611,8 @@ else:
             if any(t in user_input_lower for t in triggers_culture):
                 is_chinese = "Chinese" in current_lang_key or "中文" in current_lang_key
                 if is_chinese:
+                    # ✅ 修復版：使用 components.html 確保樣式正確
+                    # ⚠️ 關鍵修正：加入 style="display: none;" 確保 #card-container 初始隱藏
                     components.html("""
 <!DOCTYPE html>
 <html lang="zh-CN">
@@ -684,7 +686,7 @@ else:
                 </svg>
             </div>
         </div>
-        <div id="card-container" style="display: none;">
+        <div id="card-container">
             <div class="brutalist-card" id="main-card">
                 <div class="brutalist-card__header">
                     <div class="brutalist-card__icon" id="card-icon">
@@ -951,7 +953,7 @@ else:
             elif any(t in user_input_lower for t in triggers_holiday):
                 st.balloons()
                 
-                # 🔥 获取当前语言文本
+                # 🔥 獲取當前語言文本
                 current_ui_lang = st.session_state['ui_language']
                 h_text = HOLIDAY_TEXT.get(current_ui_lang, HOLIDAY_TEXT["English 🇬🇧🇺🇸"]) # Default to English
 
@@ -1128,14 +1130,14 @@ else:
                 st.balloons()
                 
                 # 获取匹配的关键词用于文案
-                matched_trigger = next((t for t in triggers_author if t in user_input_lower), "Author")
+                matched_trigger = next((t for t in triggers_author if t in user_input_lower), "Joe")
                 
-                # 读取并显示作者图片
-                img_b64 = get_base64_image("pic.jpg")
+                # 读取并显示作者图片 (修正为 pic.png)
+                img_b64 = get_base64_image("pic.png")
                 if img_b64:
-                     st.markdown(f'<div style="display: flex; justify-content: center;"><img src="data:image/jpeg;base64,{img_b64}" style="width: 300px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.2);"></div>', unsafe_allow_html=True)
+                     st.markdown(f'<div style="display: flex; justify-content: center;"><img src="data:image/png;base64,{img_b64}" style="width: 300px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.2);"></div>', unsafe_allow_html=True)
                 else:
-                    st.image("pic.jpg", caption="The Creator", width=300)
+                    st.image("pic.png", caption="The Creator", width=300)
 
                 st.markdown(f"""
                 <div class='roast-box gold-mode' style='border-left: 5px solid #4CAF50 !important; margin-top: 20px;'>
