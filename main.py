@@ -36,7 +36,9 @@ LANG_DICT = {
         "egg_snow": "❄️ Let it snow! The world is quiet and beautiful now...",
         "egg_market": "🍷 Welcome to the Christmas Market! Hot Glühwein & Pretzels! 🥨",
         "egg_author": "👨‍💻 Creator found! Respect.",
-        "hint_prefix": "💡 **New Riddle Unlocked:** "
+        "hint_prefix": "💡 **New Riddle Unlocked:** ",
+        "final_hint_title": "🔒 FINAL SEAL UNLOCKED",
+        "final_hint_msg": "You have gathered all 12 fragments. To reveal the forbidden truth, you must defy the ban.\n\n👉 **Type 'Merry Christmas' in the box and hit Roast Me!**"
     },
     "Traditional Chinese (繁體中文) 🇹🇼🇭🇰🇲🇴": {
         "title": "🎅 聖誕老人吐槽大會",
@@ -65,7 +67,9 @@ LANG_DICT = {
         "egg_snow": "❄️ 讓雪落下吧！整個世界都安靜了...",
         "egg_market": "🍷 歡迎來到聖誕集市！來杯熱紅酒配扭結餅吧！🥨",
         "egg_author": "👨‍💻 作者出現！致敬時刻...",
-        "hint_prefix": "💡 **解鎖新謎題：** "
+        "hint_prefix": "💡 **解鎖新謎題：** ",
+        "final_hint_title": "🔒 最終封印已解除",
+        "final_hint_msg": "你已集齊所有 12 個碎片。想要揭開那個被禁止的真相，你必須大聲說出那句禁語。\n\n👉 **請在輸入框輸入「聖誕快樂」，然後點擊吐槽！**"
     },
     "Simplified Chinese (简体中文) 🇨🇳": {
         "title": "🎅 圣诞老人吐槽大会",
@@ -94,7 +98,9 @@ LANG_DICT = {
         "egg_snow": "❄️ 让雪落下吧！整个世界都安静了...",
         "egg_market": "🍷 欢迎来到圣诞集市！来杯热红酒配扭结饼吧！🥨",
         "egg_author": "👨‍💻 作者出现！致敬时刻...",
-        "hint_prefix": "💡 **解锁新谜题：** "
+        "hint_prefix": "💡 **解锁新谜题：** ",
+        "final_hint_title": "🔒 最终封印已解除",
+        "final_hint_msg": "你已集齐所有 12 个碎片。想要揭开那个被禁止的真相，你必须大声说出那句禁语。\n\n👉 **请在输入框输入“圣诞快乐”，然后点击吐槽！**"
     }
 }
 
@@ -312,7 +318,7 @@ def update_hunt_progress(placeholder_obj, ui_text):
                 st.success("🎉 GODLIKE! You found ALL secrets including the HIDDEN TRUTH!")
             else:
                 st.balloons()
-                st.success("🎉 Santa Master! You unlocked all standard secrets!")
+                st.success("🎉 You have found all fragments! Check the message below.")
 
         st.markdown('</div>', unsafe_allow_html=True)
 
@@ -580,9 +586,21 @@ else:
                 "開發者", "是誰做的", "程式"
             ]
 
+            # 最终的咒语触发词
+            triggers_final = [
+                "merry christmas", "merry xmas",
+                "圣诞快乐", "圣旦快乐", "生蛋快乐",
+                "聖誕快樂"
+            ]
+
             new_discovery = False
             trigger_hint = False
 
+            # === 先计算已经找到的普通彩蛋数量 ===
+            standard_eggs = {1, 2, 3, 4, 5, 6, 7, 9, 10, 11, 12, 13}
+            found_standard_count_before = len([x for x in st.session_state['found_ids'] if x in standard_eggs])
+
+            # === 判定逻辑 ===
             if any(t in user_input_lower for t in triggers_tree):
                 if 1 not in st.session_state['found_ids']:
                     st.session_state['found_ids'].add(1)
@@ -643,11 +661,27 @@ else:
                     st.session_state['found_ids'].add(13)
                     new_discovery = True
                     trigger_hint = True
-
+            
+            # === 如果有新发现，先更新进度条 ===
             if new_discovery:
                 update_hunt_progress(hunt_placeholder, ui_text)
 
-            if any(t in user_input_lower for t in triggers_tree):
+            # === 计算当前的彩蛋数量 (包含刚才找到的) ===
+            found_standard_count_now = len([x for x in st.session_state['found_ids'] if x in standard_eggs])
+
+            # === 显示对应彩蛋的内容 ===
+            
+            # 1. 最终隐藏彩蛋触发逻辑 (必须集齐12个才能触发)
+            if found_standard_count_now >= 12 and any(t in user_input_lower for t in triggers_final):
+                if 8 not in st.session_state['found_ids']:
+                    st.session_state['found_ids'].add(8)
+                    update_hunt_progress(hunt_placeholder, ui_text)
+                    st.balloons()
+                    st.success("🎉 TRUTH REVEALED!")
+                render_culture_egg(current_lang_key)
+
+            # 2. 普通彩蛋逻辑
+            elif any(t in user_input_lower for t in triggers_tree):
                 st.success(ui_text["secret_success"])
                 st.markdown(ui_text["secret_title"])
                 st.link_button(ui_text["secret_button"], "https://tree.tsunderesanta.xyz")
@@ -984,27 +1018,21 @@ else:
                         st.info(f"{ui_text['hint_prefix']}{clue_text}")
 
             # ======================================================
-            # [关键修改]：检测是否集齐12个普通彩蛋，如果集齐则自动弹出真结局
+            # [关键修改]：检测是否集齐12个普通彩蛋，如果集齐则提示输入密码
             # ======================================================
-            standard_eggs = {1, 2, 3, 4, 5, 6, 7, 9, 10, 11, 12, 13}
-            # 计算当前找到的普通彩蛋数量
-            found_standard_count = len([x for x in st.session_state['found_ids'] if x in standard_eggs])
+            found_standard_count_final = len([x for x in st.session_state['found_ids'] if x in standard_eggs])
 
-            # 如果集齐了12个，且还没有触发过ID 8
-            if found_standard_count == 12 and 8 not in st.session_state['found_ids']:
+            # 如果集齐了12个，且还没有触发过ID 8，显示最终引导信息
+            if found_standard_count_final == 12 and 8 not in st.session_state['found_ids']:
                 time.sleep(1) # 稍作停顿
-                st.session_state['found_ids'].add(8) # 自动获得隐藏ID
                 
-                # 再次更新进度条，让用户看到“GODLIKE”
-                update_hunt_progress(hunt_placeholder, ui_text)
-                
-                # 播放满屏气球
-                st.balloons()
-                
-                st.success("🎉 You have unlocked ALL secrets! The FINAL TRUTH is revealing itself...")
-                
-                # 调用函数显示红头文件
-                render_culture_egg(current_lang_key)
+                # 播放满屏气球庆祝集齐
+                if new_discovery:
+                    st.balloons()
+
+                st.markdown("---")
+                st.markdown(f"### {ui_text['final_hint_title']}")
+                st.warning(ui_text['final_hint_msg'], icon="🔐")
 
     st.markdown("---")
     st.markdown(f"<div style='text-align: center; color: #aaa;'>{ui_text['footer']}</div>", unsafe_allow_html=True)
