@@ -301,9 +301,8 @@ add_christmas_magic()
 def update_hunt_progress(placeholder_obj, ui_text):
     # 只統計主線 (1-7, 9)
     # ID 9 是新加的 Surprise Gift，算入收集進度
-    main_targets = {1, 2, 3, 4, 5, 6, 7, 9}
-    found_main_count = len([x for x in st.session_state['found_ids'] if x in main_targets])
-    total_eggs = 8
+    found_main_count = len([x for x in st.session_state['found_ids'] if x in MAIN_EGG_IDS])
+    total_eggs = len(MAIN_EGG_IDS)
     
     with placeholder_obj.container():
         st.markdown('<div class="hunt-panel">', unsafe_allow_html=True)
