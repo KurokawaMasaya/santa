@@ -431,47 +431,47 @@ else:
                 target = random.choice(missing_ids)
                 
                 hints_tw = {
-                    1: ["提示：一種在客廳裡慢慢死去的植物，身上還掛著珠寶。💎🥀", "提示：綠色的、尖尖的，下面通常堆滿了你買不起的禮物。🎄"],
-                    2: ["提示：你的存款買不到，你的性格也吸引不到的那種關係。💔", "提示：如果你不想一個人過節，你通常會許願想要一個...？👫"],
-                    3: ["提示：一群被我奴役的空中計程車司機，其中有個紅鼻子的。🔴🚕", "提示：誰拉著我的雪橇？不是馬，也不是狗。🦌"],
-                    5: ["提示：有金屬舌頭，腦袋空空，一搖晃就會尖叫的東西。🔔😱", "提示：Jingle _____, Jingle _____, Jingle all the way! 🎵"],
-                    6: ["提示：一張賦予你自由，但你絕對不敢拿給老闆看的紙。📄😈", "提示：社畜最渴望的東西，除了錢，就是...？🏖️"],
-                    7: ["提示：比你的心還要冰冷的地方，也是我的老巢。❄️🏠", "提示：想要找我？來北歐的千湖之國吧！🇫🇮"],
-                    9: ["提示：試著直接呼喚我的名字？🎅", "提示：除了'禮物'，你還可以跟我要一個'盒子' (Box/Gift)？🎁"],
-                    10: ["提示：一個紅色的、會旋轉的二次元生物... 🧣", "提示：Hashire sori yo... 試試看聖誕帽？"],
-                    11: ["提示：我從天上掉下來，又白又冷... ❄️", "提示：白色聖誕節必備的天氣元素是什麼？"],
-                    12: ["提示：熱紅酒、扭結餅、人擠人的地方... 🍷", "提示：聖誕節要買東西、逛街，你會去哪裡？(Market)"],
-                    13: ["提示：是誰創造了我？(關於作者) 👨‍💻", "提示：輸入 '作者' 或 '開發者' 來膜拜他吧！"]
+                    1: ["提示：客廳裡的綠色屍體...", "提示：禮物通常放在哪裡下面？"],
+                    2: ["提示：錢買不到，你也遇不到的關係。", "提示：雙人床的另一邊是空的..."],
+                    3: ["提示：紅鼻子的司機。", "提示：雪橇的動力來源。"],
+                    5: ["提示：搖晃會尖叫的金屬。", "提示：Jingle ____?"],
+                    6: ["提示：你最想從老闆那裡得到的批准。", "提示：不用去公司的日子。"],
+                    7: ["提示：千湖之國，我的老家。", "提示：以 F 開頭，以 d 結尾的寒冷國家。"],
+                    9: ["提示：直接呼喚我的尊名。", "提示：我不只送禮物，我就是..."],
+                    10: ["提示：一個紅色的、會旋轉的二次元生物...", "提示：聖誕老人的頭上戴著什麼？(不是頭髮)", "提示：Hashire sori yo..."],
+                    11: ["提示：白色的、冰涼的頭皮屑。", "提示：讓世界變安靜的天氣。"],
+                    12: ["提示：熱紅酒和扭結餅的聚集地。", "提示：聖誕節燒錢的好去處（戶外）。"],
+                    13: ["提示：幕後的代碼編寫者。", "提示：誰創造了這個宇宙？"]
                 }
                 
                 hints_cn = {
-                    1: ["提示：一种在客厅里慢慢死去的植物，身上还挂着珠宝。💎🥀", "提示：绿色的、尖尖的，下面通常堆满礼物。🎄"],
-                    2: ["提示：你的存款买不到，你的性格也吸引不到的那种关系。💔", "提示：不想光棍过节？那你想要...？👫"],
-                    3: ["提示：一群被我奴役的空中出租车司机，其中有个红鼻子的。🔴🚕", "提示：鲁道夫是什么动物？🦌"],
-                    5: ["提示：有金属舌头，脑袋空空，一摇晃就会尖叫的东西。🔔", "提示：叮叮当，叮叮当...？"],
-                    6: ["提示：一张赋予你自由，但你绝对不敢拿给老板看的纸。📄", "提示：不想工作！我想...？(Holiday)"],
-                    7: ["提示：比你的心还要冰冷的地方，也是我的老巢。❄️", "提示：圣诞老人住在哪个北欧国家？🇫🇮"],
-                    9: ["提示：试着直接呼唤我的名字？🎅", "提示：输入 '礼物' 或 '礼盒' 试试？🎁"],
-                    10: ["提示：一个红色的、会旋转的二次元生物... 🧣", "提示：输入 '圣诞帽' 试试？"],
-                    11: ["提示：我从天上掉下来，又白又冷... ❄️", "提示：白色圣诞节不能少了这个天气。"],
-                    12: ["提示：热红酒、扭结饼、人挤人的地方... 🍷", "提示：圣诞节逛街去哪里？(集市)"],
-                    13: ["提示：是谁创造了我？(关于作者) 👨‍💻", "提示：输入 '乔哥' 或 '作者' 看看？"]
+                    1: ["提示：客厅里的绿色尸体...", "提示：礼物通常放在哪里下面？"],
+                    2: ["提示：钱买不到，你也遇不到的关系。", "提示：双人床的另一边是空的..."],
+                    3: ["提示：红鼻子的司机。", "提示：雪橇的动力来源。"],
+                    5: ["提示：摇晃会尖叫的金属。", "提示：叮叮当...？"],
+                    6: ["提示：你最想从老板那里得到的批准。", "提示：不用去公司的日子。"],
+                    7: ["提示：千湖之国，我的老家。", "提示：以 F 开头，以 d 结尾的寒冷国家。"],
+                    9: ["提示：直接呼唤我的尊名。", "提示：我不只送礼物，我就是..."],
+                    10: ["提示：一个红色的、会旋转的二次元生物...", "提示：圣诞老人的头上戴着什么？(不是头发)"],
+                    11: ["提示：白色的、冰凉的头皮屑。", "提示：让世界变安静的天气。"],
+                    12: ["提示：热红酒和扭结饼的聚集地。", "提示：圣诞节烧钱的好去处（户外）。"],
+                    13: ["提示：幕后的代码编写者。", "提示：谁创造了这个宇宙？"]
                 }
                 
                 hints_en = {
-                    1: ["Hint: The green thing dying in your living room... 🎄", "Hint: Where do you put the presents under?"],
-                    2: ["Hint: Something money can't buy, and you can't attract. 💔", "Hint: Don't want to be single? You want a...?"],
-                    3: ["Hint: My aerial taxi drivers. One has a red nose. 🔴", "Hint: Rudolph is a...?"],
-                    5: ["Hint: Jingle ____, Jingle ____? 🔔", "Hint: Metal tongue, screams when shaken."],
-                    6: ["Hint: Escape from your boss! 📄", "Hint: You need a vacation/holiday!"],
-                    7: ["Hint: My frozen home country. 🇫🇮", "Hint: Start with F, ends with inland."],
+                    1: ["Hint: The green thing dying in your living room...", "Hint: Where do you put the presents under?"],
+                    2: ["Hint: Something money can't buy, and you can't attract.", "Hint: Don't want to be single? You want a...?"],
+                    3: ["Hint: My aerial taxi drivers. One has a red nose.", "Hint: Rudolph is a...?"],
+                    5: ["Hint: Jingle ____, Jingle ____?", "Hint: Metal tongue, screams when shaken."],
+                    6: ["Hint: Escape from your boss!", "Hint: You need a vacation/holiday!"],
+                    7: ["Hint: My frozen home country.", "Hint: Start with F, ends with inland."],
                     9: ["Hint: Call my name directly! (Santa)", "Hint: Ask for a 'Gift' or 'Present'."],
-                    10: ["Hint: Red, spinning, anime meme... 🧣", "Hint: Try Christmas hat?"],
-                    11: ["Hint: White, cold, falls from the sky. ❄️", "Hint: Let it ____!"],
-                    12: ["Hint: Glühwein, pretzels, shopping stalls... 🍷", "Hint: Christmas ______ (Place to shop)."],
-                    13: ["Hint: Who coded me? 👨‍💻", "Hint: The Creator / Developer."]
+                    10: ["Hint: Red, spinning, anime meme...", "Hint: What keeps Santa's head warm?"],
+                    11: ["Hint: White, cold, falls from the sky.", "Hint: Let it ____!"],
+                    12: ["Hint: Glühwein, pretzels, shopping stalls...", "Hint: Christmas ______ (Place to shop)."],
+                    13: ["Hint: Who coded me?", "Hint: The Creator / Developer."]
                 }
-                
+
                 if "Traditional" in current_lang_key:
                     return random.choice(hints_tw.get(target, ["繼續許願..."]))
                 elif "Simplified" in current_lang_key:
