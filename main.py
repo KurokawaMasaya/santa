@@ -91,62 +91,6 @@ LANG_DICT = {
         "egg_snow": "❄️ 让雪落下吧！整个世界都安静了...",
         "egg_market": "🍷 欢迎来到圣诞集市！来杯热红酒配扭结饼吧！🥨",
         "egg_author": "👨‍💻 作者出现！致敬时刻..."
-    },
-    "Japanese (日本語) 🇯🇵": {
-        "title": "🎅 サンタの毒舌部屋",
-        "subtitle": "ワシが... 論理であなたの夢を打ち砕いてやろう... 😏",
-        "sidebar_title": "🎅 設定",
-        "api_help": "キーはこのセッションでのみ使用されます。",
-        "game_rule": "💡 **遊び方:**\n欲しいものを入力して、12個のクリスマスの秘密を探そう！\n\n**ヒント:** ほとんどは**クリスマスアイテム**ですが、*恋愛*や*仕事*、*旅行*に関するものも...",
-        "input_placeholder": "欲しいものリスト (例: iPhone 17 pro max, 彼氏, 彼女, 大金...)",
-        "button": "🎁 リストを斬る",
-        "loading": "🎅 サンタがあなたの価値を査定中...",
-        "error_no_key": "先にAPIキーを入力してください！",
-        "error_no_text": "何か書いて！白紙じゃツッコミようがないよ。",
-        "success_title": "🔔 判決が出ました！",
-        "footer": "Powered by Google Gemini 3.0 Pro",
-        "secret_success": "🎅 ホーホーホー！ツリーを見つけたな！",
-        "secret_title": "### メリークリスマス！！！秘密の入り口はこちら 🎄",
-        "secret_button": "👉 クリックしてポータルに入る",
-        "hunt_title": "🏆 シークレットハント進捗",
-        "egg_single": "サンタのため息... 恋人がいない？この曲でも聴きなさい。",
-        "egg_deer": "見ろ！ルドルフが画面を這っているぞ！🔴🦌",
-        "egg_food": "うまい！食事のお礼にヒントをやろう：",
-        "egg_bell": "リンリン！🔔 幸運の音だ！",
-        "egg_finland": "Tervetuloa! (ようこそ!) ワシの故郷、フィンランドを見つけたな！🇫🇮\nサウナは温まっているぞ、ロヴァニエミにおいで！",
-        "egg_surprise": "🎁 サプライズ！ワシを直接召喚するとはな！",
-        "egg_padoru": "🎵 走れ逸れよ... 風のように... パドル パドル !!! 🧣",
-        "egg_snow": "❄️ 雪よ降れ！世界が静寂に包まれる...",
-        "egg_market": "🍷 クリスマスマーケットへようこそ！ホットワインはいかが？ 🥨",
-        "egg_author": "👨‍💻 作者降臨！リスペクト..."
-    },
-    "French 🇫🇷": {
-        "title": "🎅 Salle de Rôtissage du Père Noël",
-        "subtitle": "Laissez le Père Noël écraser vos rêves... 😏",
-        "sidebar_title": "🎅 Paramètres",
-        "api_help": "La clé est utilisée uniquement pour cette session.",
-        "game_rule": "💡 **Comment jouer:**\nEntrez votre liste. Débloquez 12 secrets festifs !\n\n**Astuce :** La plupart sont liés à **Noël**, mais certains concernent *l'amour*, *le travail* ou *le voyage*...",
-        "input_placeholder": "Votre liste (ex: iPhone 17 pro max, un petit ami, une petite amie, beaucoup d'argent)",
-        "button": "🎁 Rôtir ma liste",
-        "loading": "🎅 Le Père Noël évalue votre valeur...",
-        "error_no_key": "Veuillez d'abord entrer votre clé API !",
-        "error_no_text": "Écrivez quelque chose ! Je ne peux pas rôtir une page blanche.",
-        "success_title": "🔔 Le verdict est là !",
-        "footer": "Propulsé par Google Gemini 3.0 Pro",
-        "secret_success": "🎅 Ho ho ho ! Vous avez trouvé l'arbre !",
-        "secret_title": "### JOYEUX NOËL !!! Voici le portail secret 🎄",
-        "secret_button": "👉 CLIQUEZ POUR ENTRER",
-        "hunt_title": "🏆 Chasse aux Secrets",
-        "egg_single": "Le Père Noël soupire... Pas d'amour ? Écoute ça.",
-        "egg_deer": "Regarde ! C'est Rodolphe qui grimpe sur ton écran ! 🔴🦌",
-        "egg_food": "Délicieux ! Voici un indice pour le prochain secret :",
-        "egg_bell": "Dring Dring ! 🔔 C'est le son de la chance !",
-        "egg_finland": "Tervetuloa ! Tu as trouvé ma maison : la Finlande ! 🇫🇮\nLe sauna est prêt, viens me voir à Rovaniemi !",
-        "egg_surprise": "🎁 SURPRISE ! Vous m'avez invoqué directement !",
-        "egg_padoru": "🎵 PADORU PADORU !!! 🧣",
-        "egg_snow": "❄️ Qu'il neige ! Le monde est calme maintenant...",
-        "egg_market": "🍷 Bienvenue au Marché de Noël ! Vin chaud et bretzels ! 🥨",
-        "egg_author": "👨‍💻 Vous avez trouvé le créateur ! Respect..."
     }
 }
 
@@ -177,24 +121,6 @@ HOLIDAY_TEXT = {
         "valid": "(有效期：永久)",
         "roast_title": "不想上班？想放假？",
         "roast_body": "准奏！拿好這張【摸魚券】，告訴老闆是我批准的！"
-    },
-    "Japanese (日本語) 🇯🇵": {
-        "title": "🎫 サボり許可証",
-        "desc_1": "働きすぎです...",
-        "desc_2": "サンタの特別命令：",
-        "action": "今すぐ仕事を休め！",
-        "valid": "(有効期限：永遠)",
-        "roast_title": "休みが欲しい？",
-        "roast_body": "許可する！このチケットを上司に見せてきなさい！"
-    },
-    "French 🇫🇷": {
-        "title": "🎫 PERMIS DE PAUSE",
-        "desc_1": "Tu as l'air épuisé...",
-        "desc_2": "Ordre du Père Noël :",
-        "action": "ARRÊTE DE TRAVAILLER !",
-        "valid": "(Valide : Toujours)",
-        "roast_title": "Besoin de vacances ?",
-        "roast_body": "Accordé ! Prends ce billet et dis à ton patron que c'est de ma part."
     }
 }
 
@@ -204,18 +130,6 @@ CULTURE_EXPLAINER_TEXT = {
         "msg": "You typed a keyword related to the 'Western Festival Ban'.",
         "desc": "In recent years, some local departments in China have issued notices banning Christmas to 'resist cultural invasion'. This is a satire on that bureaucracy. Switch to **Chinese** language to see the full interactive document!",
         "btn": "Got it"
-    },
-    "Japanese (日本語) 🇯🇵": {
-        "title": "🥚 隠しイースターエッグ発見",
-        "msg": "「洋節（西洋の祭り）」に関するキーワードが検出されました。",
-        "desc": "近年、中国の一部の地方部門が「文化侵略を防ぐ」としてクリスマスを禁止する通知を出しています。これはその形式主義に対する風刺です。**中国語**に切り替えると、完全なインタラクティブ体験ができます！",
-        "btn": "わかった"
-    },
-    "French 🇫🇷": {
-        "title": "🥚 OEUF DE PÂQUES CACHÉ",
-        "msg": "Vous avez tapé un mot-clé lié à l'interdiction des 'Fêtes Occidentales'.",
-        "desc": "Récemment, certains départements locaux en Chine ont banni Noël pour 'résister à l'invasion culturelle'. Ceci est une satire de cette bureaucratie. Passez en **Chinois** pour voir le document complet !",
-        "btn": "Compris"
     }
 }
 
@@ -366,16 +280,17 @@ if not st.session_state['language_selected']:
     st.title("Welcome to Santa's Roast Room")
     st.subheader("Please select your language:")
     st.markdown("---")
-    col1, col2 = st.columns(2)
+    
+    # Modified language selection grid (Removed French/Japanese)
+    col1, col2, col3 = st.columns(3)
     with col1:
         st.button("English 🇬🇧🇺🇸", use_container_width=True, on_click=set_language, args=("English 🇬🇧🇺🇸",))
+    with col2:
         st.button("Simplified Chinese 🇨🇳", use_container_width=True, on_click=set_language,
                   args=("Simplified Chinese (简体中文) 🇨🇳",))
-    with col2:
+    with col3:
         st.button("Traditional Chinese 🇹🇼🇭🇰🇲🇴", use_container_width=True, on_click=set_language,
                   args=("Traditional Chinese (繁體中文) 🇹🇼🇭🇰🇲🇴",))
-        st.button("Japanese 🇯🇵", use_container_width=True, on_click=set_language, args=("Japanese (日本語) 🇯🇵",))
-    st.button("French 🇫🇷", use_container_width=True, on_click=set_language, args=("French 🇫🇷",))
 
 else:
     current_lang_key = st.session_state['ui_language']
@@ -418,105 +333,80 @@ else:
             triggers_tree = [
                 "tree", "christmas tree", "decoration", "ornament", "star", "pine",
                 "圣诞树", "树", "装饰", "挂件", "星星",
-                "聖誕樹", "樹", "裝飾",
-                "ツリー", "クリスマスツリー", "飾り", "木", "スター",
-                "sapin", "arbre", "décoration", "étoile"
+                "聖誕樹", "樹", "裝飾"
             ]
 
             triggers_single = [
                 "boyfriend", "girlfriend", "partner", "lover", "dating", "bf", "gf", "husband", "wife",
                 "脱单", "男朋友", "女朋友", "对象", "搞对象", "恋爱", "处对象", "老公", "老婆",
-                "脫單", "對象", "談戀愛", "男友", "女友",
-                "彼氏", "彼女", "恋人", "デート", "結婚",
-                "petit ami", "petite amie", "copain", "copine", "mari", "femme"
+                "脫單", "對象", "談戀愛", "男友", "女友"
             ]
 
             triggers_deer = [
                 "deer", "reindeer", "rudolph", "sleigh", "ride",
                 "麋鹿", "鹿", "驯鹿", "雪橇", "鲁道夫",
-                "馴鹿", "魯道夫",
-                "トナカイ", "鹿", "シカ", "ソリ", "ルドルフ",
-                "renne", "cerf", "traîneau", "rudolphe"
+                "馴鹿", "魯道夫"
             ]
 
             triggers_food = [
                 "cookie", "biscuit", "milk", "gingerbread", "turkey", "pudding", "pie", "cake", "food", "dinner",
                 "feast", "eat", "hungry",
                 "饼干", "牛奶", "姜饼", "火鸡", "布丁", "大餐", "食物", "吃", "饿", "蛋糕",
-                "餅乾", "薑餅", "火雞", "晚餐", "餓",
-                "クッキー", "ビスケット", "ミルク", "ジンジャーブレッド", "七面鳥", "ケーキ", "食べ物", "食事", "ディナー",
-                "biscuit", "lait", "pain d'épice", "dinde", "gâteau", "repas", "dîner", "manger"
+                "餅乾", "薑餅", "火雞", "晚餐", "餓"
             ]
 
             triggers_bell = [
                 "bell", "jingle", "ring", "song", "music", "sing", "carol", "sound",
                 "铃铛", "铃", "钟", "响", "歌", "音乐", "叮当",
-                "鈴鐺", "鈴聲", "音樂",
-                "ベル", "鈴", "鐘", "音楽", "歌", "ジングル",
-                "cloche", "sonnette", "musique", "chanson", "chanter"
+                "鈴鐺", "鈴聲", "音樂"
             ]
 
             triggers_holiday = [
                 "holiday", "vacation", "work", "job", "leave", "break", "office", "boss", "tired",
                 "放假", "假期", "上班", "工作", "打工", "加班", "累", "请假", "老板",
-                "休假", "請假", "老闆",
-                "休み", "休暇", "仕事", "残業", "バイト", "疲れた", "冬休み",
-                "vacances", "congé", "travail", "boulot", "fatigué", "patron"
+                "休假", "請假", "老闆"
             ]
 
             triggers_finland = [
                 "finland", "suomi", "helsinki", "rovaniemi", "lapland", "travel", "trip", "north pole",
                 "芬兰", "赫尔辛基", "罗瓦涅米", "圣诞村", "旅行", "出去玩", "北极",
-                "芬蘭", "赫爾辛基", "聖誕老人村", "旅遊", "北極",
-                "フィンランド", "ヘルシンキ", "ロヴァニエミ", "ラップランド", "旅行", "北極点",
-                "finlande", "laponie", "voyage", "pôle nord"
+                "芬蘭", "赫爾辛基", "聖誕老人村", "旅遊", "北極"
             ]
 
             triggers_culture = [
                 "foreign festival", "ban", "invasion", "culture", "boycott", "western festival",
                 "洋节", "抵制", "文化自信", "公文", "通知", "不许过", "崇洋媚外", "文化入侵", "不过洋节", "禁止",
-                "洋節", "文化滲透", "忘本",
-                "西洋の祭り", "禁止", "文化侵略", "ボイコット",
-                "fête étrangère", "interdire", "invasion culturelle", "boycott"
+                "洋節", "文化滲透", "忘本"
             ]
 
             triggers_surprise = [
                 "santa", "gift", "present", "box", "claus",
                 "圣诞老人", "礼物", "礼盒", "圣诞老爷爷",
-                "聖誕老人", "禮物", "禮盒", "聖誕老公公",
-                "サンタ", "プレゼント", "ギフト", "サンタクロース",
-                "cadeau", "père noël", "surprise"
+                "聖誕老人", "禮物", "禮盒", "聖誕老公公"
             ]
 
             triggers_padoru = [
                 "padoru", "hashire sori yo", "nero", "fate", "tsukimihara",
                 "帕多鲁", "帕多露", "聖誕帽", "圣诞帽", "帽子",
-                "パドル", "走れ逸れよ",
                 "christmas hat", "hat"
             ]
 
             triggers_snow = [
                 "snow", "let it snow", "white christmas", "winter", "cold",
-                "雪", "下雪", "雪花", "冬天", "冷", "白",
-                "neige", "froid", "hiver",
-                "雪", "冬", "寒い"
+                "雪", "下雪", "雪花", "冬天", "冷", "白"
             ]
 
             triggers_market = [
                 "market", "bazaar", "glühwein", "shopping", "stall",
                 "集市", "市集", "逛街", "热红酒", "赶集",
-                "聖誕市集", "熱紅酒",
-                "クリスマスマーケット", "市場", "買い物",
-                "marché", "vin chaud", "shopping"
+                "聖誕市集", "熱紅酒"
             ]
 
             triggers_author = [
                 "joe qiao", "joe", "qyc", "乔钰城", "乔老师", "18岁老师", "乔哥",
                 "author", "creator", "developer", "who made this", "dev", "code",
                 "作者", "开发者", "是谁做的", "开发", "程序员", "代码",
-                "開發者", "是誰做的", "程式",
-                "作者", "開発者", "誰が作った",
-                "auteur", "créateur", "développeur"
+                "開發者", "是誰做的", "程式"
             ]
 
             new_discovery = False
@@ -783,43 +673,11 @@ else:
                         13: "Hint: Who created me? (About the developer) 👨‍💻"
                     }
 
-                    hints_jp = {
-                        1: "ヒント: リビングで宝石を纏ってゆっくり死んでいく植物... 💎🥀",
-                        2: "ヒント: お金で買えないし、その性格じゃ惹きつけられない関係... 💔",
-                        3: "ヒント: 空飛ぶタクシー運転手。赤鼻のやつ... 🔴🚕",
-                        5: "ヒント: 揺らすと叫ぶ金属の舌を持つやつ... 🔔😱",
-                        6: "ヒント: 自由をくれるけど、ボスには絶対見せられない紙... 📄😈",
-                        7: "ヒント: 元恋人の心より寒い場所。わしの不毛の地... ❄️🏠",
-                        9: "ヒント: ワシの名前を呼んでみろ。もしくは「あれ」をねだってみろ。🎁",
-                        10: "ヒント: 赤くて回転するミーム生物... サンタ帽を試してみて？ 🧣",
-                        11: "ヒント: 空から落ちてくる、白くて冷たいもの... ❄️",
-                        12: "ヒント: ホットワイン、プレッツェル、屋台... 🍷",
-                        13: "ヒント: 私を作ったのは誰？ (作者について) 👨‍💻"
-                    }
-
-                    hints_fr = {
-                        1: "Indice : Un cadavre couvert de bijoux qui meurt lentement dans votre salon... 💎🥀",
-                        2: "Indice : Une relation que l'argent ne peut acheter et que vous ne pouvez attirer... 💔",
-                        3: "Indice : Mes chauffeurs de taxi volants... Un a le nez rouge. 🔴🚕",
-                        5: "Indice : Peau dorée, langue de métal, crie quand on la secoue. 🔔😱",
-                        6: "Indice : Un papier qui donne la liberté, mais que vous n'oserez pas montrer au patron. 📄😈",
-                        7: "Indice : Un endroit plus froid que le cœur de votre ex. Ma terre gelée. ❄️🏠",
-                        9: "Indice : Essayez de m'appeler par mon nom, ou demandez 'ça'. 🎁",
-                        10: "Indice : Une créature mème rouge qui tourne... Essayez le chapeau de Père Noël ? 🧣",
-                        11: "Indice : Je tombe du ciel, blanche et froide... ❄️",
-                        12: "Indice : Vin chaud, bretzels et foule... 🍷",
-                        13: "Indice : Qui m'a créé ? (À propos du développeur) 👨‍💻"
-                    }
-
                     if not missing_ids:
                         if "Traditional" in current_lang_key:
                             hint_msg = "太強了！你已經發現了所有秘密！"
                         elif "Simplified" in current_lang_key:
                             hint_msg = "太强了！你已经发现了所有秘密！"
-                        elif "Japanese" in current_lang_key:
-                            hint_msg = "すごい！全ての秘密を見つけました！"
-                        elif "French" in current_lang_key:
-                            hint_msg = "Incroyable ! Vous avez tout trouvé !"
                         else:
                             hint_msg = "Amazing! You found ALL secrets!"
                     else:
@@ -828,10 +686,6 @@ else:
                             hint_msg = hints_tw.get(target, "繼續許願...")
                         elif "Simplified" in current_lang_key:
                             hint_msg = hints_cn.get(target, "继续许愿...")
-                        elif "Japanese" in current_lang_key:
-                            hint_msg = hints_jp.get(target, "願い事を続けて...")
-                        elif "French" in current_lang_key:
-                            hint_msg = hints_fr.get(target, "Continuez à souhaiter...")
                         else:
                             hint_msg = hints_en.get(target, "Keep wishing...")
 
