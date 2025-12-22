@@ -35,7 +35,7 @@ LANG_DICT = {
         "egg_snow": "❄️ Let it snow! The world is quiet and beautiful now...",
         "egg_market": "🍷 Welcome to the Christmas Market! Hot Glühwein & Pretzels! 🥨",
         "egg_author": "👨‍💻 Creator found! Respect.",
-        "hint_prefix": "💡 **New Clue Unlocked:** "
+        "hint_prefix": "💡 **New Riddle Unlocked:** "
     },
     "Traditional Chinese (繁體中文) 🇹🇼🇭🇰🇲🇴": {
         "title": "🎅 聖誕老人吐槽大會",
@@ -64,7 +64,7 @@ LANG_DICT = {
         "egg_snow": "❄️ 讓雪落下吧！整個世界都安靜了...",
         "egg_market": "🍷 歡迎來到聖誕集市！來杯熱紅酒配扭結餅吧！🥨",
         "egg_author": "👨‍💻 作者出現！致敬時刻...",
-        "hint_prefix": "💡 **解鎖新線索：** "
+        "hint_prefix": "💡 **解鎖新謎題：** "
     },
     "Simplified Chinese (简体中文) 🇨🇳": {
         "title": "🎅 圣诞老人吐槽大会",
@@ -93,53 +93,53 @@ LANG_DICT = {
         "egg_snow": "❄️ 让雪落下吧！整个世界都安静了...",
         "egg_market": "🍷 欢迎来到圣诞集市！来杯热红酒配扭结饼吧！🥨",
         "egg_author": "👨‍💻 作者出现！致敬时刻...",
-        "hint_prefix": "💡 **解锁新线索：** "
+        "hint_prefix": "💡 **解锁新谜题：** "
     }
 }
 
-# Clues for missing eggs (ID 8 excluded)
+# Updated Clues: Harder riddles + Padoru Hat fix
 HINT_CLUES = {
     "English 🇬🇧🇺🇸": {
-        1: "A dying green plant in your living room covered in glitter.",
-        2: "The relationship status you don't have (bf/gf).",
-        3: "Santa's driver. An animal with antlers and a red nose.",
-        4: "What do you leave out for Santa to eat (with milk)?",
-        5: "It's golden, metal, and rings. Jingle ____.",
-        6: "What you want from your boss: 'I quit' or 'Vacation'.",
-        7: "Santa's home country (Starts with F).",
-        9: "Try asking for a 'present', 'gift' or call 'Santa'.",
-        10: "A red spinning anime meme... Hashire sori yo...",
-        11: "Frozen water falling from the sky. White and cold.",
-        12: "A place to buy Glühwein, Pretzels and crafts.",
-        13: "Who coded this? (Author/Creator)"
+        1: "A corpse dressed in jewelry, dying slowly in your living room for your amusement. 🌲💎",
+        2: "Something money can't buy, and your personality certainly can't attract. 💔",
+        3: "My enslaved aerial taxi driver. He guides my sleigh with a glowing red nose. 🔴🦌",
+        4: "I am hungry. Bribe me with calcium (milk) and baked goods, and I might forgive you. 🍪",
+        5: "I have a metal tongue but no mouth. Shake me and I scream for joy. 🔔",
+        6: "The forbidden paper that grants freedom. Your boss fears it, you crave it. 📄",
+        7: "My frozen homeland. The land of a thousand lakes and infinite darkness. 🇫🇮",
+        9: "Stop asking for things. Try summoning the Boss directly by his name. 🎅",
+        10: "A red, spinning calamity... She appears when you ask for a **Christmas Hat**. 🧣",
+        11: "I fall silently to bury the world in white. I am cold, just like your ex's heart. ❄️",
+        12: "Hot wine, crowds, and overpriced crafts. The gathering place of festive capitalism. 🍷",
+        13: "Look behind the curtain. Who is the puppet master controlling this AI? 👨‍💻"
     },
     "Simplified Chinese (简体中文) 🇨🇳": {
-        1: "一种放在客厅、挂满装饰、慢慢枯萎的绿色植物。",
-        2: "你缺少的感情状态（男朋友/女朋友）。",
-        3: "圣诞老人的司机，长着角的红鼻子动物。",
-        4: "放在桌上给圣诞老人吃的夜宵（通常配牛奶）。",
-        5: "金色的，摇晃会响，叮叮当...",
-        6: "你最想对老板说的话：不想上班/放假。",
-        7: "圣诞老人的老家（北欧国家）。",
-        9: "试试直接管我要“礼物”？",
-        10: "一个红色旋转的二次元生物... Padoru...",
-        11: "白色的，天上掉下来的，冷冷的。",
-        12: "喝热红酒、吃扭结饼、逛摊位的地方。",
-        13: "这个程序的作者是谁？"
+        1: "一具披着发光珠宝的尸体，在你的客厅里慢慢枯萎供你观赏。",
+        2: "你的存款买不到，你的性格也吸引不到的那种人际关系。",
+        3: "我的空中出租车苦力，长着角，还有个发光的红鼻子。",
+        4: "想贿赂我？准备好钙质（牛奶）和烘焙食品，我可能会原谅你。",
+        5: "我有金属舌头但没有嘴，摇晃我，我就会尖叫。",
+        6: "一张赋予你自由的纸，老板最怕见到它，而你最渴望它。",
+        7: "我那冰封的故乡，千湖之国，永夜之地。",
+        9: "别光顾着要东西，试试直接呼唤本大爷（老板）的名字？",
+        10: "一个红色的、会旋转的鬼畜灾难... 想要召唤她？试试提到【圣诞帽】。",
+        11: "我无声地落下，将世界掩埋在白色之下。我很冷，像你前任的心一样。",
+        12: "热红酒、拥挤的人群、昂贵的小商品... 充满节日气息的消费主义集会。",
+        13: "这一行行代码背后，是谁在操控我？（关于作者）"
     },
     "Traditional Chinese (繁體中文) 🇹🇼🇭🇰🇲🇴": {
-        1: "一種放在客廳、掛滿裝飾、慢慢枯萎的綠色植物。",
-        2: "你缺少的感情狀態（男朋友/女朋友）。",
-        3: "聖誕老人的司機，長著角的紅鼻子動物。",
-        4: "放在桌上給聖誕老人吃的宵夜（通常配牛奶）。",
-        5: "金色的，搖晃會響，叮叮噹...",
-        6: "你最想對老闆說的話：不想上班/放假。",
-        7: "聖誕老人的老家（北歐國家）。",
-        9: "試試直接管我要「禮物」？",
-        10: "一個紅色旋轉的二次元生物... Padoru...",
-        11: "白色的，天上掉下來的，冷冷的。",
-        12: "喝熱紅酒、吃扭結餅、逛攤位的地方。",
-        13: "這個程式的作者是誰？"
+        1: "一具披著發光珠寶的屍體，在你的客廳裡慢慢枯萎供你觀賞。",
+        2: "你的存款買不到，你的性格也吸引不到的那種人際關係。",
+        3: "我的空中計程車苦力，長著角，還有個發光的紅鼻子。",
+        4: "想賄賂我？準備好鈣質（牛奶）和烘焙食品，我可能會原諒你。",
+        5: "我有金屬舌頭但沒有嘴，搖晃我，我就會尖叫。",
+        6: "一張賦予你自由的紙，老闆最怕見到它，而你最渴望它。",
+        7: "我那冰封的故鄉，千湖之國，永夜之地。",
+        9: "別光顧著要東西，試試直接呼喚本大爺（老闆）的名字？",
+        10: "一個紅色的、會旋轉的迷因災難... 想要召喚她？試試提到【聖誕帽】。",
+        11: "我無聲地落下，將世界掩埋在白色之下。我很冷，像你前任的心一樣。",
+        12: "熱紅酒、擁擠的人群、昂貴的小商品... 充滿節日氣息的消費主義集會。",
+        13: "這一行行程式碼背後，是誰在操控我？（關於作者）"
     }
 }
 
@@ -457,7 +457,6 @@ else:
             new_discovery = False
             trigger_hint = False
 
-            # Check logic: If found_ids does not contain X, add it, set new_discovery, AND set trigger_hint (for standard eggs)
             if any(t in user_input_lower for t in triggers_tree):
                 if 1 not in st.session_state['found_ids']: 
                     st.session_state['found_ids'].add(1)
@@ -520,12 +519,10 @@ else:
                     trigger_hint = True
 
             elif any(t in user_input_lower for t in triggers_culture):
-                # Culture egg (ID 8) is excluded from triggering a general hint
                 if 8 not in st.session_state['found_ids']:
                     st.session_state['found_ids'].add(8)
                     st.toast("👁️ HIDDEN TRUTH FOUND! (Extra Bonus)", icon="🔓")
                     new_discovery = True
-                    # trigger_hint remains False here
 
             if new_discovery:
                 update_hunt_progress(hunt_placeholder, ui_text)
