@@ -8,7 +8,6 @@ import base64
 
 st.set_page_config(page_title="Roast Santa AI", page_icon="🎅", layout="centered")
 
-# --- 修改了 input_placeholder ---
 LANG_DICT = {
     "English 🇬🇧🇺🇸": {
         "title": "🎅 Santa's Roast Room",
@@ -177,8 +176,8 @@ HOLIDAY_TEXT = {
 CULTURE_EXPLAINER_TEXT = {
     "English 🇬🇧🇺🇸": {
         "title": "🥚 EXTRA EASTER EGG FOUND",
-        "msg": "You typed a keyword related to the 'Western Festival Ban'.",
-        "desc": "In recent years, some local departments in China have issued notices banning Christmas to 'resist cultural invasion'. This is a satire on that bureaucracy. Switch to **Chinese** language to see the full interactive document!",
+        "msg": "You have unlocked the FINAL TRUTH.",
+        "desc": "This is a satire on certain policies. Switch to **Chinese** language to see the full interactive document!",
         "btn": "Got it"
     }
 }
@@ -273,7 +272,6 @@ def trigger_jackpot_effect():
 
 add_christmas_magic()
 
-
 def update_hunt_progress(placeholder_obj, ui_text):
     main_targets = {1, 2, 3, 4, 5, 6, 7, 9, 10, 11, 12, 13}
     found_main_count = len([x for x in st.session_state['found_ids'] if x in main_targets])
@@ -319,220 +317,14 @@ def update_hunt_progress(placeholder_obj, ui_text):
         st.markdown('</div>', unsafe_allow_html=True)
 
 
-if not st.session_state['language_selected']:
-    st.markdown("<br><br>", unsafe_allow_html=True)
-    col1, col2, col3 = st.columns([1, 2, 1])
-    with col2:
-        st.image("https://img.icons8.com/color/144/santa.png", width=120)
-    st.title("Welcome to Santa's Roast Room")
-    st.subheader("Please select your language:")
-    st.markdown("---")
-
-    col1, col2, col3 = st.columns(3)
-    with col1:
-        st.button("English 🇬🇧🇺🇸", use_container_width=True, on_click=set_language, args=("English 🇬🇧🇺🇸",))
-    with col2:
-        st.button("Simplified Chinese 🇨🇳", use_container_width=True, on_click=set_language,
-                  args=("Simplified Chinese (简体中文) 🇨🇳",))
-    with col3:
-        st.button("Traditional Chinese 🇹🇼🇭🇰🇲🇴", use_container_width=True, on_click=set_language,
-                  args=("Traditional Chinese (繁體中文) 🇹🇼🇭🇰🇲🇴",))
-
-else:
-    current_lang_key = st.session_state['ui_language']
-    ui_text = LANG_DICT[current_lang_key]
-
-    with st.sidebar:
-        st.image("https://img.icons8.com/color/96/santa.png", width=100)
-        st.caption(f"Language: **{current_lang_key}**")
-        st.button("🔄 Change Language", on_click=reset_language)
-        st.markdown("---")
-        st.markdown(ui_text["game_rule"])
-
-        api_key = None
-        try:
-            api_key = st.secrets["GEMINI_API_KEY"]
-        except Exception:
-            api_key = os.getenv("GEMINI_API_KEY")
-
-        if not api_key:
-            st.warning("Enter Key to activate AI features")
-            api_key = st.text_input("Gemini API Key", type="password")
-
-        st.sidebar.caption(ui_text["api_help"])
-
-    st.title(ui_text["title"])
-    st.subheader(ui_text["subtitle"])
-
-    hunt_placeholder = st.empty()
-    update_hunt_progress(hunt_placeholder, ui_text)
-
-    gift_list = st.text_area(ui_text["input_placeholder"], height=150)
-
-    if st.button(ui_text["button"], type="primary"):
-        if not api_key:
-            st.error(ui_text["error_no_key"])
-        elif not gift_list:
-            st.warning(ui_text["error_no_text"])
-        else:
-            user_input_lower = gift_list.lower()
-
-            triggers_tree = [
-                "tree", "christmas tree", "decoration", "ornament", "star", "pine",
-                "圣诞树", "树", "装饰", "挂件", "星星",
-                "聖誕樹", "樹", "裝飾"
-            ]
-
-            triggers_single = [
-                "boyfriend", "girlfriend", "partner", "lover", "dating", "bf", "gf", "husband", "wife",
-                "脱单", "男朋友", "女朋友", "对象", "搞对象", "恋爱", "处对象", "老公", "老婆",
-                "脫單", "對象", "談戀愛", "男友", "女友"
-            ]
-
-            triggers_deer = [
-                "deer", "reindeer", "rudolph", "sleigh", "ride",
-                "麋鹿", "鹿", "驯鹿", "雪橇", "鲁道夫",
-                "馴鹿", "魯道夫"
-            ]
-
-            triggers_food = [
-                "cookie", "biscuit", "milk", "gingerbread", "turkey", "pudding", "pie", "cake", "food", "dinner",
-                "feast", "eat", "hungry",
-                "饼干", "牛奶", "姜饼", "火鸡", "布丁", "大餐", "食物", "吃", "饿", "蛋糕",
-                "餅乾", "薑餅", "火雞", "晚餐", "餓"
-            ]
-
-            triggers_bell = [
-                "bell", "jingle", "ring", "song", "music", "sing", "carol", "sound",
-                "铃铛", "铃", "钟", "响", "歌", "音乐", "叮当",
-                "鈴鐺", "鈴聲", "音樂"
-            ]
-
-            triggers_holiday = [
-                "holiday", "vacation", "work", "job", "leave", "break", "office", "boss", "tired",
-                "放假", "假期", "上班", "工作", "打工", "加班", "累", "请假", "老板",
-                "休假", "請假", "老闆"
-            ]
-
-            triggers_finland = [
-                "finland", "suomi", "helsinki", "rovaniemi", "lapland", "travel", "trip", "north pole",
-                "芬兰", "赫尔辛基", "罗瓦涅米", "圣诞村", "旅行", "出去玩", "北极",
-                "芬蘭", "赫爾辛基", "聖誕老人村", "旅遊", "北極"
-            ]
-
-            triggers_culture = [
-                "foreign festival", "ban", "invasion", "culture", "boycott", "western festival",
-                "洋节", "抵制", "文化自信", "公文", "通知", "不许过", "崇洋媚外", "文化入侵", "不过洋节", "禁止",
-                "洋節", "文化滲透", "忘本"
-            ]
-
-            triggers_surprise = [
-                "santa", "gift", "present", "box", "claus",
-                "圣诞老人", "礼物", "礼盒", "圣诞老爷爷",
-                "聖誕老人", "禮物", "禮盒", "聖誕老公公"
-            ]
-
-            triggers_padoru = [
-                "padoru", "hashire sori yo", "nero", "fate", "tsukimihara",
-                "帕多鲁", "帕多露", "聖誕帽", "圣诞帽", "帽子",
-                "christmas hat", "hat"
-            ]
-
-            triggers_snow = [
-                "snow", "let it snow", "white christmas", "winter", "cold",
-                "雪", "下雪", "雪花", "冬天", "冷", "白"
-            ]
-
-            triggers_market = [
-                "market", "bazaar", "glühwein", "shopping", "stall",
-                "集市", "市集", "逛街", "热红酒", "赶集",
-                "聖誕市集", "熱紅酒"
-            ]
-
-            triggers_author = [
-                "joe qiao", "joe", "qyc", "乔钰城", "乔老师", "18岁老师", "乔哥",
-                "author", "creator", "developer", "who made this", "dev", "code",
-                "作者", "开发者", "是谁做的", "开发", "程序员", "代码",
-                "開發者", "是誰做的", "程式"
-            ]
-
-            new_discovery = False
-            trigger_hint = False
-
-            if any(t in user_input_lower for t in triggers_tree):
-                if 1 not in st.session_state['found_ids']:
-                    st.session_state['found_ids'].add(1)
-                    new_discovery = True
-                    trigger_hint = True
-            elif any(t in user_input_lower for t in triggers_single):
-                if 2 not in st.session_state['found_ids']:
-                    st.session_state['found_ids'].add(2)
-                    new_discovery = True
-                    trigger_hint = True
-            elif any(t in user_input_lower for t in triggers_deer):
-                if 3 not in st.session_state['found_ids']:
-                    st.session_state['found_ids'].add(3)
-                    new_discovery = True
-                    trigger_hint = True
-            elif any(t in user_input_lower for t in triggers_food):
-                if 4 not in st.session_state['found_ids']:
-                    st.session_state['found_ids'].add(4)
-                    new_discovery = True
-                    trigger_hint = True
-            elif any(t in user_input_lower for t in triggers_bell):
-                if 5 not in st.session_state['found_ids']:
-                    st.session_state['found_ids'].add(5)
-                    new_discovery = True
-                    trigger_hint = True
-            elif any(t in user_input_lower for t in triggers_holiday):
-                if 6 not in st.session_state['found_ids']:
-                    st.session_state['found_ids'].add(6)
-                    new_discovery = True
-                    trigger_hint = True
-            elif any(t in user_input_lower for t in triggers_finland):
-                if 7 not in st.session_state['found_ids']:
-                    st.session_state['found_ids'].add(7)
-                    new_discovery = True
-                    trigger_hint = True
-            elif any(t in user_input_lower for t in triggers_surprise):
-                if 9 not in st.session_state['found_ids']:
-                    st.session_state['found_ids'].add(9)
-                    new_discovery = True
-                    trigger_hint = True
-            elif any(t in user_input_lower for t in triggers_padoru):
-                if 10 not in st.session_state['found_ids']:
-                    st.session_state['found_ids'].add(10)
-                    new_discovery = True
-                    trigger_hint = True
-            elif any(t in user_input_lower for t in triggers_snow):
-                if 11 not in st.session_state['found_ids']:
-                    st.session_state['found_ids'].add(11)
-                    new_discovery = True
-                    trigger_hint = True
-            elif any(t in user_input_lower for t in triggers_market):
-                if 12 not in st.session_state['found_ids']:
-                    st.session_state['found_ids'].add(12)
-                    new_discovery = True
-                    trigger_hint = True
-            elif any(t in user_input_lower for t in triggers_author):
-                if 13 not in st.session_state['found_ids']:
-                    st.session_state['found_ids'].add(13)
-                    new_discovery = True
-                    trigger_hint = True
-
-            elif any(t in user_input_lower for t in triggers_culture):
-                if 8 not in st.session_state['found_ids']:
-                    st.session_state['found_ids'].add(8)
-                    st.toast("👁️ HIDDEN TRUTH FOUND! (Extra Bonus)", icon="🔓")
-                    new_discovery = True
-
-            if new_discovery:
-                update_hunt_progress(hunt_placeholder, ui_text)
-
-            if any(t in user_input_lower for t in triggers_culture):
-                is_chinese = "Chinese" in current_lang_key or "中文" in current_lang_key
-                if is_chinese:
-                    components.html("""
+def render_culture_egg(current_lang_key):
+    """
+    显示隐藏的红头文件彩蛋 (True Ending)
+    """
+    is_chinese = "Chinese" in current_lang_key or "中文" in current_lang_key
+    
+    if is_chinese:
+        components.html("""
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -646,19 +438,216 @@ else:
     </script>
 </body>
 </html>
-                    """, height=650, scrolling=False)
-                else:
-                    explain_text = CULTURE_EXPLAINER_TEXT.get(current_lang_key,
-                                                              CULTURE_EXPLAINER_TEXT["English 🇬🇧🇺🇸"])
-                    st.markdown(f"""
-                    <div style='background-color: #222; padding: 20px; border-radius: 10px; border-left: 5px solid #ff4b4b; color: #fff;'>
-                        <h3>{explain_text['title']}</h3>
-                        <p>{explain_text['msg']}</p>
-                        <p style='color: #ccc; font-size: 0.9em;'>{explain_text['desc']}</p>
-                    </div>
-                    """, unsafe_allow_html=True)
+        """, height=650, scrolling=False)
+    else:
+        st.markdown(f"""
+        <div style='background-color: #222; padding: 20px; border-radius: 10px; border-left: 5px solid #ff4b4b; color: #fff;'>
+            <h3>⚠️ HIDDEN TRUTH UNLOCKED</h3>
+            <p>You have found the final secret.</p>
+            <p style='color: #ccc; font-size: 0.9em;'>Switch to Simplified Chinese to experience the full interactive story about "Cultural Confidence".</p>
+        </div>
+        """, unsafe_allow_html=True)
 
-            elif any(t in user_input_lower for t in triggers_tree):
+
+if not st.session_state['language_selected']:
+    st.markdown("<br><br>", unsafe_allow_html=True)
+    col1, col2, col3 = st.columns([1, 2, 1])
+    with col2:
+        st.image("https://img.icons8.com/color/144/santa.png", width=120)
+    st.title("Welcome to Santa's Roast Room")
+    st.subheader("Please select your language:")
+    st.markdown("---")
+
+    col1, col2, col3 = st.columns(3)
+    with col1:
+        st.button("English 🇬🇧🇺🇸", use_container_width=True, on_click=set_language, args=("English 🇬🇧🇺🇸",))
+    with col2:
+        st.button("Simplified Chinese 🇨🇳", use_container_width=True, on_click=set_language,
+                  args=("Simplified Chinese (简体中文) 🇨🇳",))
+    with col3:
+        st.button("Traditional Chinese 🇹🇼🇭🇰🇲🇴", use_container_width=True, on_click=set_language,
+                  args=("Traditional Chinese (繁體中文) 🇹🇼🇭🇰🇲🇴",))
+
+else:
+    current_lang_key = st.session_state['ui_language']
+    ui_text = LANG_DICT[current_lang_key]
+
+    with st.sidebar:
+        st.image("https://img.icons8.com/color/96/santa.png", width=100)
+        st.caption(f"Language: **{current_lang_key}**")
+        st.button("🔄 Change Language", on_click=reset_language)
+        st.markdown("---")
+        st.markdown(ui_text["game_rule"])
+
+        api_key = None
+        try:
+            api_key = st.secrets["GEMINI_API_KEY"]
+        except Exception:
+            api_key = os.getenv("GEMINI_API_KEY")
+
+        if not api_key:
+            st.warning("Enter Key to activate AI features")
+            api_key = st.text_input("Gemini API Key", type="password")
+
+        st.sidebar.caption(ui_text["api_help"])
+
+    st.title(ui_text["title"])
+    st.subheader(ui_text["subtitle"])
+
+    hunt_placeholder = st.empty()
+    update_hunt_progress(hunt_placeholder, ui_text)
+
+    gift_list = st.text_area(ui_text["input_placeholder"], height=150)
+
+    if st.button(ui_text["button"], type="primary"):
+        if not api_key:
+            st.error(ui_text["error_no_key"])
+        elif not gift_list:
+            st.warning(ui_text["error_no_text"])
+        else:
+            user_input_lower = gift_list.lower()
+
+            triggers_tree = [
+                "tree", "christmas tree", "decoration", "ornament", "star", "pine",
+                "圣诞树", "树", "装饰", "挂件", "星星",
+                "聖誕樹", "樹", "裝飾"
+            ]
+
+            triggers_single = [
+                "boyfriend", "girlfriend", "partner", "lover", "dating", "bf", "gf", "husband", "wife",
+                "脱单", "男朋友", "女朋友", "对象", "搞对象", "恋爱", "处对象", "老公", "老婆",
+                "脫單", "對象", "談戀愛", "男友", "女友"
+            ]
+
+            triggers_deer = [
+                "deer", "reindeer", "rudolph", "sleigh", "ride",
+                "麋鹿", "鹿", "驯鹿", "雪橇", "鲁道夫",
+                "馴鹿", "魯道夫"
+            ]
+
+            triggers_food = [
+                "cookie", "biscuit", "milk", "gingerbread", "turkey", "pudding", "pie", "cake", "food", "dinner",
+                "feast", "eat", "hungry",
+                "饼干", "牛奶", "姜饼", "火鸡", "布丁", "大餐", "食物", "吃", "饿", "蛋糕",
+                "餅乾", "薑餅", "火雞", "晚餐", "餓"
+            ]
+
+            triggers_bell = [
+                "bell", "jingle", "ring", "song", "music", "sing", "carol", "sound",
+                "铃铛", "铃", "钟", "响", "歌", "音乐", "叮当",
+                "鈴鐺", "鈴聲", "音樂"
+            ]
+
+            triggers_holiday = [
+                "holiday", "vacation", "work", "job", "leave", "break", "office", "boss", "tired",
+                "放假", "假期", "上班", "工作", "打工", "加班", "累", "请假", "老板",
+                "休假", "請假", "老闆"
+            ]
+
+            triggers_finland = [
+                "finland", "suomi", "helsinki", "rovaniemi", "lapland", "travel", "trip", "north pole",
+                "芬兰", "赫尔辛基", "罗瓦涅米", "圣诞村", "旅行", "出去玩", "北极",
+                "芬蘭", "赫爾辛基", "聖誕老人村", "旅遊", "北極"
+            ]
+
+            triggers_surprise = [
+                "santa", "gift", "present", "box", "claus",
+                "圣诞老人", "礼物", "礼盒", "圣诞老爷爷",
+                "聖誕老人", "禮物", "禮盒", "聖誕老公公"
+            ]
+
+            triggers_padoru = [
+                "padoru", "hashire sori yo", "nero", "fate", "tsukimihara",
+                "帕多鲁", "帕多露", "聖誕帽", "圣诞帽", "帽子",
+                "christmas hat", "hat"
+            ]
+
+            triggers_snow = [
+                "snow", "let it snow", "white christmas", "winter", "cold",
+                "雪", "下雪", "雪花", "冬天", "冷", "白"
+            ]
+
+            triggers_market = [
+                "market", "bazaar", "glühwein", "shopping", "stall",
+                "集市", "市集", "逛街", "热红酒", "赶集",
+                "聖誕市集", "熱紅酒"
+            ]
+
+            triggers_author = [
+                "joe qiao", "joe", "qyc", "乔钰城", "乔老师", "18岁老师", "乔哥",
+                "author", "creator", "developer", "who made this", "dev", "code",
+                "作者", "开发者", "是谁做的", "开发", "程序员", "代码",
+                "開發者", "是誰做的", "程式"
+            ]
+
+            new_discovery = False
+            trigger_hint = False
+
+            if any(t in user_input_lower for t in triggers_tree):
+                if 1 not in st.session_state['found_ids']:
+                    st.session_state['found_ids'].add(1)
+                    new_discovery = True
+                    trigger_hint = True
+            elif any(t in user_input_lower for t in triggers_single):
+                if 2 not in st.session_state['found_ids']:
+                    st.session_state['found_ids'].add(2)
+                    new_discovery = True
+                    trigger_hint = True
+            elif any(t in user_input_lower for t in triggers_deer):
+                if 3 not in st.session_state['found_ids']:
+                    st.session_state['found_ids'].add(3)
+                    new_discovery = True
+                    trigger_hint = True
+            elif any(t in user_input_lower for t in triggers_food):
+                if 4 not in st.session_state['found_ids']:
+                    st.session_state['found_ids'].add(4)
+                    new_discovery = True
+                    trigger_hint = True
+            elif any(t in user_input_lower for t in triggers_bell):
+                if 5 not in st.session_state['found_ids']:
+                    st.session_state['found_ids'].add(5)
+                    new_discovery = True
+                    trigger_hint = True
+            elif any(t in user_input_lower for t in triggers_holiday):
+                if 6 not in st.session_state['found_ids']:
+                    st.session_state['found_ids'].add(6)
+                    new_discovery = True
+                    trigger_hint = True
+            elif any(t in user_input_lower for t in triggers_finland):
+                if 7 not in st.session_state['found_ids']:
+                    st.session_state['found_ids'].add(7)
+                    new_discovery = True
+                    trigger_hint = True
+            elif any(t in user_input_lower for t in triggers_surprise):
+                if 9 not in st.session_state['found_ids']:
+                    st.session_state['found_ids'].add(9)
+                    new_discovery = True
+                    trigger_hint = True
+            elif any(t in user_input_lower for t in triggers_padoru):
+                if 10 not in st.session_state['found_ids']:
+                    st.session_state['found_ids'].add(10)
+                    new_discovery = True
+                    trigger_hint = True
+            elif any(t in user_input_lower for t in triggers_snow):
+                if 11 not in st.session_state['found_ids']:
+                    st.session_state['found_ids'].add(11)
+                    new_discovery = True
+                    trigger_hint = True
+            elif any(t in user_input_lower for t in triggers_market):
+                if 12 not in st.session_state['found_ids']:
+                    st.session_state['found_ids'].add(12)
+                    new_discovery = True
+                    trigger_hint = True
+            elif any(t in user_input_lower for t in triggers_author):
+                if 13 not in st.session_state['found_ids']:
+                    st.session_state['found_ids'].add(13)
+                    new_discovery = True
+                    trigger_hint = True
+
+            if new_discovery:
+                update_hunt_progress(hunt_placeholder, ui_text)
+
+            if any(t in user_input_lower for t in triggers_tree):
                 st.success(ui_text["secret_success"])
                 st.markdown(ui_text["secret_title"])
                 st.link_button(ui_text["secret_button"], "https://tree.tsunderesanta.xyz")
@@ -935,7 +924,7 @@ else:
                 st.markdown(f"""
                 <div class='roast-box gold-mode' style='border-left: 5px solid #4CAF50 !important; margin-top: 20px;'>
                     <b>👨‍💻 {ui_text['egg_author']}</b><br><br>
-                    👉 请给 <b>{matched_trigger}</b> 私信一句 <b>{matched_trigger}nb</b> 吧（给我点赞助吧😭求求了😭）
+                    👉 请给 <b>{matched_trigger}</b> 私信一句 <b>{matched_trigger}nb</b> 吧～
                 </div>
                 """, unsafe_allow_html=True)
 
@@ -993,6 +982,29 @@ else:
                     clue_text = clue_dict.get(target_id, "")
                     if clue_text:
                         st.info(f"{ui_text['hint_prefix']}{clue_text}")
+
+            # ======================================================
+            # [关键修改]：检测是否集齐12个普通彩蛋，如果集齐则自动弹出真结局
+            # ======================================================
+            standard_eggs = {1, 2, 3, 4, 5, 6, 7, 9, 10, 11, 12, 13}
+            # 计算当前找到的普通彩蛋数量
+            found_standard_count = len([x for x in st.session_state['found_ids'] if x in standard_eggs])
+
+            # 如果集齐了12个，且还没有触发过ID 8
+            if found_standard_count == 12 and 8 not in st.session_state['found_ids']:
+                time.sleep(1) # 稍作停顿
+                st.session_state['found_ids'].add(8) # 自动获得隐藏ID
+                
+                # 再次更新进度条，让用户看到“GODLIKE”
+                update_hunt_progress(hunt_placeholder, ui_text)
+                
+                # 播放满屏气球
+                st.balloons()
+                
+                st.success("🎉 You have unlocked ALL secrets! The FINAL TRUTH is revealing itself...")
+                
+                # 调用函数显示红头文件
+                render_culture_egg(current_lang_key)
 
     st.markdown("---")
     st.markdown(f"<div style='text-align: center; color: #aaa;'>{ui_text['footer']}</div>", unsafe_allow_html=True)
