@@ -3,7 +3,7 @@ import streamlit.components.v1 as components
 import google.generativeai as genai
 import random
 import time
-import base64 # 只需要用来转图片
+import base64
 
 # --- 1. 頁面基礎設定 ---
 st.set_page_config(page_title="Roast Santa AI", page_icon="🎅", layout="centered")
@@ -230,6 +230,7 @@ if 'found_ids' not in st.session_state:
     st.session_state['found_ids'] = set() 
 
 # ⚠️ [V2 Fix] 使用新變數名 hint_msg_v2 防止舊緩存干擾
+# 這是為了確保切換語言時線索也會更新
 if 'hint_msg_v2' not in st.session_state:
     st.session_state['hint_msg_v2'] = None
 
@@ -517,6 +518,7 @@ else:
                 "パドル", "走れ逸れよ", "サンタ帽",
                 "santa hat", "christmas hat", "hat"
             ]
+
             # --- 檢測新發現 ---
             new_discovery = False
 
@@ -727,57 +729,243 @@ else:
                     @keyframes moveleg2 { 0% { transform: rotate(30deg); } 50% { transform: rotate(-30deg); } 100% { transform: rotate(30deg); } }
                     @keyframes movebody { 0% { transform: translateX(0%) translateY(0); } 50% { transform: translateX(2%) translateY(-2px); } 100% { transform: translateX(0%) translateY(0); } }
                 </style>
-                <div class="scene-wrapper"><div class="rudolph-loader"><div class="rudolph-body-wrapper"><div class="deer-leg"></div><div class="deer-leg-moving"></div><div class="deer-leg-moving"></div><div class="deer-body"></div><div class="deer-head"><div class="antler left"></div><div class="antler right"></div><div class="deer-ear"></div><div class="deer-ear"></div><div class="deer-eye left"></div><div class="deer-eye right"></div><div class="red-nose"></div></div></div></div></div>
+
+                <div class="scene-wrapper">
+                    <div class="rudolph-loader">
+                        <div class="rudolph-body-wrapper">
+                            <div class="deer-leg"></div>
+                            <div class="deer-leg-moving"></div>
+                            <div class="deer-leg-moving"></div>
+                            <div class="deer-body"></div>
+                            <div class="deer-head">
+                                <div class="antler left"></div><div class="antler right"></div>
+                                <div class="deer-ear"></div><div class="deer-ear"></div>
+                                <div class="deer-eye left"></div><div class="deer-eye right"></div>
+                                <div class="red-nose"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 """, unsafe_allow_html=True)
-                st.markdown(f"<div class='roast-box gold-mode' style='border-left: 5px solid #8B4513 !important;'>{ui_text['egg_deer']}</div>", unsafe_allow_html=True)
+                
+                st.markdown(f"""
+                <div class='roast-box gold-mode' style='border-left: 5px solid #8B4513 !important;'>
+                {ui_text['egg_deer']}
+                </div>
+                """, unsafe_allow_html=True)
 
             # --- 4. 🍗 FOOD ---
             elif any(t in user_input_lower for t in triggers_food):
                 st.balloons()
                 trigger_jackpot_effect() 
-                if st.session_state['fixed_hint_msg'] is None:
+
+                # 🔥 這裡修復了變數名稱不一致的問題 🔥
+                if st.session_state['hint_msg_v2'] is None:
+                    # 1. 找出還沒發現的彩蛋 ID
                     missing_ids = list(MAIN_EGG_IDS - st.session_state['found_ids'])
-                    if 4 in missing_ids: missing_ids.remove(4)
-                    hints_tw = {1: "提示：一種在客廳裡慢慢死去的植物，身上還掛著珠寶。💎🥀", 2: "提示：你的存款買不到，你的性格也吸引不到的那種關係。💔", 3: "提示：一群被我奴役的空中計程車司機，其中有個紅鼻子的。🔴🚕", 5: "提示：有金屬舌頭，腦袋空空，一搖晃就會尖叫的東西。🔔😱", 6: "提示：一張賦予你自由，但你絕對不敢拿給老闆看的紙。📄😈", 7: "提示：比你的心還要冰冷的地方，也是我的老巢。❄️🏠", 9: "提示：試著直接呼喚我的名字，或者跟我要「那個」東西？🎁", 10: "提示：一個紅色的、會旋轉的迷因生物... 試試 Padoru? 🧣"}
-                    hints_cn = {1: "提示：一种在客厅里慢慢死去的植物，身上还挂着珠宝。💎🥀", 2: "提示：你的存款买不到，你的性格也吸引不到的那种关系。💔", 3: "提示：一群被我奴役的空中出租车司机，其中有个红鼻子的。🔴🚕", 5: "提示：有金属舌头，脑袋空空，一摇晃就会尖叫的东西。🔔😱", 6: "提示：一张赋予你自由，但你绝对不敢拿给老板看的纸。📄😈", 7: "提示：比你的心还要冰冷的地方，也是我的老巢。❄️🏠", 9: "提示：试着直接呼唤我的名字，或者跟我要「那个」东西？🎁", 10: "提示：一个红色的、会旋转的迷因生物... 试试 Padoru? 🧣"}
-                    hints_en = {1: "Hint: A corpse dressed in jewelry, dying slowly in your living room. 💎🥀", 2: "Hint: Something money can't buy, and your personality can't attract. 💔", 3: "Hint: My enslaved aerial taxi drivers. One has a glowing nose. 🔴🚕", 5: "Hint: Golden skin, metal tongue, screams when you shake it. 🔔😱", 6: "Hint: A piece of paper that grants freedom, but you're too cowardly to use. 📄😈", 7: "Hint: A place colder than your ex's heart. My frozen wasteland. ❄️🏠", 9: "Hint: Try calling my name directly, or asking for 'it'. 🎁", 10: "Hint: A red, spinning meme creature... Try Padoru? 🧣"}
-                    hints_jp = {1: "ヒント: リビングで宝石を纏ってゆっくり死んでいく植物... 💎🥀", 2: "ヒント: お金で買えないし、その性格じゃ惹きつけられない関係... 💔", 3: "ヒント: 空飛ぶタクシー運転手。赤鼻のやつ... 🔴🚕", 5: "ヒント: 揺らすと叫ぶ金属の舌を持つやつ... 🔔😱", 6: "ヒント: 自由をくれるけど、ボスには絶対見せられない紙... 📄😈", 7: "ヒント: 元恋人の心より寒い場所。わしの不毛の地... ❄️🏠", 9: "ヒント: ワシの名前を呼んでみろ。もしくは「あれ」をねだってみろ。🎁", 10: "ヒント: 赤くて回転するミーム生物... パドル？ 🧣"}
-                    hints_fr = {1: "Indice : Un cadavre couvert de bijoux qui meurt lentement dans votre salon... 💎🥀", 2: "Indice : Une relation que l'argent ne peut acheter et que vous ne pouvez attirer... 💔", 3: "Indice : Mes chauffeurs de taxi volants... Un a le nez rouge. 🔴🚕", 5: "Indice : Peau dorée, langue de métal, crie quand on la secoue. 🔔😱", 6: "Indice : Un papier qui donne la liberté, mais que vous n'oserez pas montrer au patron. 📄😈", 7: "Indice : Un endroit plus froid que le cœur de votre ex. Ma terre gelée. ❄️🏠", 9: "Indice : Essayez de m'appeler par mon nom, ou demandez 'ça'. 🎁", 10: "Indice : Une créature mème rouge qui tourne... Essayez Padoru ? 🧣"}
+                    if 4 in missing_ids: missing_ids.remove(4) # 排除自己
+                    
+                    # --- 🔥 地獄級毒舌謎語 (Hardcore Roast Hints) ---
+                    hints_tw = {
+                        1: "提示：一種在客廳裡慢慢死去的植物，身上還掛著珠寶。💎🥀",
+                        2: "提示：你的存款買不到，你的性格也吸引不到的那種關係。💔",
+                        3: "提示：一群被我奴役的空中計程車司機，其中有個紅鼻子的。🔴🚕",
+                        5: "提示：有金屬舌頭，腦袋空空，一搖晃就會尖叫的東西。🔔😱",
+                        6: "提示：一張賦予你自由，但你絕對不敢拿給老闆看的紙。📄😈",
+                        7: "提示：比你的心還要冰冷的地方，也是我的老巢。❄️🏠",
+                        9: "提示：試著直接呼喚我的名字，或者跟我要「那個」東西？🎁",
+                        10: "提示：一個紅色的、會旋轉的迷因生物... 試試 Padoru? 🧣"
+                    }
+                    
+                    hints_cn = {
+                        1: "提示：一种在客厅里慢慢死去的植物，身上还挂着珠宝。💎🥀",
+                        2: "提示：你的存款买不到，你的性格也吸引不到的那种关系。💔",
+                        3: "提示：一群被我奴役的空中出租车司机，其中有个红鼻子的。🔴🚕",
+                        5: "提示：有金属舌头，脑袋空空，一摇晃就会尖叫的东西。🔔😱",
+                        6: "提示：一张赋予你自由，但你绝对不敢拿给老板看的纸。📄😈",
+                        7: "提示：比你的心还要冰冷的地方，也是我的老巢。❄️🏠",
+                        9: "提示：试着直接呼唤我的名字，或者跟我要「那个」东西？🎁",
+                        10: "提示：一个红色的、会旋转的迷因生物... 试试 Padoru? 🧣"
+                    }
+                    
+                    hints_en = {
+                        1: "Hint: A corpse dressed in jewelry, dying slowly in your living room. 💎🥀",
+                        2: "Hint: Something money can't buy, and your personality can't attract. 💔",
+                        3: "Hint: My enslaved aerial taxi drivers. One has a glowing nose. 🔴🚕",
+                        5: "Hint: Golden skin, metal tongue, screams when you shake it. 🔔😱",
+                        6: "Hint: A piece of paper that grants freedom, but you're too cowardly to use. 📄😈",
+                        7: "Hint: A place colder than your ex's heart. My frozen wasteland. ❄️🏠",
+                        9: "Hint: Try calling my name directly, or asking for 'it'. 🎁",
+                        10: "Hint: A red, spinning meme creature... Try Padoru? 🧣"
+                    }
+                    
+                    hints_jp = {
+                        1: "ヒント: リビングで宝石を纏ってゆっくり死んでいく植物... 💎🥀",
+                        2: "ヒント: お金で買えないし、その性格じゃ惹きつけられない関係... 💔",
+                        3: "ヒント: 空飛ぶタクシー運転手。赤鼻のやつ... 🔴🚕",
+                        5: "ヒント: 揺らすと叫ぶ金属の舌を持つやつ... 🔔😱",
+                        6: "ヒント: 自由をくれるけど、ボスには絶対見せられない紙... 📄😈",
+                        7: "ヒント: 元恋人の心より寒い場所。わしの不毛の地... ❄️🏠",
+                        9: "ヒント: ワシの名前を呼んでみろ。もしくは「あれ」をねだってみろ。🎁",
+                        10: "ヒント: 赤くて回転するミーム生物... パドル？ 🧣"
+                    }
+
+                    hints_fr = {
+                        1: "Indice : Un cadavre couvert de bijoux qui meurt lentement dans votre salon... 💎🥀",
+                        2: "Indice : Une relation que l'argent ne peut acheter et que vous ne pouvez attirer... 💔",
+                        3: "Indice : Mes chauffeurs de taxi volants... Un a le nez rouge. 🔴🚕",
+                        5: "Indice : Peau dorée, langue de métal, crie quand on la secoue. 🔔😱",
+                        6: "Indice : Un papier qui donne la liberté, mais que vous n'oserez pas montrer au patron. 📄😈",
+                        7: "Indice : Un endroit plus froid que le cœur de votre ex. Ma terre gelée. ❄️🏠",
+                        9: "Indice : Essayez de m'appeler par mon nom, ou demandez 'ça'. 🎁",
+                        10: "Indice : Une créature mème rouge qui tourne... Essayez Padoru ? 🧣"
+                    }
 
                     if not missing_ids:
+                        # 全收集時的文案
                         if "Traditional" in current_lang_key: hint_msg = "太強了！你已經發現了所有秘密！"
                         elif "Simplified" in current_lang_key: hint_msg = "太强了！你已经发现了所有秘密！"
                         elif "Japanese" in current_lang_key: hint_msg = "すごい！全ての秘密を見つけました！"
+                        elif "French" in current_lang_key: hint_msg = "Incroyable ! Vous avez tout trouvé !"
                         else: hint_msg = "Amazing! You found ALL secrets!"
                     else:
                         target = random.choice(missing_ids)
+                        # 根據語言切換提示字典
                         if "Traditional" in current_lang_key: hint_msg = hints_tw.get(target, "繼續許願...")
                         elif "Simplified" in current_lang_key: hint_msg = hints_cn.get(target, "继续许愿...")
                         elif "Japanese" in current_lang_key: hint_msg = hints_jp.get(target, "願い事を続けて...")
                         elif "French" in current_lang_key: hint_msg = hints_fr.get(target, "Continuez à souhaiter...")
                         else: hint_msg = hints_en.get(target, "Keep wishing...")
-                    st.session_state['fixed_hint_msg'] = hint_msg
+                    
+                    # 🔥 這裡使用統一的新變數名
+                    st.session_state['hint_msg_v2'] = hint_msg
                 
-                final_hint = st.session_state['fixed_hint_msg']
-                st.markdown(f"<div class='roast-box gold-mode' style='border-left: 5px solid #FF9800 !important;'>{ui_text['egg_food']}<br><br>👉 <b>{final_hint}</b></div>", unsafe_allow_html=True)
+                final_hint = st.session_state['hint_msg_v2']
+
+                st.markdown(f"""
+                <div class='roast-box gold-mode' style='border-left: 5px solid #FF9800 !important;'>
+                {ui_text['egg_food']}<br><br>
+                👉 <b>{final_hint}</b>
+                </div>
+                """, unsafe_allow_html=True)
 
             # --- 5. 🔔 BELL ---
             elif any(t in user_input_lower for t in triggers_bell):
-                st.markdown("""<style>.slot-machine-container{display:flex;justify-content:center;gap:15px;padding:15px;margin-bottom:20px}.bell-wrapper{position:relative;transform:translateY(-200%);opacity:0;animation:drop-bounce .8s cubic-bezier(.175,.885,.32,1.275) forwards}.bell-wrapper:nth-child(1){animation-delay:0s}.bell-wrapper:nth-child(2){animation-delay:.2s}.bell-wrapper:nth-child(3){animation-delay:.4s}.bell-main{position:relative;width:50px;height:60px;display:flex;flex-direction:column;align-items:center}.bell-anchor{width:100%;height:100%;z-index:2;transform-origin:top center;animation:bell-loop-ring 1.5s ease-in-out infinite .8s}.bell-shape{width:100%;height:80%;background:radial-gradient(circle at 30% 30%,#ffd700,#d4af37);border-radius:15px 15px 5px 5px;border:2px solid #b8860b;position:relative;z-index:2}.bell-shape::after{content:'';position:absolute;bottom:-4px;left:-4px;width:54px;height:8px;background:#d4af37;border-radius:4px;border:2px solid #b8860b;z-index:3}.bell-handle{position:absolute;top:-8px;left:50%;transform:translateX(-50%);width:10px;height:8px;background:#b8860b;border-radius:50% 50% 0 0;border:2px solid #8b6508;border-bottom:none;z-index:1}.bell-clapper{position:absolute;bottom:-6px;left:50%;transform:translateX(-50%);width:8px;height:8px;background:#daa520;border:2px solid #8b6508;border-radius:50%;z-index:1;transform-origin:top center;animation:clapper-loop-swing 1.5s ease-in-out infinite .8s}@keyframes drop-bounce{0%{transform:translateY(-200%);opacity:0}70%{transform:translateY(10%);opacity:1}85%{transform:translateY(-5%)}100%{transform:translateY(0);opacity:1}}@keyframes bell-loop-ring{0%{transform:rotate(0)}25%{transform:rotate(15deg)}75%{transform:rotate(-15deg)}100%{transform:rotate(0)}}@keyframes clapper-loop-swing{0%{transform:translateX(-50%) rotate(0)}25%{transform:translateX(-50%) rotate(-30deg)}75%{transform:translateX(-50%) rotate(30deg)}100%{transform:translateX(-50%) rotate(0)}}</style><div class="slot-machine-container"><div class="bell-wrapper"><div class="bell-main"><div class="bell-anchor"><div class="bell-handle"></div><div class="bell-shape"></div><div class="bell-clapper"></div></div></div></div><div class="bell-wrapper"><div class="bell-main"><div class="bell-anchor"><div class="bell-handle"></div><div class="bell-shape"></div><div class="bell-clapper"></div></div></div></div><div class="bell-wrapper"><div class="bell-main"><div class="bell-anchor"><div class="bell-handle"></div><div class="bell-shape"></div><div class="bell-clapper"></div></div></div></div></div>""", unsafe_allow_html=True)
-                st.markdown(f"<div class='roast-box gold-mode' style='border-left: 5px solid #FFD700 !important; text-align: center;'>{ui_text['egg_bell']}</div>", unsafe_allow_html=True)
+                st.markdown("""
+                <style>
+                    .slot-machine-container { display: flex; justify-content: center; gap: 15px; padding: 15px; margin-bottom: 20px; }
+                    .bell-wrapper { position: relative; transform: translateY(-200%); opacity: 0; animation: drop-bounce 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; }
+                    .bell-wrapper:nth-child(1) { animation-delay: 0s; } .bell-wrapper:nth-child(2) { animation-delay: 0.2s; } .bell-wrapper:nth-child(3) { animation-delay: 0.4s; }
+                    .bell-main { position: relative; width: 50px; height: 60px; display: flex; flex-direction: column; align-items: center; }
+                    .bell-anchor { width: 100%; height: 100%; z-index: 2; transform-origin: top center; animation: bell-loop-ring 1.5s ease-in-out infinite 0.8s; }
+                    .bell-shape { width: 100%; height: 80%; background: radial-gradient(circle at 30% 30%, #ffd700, #d4af37); border-radius: 15px 15px 5px 5px; border: 2px solid #b8860b; position: relative; z-index: 2; }
+                    .bell-shape::after { content: ''; position: absolute; bottom: -4px; left: -4px; width: 54px; height: 8px; background: #d4af37; border-radius: 4px; border: 2px solid #b8860b; z-index: 3; }
+                    .bell-handle { position: absolute; top: -8px; left: 50%; transform: translateX(-50%); width: 10px; height: 8px; background: #b8860b; border-radius: 50% 50% 0 0; border: 2px solid #8b6508; border-bottom: none; z-index: 1; }
+                    .bell-clapper { position: absolute; bottom: -6px; left: 50%; transform: translateX(-50%); width: 8px; height: 8px; background: #daa520; border: 2px solid #8b6508; border-radius: 50%; z-index: 1; transform-origin: top center; animation: clapper-loop-swing 1.5s ease-in-out infinite 0.8s; }
+                    @keyframes drop-bounce { 0% { transform: translateY(-200%); opacity: 0; } 70% { transform: translateY(10%); opacity: 1; } 85% { transform: translateY(-5%); } 100% { transform: translateY(0); opacity: 1; } }
+                    @keyframes bell-loop-ring { 0% { transform: rotate(0deg); } 25% { transform: rotate(15deg); } 75% { transform: rotate(-15deg); } 100% { transform: rotate(0deg); } }
+                    @keyframes clapper-loop-swing { 0% { transform: translateX(-50%) rotate(0deg); } 25% { transform: translateX(-50%) rotate(-30deg); } 75% { transform: translateX(-50%) rotate(30deg); } 100% { transform: translateX(-50%) rotate(0deg); } }
+                </style>
+                
+                <div class="slot-machine-container">
+                    <div class="bell-wrapper"><div class="bell-main"><div class="bell-anchor"><div class="bell-handle"></div><div class="bell-shape"></div><div class="bell-clapper"></div></div></div></div>
+                    <div class="bell-wrapper"><div class="bell-main"><div class="bell-anchor"><div class="bell-handle"></div><div class="bell-shape"></div><div class="bell-clapper"></div></div></div></div>
+                    <div class="bell-wrapper"><div class="bell-main"><div class="bell-anchor"><div class="bell-handle"></div><div class="bell-shape"></div><div class="bell-clapper"></div></div></div></div>
+                </div>
+                """, unsafe_allow_html=True)
 
-            # --- 6. 📅 HOLIDAY ---
+                st.markdown(f"""
+                <div class='roast-box gold-mode' style='border-left: 5px solid #FFD700 !important; text-align: center;'>
+                {ui_text['egg_bell']}
+                </div>
+                """, unsafe_allow_html=True)
+
+            # --- 6. 📅 HOLIDAY (Permit Card) ---
             elif any(t in user_input_lower for t in triggers_holiday):
                 st.balloons()
+                
+                # 🔥 獲取當前語言文本
                 current_ui_lang = st.session_state['ui_language']
-                h_text = HOLIDAY_TEXT.get(current_ui_lang, HOLIDAY_TEXT["English 🇬🇧🇺🇸"])
-                st.markdown(f"""<style>.card-container{{display:flex;justify-content:center;margin:20px 0;perspective:1000px}}.card{{position:relative;width:300px;height:200px;background:linear-gradient(-45deg,#f89b29 0%,#ff0f7b 100%);border-radius:10px;display:flex;align-items:center;justify-content:center;overflow:hidden;transition:all .6s cubic-bezier(.23,1,.320,1);cursor:pointer}}.card svg{{width:48px;fill:#fff;transition:all .6s cubic-bezier(.23,1,.320,1)}}.card:hover{{transform:rotate(-5deg) scale(1.1);box-shadow:0 10px 20px rgba(0,0,0,.4)}}.card__content{{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%) rotate(-45deg);width:100%;height:100%;padding:20px;box-sizing:border-box;background-color:#fff;opacity:0;transition:all .6s cubic-bezier(.23,1,.320,1);display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center}}.card:hover .card__content{{transform:translate(-50%,-50%) rotate(0);opacity:1}}.card__title{{margin:0;font-size:24px;color:#333;font-weight:700;text-transform:uppercase;letter-spacing:1px}}.card__description{{margin:10px 0 0;font-size:14px;color:#777;line-height:1.6}}.card:hover svg{{scale:0;transform:rotate(-45deg)}}</style><div class="card-container"><div class="card"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 6h-4V4c0-1.11-.89-2-2-2h-4c-1.11 0-2 .89-2 2v2H4c-1.11 0-1.99.89-1.99 2L2 19c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2zm-6 0h-4V4h4v2z"/></svg><div class="card__content"><p class="card__title">{h_text['title']}</p><p class="card__description">{h_text['desc_1']}<br>{h_text['desc_2']}<br><b>{h_text['action']}</b><br>{h_text['valid']}</p></div></div></div>""", unsafe_allow_html=True)
-                st.markdown(f"<div class='roast-box gold-mode' style='border-left: 5px solid #FFEB3B !important;'>🎅 <b>Santa's Verdict:</b><br><br>{h_text['roast_title']}<br><b>{h_text['roast_body']}</b> 🎈</div>", unsafe_allow_html=True)
+                h_text = HOLIDAY_TEXT.get(current_ui_lang, HOLIDAY_TEXT["English 🇬🇧🇺🇸"]) # Default to English
+
+                st.markdown(f"""
+                <style>
+                    .card-container {{ display: flex; justify-content: center; margin: 20px 0; perspective: 1000px; }}
+                    .card {{ position: relative; width: 300px; height: 200px; background: linear-gradient(-45deg, #f89b29 0%, #ff0f7b 100% ); border-radius: 10px; display: flex; align-items: center; justify-content: center; overflow: hidden; transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1); cursor: pointer; }}
+                    .card svg {{ width: 48px; fill: #fff; transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1); }}
+                    .card:hover {{ transform: rotate(-5deg) scale(1.1); box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4); }}
+                    .card__content {{ position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%) rotate(-45deg); width: 100%; height: 100%; padding: 20px; box-sizing: border-box; background-color: #fff; opacity: 0; transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1); display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; }}
+                    .card:hover .card__content {{ transform: translate(-50%, -50%) rotate(0deg); opacity: 1; }}
+                    .card__title {{ margin: 0; font-size: 24px; color: #333; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }}
+                    .card__description {{ margin: 10px 0 0; font-size: 14px; color: #777; line-height: 1.6; }}
+                    .card:hover svg {{ scale: 0; transform: rotate(-45deg); }}
+                </style>
+                <div class="card-container">
+                    <div class="card">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 6h-4V4c0-1.11-.89-2-2-2h-4c-1.11 0-2 .89-2 2v2H4c-1.11 0-1.99.89-1.99 2L2 19c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2zm-6 0h-4V4h4v2z"/></svg>
+                        <div class="card__content">
+                            <p class="card__title">{h_text['title']}</p>
+                            <p class="card__description">{h_text['desc_1']}<br>{h_text['desc_2']}<br><b>{h_text['action']}</b><br>{h_text['valid']}</p>
+                        </div>
+                    </div>
+                </div>
+                """, unsafe_allow_html=True)
+
+                st.markdown(f"""
+                <div class='roast-box gold-mode' style='border-left: 5px solid #FFEB3B !important;'>
+                🎅 <b>Santa's Verdict:</b><br><br>
+                {h_text['roast_title']}<br>
+                <b>{h_text['roast_body']}</b> 🎈
+                </div>
+                """, unsafe_allow_html=True)
 
             # --- 7. 🇫🇮 FINLAND ---
             elif any(t in user_input_lower for t in triggers_finland):
-                st.markdown("""<style>.wrapper{width:100%;height:450px;position:relative;text-align:center;display:flex;align-items:center;justify-content:center;overflow:hidden;perspective:1000px;margin-top:10px}.inner{--w:120px;--h:180px;--quantity:6;--translateZ:calc((var(--w) + var(--h)) + 20px);--rotateX:-10deg;position:absolute;width:var(--w);height:var(--h);z-index:2;transform-style:preserve-3d;animation:rotating 25s linear infinite}@keyframes rotating{from{transform:rotateX(var(--rotateX)) rotateY(0)}to{transform:rotateX(var(--rotateX)) rotateY(1turn)}}.card-carousel{position:absolute;border:2px solid rgba(255,255,255,.8);border-radius:12px;overflow:hidden;inset:0;transform:rotateY(calc((360deg / var(--quantity)) * var(--index))) translateZ(var(--translateZ));background:#000;box-shadow:0 0 20px rgba(0,255,128,.3)}.night-sky{position:relative;width:100%;height:100%;background:linear-gradient(to bottom,#020111 0%,#191f45 100%);overflow:hidden}.stars{position:absolute;top:0;left:0;width:100%;height:100%;background-image:radial-gradient(1px 1px at 10% 10%,white,transparent),radial-gradient(1.5px 1.5px at 50% 60%,white,transparent),radial-gradient(1px 1px at 80% 20%,white,transparent);background-size:100% 100%;opacity:.6;animation:twinkle 4s infinite alternate}.aurora-container{position:absolute;top:-50%;left:-50%;width:200%;height:200%;filter:blur(15px);opacity:.8;mix-blend-mode:screen;animation:rotate-aurora 15s linear infinite}.aurora-beam{position:absolute;width:100%;height:100%;background:radial-gradient(ellipse at center,rgba(0,255,170,.5) 0%,rgba(138,43,226,.3) 40%,transparent 70%);transform:scaleY(.6)}.card-carousel:nth-child(even) .aurora-beam{background:radial-gradient(ellipse at center,rgba(0,255,255,.4) 0%,rgba(0,128,0,.3) 50%,transparent 70%);animation-duration:12s}.forest{position:absolute;bottom:0;left:0;width:100%;height:30px;background:#000;z-index:10;clip-path:polygon(0% 100%,10% 40%,20% 100%,30% 20%,40% 100%,50% 50%,60% 100%,70% 30%,80% 100%,90% 60%,100% 100%)}.flag-badge{position:absolute;top:8px;right:8px;width:24px;height:16px;background:white;z-index:25;opacity:.9}.flag-badge::before{content:'';position:absolute;left:7px;top:0;width:5px;height:100%;background:#003580}.flag-badge::after{content:'';position:absolute;top:6px;left:0;width:100%;height:5px;background:#003580}.caption-text{position:absolute;bottom:5px;width:100%;text-align:center;color:rgba(255,255,255,.7);font-family:cursive;font-size:12px;z-index:25}@keyframes twinkle{0%{opacity:.4}100%{opacity:.8}}@keyframes rotate-aurora{0%{transform:rotate(0)}100%{transform:rotate(360deg)}}.santa-flyer{position:absolute;top:30%;left:-60px;width:40px;height:30px;z-index:20;animation:santa-fly-across 8s linear infinite}.santa-body-bob{position:relative;width:100%;height:100%;animation:santa-bob 1.5s ease-in-out infinite alternate}.s-body{position:absolute;width:24px;height:18px;background:#d63031;bottom:4px;left:8px;border-radius:12px}.s-beard{position:absolute;width:20px;height:14px;background:#fff;bottom:4px;left:3px;border-radius:50%;box-shadow:3px 1px 0 #fff}.s-face{position:absolute;width:10px;height:10px;background:#ffe0d0;top:6px;left:8px;border-radius:50%}.s-hat{position:absolute;width:0;height:0;border-left:8px solid transparent;border-right:8px solid transparent;border-bottom:14px solid #d63031;top:-6px;left:4px;transform:rotate(-20deg)}@keyframes santa-fly-across{0%{left:-70px;visibility:visible}40%{left:150%;visibility:visible}41%{visibility:hidden}100%{left:-70px;visibility:hidden}}@keyframes santa-bob{0%{transform:translateY(0)}100%{transform:translateY(-5px)}}</style><div class="wrapper"><div class="inner"><div class="card-carousel" style="--index: 0;"><div class="night-sky"><div class="stars"></div><div class="aurora-container"><div class="aurora-beam"></div></div><div class="santa-flyer" style="animation-delay: 0s;"><div class="santa-body-bob"><div class="s-body"></div><div class="s-beard"></div><div class="s-face"></div><div class="s-hat"></div></div></div><div class="forest"></div><div class="flag-badge"></div><div class="caption-text">Finland</div></div></div><div class="card-carousel" style="--index: 1;"><div class="night-sky"><div class="stars"></div><div class="aurora-container"><div class="aurora-beam"></div></div><div class="santa-flyer" style="animation-delay: 2s;"><div class="santa-body-bob"><div class="s-body"></div><div class="s-beard"></div><div class="s-face"></div><div class="s-hat"></div></div></div><div class="forest"></div><div class="flag-badge"></div><div class="caption-text">Suomi</div></div></div><div class="card-carousel" style="--index: 2;"><div class="night-sky"><div class="stars"></div><div class="aurora-container"><div class="aurora-beam"></div></div><div class="santa-flyer" style="animation-delay: 4s;"><div class="santa-body-bob"><div class="s-body"></div><div class="s-beard"></div><div class="s-face"></div><div class="s-hat"></div></div></div><div class="forest"></div><div class="flag-badge"></div><div class="caption-text">Aurora</div></div></div><div class="card-carousel" style="--index: 3;"><div class="night-sky"><div class="stars"></div><div class="aurora-container"><div class="aurora-beam"></div></div><div class="santa-flyer" style="animation-delay: 1.5s;"><div class="santa-body-bob"><div class="s-body"></div><div class="s-beard"></div><div class="s-face"></div><div class="s-hat"></div></div></div><div class="forest"></div><div class="flag-badge"></div><div class="caption-text">Lapland</div></div></div><div class="card-carousel" style="--index: 4;"><div class="night-sky"><div class="stars"></div><div class="aurora-container"><div class="aurora-beam"></div></div><div class="santa-flyer" style="animation-delay: 5.5s;"><div class="santa-body-bob"><div class="s-body"></div><div class="s-beard"></div><div class="s-face"></div><div class="s-hat"></div></div></div><div class="forest"></div><div class="flag-badge"></div><div class="caption-text">Rovaniemi</div></div></div><div class="card-carousel" style="--index: 5;"><div class="night-sky"><div class="stars"></div><div class="aurora-container"><div class="aurora-beam"></div></div><div class="santa-flyer" style="animation-delay: 3.2s;"><div class="santa-body-bob"><div class="s-body"></div><div class="s-beard"></div><div class="s-face"></div><div class="s-hat"></div></div></div><div class="forest"></div><div class="flag-badge"></div><div class="caption-text">Santa's Home</div></div></div></div></div>""", unsafe_allow_html=True)
-                st.markdown(f"<div class='roast-box gold-mode' style='border-left: 5px solid #003580 !important;'>{ui_text['egg_finland']}</div>", unsafe_allow_html=True)
+                st.markdown("""
+                <style>
+                    .wrapper { width: 100%; height: 450px; position: relative; text-align: center; display: flex; align-items: center; justify-content: center; overflow: hidden; perspective: 1000px; margin-top: 10px; }
+                    .inner { --w: 120px; --h: 180px; --quantity: 6; --translateZ: calc((var(--w) + var(--h)) + 20px); --rotateX: -10deg; position: absolute; width: var(--w); height: var(--h); z-index: 2; transform-style: preserve-3d; animation: rotating 25s linear infinite; }
+                    @keyframes rotating { from { transform: rotateX(var(--rotateX)) rotateY(0); } to { transform: rotateX(var(--rotateX)) rotateY(1turn); } }
+                    .card-carousel { position: absolute; border: 2px solid rgba(255, 255, 255, 0.8); border-radius: 12px; overflow: hidden; inset: 0; transform: rotateY(calc((360deg / var(--quantity)) * var(--index))) translateZ(var(--translateZ)); background: #000; box-shadow: 0 0 20px rgba(0, 255, 128, 0.3); }
+                    .night-sky { position: relative; width: 100%; height: 100%; background: linear-gradient(to bottom, #020111 0%, #191f45 100%); overflow: hidden; }
+                    .stars { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-image: radial-gradient(1px 1px at 10% 10%, white, transparent), radial-gradient(1.5px 1.5px at 50% 60%, white, transparent), radial-gradient(1px 1px at 80% 20%, white, transparent); background-size: 100% 100%; opacity: 0.6; animation: twinkle 4s infinite alternate; }
+                    .aurora-container { position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; filter: blur(15px); opacity: 0.8; mix-blend-mode: screen; animation: rotate-aurora 15s linear infinite; }
+                    .aurora-beam { position: absolute; width: 100%; height: 100%; background: radial-gradient(ellipse at center, rgba(0, 255, 170, 0.5) 0%, rgba(138, 43, 226, 0.3) 40%, transparent 70%); transform: scaleY(0.6); }
+                    .card-carousel:nth-child(even) .aurora-beam { background: radial-gradient(ellipse at center, rgba(0, 255, 255, 0.4) 0%, rgba(0, 128, 0, 0.3) 50%, transparent 70%); animation-duration: 12s; }
+                    .forest { position: absolute; bottom: 0; left: 0; width: 100%; height: 30px; background: #000; z-index: 10; clip-path: polygon(0% 100%, 10% 40%, 20% 100%, 30% 20%, 40% 100%, 50% 50%, 60% 100%, 70% 30%, 80% 100%, 90% 60%, 100% 100%); }
+                    .flag-badge { position: absolute; top: 8px; right: 8px; width: 24px; height: 16px; background: white; z-index: 25; opacity: 0.9; }
+                    .flag-badge::before { content: ''; position: absolute; left: 7px; top: 0; width: 5px; height: 100%; background: #003580; }
+                    .flag-badge::after { content: ''; position: absolute; top: 6px; left: 0; width: 100%; height: 5px; background: #003580; }
+                    .caption-text { position: absolute; bottom: 5px; width: 100%; text-align: center; color: rgba(255,255,255,0.7); font-family: cursive; font-size: 12px; z-index: 25; }
+                    @keyframes twinkle { 0% { opacity: 0.4; } 100% { opacity: 0.8; } }
+                    @keyframes rotate-aurora { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+                    /* Santa */
+                    .santa-flyer { position: absolute; top: 30%; left: -60px; width: 40px; height: 30px; z-index: 20; animation: santa-fly-across 8s linear infinite; }
+                    .santa-body-bob { position: relative; width: 100%; height: 100%; animation: santa-bob 1.5s ease-in-out infinite alternate; }
+                    .s-body { position: absolute; width: 24px; height: 18px; background: #d63031; bottom: 4px; left: 8px; border-radius: 12px; }
+                    .s-beard { position: absolute; width: 20px; height: 14px; background: #fff; bottom: 4px; left: 3px; border-radius: 50%; box-shadow: 3px 1px 0 #fff; }
+                    .s-face { position: absolute; width: 10px; height: 10px; background: #ffe0d0; top: 6px; left: 8px; border-radius: 50%; }
+                    .s-hat { position: absolute; width: 0; height: 0; border-left: 8px solid transparent; border-right: 8px solid transparent; border-bottom: 14px solid #d63031; top: -6px; left: 4px; transform: rotate(-20deg); }
+                    @keyframes santa-fly-across { 0% { left: -70px; visibility: visible; } 40% { left: 150%; visibility: visible; } 41% { visibility: hidden; } 100% { left: -70px; visibility: hidden; } }
+                    @keyframes santa-bob { 0% { transform: translateY(0); } 100% { transform: translateY(-5px); } }
+                </style>
+                <div class="wrapper">
+                    <div class="inner">
+                        <div class="card-carousel" style="--index: 0;"><div class="night-sky"><div class="stars"></div><div class="aurora-container"><div class="aurora-beam"></div></div><div class="santa-flyer" style="animation-delay: 0s;"><div class="santa-body-bob"><div class="s-body"></div><div class="s-beard"></div><div class="s-face"></div><div class="s-hat"></div></div></div><div class="forest"></div><div class="flag-badge"></div><div class="caption-text">Finland</div></div></div>
+                        <div class="card-carousel" style="--index: 1;"><div class="night-sky"><div class="stars"></div><div class="aurora-container"><div class="aurora-beam"></div></div><div class="santa-flyer" style="animation-delay: 2s;"><div class="santa-body-bob"><div class="s-body"></div><div class="s-beard"></div><div class="s-face"></div><div class="s-hat"></div></div></div><div class="forest"></div><div class="flag-badge"></div><div class="caption-text">Suomi</div></div></div>
+                        <div class="card-carousel" style="--index: 2;"><div class="night-sky"><div class="stars"></div><div class="aurora-container"><div class="aurora-beam"></div></div><div class="santa-flyer" style="animation-delay: 4s;"><div class="santa-body-bob"><div class="s-body"></div><div class="s-beard"></div><div class="s-face"></div><div class="s-hat"></div></div></div><div class="forest"></div><div class="flag-badge"></div><div class="caption-text">Aurora</div></div></div>
+                        <div class="card-carousel" style="--index: 3;"><div class="night-sky"><div class="stars"></div><div class="aurora-container"><div class="aurora-beam"></div></div><div class="santa-flyer" style="animation-delay: 1.5s;"><div class="santa-body-bob"><div class="s-body"></div><div class="s-beard"></div><div class="s-face"></div><div class="s-hat"></div></div></div><div class="forest"></div><div class="flag-badge"></div><div class="caption-text">Lapland</div></div></div>
+                        <div class="card-carousel" style="--index: 4;"><div class="night-sky"><div class="stars"></div><div class="aurora-container"><div class="aurora-beam"></div></div><div class="santa-flyer" style="animation-delay: 5.5s;"><div class="santa-body-bob"><div class="s-body"></div><div class="s-beard"></div><div class="s-face"></div><div class="s-hat"></div></div></div><div class="forest"></div><div class="flag-badge"></div><div class="caption-text">Rovaniemi</div></div></div>
+                        <div class="card-carousel" style="--index: 5;"><div class="night-sky"><div class="stars"></div><div class="aurora-container"><div class="aurora-beam"></div></div><div class="santa-flyer" style="animation-delay: 3.2s;"><div class="santa-body-bob"><div class="s-body"></div><div class="s-beard"></div><div class="s-face"></div><div class="s-hat"></div></div></div><div class="forest"></div><div class="flag-badge"></div><div class="caption-text">Santa's Home</div></div></div>
+                    </div>
+                </div>
+                """, unsafe_allow_html=True)
+
+                st.markdown(f"""
+                <div class='roast-box gold-mode' style='border-left: 5px solid #003580 !important;'>
+                {ui_text['egg_finland']}
+                </div>
+                """, unsafe_allow_html=True)
 
             # --- 9. 🎁 SANTA SURPRISE ---
             elif any(t in user_input_lower for t in triggers_surprise):
@@ -794,7 +982,7 @@ else:
                 # 🎵 1. 音樂部分：直接使用 st.audio (簡單直接)
                 # 只有當音樂檔案存在時才播放
                 try:
-                    st.audio("MerryChristmas.mp3", format="audio/mp3", start_time=0, autoplay=True)
+                    st.audio("Merry_Christmas_128KBPS.mp3", format="audio/mp3", start_time=0, autoplay=True)
                 except:
                     st.warning("🎵 Music file not found.")
 
