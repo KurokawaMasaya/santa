@@ -935,7 +935,7 @@ else:
                 st.markdown(f"""
                 <div class='roast-box gold-mode' style='border-left: 5px solid #4CAF50 !important; margin-top: 20px;'>
                     <b>👨‍💻 {ui_text['egg_author']}</b><br><br>
-                    👉 请给 <b>{matched_trigger}</b> 私信一句 <b>{matched_trigger}nb</b> 吧～
+                    👉 请给 <b>{matched_trigger}</b> 私信一句 <b>{matched_trigger}nb</b> 吧（给我点赞助吧😭求求了😭）
                 </div>
                 """, unsafe_allow_html=True)
 
