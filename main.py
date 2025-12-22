@@ -1051,7 +1051,7 @@ else:
                 # 🎵 1. 音樂部分：直接使用 st.audio (簡單直接)
                 # 只有當音樂檔案存在時才播放
                 try:
-                    st.audio("Merry_Christmas_128KBPS.mp3", format="audio/mp3", start_time=0, autoplay=True)
+                    st.audio("MerryChristmas.mp3", format="audio/mp3", start_time=0, autoplay=True)
                 except:
                     st.warning("🎵 Music file not found.")
 
