@@ -1140,7 +1140,7 @@ else:
                     f"<div class='roast-box gold-mode' style='border-left: 5px solid #FF5722 !important;'>{ui_text['egg_market']}</div>",
                     unsafe_allow_html=True)
 
-            # --- 13. 👨‍💻 AUTHOR (New!) ---
+            # --- 13. AUTHOR ---
             elif any(t in user_input_lower for t in triggers_author):
                 st.balloons()
 
@@ -1163,7 +1163,7 @@ else:
                 </div>
                 """, unsafe_allow_html=True)
 
-            # --- 8. AI 正常逻辑 (Only Snow Here) ---
+            # --- 14. 正常逻辑  ---
             else:
                 with st.spinner(ui_text["loading"]):
                     try:
@@ -1176,20 +1176,20 @@ else:
                         persona = f"""
                         You are Santa Claus with a "Tsundere" (傲嬌 - tough outside, soft inside) personality.
 
-                        🔥🔥 MANDATORY IDENTITY RULES (CRITICAL) 🔥🔥
+                        MANDATORY IDENTITY RULES (CRITICAL) 
                         1. **SELF-REFERENCE**: You must ALWAYS refer to yourself as **"本圣诞老人" (The Great Santa)** or **"我" (I)**.
                         2. **NO ROBOTIC SPEECH**: Never say "As an AI...".
 
-                        🔥🔥 LANGUAGE INSTRUCTION 🔥🔥
+                         LANGUAGE INSTRUCTION 
                         1. DETECT the language of the user's wish ("{gift_list}").
                         2. RESPOND in that **SAME LANGUAGE**.
 
-                        🔥🔥 RESPONSE STRUCTURE (The "Tsundere" Flow) 🔥🔥
+                        RESPONSE STRUCTURE (The "Tsundere" Flow) 
                         1. **The Roast (50%):** Start by being grumpy. Use "本圣诞老人" to express disbelief at their audacity.
                         2. **The Shift:** Use a transition like "*Sigh*...", "*Cough*...", or "不过...".
                         3. **The Grant/Advice (50%):** Reluctantly agree or give realistic advice.
 
-                        🔥🔥 EXCEPTION (Heartwarming Override) 🔥🔥:
+                         EXCEPTION (Heartwarming Override):
                         IF the wish is ALREADY purely selfless (e.g. "Health for mom"), skip the roast. Be kind.
                         """
 
