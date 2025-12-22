@@ -13,7 +13,7 @@ LANG_DICT = {
         "subtitle": "Let The Great Santa judge your greedy soul... 😏",
         "sidebar_title": "🎅 Settings",
         "api_help": "Key is used for this session only.",
-        "game_rule": "💡 **How to play:**\nEnter your wishlist. Unlock 12 festive secrets!\n\n**Tip:** Most secrets are related to **Christmas items**, but some are about your *relationship*, *work* or *travel*...",
+        "game_rule": "💡 **How to play:**\nEnter your wishlist. Unlock 13 festive secrets!\n\n**Tip:** Most secrets are related to **Christmas items**, but some are about your *relationship*, *work* or *travel*...",
         "input_placeholder": "Your wishlist (e.g., iPhone 17 pro max, a boyfriend, a girlfriend, lots of money)",
         "button": "🎁 Roast My List",
         "loading": "🎅 Santa is assessing your worth...",
@@ -34,14 +34,15 @@ LANG_DICT = {
         "egg_padoru": "🎵 HASHIRE SORI YO... KAZE NO YOU NI... PADORU PADORU! 🧣",
         "egg_snow": "❄️ Let it snow! The world is quiet and beautiful now...",
         "egg_market": "🍷 Welcome to the Christmas Market! Hot Glühwein & Pretzels! 🥨",
-        "egg_author": "👨‍💻 Creator found! Respect."
+        "egg_author": "👨‍💻 Creator found! Respect.",
+        "egg_money": "💰 HO HO HO! Making it rain! May you be rich in 2026! 💸"
     },
     "Traditional Chinese (繁體中文) 🇹🇼🇭🇰🇲🇴": {
         "title": "🎅 聖誕老人吐槽大會",
         "subtitle": "讓本聖誕老人... 用邏輯粉碎你的夢想... 😏",
         "sidebar_title": "🎅 設定",
         "api_help": "Key 僅用於本次連線，重新整理即消失。",
-        "game_rule": "💡 **玩法說明：**\n輸入願望清單。試著解鎖 12 個節日彩蛋！\n\n**提示：** 彩蛋多與**聖誕物品**有關，但也有關於*感情*、*打工*或*旅行*的...",
+        "game_rule": "💡 **玩法說明：**\n輸入願望清單。試著解鎖 13 個節日彩蛋！\n\n**提示：** 彩蛋多與**聖誕物品**有關，但也有關於*感情*、*打工*或*旅行*的...",
         "input_placeholder": "許願吧 (例如：iPhone 17 pro max、男朋友、女朋友、很多錢...)",
         "button": "🎁 吐槽我的願望",
         "loading": "🎅 本聖誕老人正在審視你的人生...",
@@ -55,21 +56,22 @@ LANG_DICT = {
         "hunt_title": "🏆 彩蛋收集進度",
         "egg_single": "本聖誕老人嘆氣... 沒對象？聽聽這首歌吧。",
         "egg_deer": "看！是魯道夫在爬你的螢幕！🔴🦌",
-        "egg_food": "真香！既然你請我吃大餐，偷偷給你個線索：",
+        "egg_food": "真香！既然你請我吃大餐，本聖誕老人心情好，賞你一個線索：",
         "egg_bell": "叮叮噹！🔔 這是幸運的聲音！",
         "egg_finland": "Tervetuloa! (歡迎！) 你竟然找到了我的老家——芬蘭 (Finland)！🇫🇮\n這裡的桑拿房已經熱好了，快來羅瓦涅米找我玩吧！",
         "egg_surprise": "🎁 驚喜！你竟然直接召喚了本尊！",
         "egg_padoru": "🎵 走れ逸れよ... 風のように... PADORU PADORU !!! 🧣",
         "egg_snow": "❄️ 讓雪落下吧！整個世界都安靜了...",
         "egg_market": "🍷 歡迎來到聖誕集市！來杯熱紅酒配扭結餅吧！🥨",
-        "egg_author": "👨‍💻 作者出現！致敬時刻..."
+        "egg_author": "👨‍💻 作者出現！致敬時刻...",
+        "egg_money": "💰 吼吼吼！下金幣雨啦！祝你 2026 暴富！💸"
     },
     "Simplified Chinese (简体中文) 🇨🇳": {
         "title": "🎅 圣诞老人吐槽大会",
         "subtitle": "让本圣诞老人... 用逻辑粉碎你的梦想... 😏",
         "sidebar_title": "🎅 设置",
         "api_help": "Key 仅用于本次会话。",
-        "game_rule": "💡 **玩法说明：**\n输入愿望清单。试着解锁 12 个节日彩蛋！\n\n**提示：** 彩蛋多与**圣诞物品**有关，但也有关于*感情*、*打工*或*旅行*的...",
+        "game_rule": "💡 **玩法说明：**\n输入愿望清单。试着解锁 13 个节日彩蛋！\n\n**提示：** 彩蛋多与**圣诞物品**有关，但也有关于*感情*、*打工*或*旅行*的...",
         "input_placeholder": "许愿吧 (例如：iPhone 17 pro max、男朋友、女朋友、很多钱...)",
         "button": "🎁 吐槽我的愿望",
         "loading": "🎅 本圣诞老人正在审视你的人生...",
@@ -83,14 +85,73 @@ LANG_DICT = {
         "hunt_title": "🏆 彩蛋收集进度",
         "egg_single": "本圣诞老人叹气... 没对象？听听这首歌吧。",
         "egg_deer": "看！是鲁道夫在爬你的屏幕！🔴🦌",
-        "egg_food": "真香！既然你请我吃大餐，偷偷给你个线索：",
+        "egg_food": "真香！既然你请我吃大餐，本圣诞老人心情好，赏你一个线索：",
         "egg_bell": "叮叮当！🔔 这是幸运的声音！",
         "egg_finland": "Tervetuloa! (欢迎！) 你竟然找到了我的老家——芬兰 (Finland)！🇫🇮\n这里的桑拿房已经热好了，快来罗瓦涅米找我玩吧！",
         "egg_surprise": "🎁 惊喜！你竟然直接召唤了本尊！",
         "egg_padoru": "🎵 走れ逸れよ... 風のように... PADORU PADORU !!! 🧣",
         "egg_snow": "❄️ 让雪落下吧！整个世界都安静了...",
         "egg_market": "🍷 欢迎来到圣诞集市！来杯热红酒配扭结饼吧！🥨",
-        "egg_author": "👨‍💻 作者出现！致敬时刻..."
+        "egg_author": "👨‍💻 作者出现！致敬时刻...",
+        "egg_money": "💰 吼吼吼！下金币雨啦！祝你 2026 暴富！💸"
+    },
+    "Japanese (日本語) 🇯🇵": {
+        "title": "🎅 サンタの毒舌部屋",
+        "subtitle": "ワシが... 論理であなたの夢を打ち砕いてやろう... 😏",
+        "sidebar_title": "🎅 設定",
+        "api_help": "キーはこのセッションでのみ使用されます。",
+        "game_rule": "💡 **遊び方:**\n欲しいものを入力して、13個のクリスマスの秘密を探そう！\n\n**ヒント:** ほとんどは**クリスマスアイテム**ですが、*恋愛*や*仕事*、*旅行*に関するものも...",
+        "input_placeholder": "欲しいものリスト (例: iPhone 17 pro max, 彼氏, 彼女, 大金...)",
+        "button": "🎁 リストを斬る",
+        "loading": "🎅 サンタがあなたの価値を査定中...",
+        "error_no_key": "先にAPIキーを入力してください！",
+        "error_no_text": "何か書いて！白紙じゃツッコミようがないよ。",
+        "success_title": "🔔 判決が出ました！",
+        "footer": "Powered by Google Gemini 3.0 Pro",
+        "secret_success": "🎅 ホーホーホー！ツリーを見つけたな！",
+        "secret_title": "### メリークリスマス！！！秘密の入り口はこちら 🎄",
+        "secret_button": "👉 クリックしてポータルに入る",
+        "hunt_title": "🏆 シークレットハント進捗",
+        "egg_single": "サンタのため息... 恋人がいない？この曲でも聴きなさい。",
+        "egg_deer": "見ろ！ルドルフが画面を這っているぞ！🔴🦌",
+        "egg_food": "うまい！食事のお礼にヒントをやろう：",
+        "egg_bell": "リンリン！🔔 幸運の音だ！",
+        "egg_finland": "Tervetuloa! (ようこそ!) ワシの故郷、フィンランドを見つけたな！🇫🇮\nサウナは温まっているぞ、ロヴァニエミにおいで！",
+        "egg_surprise": "🎁 サプライズ！ワシを直接召喚するとはな！",
+        "egg_padoru": "🎵 走れ逸れよ... 風のように... パドル パドル !!! 🧣",
+        "egg_snow": "❄️ 雪よ降れ！世界が静寂に包まれる...",
+        "egg_market": "🍷 クリスマスマーケットへようこそ！ホットワインはいかが？ 🥨",
+        "egg_author": "👨‍💻 作者降臨！リスペクト...",
+        "egg_money": "💰 金の雨だ！2026年はお金持ちになれますように！💸"
+    },
+    "French 🇫🇷": {
+        "title": "🎅 Salle de Rôtissage du Père Noël",
+        "subtitle": "Laissez le Père Noël écraser vos rêves... 😏",
+        "sidebar_title": "🎅 Paramètres",
+        "api_help": "La clé est utilisée uniquement pour cette session.",
+        "game_rule": "💡 **Comment jouer:**\nEntrez votre liste. Débloquez 13 secrets festifs !\n\n**Astuce :** La plupart sont liés à **Noël**, mais certains concernent *l'amour*, *le travail* ou *le voyage*...",
+        "input_placeholder": "Votre liste (ex: iPhone 17 pro max, un petit ami, une petite amie, beaucoup d'argent)",
+        "button": "🎁 Rôtir ma liste",
+        "loading": "🎅 Le Père Noël évalue votre valeur...",
+        "error_no_key": "Veuillez d'abord entrer votre clé API !",
+        "error_no_text": "Écrivez quelque chose ! Je ne peux pas rôtir une page blanche.",
+        "success_title": "🔔 Le verdict est là !",
+        "footer": "Propulsé par Google Gemini 3.0 Pro",
+        "secret_success": "🎅 Ho ho ho ! Vous avez trouvé l'arbre !",
+        "secret_title": "### JOYEUX NOËL !!! Voici le portail secret 🎄",
+        "secret_button": "👉 CLIQUEZ POUR ENTRER",
+        "hunt_title": "🏆 Chasse aux Secrets",
+        "egg_single": "Le Père Noël soupire... Pas d'amour ? Écoute ça.",
+        "egg_deer": "Regarde ! C'est Rodolphe qui grimpe sur ton écran ! 🔴🦌",
+        "egg_food": "Délicieux ! Voici un indice pour le prochain secret :",
+        "egg_bell": "Dring Dring ! 🔔 C'est le son de la chance !",
+        "egg_finland": "Tervetuloa ! Tu as trouvé ma maison : la Finlande ! 🇫🇮\nLe sauna est prêt, viens me voir à Rovaniemi !",
+        "egg_surprise": "🎁 SURPRISE ! Vous m'avez invoqué directement !",
+        "egg_padoru": "🎵 PADORU PADORU !!! 🧣",
+        "egg_snow": "❄️ Qu'il neige ! Le monde est calme maintenant...",
+        "egg_market": "🍷 Bienvenue au Marché de Noël ! Vin chaud et bretzels ! 🥨",
+        "egg_author": "👨‍💻 Vous avez trouvé le créateur ! Respect...",
+        "egg_money": "💰 C'est la pluie d'or ! Soyez riche en 2026 ! 💸"
     }
 }
 
@@ -121,6 +182,24 @@ HOLIDAY_TEXT = {
         "valid": "(有效期：永久)",
         "roast_title": "不想上班？想放假？",
         "roast_body": "准奏！拿好這張【摸魚券】，告訴老闆是我批准的！"
+    },
+    "Japanese (日本語) 🇯🇵": {
+        "title": "🎫 サボり許可証",
+        "desc_1": "働きすぎです...",
+        "desc_2": "サンタの特別命令：",
+        "action": "今すぐ仕事を休め！",
+        "valid": "(有効期限：永遠)",
+        "roast_title": "休みが欲しい？",
+        "roast_body": "許可する！このチケットを上司に見せてきなさい！"
+    },
+    "French 🇫🇷": {
+        "title": "🎫 PERMIS DE PAUSE",
+        "desc_1": "Tu as l'air épuisé...",
+        "desc_2": "Ordre du Père Noël :",
+        "action": "ARRÊTE DE TRAVAILLER !",
+        "valid": "(Valide : Toujours)",
+        "roast_title": "Besoin de vacances ?",
+        "roast_body": "Accordé ! Prends ce billet et dis à ton patron que c'est de ma part."
     }
 }
 
@@ -130,6 +209,18 @@ CULTURE_EXPLAINER_TEXT = {
         "msg": "You typed a keyword related to the 'Western Festival Ban'.",
         "desc": "In recent years, some local departments in China have issued notices banning Christmas to 'resist cultural invasion'. This is a satire on that bureaucracy. Switch to **Chinese** language to see the full interactive document!",
         "btn": "Got it"
+    },
+    "Japanese (日本語) 🇯🇵": {
+        "title": "🥚 隠しイースターエッグ発見",
+        "msg": "「洋節（西洋の祭り）」に関するキーワードが検出されました。",
+        "desc": "近年、中国の一部の地方部門が「文化侵略を防ぐ」としてクリスマスを禁止する通知を出しています。これはその形式主義に対する風刺です。**中国語**に切り替えると、完全なインタラクティブ体験ができます！",
+        "btn": "わかった"
+    },
+    "French 🇫🇷": {
+        "title": "🥚 OEUF DE PÂQUES CACHÉ",
+        "msg": "Vous avez tapé un mot-clé lié à l'interdiction des 'Fêtes Occidentales'.",
+        "desc": "Récemment, certains départements locaux en Chine ont banni Noël pour 'résister à l'invasion culturelle'. Ceci est une satire de cette bureaucratie. Passez en **Chinois** pour voir le document complet !",
+        "btn": "Compris"
     }
 }
 
@@ -138,7 +229,7 @@ if 'language_selected' not in st.session_state:
 if 'ui_language' not in st.session_state:
     st.session_state['ui_language'] = "English 🇬🇧🇺🇸"
 
-MAIN_EGG_IDS = {1, 2, 3, 4, 5, 6, 7, 9, 10, 11, 12, 13}
+MAIN_EGG_IDS = {1, 2, 3, 4, 5, 6, 7, 9, 10, 11, 12, 13, 14}
 
 if 'found_ids' not in st.session_state:
     st.session_state['found_ids'] = set() 
@@ -221,9 +312,9 @@ def trigger_jackpot_effect():
 add_christmas_magic()
 
 def update_hunt_progress(placeholder_obj, ui_text):
-    main_targets = {1, 2, 3, 4, 5, 6, 7, 9, 10, 11, 12, 13}
+    main_targets = {1, 2, 3, 4, 5, 6, 7, 9, 10, 11, 12, 13, 14}
     found_main_count = len([x for x in st.session_state['found_ids'] if x in main_targets])
-    total_eggs = 12
+    total_eggs = 13
     
     with placeholder_obj.container():
         st.markdown('<div class="hunt-panel">', unsafe_allow_html=True)
@@ -248,6 +339,7 @@ def update_hunt_progress(placeholder_obj, ui_text):
         medals += "❄️ " if 11 in st.session_state['found_ids'] else "⚪ " 
         medals += "🍷 " if 12 in st.session_state['found_ids'] else "⚪ "
         medals += "👨‍💻 " if 13 in st.session_state['found_ids'] else "⚪ "
+        medals += "💰 " if 14 in st.session_state['found_ids'] else "⚪ "
         
         if 8 in st.session_state['found_ids']:
             medals += "👁️ " 
@@ -271,13 +363,14 @@ if not st.session_state['language_selected']:
     st.title("Welcome to Santa's Roast Room")
     st.subheader("Please select your language:")
     st.markdown("---")
-    col1, col2, col3 = st.columns(3)
+    col1, col2 = st.columns(2)
     with col1:
         st.button("English 🇬🇧🇺🇸", use_container_width=True, on_click=set_language, args=("English 🇬🇧🇺🇸",))
-    with col2:
         st.button("Simplified Chinese 🇨🇳", use_container_width=True, on_click=set_language, args=("Simplified Chinese (简体中文) 🇨🇳",))
-    with col3:
+    with col2:
         st.button("Traditional Chinese 🇹🇼🇭🇰🇲🇴", use_container_width=True, on_click=set_language, args=("Traditional Chinese (繁體中文) 🇹🇼🇭🇰🇲🇴",))
+        st.button("Japanese 🇯🇵", use_container_width=True, on_click=set_language, args=("Japanese (日本語) 🇯🇵",))
+    st.button("French 🇫🇷", use_container_width=True, on_click=set_language, args=("French 🇫🇷",))
 
 else:
     current_lang_key = st.session_state['ui_language']
@@ -420,6 +513,89 @@ else:
                 "auteur", "créateur", "développeur"
             ]
 
+            triggers_money = [
+                "money", "cash", "rich", "wealth", "gold", "coin",
+                "钱", "发财", "暴富", "金币", "工资", "奖金",
+                "錢", "發財", "金幣", "薪水",
+                "お金", "金持ち", "富", "金貨",
+                "argent", "riche", "or", "monnaie"
+            ]
+
+            hints_tw = {
+                1: ["提示：一種在客廳裡慢慢死去的植物，身上還掛著珠寶。💎🥀", "提示：綠色的、尖尖的，下面通常堆滿了你買不起的禮物。🎄"],
+                2: ["提示：你的存款買不到，你的性格也吸引不到的那種關係。💔", "提示：如果你不想一個人過節，你通常會許願想要一個...？👫"],
+                3: ["提示：一群被我奴役的空中計程車司機，其中有個紅鼻子的。🔴🚕", "提示：誰拉著我的雪橇？不是馬，也不是狗。🦌"],
+                5: ["提示：有金屬舌頭，腦袋空空，一搖晃就會尖叫的東西。🔔😱", "提示：Jingle _____, Jingle _____, Jingle all the way! 🎵"],
+                6: ["提示：一張賦予你自由，但你絕對不敢拿給老闆看的紙。📄😈", "提示：社畜最渴望的東西，除了錢，就是...？🏖️"],
+                7: ["提示：比你的心還要冰冷的地方，也是我的老巢。❄️🏠", "提示：想要找我？來北歐的千湖之國吧！🇫🇮"],
+                9: ["提示：試著直接呼喚我的名字？🎅", "提示：除了'禮物'，你還可以跟我要一個'盒子' (Box/Gift)？🎁"],
+                10: ["提示：一個紅色的、會旋轉的二次元生物... 🧣", "提示：Hashire sori yo... 試試看聖誕帽？"],
+                11: ["提示：我從天上掉下來，又白又冷... ❄️", "提示：白色聖誕節必備的天氣元素是什麼？"],
+                12: ["提示：熱紅酒、扭結餅、人擠人的地方... 🍷", "提示：聖誕節要買東西、逛街，你會去哪裡？(Market)"],
+                13: ["提示：是誰創造了我？(關於作者) 👨‍💻", "提示：輸入 '作者' 或 '開發者' 來膜拜他吧！"],
+                14: ["提示：除了愛，你最想從天上掉下來的東西是什麼？💰", "提示：輸入 '錢' 或 '發財' 試試？"]
+            }
+            
+            hints_cn = {
+                1: ["提示：一种在客厅里慢慢死去的植物，身上还挂着珠宝。💎🥀", "提示：绿色的、尖尖的，下面通常堆满礼物。🎄"],
+                2: ["提示：你的存款买不到，你的性格也吸引不到的那种关系。💔", "提示：不想光棍过节？那你想要...？👫"],
+                3: ["提示：一群被我奴役的空中出租车司机，其中有个红鼻子的。🔴🚕", "提示：鲁道夫是什么动物？🦌"],
+                5: ["提示：有金属舌头，脑袋空空，一摇晃就会尖叫的东西。🔔", "提示：叮叮当，叮叮当...？"],
+                6: ["提示：一张赋予你自由，但你绝对不敢拿给老板看的纸。📄", "提示：不想工作！我想...？(Holiday)"],
+                7: ["提示：比你的心还要冰冷的地方，也是我的老巢。❄️", "提示：圣诞老人住在哪个北欧国家？🇫🇮"],
+                9: ["提示：试着直接呼唤我的名字？🎅", "提示：输入 '礼物' 或 '礼盒' 试试？🎁"],
+                10: ["提示：一个红色的、会旋转的二次元生物... 🧣", "提示：输入 '圣诞帽' 试试？"],
+                11: ["提示：我从天上掉下来，又白又冷... ❄️", "提示：白色圣诞节不能少了这个天气。"],
+                12: ["提示：热红酒、扭结饼、人挤人的地方... 🍷", "提示：圣诞节逛街去哪里？(集市)"],
+                13: ["提示：是谁创造了我？(关于作者) 👨‍💻", "提示：输入 '乔哥' 或 '作者' 看看？"],
+                14: ["提示：除了爱，你最想从天上掉下来的东西是什么？💰", "提示：输入 '钱' 或 '发财' 试试？"]
+            }
+            
+            hints_en = {
+                1: ["Hint: The green thing dying in your living room... 🎄", "Hint: Where do you put the presents under?"],
+                2: ["Hint: Something money can't buy, and you can't attract. 💔", "Hint: Don't want to be single? You want a...?"],
+                3: ["Hint: My aerial taxi drivers. One has a red nose. 🔴", "Hint: Rudolph is a...?"],
+                5: ["Hint: Jingle ____, Jingle ____? 🔔", "Hint: Metal tongue, screams when shaken."],
+                6: ["Hint: Escape from your boss! 📄", "Hint: You need a vacation/holiday!"],
+                7: ["Hint: My frozen home country. 🇫🇮", "Hint: Start with F, ends with inland."],
+                9: ["Hint: Call my name directly! (Santa)", "Hint: Ask for a 'Gift' or 'Present'."],
+                10: ["Hint: Red, spinning, anime meme... 🧣", "Hint: Try Christmas hat?"],
+                11: ["Hint: White, cold, falls from the sky. ❄️", "Hint: Let it ____!"],
+                12: ["Hint: Glühwein, pretzels, shopping stalls... 🍷", "Hint: Christmas ______ (Place to shop)."],
+                13: ["Hint: Who coded me? 👨‍💻", "Hint: The Creator / Developer."],
+                14: ["Hint: What do you want most besides love? 💰", "Hint: Type 'Money' or 'Rich'!"]
+            }
+            
+            hints_jp = {
+                1: ["ヒント: リビングで宝石を纏ってゆっくり死んでいく植物... 💎🥀", "ヒント: プレゼントはどこに置く？"],
+                2: ["ヒント: お金で買えないし、その性格じゃ惹きつけられない関係... 💔", "ヒント: 独り身はいや？"],
+                3: ["ヒント: 空飛ぶタクシー運転手。赤鼻のやつ... 🔴🚕", "ヒント: ルドルフは何の動物？"],
+                5: ["ヒント: 揺らすと叫ぶ金属の舌を持つやつ... 🔔😱", "ヒント: ジングル____？"],
+                6: ["ヒント: 自由をくれるけど、ボスには絶対見せられない紙... 📄😈", "ヒント: 働きたくない...！"],
+                7: ["ヒント: 元恋人の心より寒い場所。わしの不毛の地... ❄️🏠", "ヒント: サンタはどこに住んでいる？🇫🇮"],
+                9: ["ヒント: ワシの名前を呼んでみろ。🎅", "ヒント: プレゼントが欲しい？"],
+                10: ["ヒント: 赤くて回転するミーム生物... 🧣", "ヒント: サンタ帽を試してみて？"],
+                11: ["ヒント: 空から落ちてくる、白くて冷たいもの... ❄️", "ヒント: ホワイトクリスマスの主役。"],
+                12: ["ヒント: ホットワイン、プレッツェル、屋台... 🍷", "ヒント: 買い物に行こう！(Market)"],
+                13: ["ヒント: 私を作ったのは誰？ (作者について) 👨‍💻", "ヒント: 開発者は誰？"],
+                14: ["ヒント: 愛以外で一番欲しいものは？💰", "ヒント: 「お金」と入力してみて！"]
+            }
+
+            hints_fr = {
+                1: ["Indice : Un cadavre couvert de bijoux qui meurt lentement dans votre salon... 💎🥀", "Indice : Où mettez-vous les cadeaux ?"],
+                2: ["Indice : Une relation que l'argent ne peut acheter et que vous ne pouvez attirer... 💔", "Indice : Vous ne voulez pas être seul ?"],
+                3: ["Indice : Mes chauffeurs de taxi volants... Un a le nez rouge. 🔴🚕", "Indice : Rodolphe est un...?"],
+                5: ["Indice : Peau dorée, langue de métal, crie quand on la secoue. 🔔😱", "Indice : Dring Dring !"],
+                6: ["Indice : Un papier qui donne la liberté, mais que vous n'oserez pas montrer au patron. 📄😈", "Indice : Besoin de vacances !"],
+                7: ["Indice : Un endroit plus froid que le cœur de votre ex. Ma terre gelée. ❄️🏠", "Indice : Où habite le Père Noël ? 🇫🇮"],
+                9: ["Indice : Essayez de m'appeler par mon nom, ou demandez 'ça'. 🎁", "Indice : Demandez un cadeau !"],
+                10: ["Indice : Une créature mème rouge qui tourne... 🧣", "Indice : Essayez le chapeau de Père Noël ?"],
+                11: ["Indice : Je tombe du ciel, blanche et froide... ❄️", "Indice : Il neige !"],
+                12: ["Indice : Vin chaud, bretzels et foule... 🍷", "Indice : Le Marché de Noël !"],
+                13: ["Indice : Qui m'a créé ? (À propos du développeur) 👨‍💻", "Indice : Le Créateur."],
+                14: ["Indice : Que voulez-vous le plus à part l'amour ? 💰", "Indice : Tapez 'Argent' !"]
+            }
+
             new_discovery = False
 
             def get_next_hint_msg():
@@ -429,53 +605,14 @@ else:
                     return None
                 
                 target = random.choice(missing_ids)
-                
-                hints_tw = {
-                    1: ["提示：一種在客廳裡慢慢死去的植物，身上還掛著珠寶。💎🥀", "提示：綠色的、尖尖的，下面通常堆滿了你買不起的禮物。🎄"],
-                    2: ["提示：你的存款買不到，你的性格也吸引不到的那種關係。💔", "提示：如果你不想一個人過節，你通常會許願想要一個...？👫"],
-                    3: ["提示：一群被我奴役的空中計程車司機，其中有個紅鼻子的。🔴🚕", "提示：誰拉著我的雪橇？不是馬，也不是狗。🦌"],
-                    5: ["提示：有金屬舌頭，腦袋空空，一搖晃就會尖叫的東西。🔔😱", "提示：Jingle _____, Jingle _____, Jingle all the way! 🎵"],
-                    6: ["提示：一張賦予你自由，但你絕對不敢拿給老闆看的紙。📄😈", "提示：社畜最渴望的東西，除了錢，就是...？🏖️"],
-                    7: ["提示：比你的心還要冰冷的地方，也是我的老巢。❄️🏠", "提示：想要找我？來北歐的千湖之國吧！🇫🇮"],
-                    9: ["提示：試著直接呼喚我的名字？🎅", "提示：除了'禮物'，你還可以跟我要一個'盒子' (Box/Gift)？🎁"],
-                    10: ["提示：一個紅色的、會旋轉的二次元生物... 🧣", "提示：Hashire sori yo... 試試看聖誕帽？"],
-                    11: ["提示：我從天上掉下來，又白又冷... ❄️", "提示：白色聖誕節必備的天氣元素是什麼？"],
-                    12: ["提示：熱紅酒、扭結餅、人擠人的地方... 🍷", "提示：聖誕節要買東西、逛街，你會去哪裡？(Market)"],
-                    13: ["提示：是誰創造了我？(關於作者) 👨‍💻", "提示：輸入 '作者' 或 '開發者' 來膜拜他吧！"]
-                }
-                
-                hints_cn = {
-                    1: ["提示：一种在客厅里慢慢死去的植物，身上还挂着珠宝。💎🥀", "提示：绿色的、尖尖的，下面通常堆满礼物。🎄"],
-                    2: ["提示：你的存款买不到，你的性格也吸引不到的那种关系。💔", "提示：不想光棍过节？那你想要...？👫"],
-                    3: ["提示：一群被我奴役的空中出租车司机，其中有个红鼻子的。🔴🚕", "提示：鲁道夫是什么动物？🦌"],
-                    5: ["提示：有金属舌头，脑袋空空，一摇晃就会尖叫的东西。🔔", "提示：叮叮当，叮叮当...？"],
-                    6: ["提示：一张赋予你自由，但你绝对不敢拿给老板看的纸。📄", "提示：不想工作！我想...？(Holiday)"],
-                    7: ["提示：比你的心还要冰冷的地方，也是我的老巢。❄️", "提示：圣诞老人住在哪个北欧国家？🇫🇮"],
-                    9: ["提示：试着直接呼唤我的名字？🎅", "提示：输入 '礼物' 或 '礼盒' 试试？🎁"],
-                    10: ["提示：一个红色的、会旋转的二次元生物... 🧣", "提示：输入 '圣诞帽' 试试？"],
-                    11: ["提示：我从天上掉下来，又白又冷... ❄️", "提示：白色圣诞节不能少了这个天气。"],
-                    12: ["提示：热红酒、扭结饼、人挤人的地方... 🍷", "提示：圣诞节逛街去哪里？(集市)"],
-                    13: ["提示：是谁创造了我？(关于作者) 👨‍💻", "提示：输入 '乔哥' 或 '作者' 看看？"]
-                }
-                
-                hints_en = {
-                    1: ["Hint: The green thing dying in your living room... 🎄", "Hint: Where do you put the presents under?"],
-                    2: ["Hint: Something money can't buy, and you can't attract. 💔", "Hint: Don't want to be single? You want a...?"],
-                    3: ["Hint: My aerial taxi drivers. One has a red nose. 🔴", "Hint: Rudolph is a...?"],
-                    5: ["Hint: Jingle ____, Jingle ____? 🔔", "Hint: Metal tongue, screams when shaken."],
-                    6: ["Hint: Escape from your boss! 📄", "Hint: You need a vacation/holiday!"],
-                    7: ["Hint: My frozen home country. 🇫🇮", "Hint: Start with F, ends with inland."],
-                    9: ["Hint: Call my name directly! (Santa)", "Hint: Ask for a 'Gift' or 'Present'."],
-                    10: ["Hint: Red, spinning, anime meme... 🧣", "Hint: Try Christmas hat?"],
-                    11: ["Hint: White, cold, falls from the sky. ❄️", "Hint: Let it ____!"],
-                    12: ["Hint: Glühwein, pretzels, shopping stalls... 🍷", "Hint: Christmas ______ (Place to shop)."],
-                    13: ["Hint: Who coded me? 👨‍💻", "Hint: The Creator / Developer."]
-                }
-                
                 if "Traditional" in current_lang_key:
                     return random.choice(hints_tw.get(target, ["繼續許願..."]))
                 elif "Simplified" in current_lang_key:
                     return random.choice(hints_cn.get(target, ["继续许愿..."]))
+                elif "Japanese" in current_lang_key:
+                    return random.choice(hints_jp.get(target, ["願い事を続けて..."]))
+                elif "French" in current_lang_key:
+                    return random.choice(hints_fr.get(target, ["Continuez à souhaiter..."]))
                 else:
                     return random.choice(hints_en.get(target, ["Keep wishing..."]))
 
@@ -827,6 +964,35 @@ else:
                     👉 请给 <b>{matched_trigger}</b> 私信一句 <b>{matched_trigger}nb</b> 吧～
                 </div>
                 """, unsafe_allow_html=True)
+
+            elif any(t in user_input_lower for t in triggers_money):
+                if 14 not in st.session_state['found_ids']: 
+                    st.session_state['found_ids'].add(14)
+                    new_discovery = True
+                    st.toast(get_next_hint_msg(), icon="💡")
+                st.balloons()
+                st.markdown("""
+                <style>
+                    .money-rain { position: fixed; top: -10px; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 9999; }
+                    .money { position: absolute; top: -100px; font-size: 24px; animation: fall-money 3s linear infinite; }
+                    @keyframes fall-money { 0% { transform: translateY(0) rotate(0deg); opacity: 1; } 100% { transform: translateY(100vh) rotate(360deg); opacity: 0; } }
+                </style>
+                <div class="money-rain" id="moneyRain"></div>
+                <script>
+                    const container = document.getElementById('moneyRain');
+                    const symbols = ['💸', '💰', '🪙', '💵', '🤑'];
+                    for(let i=0; i<50; i++) {
+                        const el = document.createElement('div');
+                        el.classList.add('money');
+                        el.innerText = symbols[Math.floor(Math.random() * symbols.length)];
+                        el.style.left = Math.random() * 100 + 'vw';
+                        el.style.animationDuration = Math.random() * 2 + 2 + 's';
+                        el.style.animationDelay = Math.random() * 2 + 's';
+                        container.appendChild(el);
+                    }
+                </script>
+                """, unsafe_allow_html=True)
+                st.markdown(f"<div class='roast-box gold-mode' style='border-left: 5px solid #FFD700 !important;'>{ui_text['egg_money']}</div>", unsafe_allow_html=True)
 
             else:
                 with st.spinner(ui_text["loading"]):
