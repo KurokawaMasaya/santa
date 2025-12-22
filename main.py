@@ -92,6 +92,62 @@ LANG_DICT = {
         "egg_market": "🍷 欢迎来到圣诞集市！来杯热红酒配扭结饼吧！🥨",
         "egg_author": "👨‍💻 作者出现！致敬时刻..."
     },
+    "Japanese (日本語) 🇯🇵": {
+        "title": "🎅 サンタの毒舌部屋",
+        "subtitle": "ワシが... 論理であなたの夢を打ち砕いてやろう... 😏",
+        "sidebar_title": "🎅 設定",
+        "api_help": "キーはこのセッションでのみ使用されます。",
+        "game_rule": "💡 **遊び方:**\n欲しいものを入力して、12個のクリスマスの秘密を探そう！\n\n**ヒント:** ほとんどは**クリスマスアイテム**ですが、*恋愛*や*仕事*、*旅行*に関するものも...",
+        "input_placeholder": "欲しいものリスト (例: iPhone 17 pro max, 彼氏, 彼女, 大金...)",
+        "button": "🎁 リストを斬る",
+        "loading": "🎅 サンタがあなたの価値を査定中...",
+        "error_no_key": "先にAPIキーを入力してください！",
+        "error_no_text": "何か書いて！白紙じゃツッコミようがないよ。",
+        "success_title": "🔔 判決が出ました！",
+        "footer": "Powered by Google Gemini 3.0 Pro",
+        "secret_success": "🎅 ホーホーホー！ツリーを見つけたな！",
+        "secret_title": "### メリークリスマス！！！秘密の入り口はこちら 🎄",
+        "secret_button": "👉 クリックしてポータルに入る",
+        "hunt_title": "🏆 シークレットハント進捗",
+        "egg_single": "サンタのため息... 恋人がいない？この曲でも聴きなさい。",
+        "egg_deer": "見ろ！ルドルフが画面を這っているぞ！🔴🦌",
+        "egg_food": "うまい！食事のお礼にヒントをやろう：",
+        "egg_bell": "リンリン！🔔 幸運の音だ！",
+        "egg_finland": "Tervetuloa! (ようこそ!) ワシの故郷、フィンランドを見つけたな！🇫🇮\nサウナは温まっているぞ、ロヴァニエミにおいで！",
+        "egg_surprise": "🎁 サプライズ！ワシを直接召喚するとはな！",
+        "egg_padoru": "🎵 走れ逸れよ... 風のように... パドル パドル !!! 🧣",
+        "egg_snow": "❄️ 雪よ降れ！世界が静寂に包まれる...",
+        "egg_market": "🍷 クリスマスマーケットへようこそ！ホットワインはいかが？ 🥨",
+        "egg_author": "👨‍💻 作者降臨！リスペクト..."
+    },
+    "French 🇫🇷": {
+        "title": "🎅 Salle de Rôtissage du Père Noël",
+        "subtitle": "Laissez le Père Noël écraser vos rêves... 😏",
+        "sidebar_title": "🎅 Paramètres",
+        "api_help": "La clé est utilisée uniquement pour cette session.",
+        "game_rule": "💡 **Comment jouer:**\nEntrez votre liste. Débloquez 12 secrets festifs !\n\n**Astuce :** La plupart sont liés à **Noël**, mais certains concernent *l'amour*, *le travail* ou *le voyage*...",
+        "input_placeholder": "Votre liste (ex: iPhone 17 pro max, un petit ami, une petite amie, beaucoup d'argent)",
+        "button": "🎁 Rôtir ma liste",
+        "loading": "🎅 Le Père Noël évalue votre valeur...",
+        "error_no_key": "Veuillez d'abord entrer votre clé API !",
+        "error_no_text": "Écrivez quelque chose ! Je ne peux pas rôtir une page blanche.",
+        "success_title": "🔔 Le verdict est là !",
+        "footer": "Propulsé par Google Gemini 3.0 Pro",
+        "secret_success": "🎅 Ho ho ho ! Vous avez trouvé l'arbre !",
+        "secret_title": "### JOYEUX NOËL !!! Voici le portail secret 🎄",
+        "secret_button": "👉 CLIQUEZ POUR ENTRER",
+        "hunt_title": "🏆 Chasse aux Secrets",
+        "egg_single": "Le Père Noël soupire... Pas d'amour ? Écoute ça.",
+        "egg_deer": "Regarde ! C'est Rodolphe qui grimpe sur ton écran ! 🔴🦌",
+        "egg_food": "Délicieux ! Voici un indice pour le prochain secret :",
+        "egg_bell": "Dring Dring ! 🔔 C'est le son de la chance !",
+        "egg_finland": "Tervetuloa ! Tu as trouvé ma maison : la Finlande ! 🇫🇮\nLe sauna est prêt, viens me voir à Rovaniemi !",
+        "egg_surprise": "🎁 SURPRISE ! Vous m'avez invoqué directement !",
+        "egg_padoru": "🎵 PADORU PADORU !!! 🧣",
+        "egg_snow": "❄️ Qu'il neige ! Le monde est calme maintenant...",
+        "egg_market": "🍷 Bienvenue au Marché de Noël ! Vin chaud et bretzels ! 🥨",
+        "egg_author": "👨‍💻 Vous avez trouvé le créateur ! Respect..."
+    }
 }
 
 HOLIDAY_TEXT = {
@@ -122,6 +178,24 @@ HOLIDAY_TEXT = {
         "roast_title": "不想上班？想放假？",
         "roast_body": "准奏！拿好這張【摸魚券】，告訴老闆是我批准的！"
     },
+    "Japanese (日本語) 🇯🇵": {
+        "title": "🎫 サボり許可証",
+        "desc_1": "働きすぎです...",
+        "desc_2": "サンタの特別命令：",
+        "action": "今すぐ仕事を休め！",
+        "valid": "(有効期限：永遠)",
+        "roast_title": "休みが欲しい？",
+        "roast_body": "許可する！このチケットを上司に見せてきなさい！"
+    },
+    "French 🇫🇷": {
+        "title": "🎫 PERMIS DE PAUSE",
+        "desc_1": "Tu as l'air épuisé...",
+        "desc_2": "Ordre du Père Noël :",
+        "action": "ARRÊTE DE TRAVAILLER !",
+        "valid": "(Valide : Toujours)",
+        "roast_title": "Besoin de vacances ?",
+        "roast_body": "Accordé ! Prends ce billet et dis à ton patron que c'est de ma part."
+    }
 }
 
 CULTURE_EXPLAINER_TEXT = {
@@ -157,78 +231,6 @@ if 'found_ids' not in st.session_state:
 
 if 'hint_msg_v2' not in st.session_state:
     st.session_state['hint_msg_v2'] = None
-
-# -----------------------------
-# Easter egg hint system (v2)
-# 每找到一个主彩蛋就给一个提示；洋节(extra bonus, id=8)不计入进度也不给提示
-# -----------------------------
-
-HINTS_TW = {
-    1: "提示：一種在客廳裡慢慢死去的植物，身上還掛著珠寶。💎🥀",
-    2: "提示：你的存款買不到，你的性格也吸引不到的那種關係。💔",
-    3: "提示：一群被我奴役的空中計程車司機，其中有個紅鼻子的。🔴🚕",
-    5: "提示：有金屬舌頭，腦袋空空，一搖晃就會尖叫的東西。🔔😱",
-    6: "提示：一張賦予你自由，但你絕對不敢拿給老闆看的紙。📄😈",
-    7: "提示：比你的心還要冰冷的地方，也是我的老巢。❄️🏠",
-    9: "提示：試著直接呼喚我的名字，或者跟我要「那個」東西？🎁",
-    10: "提示：一個紅色的、會旋轉的迷因生物... 試試聖誕帽？ 🧣",
-    11: "提示：我從天上掉下來，又白又冷... ❄️",
-    12: "提示：熱紅酒、扭結餅、人擠人... 🍷",
-    13: "提示：是誰創造了我？(關於作者) 👨‍💻",
-}
-
-HINTS_CN = {
-    1: "提示：一种在客厅里慢慢死去的植物，身上还挂着珠宝。💎🥀",
-    2: "提示：你的存款买不到，你的性格也吸引不到的那种关系。💔",
-    3: "提示：一群被我奴役的空中出租车司机，其中有个红鼻子的。🔴🚕",
-    5: "提示：有金属舌头，脑袋空空，一摇晃就会尖叫的东西。🔔😱",
-    6: "提示：一张赋予你自由，但你绝对不敢拿给老板看的纸。📄😈",
-    7: "提示：比你的心还要冰冷的地方，也是我的老巢。❄️🏠",
-    9: "提示：试着直接呼唤我的名字，或者跟我要「那个」东西？🎁",
-    10: "提示：一个红色的、会旋转的迷因生物... 试试圣诞帽？ 🧣",
-    11: "提示：我从天上掉下来，又白又冷... ❄️",
-    12: "提示：热红酒、扭结饼、人挤人... 🍷",
-    13: "提示：是谁创造了我？(关于作者) 👨‍💻",
-}
-
-HINTS_EN = {
-    1: "Hint: A corpse dressed in jewelry, dying slowly in your living room. 💎🥀",
-    2: "Hint: Something money can't buy, and your personality can't attract. 💔",
-    3: "Hint: My enslaved aerial taxi drivers. One has a glowing nose. 🔴🚕",
-    5: "Hint: Golden skin, metal tongue, screams when you shake it. 🔔😱",
-    6: "Hint: A piece of paper that grants freedom, but you're too cowardly to use. 📄😈",
-    7: "Hint: A place colder than your ex's heart. My frozen wasteland. ❄️🏠",
-    9: "Hint: Try calling my name directly, or asking for 'it'. 🎁",
-    10: "Hint: A red, spinning meme creature... Try Christmas hat? 🧣",
-    11: "Hint: I fall from the sky, white and cold... ❄️",
-    12: "Hint: Hot wine, pretzels, and crowded stalls... 🍷",
-    13: "Hint: Who created me? (About the author) 👨‍💻",
-}
-
-def _pick_next_hint(lang_key: str):
-    missing = sorted(list(MAIN_EGG_IDS - st.session_state['found_ids']))
-    if not missing:
-        return None
-    target = missing[0]
-    if "Traditional Chinese" in lang_key or "繁體" in lang_key:
-        return HINTS_TW.get(target)
-    if "Simplified Chinese" in lang_key or "简体" in lang_key:
-        return HINTS_CN.get(target)
-    return HINTS_EN.get(target)
-
-def register_egg_and_maybe_hint(egg_id: int, lang_key: str):
-    already = egg_id in st.session_state['found_ids']
-    if not already:
-        st.session_state['found_ids'].add(egg_id)
-    if egg_id == 8:
-        return None
-    if (not already) and (egg_id in MAIN_EGG_IDS):
-        hint = _pick_next_hint(lang_key)
-        if hint:
-            st.session_state['hint_msg_v2'] = hint
-        return hint
-    return None
-
 
 
 def set_language(lang_key):
@@ -345,8 +347,6 @@ def update_hunt_progress(placeholder_obj, ui_text):
             medals += "👁️ "
 
         st.caption(f"Collection: {medals}")
-        if st.session_state.get('hint_msg_v2'):
-            st.info(f"🔍 {st.session_state['hint_msg_v2']}")
 
         if found_main_count == total_eggs:
             if 8 in st.session_state['found_ids']:
@@ -414,34 +414,6 @@ else:
             st.warning(ui_text["error_no_text"])
         else:
             user_input_lower = gift_list.lower()
-
-            def _is_japanese(s: str) -> bool:
-                return any(0x3040 <= ord(ch) <= 0x30FF or 0xFF66 <= ord(ch) <= 0xFF9D for ch in s)
-
-            def _looks_french(s: str) -> bool:
-                accents = "éèêëàâîïôùûüçœæ"
-                if any(ch in s for ch in accents):
-                    return True
-                lowered = s.lower()
-                french_words = ["noel", "noël", "sapin", "père", "pere", "cadeau", "joyeux", "france", "bonjour"]
-                return any(w in lowered for w in french_words)
-
-            def _filter_triggers(lst):
-                return [t for t in lst if (not _is_japanese(t)) and (not _looks_french(t))]
-
-            triggers_tree = _filter_triggers(triggers_tree)
-            triggers_single = _filter_triggers(triggers_single)
-            triggers_deer = _filter_triggers(triggers_deer)
-            triggers_food = _filter_triggers(triggers_food)
-            triggers_bell = _filter_triggers(triggers_bell)
-            triggers_holiday = _filter_triggers(triggers_holiday)
-            triggers_finland = _filter_triggers(triggers_finland)
-            triggers_surprise = _filter_triggers(triggers_surprise)
-            triggers_padoru = _filter_triggers(triggers_padoru)
-            triggers_snow = _filter_triggers(triggers_snow)
-            triggers_market = _filter_triggers(triggers_market)
-            triggers_author = _filter_triggers(triggers_author)
-            triggers_culture = _filter_triggers(triggers_culture)
 
             triggers_tree = [
                 "tree", "christmas tree", "decoration", "ornament", "star", "pine",
@@ -549,43 +521,36 @@ else:
 
             new_discovery = False
 
-                        # --- Easter egg detection ---
-            discovered_egg_id = None
-
             if any(t in user_input_lower for t in triggers_tree):
-                discovered_egg_id = 1
+                if 1 not in st.session_state['found_ids']: st.session_state['found_ids'].add(1); new_discovery = True
             elif any(t in user_input_lower for t in triggers_single):
-                discovered_egg_id = 2
+                if 2 not in st.session_state['found_ids']: st.session_state['found_ids'].add(2); new_discovery = True
             elif any(t in user_input_lower for t in triggers_deer):
-                discovered_egg_id = 3
+                if 3 not in st.session_state['found_ids']: st.session_state['found_ids'].add(3); new_discovery = True
             elif any(t in user_input_lower for t in triggers_food):
-                discovered_egg_id = 4
+                if 4 not in st.session_state['found_ids']: st.session_state['found_ids'].add(4); new_discovery = True
             elif any(t in user_input_lower for t in triggers_bell):
-                discovered_egg_id = 5
+                if 5 not in st.session_state['found_ids']: st.session_state['found_ids'].add(5); new_discovery = True
             elif any(t in user_input_lower for t in triggers_holiday):
-                discovered_egg_id = 6
+                if 6 not in st.session_state['found_ids']: st.session_state['found_ids'].add(6); new_discovery = True
             elif any(t in user_input_lower for t in triggers_finland):
-                discovered_egg_id = 7
+                if 7 not in st.session_state['found_ids']: st.session_state['found_ids'].add(7); new_discovery = True
             elif any(t in user_input_lower for t in triggers_surprise):
-                discovered_egg_id = 9
+                if 9 not in st.session_state['found_ids']: st.session_state['found_ids'].add(9); new_discovery = True
             elif any(t in user_input_lower for t in triggers_padoru):
-                discovered_egg_id = 10
+                if 10 not in st.session_state['found_ids']: st.session_state['found_ids'].add(10); new_discovery = True
             elif any(t in user_input_lower for t in triggers_snow):
-                discovered_egg_id = 11
+                if 11 not in st.session_state['found_ids']: st.session_state['found_ids'].add(11); new_discovery = True
             elif any(t in user_input_lower for t in triggers_market):
-                discovered_egg_id = 12
+                if 12 not in st.session_state['found_ids']: st.session_state['found_ids'].add(12); new_discovery = True
             elif any(t in user_input_lower for t in triggers_author):
-                discovered_egg_id = 13
-            elif any(t in user_input_lower for t in triggers_culture):
-                discovered_egg_id = 8  # extra bonus (doesn't count)
+                if 13 not in st.session_state['found_ids']: st.session_state['found_ids'].add(13); new_discovery = True
 
-            if discovered_egg_id is not None:
-                hint = register_egg_and_maybe_hint(discovered_egg_id, current_lang_key)
-                if discovered_egg_id == 8:
+            elif any(t in user_input_lower for t in triggers_culture):
+                if 8 not in st.session_state['found_ids']:
+                    st.session_state['found_ids'].add(8)
                     st.toast("👁️ HIDDEN TRUTH FOUND! (Extra Bonus)", icon="🔓")
-                elif hint:
-                    st.toast(hint, icon="🔍")
-                new_discovery = True
+                    new_discovery = True
 
             if new_discovery:
                 update_hunt_progress(hunt_placeholder, ui_text)
@@ -767,15 +732,121 @@ else:
                 st.markdown(
                     f"<div class='roast-box gold-mode' style='border-left: 5px solid #8B4513 !important;'>{ui_text['egg_deer']}</div>",
                     unsafe_allow_html=True)
+
             elif any(t in user_input_lower for t in triggers_food):
                 st.balloons()
                 trigger_jackpot_effect()
-                st.markdown(
-                    f"<div class='roast-box gold-mode' style='border-left: 5px solid #FF9800 !important;'>{ui_text['egg_food']}</div>",
-                    unsafe_allow_html=True)
+
+                if st.session_state['hint_msg_v2'] is None:
+                    missing_ids = list(MAIN_EGG_IDS - st.session_state['found_ids'])
+                    if 4 in missing_ids: missing_ids.remove(4)
+
+                    hints_tw = {
+                        1: "提示：一種在客廳裡慢慢死去的植物，身上還掛著珠寶。💎🥀",
+                        2: "提示：你的存款買不到，你的性格也吸引不到的那種關係。💔",
+                        3: "提示：一群被我奴役的空中計程車司機，其中有個紅鼻子的。🔴🚕",
+                        5: "提示：有金屬舌頭，腦袋空空，一搖晃就會尖叫的東西。🔔😱",
+                        6: "提示：一張賦予你自由，但你絕對不敢拿給老闆看的紙。📄😈",
+                        7: "提示：比你的心還要冰冷的地方，也是我的老巢。❄️🏠",
+                        9: "提示：試著直接呼喚我的名字，或者跟我要「那個」東西？🎁",
+                        10: "提示：一個紅色的、會旋轉的迷因生物... 試試聖誕帽？ 🧣",
+                        11: "提示：我從天上掉下來，又白又冷... ❄️",
+                        12: "提示：熱紅酒、扭結餅、人擠人... 🍷",
+                        13: "提示：是誰創造了我？(關於作者) 👨‍💻"
+                    }
+
+                    hints_cn = {
+                        1: "提示：一种在客厅里慢慢死去的植物，身上还挂着珠宝。💎🥀",
+                        2: "提示：你的存款买不到，你的性格也吸引不到的那种关系。💔",
+                        3: "提示：一群被我奴役的空中出租车司机，其中有个红鼻子的。🔴🚕",
+                        5: "提示：有金属舌头，脑袋空空，一摇晃就会尖叫的东西。🔔😱",
+                        6: "提示：一张赋予你自由，但你绝对不敢拿给老板看的纸。📄😈",
+                        7: "提示：比你的心还要冰冷的地方，也是我的老巢。❄️🏠",
+                        9: "提示：试着直接呼唤我的名字，或者跟我要「那个」东西？🎁",
+                        10: "提示：一个红色的、会旋转的迷因生物... 试试圣诞帽？ 🧣",
+                        11: "提示：我从天上掉下来，又白又冷... ❄️",
+                        12: "提示：热红酒、扭结饼、人挤人... 🍷",
+                        13: "提示：是谁创造了我？(关于作者) 👨‍💻"
+                    }
+
+                    hints_en = {
+                        1: "Hint: A corpse dressed in jewelry, dying slowly in your living room. 💎🥀",
+                        2: "Hint: Something money can't buy, and your personality can't attract. 💔",
+                        3: "Hint: My enslaved aerial taxi drivers. One has a glowing nose. 🔴🚕",
+                        5: "Hint: Golden skin, metal tongue, screams when you shake it. 🔔😱",
+                        6: "Hint: A piece of paper that grants freedom, but you're too cowardly to use. 📄😈",
+                        7: "Hint: A place colder than your ex's heart. My frozen wasteland. ❄️🏠",
+                        9: "Hint: Try calling my name directly, or asking for 'it'. 🎁",
+                        10: "Hint: A red, spinning meme creature... Try Christmas hat? 🧣",
+                        11: "Hint: I fall from the sky, white and cold... ❄️",
+                        12: "Hint: Hot wine, pretzels, and crowded stalls... 🍷",
+                        13: "Hint: Who created me? (About the developer) 👨‍💻"
+                    }
+
+                    hints_jp = {
+                        1: "ヒント: リビングで宝石を纏ってゆっくり死んでいく植物... 💎🥀",
+                        2: "ヒント: お金で買えないし、その性格じゃ惹きつけられない関係... 💔",
+                        3: "ヒント: 空飛ぶタクシー運転手。赤鼻のやつ... 🔴🚕",
+                        5: "ヒント: 揺らすと叫ぶ金属の舌を持つやつ... 🔔😱",
+                        6: "ヒント: 自由をくれるけど、ボスには絶対見せられない紙... 📄😈",
+                        7: "ヒント: 元恋人の心より寒い場所。わしの不毛の地... ❄️🏠",
+                        9: "ヒント: ワシの名前を呼んでみろ。もしくは「あれ」をねだってみろ。🎁",
+                        10: "ヒント: 赤くて回転するミーム生物... サンタ帽を試してみて？ 🧣",
+                        11: "ヒント: 空から落ちてくる、白くて冷たいもの... ❄️",
+                        12: "ヒント: ホットワイン、プレッツェル、屋台... 🍷",
+                        13: "ヒント: 私を作ったのは誰？ (作者について) 👨‍💻"
+                    }
+
+                    hints_fr = {
+                        1: "Indice : Un cadavre couvert de bijoux qui meurt lentement dans votre salon... 💎🥀",
+                        2: "Indice : Une relation que l'argent ne peut acheter et que vous ne pouvez attirer... 💔",
+                        3: "Indice : Mes chauffeurs de taxi volants... Un a le nez rouge. 🔴🚕",
+                        5: "Indice : Peau dorée, langue de métal, crie quand on la secoue. 🔔😱",
+                        6: "Indice : Un papier qui donne la liberté, mais que vous n'oserez pas montrer au patron. 📄😈",
+                        7: "Indice : Un endroit plus froid que le cœur de votre ex. Ma terre gelée. ❄️🏠",
+                        9: "Indice : Essayez de m'appeler par mon nom, ou demandez 'ça'. 🎁",
+                        10: "Indice : Une créature mème rouge qui tourne... Essayez le chapeau de Père Noël ? 🧣",
+                        11: "Indice : Je tombe du ciel, blanche et froide... ❄️",
+                        12: "Indice : Vin chaud, bretzels et foule... 🍷",
+                        13: "Indice : Qui m'a créé ? (À propos du développeur) 👨‍💻"
+                    }
+
+                    if not missing_ids:
+                        if "Traditional" in current_lang_key:
+                            hint_msg = "太強了！你已經發現了所有秘密！"
+                        elif "Simplified" in current_lang_key:
+                            hint_msg = "太强了！你已经发现了所有秘密！"
+                        elif "Japanese" in current_lang_key:
+                            hint_msg = "すごい！全ての秘密を見つけました！"
+                        elif "French" in current_lang_key:
+                            hint_msg = "Incroyable ! Vous avez tout trouvé !"
+                        else:
+                            hint_msg = "Amazing! You found ALL secrets!"
+                    else:
+                        target = random.choice(missing_ids)
+                        if "Traditional" in current_lang_key:
+                            hint_msg = hints_tw.get(target, "繼續許願...")
+                        elif "Simplified" in current_lang_key:
+                            hint_msg = hints_cn.get(target, "继续许愿...")
+                        elif "Japanese" in current_lang_key:
+                            hint_msg = hints_jp.get(target, "願い事を続けて...")
+                        elif "French" in current_lang_key:
+                            hint_msg = hints_fr.get(target, "Continuez à souhaiter...")
+                        else:
+                            hint_msg = hints_en.get(target, "Keep wishing...")
+
+                    st.session_state['hint_msg_v2'] = hint_msg
+
+                final_hint = st.session_state['hint_msg_v2']
+
+                st.markdown(f"""
+                <div class='roast-box gold-mode' style='border-left: 5px solid #FF9800 !important;'>
+                {ui_text['egg_food']}<br><br>
+                👉 <b>{final_hint}</b>
+                </div>
+                """, unsafe_allow_html=True)
 
             elif any(t in user_input_lower for t in triggers_bell):
-
                 st.markdown("""
                 <style>
                     .slot-machine-container { display: flex; justify-content: center; gap: 15px; padding: 15px; margin-bottom: 20px; }
