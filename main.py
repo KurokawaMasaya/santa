@@ -516,7 +516,7 @@ else:
                 "padoru", "hashire sori yo", "nero", "fate", "tsukimihara",
                 "帕多鲁", "帕多露", "聖誕帽", "圣诞帽", "帽子",
                 "パドル", "走れ逸れよ", "サンタ帽",
-                "santa hat", "christmas hat", "hat"
+                "santahat", "christmas hat", "hat"
             ]
 
             # --- 檢測新發現 ---
@@ -796,7 +796,7 @@ else:
                         6: "Hint: A piece of paper that grants freedom, but you're too cowardly to use. 📄😈",
                         7: "Hint: A place colder than your ex's heart. My frozen wasteland. ❄️🏠",
                         9: "Hint: Try calling my name directly, or asking for 'it'. 🎁",
-                        10: "Hint: A red, spinning meme creature... Try Santa hat? 🧣"
+                        10: "Hint: A red, spinning meme creature... Try Santahat or try padoru? 🧣"
                     }
                     
                     hints_jp = {
