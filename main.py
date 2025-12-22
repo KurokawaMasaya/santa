@@ -15,7 +15,7 @@ LANG_DICT = {
         "subtitle": "Let The Great Santa judge your greedy soul... 😏",
         "sidebar_title": "🎅 Settings",
         "api_help": "Key is used for this session only.",
-        "game_rule": "💡 **How to play:**\nEnter your wishlist. Unlock 10 festive secrets!\n\n**Tip:** Most secrets are related to **Christmas items**, but some are about your *relationship*, *work* or *travel*...",
+        "game_rule": "💡 **How to play:**\nEnter your wishlist. Unlock 11 festive secrets!\n\n**Tip:** Most secrets are related to **Christmas items**, but some are about your *relationship*, *work* or *travel*...",
         "input_placeholder": "Your wishlist (e.g., iPhone 17 pro max, a boyfriend, a girlfriend, lots of money)",
         "button": "🎁 Roast My List",
         "loading": "🎅 Santa is assessing your worth...",
@@ -35,14 +35,15 @@ LANG_DICT = {
         "egg_finland": "Tervetuloa! You found my home — Finland (Suomi)! 🇫🇮\nThe sauna is ready, come visit Rovaniemi!",
         "egg_surprise": "🎁 SURPRISE! You summoned me directly!",
         "egg_padoru": "🎵 HASHIRE SORI YO... KAZE NO YOU NI... PADORU PADORU! 🧣",
-        "egg_snow": "❄️ Let it snow! The world is quiet and beautiful now..."
+        "egg_snow": "❄️ Let it snow! The world is quiet and beautiful now...",
+        "egg_market": "🍷 Welcome to the Christmas Market! Hot Glühwein & Pretzels! 🥨"
     },
     "Traditional Chinese (繁體中文) 🇹🇼🇭🇰🇲🇴": {
         "title": "🎅 聖誕老人吐槽大會",
         "subtitle": "讓本聖誕老人... 用邏輯粉碎你的夢想... 😏",
         "sidebar_title": "🎅 設定",
         "api_help": "Key 僅用於本次連線，重新整理即消失。",
-        "game_rule": "💡 **玩法說明：**\n輸入願望清單。試著解鎖 10 個節日彩蛋！\n\n**提示：** 彩蛋多與**聖誕物品**有關，但也有關於*感情*、*打工*或*旅行*的...",
+        "game_rule": "💡 **玩法說明：**\n輸入願望清單。試著解鎖 11 個節日彩蛋！\n\n**提示：** 彩蛋多與**聖誕物品**有關，但也有關於*感情*、*打工*或*旅行*的...",
         "input_placeholder": "許願吧 (例如：iPhone 17 pro max、男朋友、女朋友、很多錢...)",
         "button": "🎁 吐槽我的願望",
         "loading": "🎅 本聖誕老人正在審視你的人生...",
@@ -62,14 +63,15 @@ LANG_DICT = {
         "egg_finland": "Tervetuloa! (歡迎！) 你竟然找到了我的老家——芬蘭 (Finland)！🇫🇮\n這裡的桑拿房已經熱好了，快來羅瓦涅米找我玩吧！",
         "egg_surprise": "🎁 驚喜！你竟然直接召喚了本尊！",
         "egg_padoru": "🎵 走れ逸れよ... 風のように... PADORU PADORU !!! 🧣",
-        "egg_snow": "❄️ 讓雪落下吧！整個世界都安靜了..."
+        "egg_snow": "❄️ 讓雪落下吧！整個世界都安靜了...",
+        "egg_market": "🍷 歡迎來到聖誕集市！來杯熱紅酒配扭結餅吧！🥨"
     },
     "Simplified Chinese (简体中文) 🇨🇳": {
         "title": "🎅 圣诞老人吐槽大会",
         "subtitle": "让本圣诞老人... 用逻辑粉碎你的梦想... 😏",
         "sidebar_title": "🎅 设置",
         "api_help": "Key 仅用于本次会话。",
-        "game_rule": "💡 **玩法说明：**\n输入愿望清单。试着解锁 10 个节日彩蛋！\n\n**提示：** 彩蛋多与**圣诞物品**有关，但也有关于*感情*、*打工*或*旅行*的...",
+        "game_rule": "💡 **玩法说明：**\n输入愿望清单。试着解锁 11 个节日彩蛋！\n\n**提示：** 彩蛋多与**圣诞物品**有关，但也有关于*感情*、*打工*或*旅行*的...",
         "input_placeholder": "许愿吧 (例如：iPhone 17 pro max、男朋友、女朋友、很多钱...)",
         "button": "🎁 吐槽我的愿望",
         "loading": "🎅 本圣诞老人正在审视你的人生...",
@@ -89,14 +91,15 @@ LANG_DICT = {
         "egg_finland": "Tervetuloa! (欢迎！) 你竟然找到了我的老家——芬兰 (Finland)！🇫🇮\n这里的桑拿房已经热好了，快来罗瓦涅米找我玩吧！",
         "egg_surprise": "🎁 惊喜！你竟然直接召唤了本尊！",
         "egg_padoru": "🎵 走れ逸れよ... 風のように... PADORU PADORU !!! 🧣",
-        "egg_snow": "❄️ 让雪落下吧！整个世界都安静了..."
+        "egg_snow": "❄️ 让雪落下吧！整个世界都安静了...",
+        "egg_market": "🍷 欢迎来到圣诞集市！来杯热红酒配扭结饼吧！🥨"
     },
     "Japanese (日本語) 🇯🇵": {
         "title": "🎅 サンタの毒舌部屋",
         "subtitle": "ワシが... 論理であなたの夢を打ち砕いてやろう... 😏",
         "sidebar_title": "🎅 設定",
         "api_help": "キーはこのセッションでのみ使用されます。",
-        "game_rule": "💡 **遊び方:**\n欲しいものを入力して、10個のクリスマスの秘密を探そう！\n\n**ヒント:** ほとんどは**クリスマスアイテム**ですが、*恋愛*や*仕事*、*旅行*に関するものも...",
+        "game_rule": "💡 **遊び方:**\n欲しいものを入力して、11個のクリスマスの秘密を探そう！\n\n**ヒント:** ほとんどは**クリスマスアイテム**ですが、*恋愛*や*仕事*、*旅行*に関するものも...",
         "input_placeholder": "欲しいものリスト (例: iPhone 17 pro max, 彼氏, 彼女, 大金...)",
         "button": "🎁 リストを斬る",
         "loading": "🎅 サンタがあなたの価値を査定中...",
@@ -116,14 +119,15 @@ LANG_DICT = {
         "egg_finland": "Tervetuloa! (ようこそ!) ワシの故郷、フィンランドを見つけたな！🇫🇮\nサウナは温まっているぞ、ロヴァニエミにおいで！",
         "egg_surprise": "🎁 サプライズ！ワシを直接召喚するとはな！",
         "egg_padoru": "🎵 走れ逸れよ... 風のように... パドル パドル !!! 🧣",
-        "egg_snow": "❄️ 雪よ降れ！世界が静寂に包まれる..."
+        "egg_snow": "❄️ 雪よ降れ！世界が静寂に包まれる...",
+        "egg_market": "🍷 クリスマスマーケットへようこそ！ホットワインはいかが？ 🥨"
     },
     "French 🇫🇷": {
         "title": "🎅 Salle de Rôtissage du Père Noël",
         "subtitle": "Laissez le Père Noël écraser vos rêves... 😏",
         "sidebar_title": "🎅 Paramètres",
         "api_help": "La clé est utilisée uniquement pour cette session.",
-        "game_rule": "💡 **Comment jouer:**\nEntrez votre liste. Débloquez 10 secrets festifs !\n\n**Astuce :** La plupart sont liés à **Noël**, mais certains concernent *l'amour*, *le travail* ou *le voyage*...",
+        "game_rule": "💡 **Comment jouer:**\nEntrez votre liste. Débloquez 11 secrets festifs !\n\n**Astuce :** La plupart sont liés à **Noël**, mais certains concernent *l'amour*, *le travail* ou *le voyage*...",
         "input_placeholder": "Votre liste (ex: iPhone 17 pro max, un petit ami, une petite amie, beaucoup d'argent)",
         "button": "🎁 Rôtir ma liste",
         "loading": "🎅 Le Père Noël évalue votre valeur...",
@@ -143,7 +147,8 @@ LANG_DICT = {
         "egg_finland": "Tervetuloa ! Tu as trouvé ma maison : la Finlande ! 🇫🇮\nLe sauna est prêt, viens me voir à Rovaniemi !",
         "egg_surprise": "🎁 SURPRISE ! Vous m'avez invoqué directement !",
         "egg_padoru": "🎵 PADORU PADORU !!! 🧣",
-        "egg_snow": "❄️ Qu'il neige ! Le monde est calme maintenant..."
+        "egg_snow": "❄️ Qu'il neige ! Le monde est calme maintenant...",
+        "egg_market": "🍷 Bienvenue au Marché de Noël ! Vin chaud et bretzels ! 🥨"
     }
 }
 
@@ -229,8 +234,9 @@ if 'ui_language' not in st.session_state:
 # 8: 隱藏彩蛋 (不計入分母)
 # 9: 聖誕老人驚喜 (禮物盒)
 # 10: Padoru
-# 11: Snow (新增)
-MAIN_EGG_IDS = {1, 2, 3, 4, 5, 6, 7, 9, 10, 11}
+# 11: Snow
+# 12: Market (集市 - 新增)
+MAIN_EGG_IDS = {1, 2, 3, 4, 5, 6, 7, 9, 10, 11, 12}
 
 if 'found_ids' not in st.session_state:
     st.session_state['found_ids'] = set() 
@@ -322,10 +328,10 @@ add_christmas_magic()
 # 🔧 工具函數：更新主頁面進度條
 # ==========================================
 def update_hunt_progress(placeholder_obj, ui_text):
-    # 只統計主線 (1-7, 9, 10, 11)
-    main_targets = {1, 2, 3, 4, 5, 6, 7, 9, 10, 11}
+    # 只統計主線 (1-7, 9, 10, 11, 12)
+    main_targets = {1, 2, 3, 4, 5, 6, 7, 9, 10, 11, 12}
     found_main_count = len([x for x in st.session_state['found_ids'] if x in main_targets])
-    total_eggs = 10
+    total_eggs = 11
     
     with placeholder_obj.container():
         st.markdown('<div class="hunt-panel">', unsafe_allow_html=True)
@@ -349,7 +355,8 @@ def update_hunt_progress(placeholder_obj, ui_text):
         medals += "🇫🇮 " if 7 in st.session_state['found_ids'] else "⚪ " 
         medals += "🎁 " if 9 in st.session_state['found_ids'] else "⚪ " 
         medals += "🧣 " if 10 in st.session_state['found_ids'] else "⚪ " 
-        medals += "❄️ " if 11 in st.session_state['found_ids'] else "⚪ " # New! Snow
+        medals += "❄️ " if 11 in st.session_state['found_ids'] else "⚪ " 
+        medals += "🍷 " if 12 in st.session_state['found_ids'] else "⚪ " # Market
         
         # 🔥 Extra Hidden Medal (ID 8 - Culture)
         if 8 in st.session_state['found_ids']:
@@ -526,12 +533,21 @@ else:
                 "christmas hat", "hat"
             ]
 
-            # 11. ❄️ Snow (新增 - Snow Effect)
+            # 11. ❄️ Snow (Snow Effect)
             triggers_snow = [
                 "snow", "let it snow", "white christmas", "winter", "cold",
                 "雪", "下雪", "雪花", "冬天", "冷", "白",
                 "neige", "froid", "hiver",
                 "雪", "冬", "寒い"
+            ]
+
+            # 12. 🍷 Market (Christmas Market)
+            triggers_market = [
+                "market", "bazaar", "glühwein", "shopping", "stall",
+                "集市", "市集", "逛街", "热红酒", "赶集",
+                "聖誕市集", "熱紅酒", # Traditional Chinese
+                "クリスマスマーケット", "市場", "買い物", # Japanese
+                "marché", "vin chaud", "shopping" # French
             ]
 
             # --- 檢測新發現 ---
@@ -557,6 +573,8 @@ else:
                 if 10 not in st.session_state['found_ids']: st.session_state['found_ids'].add(10); new_discovery = True
             elif any(t in user_input_lower for t in triggers_snow):
                 if 11 not in st.session_state['found_ids']: st.session_state['found_ids'].add(11); new_discovery = True
+            elif any(t in user_input_lower for t in triggers_market):
+                if 12 not in st.session_state['found_ids']: st.session_state['found_ids'].add(12); new_discovery = True
             
             # 🔥 Hidden Bonus Check (ID 8)
             elif any(t in user_input_lower for t in triggers_culture):
@@ -585,45 +603,10 @@ else:
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@700;900&family=Noto+Sans+SC:wght@400;700&display=swap');
-
     * { box-sizing: border-box; }
-
-    body {
-        margin: 0;
-        height: 100vh;
-        background-color: transparent;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-family: "Noto Sans SC", sans-serif;
-        overflow: hidden;
-    }
-
-    .interaction-container {
-        position: relative;
-        width: 100%;
-        height: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
-    /* ================= STAGE 1: 2025 基层红头文件 ================= */
-    #stage-1 {
-        position: absolute;
-        width: 85%;           /* 手机宽度适配 */
-        max-width: 340px;     /* 电脑最大宽度 */
-        background: #fff;
-        padding: 40px 25px 60px 25px;
-        box-shadow: 0 15px 40px rgba(0,0,0,0.5);
-        transform: rotate(-0.5deg);
-        z-index: 10;
-        transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-        color: #000;
-        font-family: "FangSong", "SimSun", serif;
-        border-radius: 2px;
-    }
-
+    body { margin: 0; height: 100vh; background-color: transparent; display: flex; justify-content: center; align-items: center; font-family: "Noto Sans SC", sans-serif; overflow: hidden; }
+    .interaction-container { position: relative; width: 100%; height: 100%; display: flex; justify-content: center; align-items: center; }
+    #stage-1 { position: absolute; width: 85%; max-width: 340px; background: #fff; padding: 40px 25px 60px 25px; box-shadow: 0 15px 40px rgba(0,0,0,0.5); transform: rotate(-0.5deg); z-index: 10; transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55); color: #000; font-family: "FangSong", "SimSun", serif; border-radius: 2px; }
     .doc-header { text-align: center; color: #d60000; font-family: "SimSun", "SimHei", serif; font-size: 24px; font-weight: 500; letter-spacing: 1px; margin-bottom: 20px; }
     .doc-title { text-align: center; font-size: 20px; font-weight: 500; margin-bottom: 10px; line-height: 1.4; font-family: "SimSun", serif; letter-spacing: 2px; }
     .doc-serial { text-align: center; font-size: 12px; margin-bottom: 25px; font-family: "FangSong", serif; }
@@ -631,44 +614,10 @@ else:
     .doc-body p { margin: 0 0 8px 0; }
     .doc-footer { position: absolute; bottom: 40px; right: 30px; text-align: right; font-family: "FangSong", serif; line-height: 1.6; font-size: 14px; }
     .doc-stamp { position: absolute; top: -10px; right: -10px; width: 100px; height: 100px; opacity: 0.85; mix-blend-mode: multiply; pointer-events: none; transform: rotate(-8deg); }
-    
-    /* 🔥 核心修改：按钮移到纸张内部 🔥 */
-    .close-btn { 
-        position: absolute; 
-        top: 10px;           /* 距离顶部 10px (内部) */
-        right: 10px;         /* 距离右侧 10px (内部) */
-        width: 32px; 
-        height: 32px; 
-        background: #f0f0f0; /* 改为浅灰色背景，不那么突兀 */
-        color: #333; 
-        border: 1px solid #ccc; 
-        border-radius: 50%; 
-        font-size: 20px; 
-        font-weight: bold; 
-        cursor: pointer; 
-        display: flex; 
-        align-items: center; 
-        justify-content: center; 
-        box-shadow: 0 2px 5px rgba(0,0,0,0.1); 
-        transition: transform 0.2s; 
-        z-index: 20; 
-    }
+    .close-btn { position: absolute; top: 10px; right: 10px; width: 32px; height: 32px; background: #f0f0f0; color: #333; border: 1px solid #ccc; border-radius: 50%; font-size: 20px; font-weight: bold; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 5px rgba(0,0,0,0.1); transition: transform 0.2s; z-index: 20; }
     .close-btn:hover { background: #d60000; color: #fff; transform: scale(1.1); border-color: #d60000; }
-
-    /* ================= STAGE 2: 拦截系统 ================= */
     #card-container { display: none; position: relative; z-index: 20; perspective: 1000px; width: 100%; display: flex; justify-content: center; }
-    .brutalist-card { 
-        width: 85%; 
-        max-width: 340px; 
-        border: 4px solid #000; 
-        background-color: #fff; 
-        padding: 1.2rem; 
-        box-shadow: 10px 10px 0 #000;
-        font-family: "Noto Sans SC", sans-serif; 
-        transition: all 0.3s; 
-        position: relative; 
-    }
-    
+    .brutalist-card { width: 85%; max-width: 340px; border: 4px solid #000; background-color: #fff; padding: 1.2rem; box-shadow: 10px 10px 0 #000; font-family: "Noto Sans SC", sans-serif; transition: all 0.3s; position: relative; }
     .brutalist-card__header { display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem; border-bottom: 2px solid #000; padding-bottom: 1rem; }
     .brutalist-card__icon { flex-shrink: 0; display: flex; align-items: center; justify-content: center; background-color: #000; padding: 0.5rem; transition: background 0.3s; }
     .brutalist-card__icon svg { height: 1.5rem; width: 1.5rem; fill: #fff; }
@@ -678,31 +627,18 @@ else:
     .brutalist-card__button { display: block; width: 100%; padding: 0.75rem; text-align: center; font-size: 0.95rem; font-weight: 700; text-transform: uppercase; border: 3px solid #000; background-color: #fff; color: #000; position: relative; transition: all 0.2s; box-shadow: 4px 4px 0 #000; text-decoration: none; cursor: pointer; box-sizing: border-box; }
     .brutalist-card__button--read { background-color: #000; color: #fff; }
     .brutalist-card__button:active { transform: translate(2px, 2px); box-shadow: 2px 2px 0 #000; }
-
-    /* HACKED 状态 */
     .hacked .brutalist-card { border-color: #d35400; box-shadow: 10px 10px 0 #e67e22; }
     .hacked .brutalist-card__icon { background-color: #d35400; }
     .hacked .brutalist-card__alert { color: #d35400; }
     .hacked .brutalist-card__message { border-bottom-color: #d35400; font-family: "Noto Serif SC", serif; font-size: 0.85rem; line-height: 1.6; font-weight: normal; }
     .hacked .brutalist-card__button--read { background-color: #d35400; border-color: #d35400; box-shadow: 4px 4px 0 #a04000; }
-    
     .quote-box { background-color: #f9f9f9; border-left: 4px solid #d35400; padding: 6px 10px; margin: 10px 0; font-style: italic; color: #555; font-family: "FangSong", serif; font-size: 0.85rem; }
-
-    /* 確保初始隱藏 */
-    #card-container { display: none; }
-    
     .pop-in { display: flex !important; animation: pop-in 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; }
     .fly-out { animation: fly-away 0.8s cubic-bezier(0.6, -0.28, 0.735, 0.045) forwards; pointer-events: none; }
     .glitching { animation: glitch-shake 0.3s cubic-bezier(.36,.07,.19,.97) both infinite; filter: invert(1); }
-
     @keyframes fly-away { to { transform: translateY(120vh) rotate(20deg); opacity: 0; } }
     @keyframes pop-in { from { opacity: 0; transform: scale(0.8); } to { opacity: 1; transform: scale(1); } }
-    @keyframes glitch-shake {
-        10%, 90% { transform: translate3d(-1px, 0, 0); }
-        20%, 80% { transform: translate3d(2px, 0, 0); }
-        30%, 50%, 70% { transform: translate3d(-4px, 0, 0); }
-        40%, 60% { transform: translate3d(4px, 0, 0); }
-    }
+    @keyframes glitch-shake { 10%, 90% { transform: translate3d(-1px, 0, 0); } 20%, 80% { transform: translate3d(2px, 0, 0); } 30%, 50%, 70% { transform: translate3d(-4px, 0, 0); } 40%, 60% { transform: translate3d(4px, 0, 0); } }
 </style>
 </head>
 <body>
@@ -732,7 +668,6 @@ else:
                 </svg>
             </div>
         </div>
-
         <div id="card-container" style="display: none;">
             <div class="brutalist-card" id="main-card">
                 <div class="brutalist-card__header">
@@ -753,13 +688,11 @@ else:
             </div>
         </div>
     </div>
-
     <script>
         function triggerWarning() {
             document.getElementById('stage-1').classList.add('fly-out');
             setTimeout(() => { document.getElementById('card-container').classList.add('pop-in'); }, 400);
         }
-
         function overrideSystem() {
             var card = document.getElementById('main-card');
             var container = document.getElementById('card-container');
@@ -778,9 +711,7 @@ else:
 </html>
                     """, height=650, scrolling=False)
                 else:
-                    # 非中文環境：顯示解釋卡片
                     explain_text = CULTURE_EXPLAINER_TEXT.get(current_lang_key, CULTURE_EXPLAINER_TEXT["English 🇬🇧🇺🇸"])
-                    
                     st.markdown(f"""
                     <div style='background-color: #222; padding: 20px; border-radius: 10px; border-left: 5px solid #ff4b4b; color: #fff;'>
                         <h3>{explain_text['title']}</h3>
@@ -801,12 +732,7 @@ else:
                     st.audio("bgm.mp3", format="audio/mp3", start_time=0, autoplay=True)
                 except:
                     st.warning("🎵 Music file missing.")
-                
-                st.markdown(f"""
-                <div class='roast-box'>
-                {ui_text['egg_single']} 🎧
-                </div>
-                """, unsafe_allow_html=True)
+                st.markdown(f"<div class='roast-box'>{ui_text['egg_single']} 🎧</div>", unsafe_allow_html=True)
 
             # --- 3. 🦌 DEER ---
             elif any(t in user_input_lower for t in triggers_deer):
@@ -886,7 +812,8 @@ else:
                         7: "提示：比你的心還要冰冷的地方，也是我的老巢。❄️🏠",
                         9: "提示：試著直接呼喚我的名字，或者跟我要「那個」東西？🎁",
                         10: "提示：一個紅色的、會旋轉的迷因生物... 試試聖誕帽？ 🧣",
-                        11: "提示：我從天上掉下來，又白又冷... ❄️"
+                        11: "提示：我從天上掉下來，又白又冷... ❄️",
+                        12: "提示：熱紅酒、扭結餅、人擠人... 🍷"
                     }
                     
                     hints_cn = {
@@ -898,7 +825,8 @@ else:
                         7: "提示：比你的心还要冰冷的地方，也是我的老巢。❄️🏠",
                         9: "提示：试着直接呼唤我的名字，或者跟我要「那个」东西？🎁",
                         10: "提示：一个红色的、会旋转的迷因生物... 试试圣诞帽？ 🧣",
-                        11: "提示：我从天上掉下来，又白又冷... ❄️"
+                        11: "提示：我从天上掉下来，又白又冷... ❄️",
+                        12: "提示：热红酒、扭结饼、人挤人... 🍷"
                     }
                     
                     hints_en = {
@@ -910,7 +838,8 @@ else:
                         7: "Hint: A place colder than your ex's heart. My frozen wasteland. ❄️🏠",
                         9: "Hint: Try calling my name directly, or asking for 'it'. 🎁",
                         10: "Hint: A red, spinning meme creature... Try Christmas hat? 🧣",
-                        11: "Hint: I fall from the sky, white and cold... ❄️"
+                        11: "Hint: I fall from the sky, white and cold... ❄️",
+                        12: "Hint: Hot wine, pretzels, and crowded stalls... 🍷"
                     }
                     
                     hints_jp = {
@@ -922,7 +851,8 @@ else:
                         7: "ヒント: 元恋人の心より寒い場所。わしの不毛の地... ❄️🏠",
                         9: "ヒント: ワシの名前を呼んでみろ。もしくは「あれ」をねだってみろ。🎁",
                         10: "ヒント: 赤くて回転するミーム生物... サンタ帽を試してみて？ 🧣",
-                        11: "ヒント: 空から落ちてくる、白くて冷たいもの... ❄️"
+                        11: "ヒント: 空から落ちてくる、白くて冷たいもの... ❄️",
+                        12: "ヒント: ホットワイン、プレッツェル、屋台... 🍷"
                     }
 
                     hints_fr = {
@@ -934,7 +864,8 @@ else:
                         7: "Indice : Un endroit plus froid que le cœur de votre ex. Ma terre gelée. ❄️🏠",
                         9: "Indice : Essayez de m'appeler par mon nom, ou demandez 'ça'. 🎁",
                         10: "Indice : Une créature mème rouge qui tourne... Essayez le chapeau de Père Noël ? 🧣",
-                        11: "Indice : Je tombe du ciel, blanche et froide... ❄️"
+                        11: "Indice : Je tombe du ciel, blanche et froide... ❄️",
+                        12: "Indice : Vin chaud, bretzels et foule... 🍷"
                     }
 
                     if not missing_ids:
@@ -948,7 +879,7 @@ else:
                         target = random.choice(missing_ids)
                         # 根據語言切換提示字典
                         if "Traditional" in current_lang_key: hint_msg = hints_tw.get(target, "繼續許願...")
-                        elif "Simplified" in current_lang_key: hint_msg = hints_cn.get(target, "繼續許願...")
+                        elif "Simplified" in current_lang_key: hint_msg = hints_cn.get(target, "继续许愿...")
                         elif "Japanese" in current_lang_key: hint_msg = hints_jp.get(target, "願い事を続けて...")
                         elif "French" in current_lang_key: hint_msg = hints_fr.get(target, "Continuez à souhaiter...")
                         else: hint_msg = hints_en.get(target, "Keep wishing...")
@@ -1094,15 +1025,13 @@ else:
             elif any(t in user_input_lower for t in triggers_padoru):
                 st.balloons()
                 
-                # 🎵 1. 音樂部分：直接使用 st.audio (簡單直接)
-                # 只有當音樂檔案存在時才播放
+                # 🎵 1. 音樂部分
                 try:
                     st.audio("Merry_Christmas_128KBPS.mp3", format="audio/mp3", start_time=0, autoplay=True)
                 except:
                     st.warning("🎵 Music file not found.")
 
-                # 🏃 2. 動畫部分：使用 HTML+CSS+Base64 實現跑馬燈效果
-                # 讀取本地 Padoru 圖片並轉為 Base64 (因為 HTML 裡不能直接讀本地路徑)
+                # 🏃 2. 動畫部分
                 gif_b64 = get_base64_image("padoru.gif")
                 img_tag = f'<img src="data:image/gif;base64,{gif_b64}" class="padoru-img">' if gif_b64 else '<div style="font-size:50px;">🧣</div>'
 
@@ -1137,14 +1066,39 @@ else:
                     </div>
                 </body>
                 </html>
-                """, height=200) # 高度設為 0 或小一點，因為是 fixed 定位
+                """, height=200)
 
                 st.markdown(f"<div class='roast-box gold-mode' style='border-left: 5px solid #D32F2F !important; text-align:center;'>{ui_text['egg_padoru']}</div>", unsafe_allow_html=True)
 
-            # --- 11. ❄️ SNOW (New!) ---
+            # --- 11. ❄️ SNOW ---
             elif any(t in user_input_lower for t in triggers_snow):
                 st.snow()
                 st.markdown(f"<div class='roast-box gold-mode' style='border-left: 5px solid #E0F7FA !important; color: #E0F7FA !important;'>{ui_text['egg_snow']}</div>", unsafe_allow_html=True)
+
+            # --- 12. 🍷 MARKET (New!) ---
+            elif any(t in user_input_lower for t in triggers_market):
+                st.balloons()
+                st.markdown("""
+                <style>
+                    .market-scene { position: relative; width: 100%; height: 200px; overflow: hidden; background: linear-gradient(to bottom, #0f2027, #203a43); border-radius: 10px; display: flex; align-items: flex-end; justify-content: space-around; padding-bottom: 20px; box-shadow: 0 0 20px rgba(255, 165, 0, 0.3); }
+                    .stall { position: relative; width: 80px; height: 100px; background: #5d4037; border-radius: 5px 5px 0 0; }
+                    .stall::before { content: ''; position: absolute; top: -30px; left: -10px; width: 100px; height: 40px; background: repeating-linear-gradient(45deg, #c62828, #c62828 10px, #fff 10px, #fff 20px); border-radius: 5px; box-shadow: 0 5px 5px rgba(0,0,0,0.3); }
+                    .stall-sign { position: absolute; top: 20px; left: 50%; transform: translateX(-50%); color: #fff; font-size: 24px; }
+                    .lights { position: absolute; top: 10px; width: 100%; display: flex; justify-content: space-around; }
+                    .light { width: 10px; height: 10px; border-radius: 50%; animation: blink 1s infinite alternate; }
+                    .l-red { background: #ff5252; animation-delay: 0s; }
+                    .l-green { background: #69f0ae; animation-delay: 0.5s; }
+                    .l-gold { background: #ffd740; animation-delay: 1s; }
+                    @keyframes blink { from { opacity: 0.4; transform: scale(0.8); } to { opacity: 1; transform: scale(1.2); box-shadow: 0 0 10px currentColor; } }
+                </style>
+                <div class="market-scene">
+                    <div class="lights"><div class="light l-red"></div><div class="light l-gold"></div><div class="light l-green"></div><div class="light l-red"></div><div class="light l-gold"></div></div>
+                    <div class="stall"><div class="stall-sign">🥨</div></div>
+                    <div class="stall"><div class="stall-sign">🍷</div></div>
+                    <div class="stall"><div class="stall-sign">🎁</div></div>
+                </div>
+                """, unsafe_allow_html=True)
+                st.markdown(f"<div class='roast-box gold-mode' style='border-left: 5px solid #FF5722 !important;'>{ui_text['egg_market']}</div>", unsafe_allow_html=True)
 
             # --- 8. AI 正常邏輯 (Only Snow Here) ---
             else:
@@ -1179,14 +1133,11 @@ else:
                         response = model.generate_content(f"{persona}\n\nUser's Wish: {gift_list}")
 
                         if "❤️" in response.text or "🌟" in response.text:
-                            # 暖心時刻也給點特效
                             trigger_jackpot_effect()
                             st.balloons()
                             st.success(ui_text["success_title"])
                             box_style = "roast-box gold-mode"
                         else:
-                            # ❌ 移除了 st.snow()，因為那是 ID 11 的專屬特效
-                            # 改為只顯示 Toast
                             st.toast("🎅 Santa is judging you...", icon="😒")
                             box_style = "roast-box"
 
