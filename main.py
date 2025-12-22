@@ -1,6 +1,7 @@
 import streamlit as st
 import streamlit.components.v1 as components
 import google.generativeai as genai
+import os
 import random
 import time
 import base64
@@ -326,7 +327,7 @@ if not st.session_state['language_selected']:
     st.title("Welcome to Santa's Roast Room")
     st.subheader("Please select your language:")
     st.markdown("---")
-    
+
     col1, col2, col3 = st.columns(3)
     with col1:
         st.button("English 🇬🇧🇺🇸", use_container_width=True, on_click=set_language, args=("English 🇬🇧🇺🇸",))
@@ -350,9 +351,10 @@ else:
 
         api_key = None
         try:
-            if "GEMINI_API_KEY" in st.secrets: api_key = st.secrets["GEMINI_API_KEY"]
-        except:
-            pass
+            api_key = st.secrets["GEMINI_API_KEY"]
+        except Exception:
+            api_key = os.getenv("GEMINI_API_KEY")
+
         if not api_key:
             st.warning("Enter Key to activate AI features")
             api_key = st.text_input("Gemini API Key", type="password")
@@ -458,62 +460,62 @@ else:
             trigger_hint = False
 
             if any(t in user_input_lower for t in triggers_tree):
-                if 1 not in st.session_state['found_ids']: 
+                if 1 not in st.session_state['found_ids']:
                     st.session_state['found_ids'].add(1)
                     new_discovery = True
                     trigger_hint = True
             elif any(t in user_input_lower for t in triggers_single):
-                if 2 not in st.session_state['found_ids']: 
+                if 2 not in st.session_state['found_ids']:
                     st.session_state['found_ids'].add(2)
                     new_discovery = True
                     trigger_hint = True
             elif any(t in user_input_lower for t in triggers_deer):
-                if 3 not in st.session_state['found_ids']: 
+                if 3 not in st.session_state['found_ids']:
                     st.session_state['found_ids'].add(3)
                     new_discovery = True
                     trigger_hint = True
             elif any(t in user_input_lower for t in triggers_food):
-                if 4 not in st.session_state['found_ids']: 
+                if 4 not in st.session_state['found_ids']:
                     st.session_state['found_ids'].add(4)
                     new_discovery = True
                     trigger_hint = True
             elif any(t in user_input_lower for t in triggers_bell):
-                if 5 not in st.session_state['found_ids']: 
+                if 5 not in st.session_state['found_ids']:
                     st.session_state['found_ids'].add(5)
                     new_discovery = True
                     trigger_hint = True
             elif any(t in user_input_lower for t in triggers_holiday):
-                if 6 not in st.session_state['found_ids']: 
+                if 6 not in st.session_state['found_ids']:
                     st.session_state['found_ids'].add(6)
                     new_discovery = True
                     trigger_hint = True
             elif any(t in user_input_lower for t in triggers_finland):
-                if 7 not in st.session_state['found_ids']: 
+                if 7 not in st.session_state['found_ids']:
                     st.session_state['found_ids'].add(7)
                     new_discovery = True
                     trigger_hint = True
             elif any(t in user_input_lower for t in triggers_surprise):
-                if 9 not in st.session_state['found_ids']: 
+                if 9 not in st.session_state['found_ids']:
                     st.session_state['found_ids'].add(9)
                     new_discovery = True
                     trigger_hint = True
             elif any(t in user_input_lower for t in triggers_padoru):
-                if 10 not in st.session_state['found_ids']: 
+                if 10 not in st.session_state['found_ids']:
                     st.session_state['found_ids'].add(10)
                     new_discovery = True
                     trigger_hint = True
             elif any(t in user_input_lower for t in triggers_snow):
-                if 11 not in st.session_state['found_ids']: 
+                if 11 not in st.session_state['found_ids']:
                     st.session_state['found_ids'].add(11)
                     new_discovery = True
                     trigger_hint = True
             elif any(t in user_input_lower for t in triggers_market):
-                if 12 not in st.session_state['found_ids']: 
+                if 12 not in st.session_state['found_ids']:
                     st.session_state['found_ids'].add(12)
                     new_discovery = True
                     trigger_hint = True
             elif any(t in user_input_lower for t in triggers_author):
-                if 13 not in st.session_state['found_ids']: 
+                if 13 not in st.session_state['found_ids']:
                     st.session_state['found_ids'].add(13)
                     new_discovery = True
                     trigger_hint = True
