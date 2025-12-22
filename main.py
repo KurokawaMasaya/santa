@@ -7,15 +7,16 @@ import base64
 
 st.set_page_config(page_title="Roast Santa AI", page_icon="🎅", layout="centered")
 
+# --- 修改了 input_placeholder 和 button 的文案 ---
 LANG_DICT = {
     "English 🇬🇧🇺🇸": {
         "title": "🎅 Santa's Roast Room",
         "subtitle": "Let The Great Santa judge your greedy soul... 😏",
         "sidebar_title": "🎅 Settings",
         "api_help": "Key is used for this session only.",
-        "game_rule": "💡 **How to play:**\nEnter your wishlist. Unlock 12 festive secrets!\n\n**Tip:** Most secrets are related to **Christmas items**, but some are about your *relationship*, *work* or *travel*...",
-        "input_placeholder": "Your wishlist (e.g., iPhone 17 pro max, a boyfriend, a girlfriend, lots of money)",
-        "button": "🎁 Roast My List",
+        "game_rule": "💡 **How to play:**\nEnter your wishlist to get roasted.\nOR... Type specific keywords to unlock 12 festive secrets!\n\n**Tip:** Secrets are related to **Christmas items**, *relationships*, or *work*...",
+        "input_placeholder": "Make a wish... or try to guess a secret keyword! (e.g. Tree, Bell, Money...)",
+        "button": "🎁 Send to Santa (Roast or Treat?)",
         "loading": "🎅 Santa is assessing your worth...",
         "error_no_key": "Please enter your API Key first!",
         "error_no_text": "Write something! I can't roast a blank paper.",
@@ -42,9 +43,9 @@ LANG_DICT = {
         "subtitle": "讓本聖誕老人... 用邏輯粉碎你的夢想... 😏",
         "sidebar_title": "🎅 設定",
         "api_help": "Key 僅用於本次連線，重新整理即消失。",
-        "game_rule": "💡 **玩法說明：**\n輸入願望清單。試著解鎖 12 個節日彩蛋！\n\n**提示：** 彩蛋多與**聖誕物品**有關，但也有關於*感情*、*打工*或*旅行*的...",
-        "input_placeholder": "許願吧 (例如：iPhone 17 pro max、男朋友、女朋友、很多錢...)",
-        "button": "🎁 吐槽我的願望",
+        "game_rule": "💡 **玩法說明：**\n輸入願望清單求吐槽。\n或者... 輸入特定關鍵字解鎖 12 個節日彩蛋！\n\n**提示：** 彩蛋多與**聖誕物品**有關，但也有關於*感情*、*打工*或*旅行*的...",
+        "input_placeholder": "許個願... 或者輸入關鍵字尋找聖誕秘密 (例如：聖誕樹、鈴鐺...)",
+        "button": "🎁 審判願望 / 召喚彩蛋",
         "loading": "🎅 本聖誕老人正在審視你的人生...",
         "error_no_key": "請先在上方輸入 Gemini API Key！",
         "error_no_text": "寫點東西啊！拿白紙我是要怎麼吐槽？",
@@ -71,9 +72,9 @@ LANG_DICT = {
         "subtitle": "让本圣诞老人... 用逻辑粉碎你的梦想... 😏",
         "sidebar_title": "🎅 设置",
         "api_help": "Key 仅用于本次会话。",
-        "game_rule": "💡 **玩法说明：**\n输入愿望清单。试着解锁 12 个节日彩蛋！\n\n**提示：** 彩蛋多与**圣诞物品**有关，但也有关于*感情*、*打工*或*旅行*的...",
-        "input_placeholder": "许愿吧 (例如：iPhone 17 pro max、男朋友、女朋友、很多钱...)",
-        "button": "🎁 吐槽我的愿望",
+        "game_rule": "💡 **玩法说明：**\n输入愿望清单求吐槽。\n或者... 输入特定关键词解锁 12 个节日彩蛋！\n\n**提示：** 彩蛋多与**圣诞物品**有关，但也有关于*感情*、*打工*或*旅行*的...",
+        "input_placeholder": "许个愿... 或者输入关键词寻找圣诞秘密 (例如：圣诞树、铃铛...)",
+        "button": "🎁 审判愿望 / 召唤彩蛋",
         "loading": "🎅 本圣诞老人正在审视你的人生...",
         "error_no_key": "请先在上方输入 Gemini API Key！",
         "error_no_text": "写点东西啊！拿白纸我是要怎么吐槽？",
@@ -97,7 +98,6 @@ LANG_DICT = {
     }
 }
 
-# Updated Clues: Harder riddles + Padoru Hat fix
 HINT_CLUES = {
     "English 🇬🇧🇺🇸": {
         1: "A corpse dressed in jewelry, dying slowly in your living room for your amusement. 🌲💎",
