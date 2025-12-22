@@ -512,11 +512,12 @@ else:
             ]
 
             # 10. 🧣 Padoru (新增 - Padoru)
+            # ⚠️ 修改：移除 "santa hat" 避免與 ID 9 衝突，確保 "christmas hat" 存在
             triggers_padoru = [
                 "padoru", "hashire sori yo", "nero", "fate", "tsukimihara",
                 "帕多鲁", "帕多露", "聖誕帽", "圣诞帽", "帽子",
-                "パドル", "走れ逸れよ", "サンタ帽",
-                "santahat", "christmas hat", "hat"
+                "パドル", "走れ逸れよ", 
+                "christmas hat", "hat"
             ]
 
             # --- 檢測新發現 ---
@@ -558,6 +559,8 @@ else:
             if any(t in user_input_lower for t in triggers_culture):
                 is_chinese = "Chinese" in current_lang_key or "中文" in current_lang_key
                 if is_chinese:
+                    # ✅ 修復版：使用 components.html 確保樣式正確
+                    # ⚠️ 關鍵修正：加入 style="display: none;" 確保 #card-container 初始隱藏
                     components.html("""
 <!DOCTYPE html>
 <html lang="zh-CN">
@@ -566,10 +569,45 @@ else:
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@700;900&family=Noto+Sans+SC:wght@400;700&display=swap');
+
     * { box-sizing: border-box; }
-    body { margin: 0; height: 100vh; background-color: transparent; display: flex; justify-content: center; align-items: center; font-family: "Noto Sans SC", sans-serif; overflow: hidden; }
-    .interaction-container { position: relative; width: 100%; height: 100%; display: flex; justify-content: center; align-items: center; }
-    #stage-1 { position: absolute; width: 85%; max-width: 340px; background: #fff; padding: 40px 25px 60px 25px; box-shadow: 0 15px 40px rgba(0,0,0,0.5); transform: rotate(-0.5deg); z-index: 10; transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55); color: #000; font-family: "FangSong", "SimSun", serif; border-radius: 2px; }
+
+    body {
+        margin: 0;
+        height: 100vh;
+        background-color: transparent;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: "Noto Sans SC", sans-serif;
+        overflow: hidden;
+    }
+
+    .interaction-container {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    /* ================= STAGE 1: 2025 基层红头文件 ================= */
+    #stage-1 {
+        position: absolute;
+        width: 85%;           /* 手机宽度适配 */
+        max-width: 340px;     /* 电脑最大宽度 */
+        background: #fff;
+        padding: 40px 25px 60px 25px;
+        box-shadow: 0 15px 40px rgba(0,0,0,0.5);
+        transform: rotate(-0.5deg);
+        z-index: 10;
+        transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        color: #000;
+        font-family: "FangSong", "SimSun", serif;
+        border-radius: 2px;
+    }
+
     .doc-header { text-align: center; color: #d60000; font-family: "SimSun", "SimHei", serif; font-size: 24px; font-weight: 500; letter-spacing: 1px; margin-bottom: 20px; }
     .doc-title { text-align: center; font-size: 20px; font-weight: 500; margin-bottom: 10px; line-height: 1.4; font-family: "SimSun", serif; letter-spacing: 2px; }
     .doc-serial { text-align: center; font-size: 12px; margin-bottom: 25px; font-family: "FangSong", serif; }
@@ -577,10 +615,44 @@ else:
     .doc-body p { margin: 0 0 8px 0; }
     .doc-footer { position: absolute; bottom: 40px; right: 30px; text-align: right; font-family: "FangSong", serif; line-height: 1.6; font-size: 14px; }
     .doc-stamp { position: absolute; top: -10px; right: -10px; width: 100px; height: 100px; opacity: 0.85; mix-blend-mode: multiply; pointer-events: none; transform: rotate(-8deg); }
-    .close-btn { position: absolute; top: 10px; right: 10px; width: 32px; height: 32px; background: #f0f0f0; color: #333; border: 1px solid #ccc; border-radius: 50%; font-size: 20px; font-weight: bold; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 5px rgba(0,0,0,0.1); transition: transform 0.2s; z-index: 20; }
+    
+    /* 🔥 核心修改：按钮移到纸张内部 🔥 */
+    .close-btn { 
+        position: absolute; 
+        top: 10px;           /* 距离顶部 10px (内部) */
+        right: 10px;         /* 距离右侧 10px (内部) */
+        width: 32px; 
+        height: 32px; 
+        background: #f0f0f0; /* 改为浅灰色背景，不那么突兀 */
+        color: #333; 
+        border: 1px solid #ccc; 
+        border-radius: 50%; 
+        font-size: 20px; 
+        font-weight: bold; 
+        cursor: pointer; 
+        display: flex; 
+        align-items: center; 
+        justify-content: center; 
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1); 
+        transition: transform 0.2s; 
+        z-index: 20; 
+    }
     .close-btn:hover { background: #d60000; color: #fff; transform: scale(1.1); border-color: #d60000; }
+
+    /* ================= STAGE 2: 拦截系统 ================= */
     #card-container { display: none; position: relative; z-index: 20; perspective: 1000px; width: 100%; display: flex; justify-content: center; }
-    .brutalist-card { width: 85%; max-width: 340px; border: 4px solid #000; background-color: #fff; padding: 1.2rem; box-shadow: 10px 10px 0 #000; font-family: "Noto Sans SC", sans-serif; transition: all 0.3s; position: relative; }
+    .brutalist-card { 
+        width: 85%; 
+        max-width: 340px; 
+        border: 4px solid #000; 
+        background-color: #fff; 
+        padding: 1.2rem; 
+        box-shadow: 10px 10px 0 #000;
+        font-family: "Noto Sans SC", sans-serif; 
+        transition: all 0.3s; 
+        position: relative; 
+    }
+    
     .brutalist-card__header { display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem; border-bottom: 2px solid #000; padding-bottom: 1rem; }
     .brutalist-card__icon { flex-shrink: 0; display: flex; align-items: center; justify-content: center; background-color: #000; padding: 0.5rem; transition: background 0.3s; }
     .brutalist-card__icon svg { height: 1.5rem; width: 1.5rem; fill: #fff; }
@@ -590,18 +662,31 @@ else:
     .brutalist-card__button { display: block; width: 100%; padding: 0.75rem; text-align: center; font-size: 0.95rem; font-weight: 700; text-transform: uppercase; border: 3px solid #000; background-color: #fff; color: #000; position: relative; transition: all 0.2s; box-shadow: 4px 4px 0 #000; text-decoration: none; cursor: pointer; box-sizing: border-box; }
     .brutalist-card__button--read { background-color: #000; color: #fff; }
     .brutalist-card__button:active { transform: translate(2px, 2px); box-shadow: 2px 2px 0 #000; }
+
+    /* HACKED 状态 */
     .hacked .brutalist-card { border-color: #d35400; box-shadow: 10px 10px 0 #e67e22; }
     .hacked .brutalist-card__icon { background-color: #d35400; }
     .hacked .brutalist-card__alert { color: #d35400; }
     .hacked .brutalist-card__message { border-bottom-color: #d35400; font-family: "Noto Serif SC", serif; font-size: 0.85rem; line-height: 1.6; font-weight: normal; }
     .hacked .brutalist-card__button--read { background-color: #d35400; border-color: #d35400; box-shadow: 4px 4px 0 #a04000; }
+    
     .quote-box { background-color: #f9f9f9; border-left: 4px solid #d35400; padding: 6px 10px; margin: 10px 0; font-style: italic; color: #555; font-family: "FangSong", serif; font-size: 0.85rem; }
+
+    /* 確保初始隱藏 */
+    #card-container { display: none; }
+    
     .pop-in { display: flex !important; animation: pop-in 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; }
     .fly-out { animation: fly-away 0.8s cubic-bezier(0.6, -0.28, 0.735, 0.045) forwards; pointer-events: none; }
     .glitching { animation: glitch-shake 0.3s cubic-bezier(.36,.07,.19,.97) both infinite; filter: invert(1); }
+
     @keyframes fly-away { to { transform: translateY(120vh) rotate(20deg); opacity: 0; } }
     @keyframes pop-in { from { opacity: 0; transform: scale(0.8); } to { opacity: 1; transform: scale(1); } }
-    @keyframes glitch-shake { 10%, 90% { transform: translate3d(-1px, 0, 0); } 20%, 80% { transform: translate3d(2px, 0, 0); } 30%, 50%, 70% { transform: translate3d(-4px, 0, 0); } 40%, 60% { transform: translate3d(4px, 0, 0); } }
+    @keyframes glitch-shake {
+        10%, 90% { transform: translate3d(-1px, 0, 0); }
+        20%, 80% { transform: translate3d(2px, 0, 0); }
+        30%, 50%, 70% { transform: translate3d(-4px, 0, 0); }
+        40%, 60% { transform: translate3d(4px, 0, 0); }
+    }
 </style>
 </head>
 <body>
@@ -631,7 +716,8 @@ else:
                 </svg>
             </div>
         </div>
-        <div id="card-container">
+
+        <div id="card-container" style="display: none;">
             <div class="brutalist-card" id="main-card">
                 <div class="brutalist-card__header">
                     <div class="brutalist-card__icon" id="card-icon">
@@ -651,11 +737,13 @@ else:
             </div>
         </div>
     </div>
+
     <script>
         function triggerWarning() {
             document.getElementById('stage-1').classList.add('fly-out');
             setTimeout(() => { document.getElementById('card-container').classList.add('pop-in'); }, 400);
         }
+
         function overrideSystem() {
             var card = document.getElementById('main-card');
             var container = document.getElementById('card-container');
@@ -674,7 +762,9 @@ else:
 </html>
                     """, height=650, scrolling=False)
                 else:
+                    # 非中文環境：顯示解釋卡片
                     explain_text = CULTURE_EXPLAINER_TEXT.get(current_lang_key, CULTURE_EXPLAINER_TEXT["English 🇬🇧🇺🇸"])
+                    
                     st.markdown(f"""
                     <div style='background-color: #222; padding: 20px; border-radius: 10px; border-left: 5px solid #ff4b4b; color: #fff;'>
                         <h3>{explain_text['title']}</h3>
@@ -695,7 +785,12 @@ else:
                     st.audio("bgm.mp3", format="audio/mp3", start_time=0, autoplay=True)
                 except:
                     st.warning("🎵 Music file missing.")
-                st.markdown(f"<div class='roast-box'>{ui_text['egg_single']} 🎧</div>", unsafe_allow_html=True)
+                
+                st.markdown(f"""
+                <div class='roast-box'>
+                {ui_text['egg_single']} 🎧
+                </div>
+                """, unsafe_allow_html=True)
 
             # --- 3. 🦌 DEER ---
             elif any(t in user_input_lower for t in triggers_deer):
@@ -796,7 +891,7 @@ else:
                         6: "Hint: A piece of paper that grants freedom, but you're too cowardly to use. 📄😈",
                         7: "Hint: A place colder than your ex's heart. My frozen wasteland. ❄️🏠",
                         9: "Hint: Try calling my name directly, or asking for 'it'. 🎁",
-                        10: "Hint: A red, spinning meme creature... Try Santahat or try padoru? 🧣"
+                        10: "Hint: A red, spinning meme creature... Try Christmas hat? 🧣"
                     }
                     
                     hints_jp = {
@@ -832,7 +927,7 @@ else:
                         target = random.choice(missing_ids)
                         # 根據語言切換提示字典
                         if "Traditional" in current_lang_key: hint_msg = hints_tw.get(target, "繼續許願...")
-                        elif "Simplified" in current_lang_key: hint_msg = hints_cn.get(target, "继续许愿...")
+                        elif "Simplified" in current_lang_key: hint_msg = hints_cn.get(target, "繼續許願...")
                         elif "Japanese" in current_lang_key: hint_msg = hints_jp.get(target, "願い事を続けて...")
                         elif "French" in current_lang_key: hint_msg = hints_fr.get(target, "Continuez à souhaiter...")
                         else: hint_msg = hints_en.get(target, "Keep wishing...")
