@@ -2,14 +2,13 @@ import streamlit as st
 import streamlit.components.v1 as components
 import google.generativeai as genai
 import random
-import time
 import base64
 
 st.set_page_config(page_title="Roast Santa AI", page_icon="🎅", layout="centered")
 
-# --- 语言字典 (仅保留 中/英) ---
+# --- 1. 语言字典 (严格匹配键名) ---
 LANG_DICT = {
-    "English 🇬🇧🇺🇸": {
+    "English": {
         "title": "🎅 Santa's Roast Room",
         "subtitle": "Let The Great Santa judge your greedy soul... 😏",
         "sidebar_title": "🎅 Settings",
@@ -38,7 +37,7 @@ LANG_DICT = {
         "egg_author": "👨‍💻 Creator found! Respect.",
         "new_hint_prefix": "📍 New Hint Unlocked:"
     },
-    "简体中文 🇨🇳": {
+    "简体中文": {
         "title": "🎅 圣诞老人吐槽大会",
         "subtitle": "让本圣诞老人... 用逻辑粉碎你的梦想... 😏",
         "sidebar_title": "🎅 设置",
@@ -58,7 +57,7 @@ LANG_DICT = {
         "egg_single": "本圣诞老人叹气... 没对象？听听这首歌吧。",
         "egg_deer": "看！是鲁道夫在爬你的屏幕！🔴🦌",
         "egg_food": "真香！既然你请我吃大餐，给你个线索：",
-        "egg_bell": "叮叮当！🔔 这是幸运的声音！",
+        "egg_bell": "叮叮当！🔔 这是一个幸运的提示！",
         "egg_finland": "Tervetuloa! (欢迎！) 你找到了我的老家——芬兰！🇫🇮",
         "egg_surprise": "🎁 惊喜！你竟然直接召唤了本尊！",
         "egg_padoru": "🎵 PADORU PADORU !!! 🧣",
@@ -67,7 +66,7 @@ LANG_DICT = {
         "egg_author": "👨‍💻 作者出现！致敬时刻...",
         "new_hint_prefix": "📍 获得新线索："
     },
-    "繁體中文 🇹🇼🇭🇰": {
+    "繁體中文": {
         "title": "🎅 聖誕老人吐槽大會",
         "subtitle": "讓本聖誕老人... 用邏輯粉碎你的夢想... 😏",
         "sidebar_title": "🎅 設定",
@@ -98,9 +97,17 @@ LANG_DICT = {
     }
 }
 
-# --- 彩蛋线索字典 ---
+# --- 2. 状态初始化 (修复 KeyError 的关键) ---
+if 'ui_language' not in st.session_state:
+    st.session_state['ui_language'] = "English"  # 必须与 LANG_DICT 的键一致
+if 'language_selected' not in st.session_state:
+    st.session_state['language_selected'] = False
+if 'found_ids' not in st.session_state:
+    st.session_state['found_ids'] = set()
+
+# --- 3. 线索库 ---
 HINTS = {
-    "English 🇬🇧🇺🇸": {
+    "English": {
         1: "A corpse dressed in jewelry, dying slowly in your living room. 💎🥀",
         2: "Something money can't buy, and your personality can't attract. 💔",
         3: "My enslaved aerial taxi drivers. One has a glowing nose. 🔴🚕",
@@ -130,53 +137,49 @@ HINTS = {
     }
 }
 
-# --- 核心逻辑变量 ---
-if 'found_ids' not in st.session_state: st.session_state['found_ids'] = set()
-if 'ui_language' not in st.session_state: st.session_state['ui_language'] = "English 🇬🇧🇺🇸"
-if 'language_selected' not in st.session_state: st.session_state['language_selected'] = False
-
-MAIN_EGG_IDS = {1, 2, 3, 4, 5, 6, 7, 9, 10, 11, 12, 13}
-
+# --- 4. 辅助函数 ---
 def set_language(lang_key):
     st.session_state['ui_language'] = lang_key
     st.session_state['language_selected'] = True
 
-# --- 视觉装饰函数 ---
-def add_bg():
+def add_magic():
     st.markdown("""
     <style>
-        .stApp { background-image: linear-gradient(to bottom, #0f2027, #203a43, #2c5364); }
-        .roast-box { background-color: #262730; padding: 20px; border-radius: 10px; border-left: 5px solid #FF4B4B; color: #fff; }
-        .gold-mode { border-left: 5px solid #FFD700 !important; box-shadow: 0 0 20px rgba(255,215,0,0.3); }
+        .stApp { background-image: linear-gradient(to bottom, #0f2027, #2c5364); }
+        .roast-box { background-color: #262730; padding: 20px; border-radius: 10px; border-left: 5px solid #FF4B4B; color: #fff; margin-top: 15px; }
+        .hint-box { background-color: rgba(255, 215, 0, 0.1); border: 1px dashed #FFD700; padding: 10px; border-radius: 5px; color: #FFD700; margin: 10px 0; }
     </style>
     """, unsafe_allow_html=True)
 
-# --- 游戏逻辑 ---
+# --- 5. 主逻辑 ---
 if not st.session_state['language_selected']:
     st.title("🎅 Santa's Roast Room")
-    col1, col2, col3 = st.columns(3)
-    with col1: st.button("English 🇬🇧🇺🇸", on_click=set_language, args=("English 🇬🇧🇺🇸",))
-    with col2: st.button("简体中文 🇨🇳", on_click=set_language, args=("简体中文 🇨🇳",))
-    with col3: st.button("繁體中文 🇹🇼🇭🇰", on_click=set_language, args=("繁體中文 🇹🇼🇭🇰",))
+    st.subheader("Select Language / 选择语言")
+    c1, c2, c3 = st.columns(3)
+    with c1: st.button("English 🇬🇧", on_click=set_language, args=("English",))
+    with c2: st.button("简体中文 🇨🇳", on_click=set_language, args=("简体中文",))
+    with c3: st.button("繁體中文 🇭🇰", on_click=set_language, args=("繁體中文",))
 else:
-    add_bg()
-    ui = LANG_DICT[st.session_state['ui_language']]
+    add_magic()
+    ui = LANG_DICT[st.session_state['ui_language']] # 这里现在不会报错了
     
-    # 侧边栏
     with st.sidebar:
         st.title(ui["sidebar_title"])
         api_key = st.text_input("Gemini API Key", type="password")
         st.markdown(ui["game_rule"])
-        if st.button("🔄 Change Language"): st.session_state['language_selected'] = False; st.rerun()
+        if st.button("🔄 Reset Language"): 
+            st.session_state['language_selected'] = False
+            st.rerun()
 
     st.title(ui["title"])
     
-    # 彩蛋进度条
-    found_count = len([x for x in st.session_state['found_ids'] if x in MAIN_EGG_IDS])
+    # 进度条
+    MAIN_EGG_IDS = {1, 2, 3, 4, 5, 6, 7, 9, 10, 11, 12, 13}
+    found_count = len(st.session_state['found_ids'].intersection(MAIN_EGG_IDS))
     st.write(f"**{ui['hunt_title']}: {found_count} / 12**")
     st.progress(found_count / 12)
 
-    gift_list = st.text_area(ui["input_placeholder"], height=150)
+    gift_list = st.text_area(ui["input_placeholder"], height=100)
     
     if st.button(ui["button"], type="primary"):
         if not api_key: st.error(ui["error_no_key"])
@@ -185,50 +188,44 @@ else:
             txt = gift_list.lower()
             new_id = None
             
-            # --- 简易匹配逻辑 ---
+            # 彩蛋检测逻辑
             if any(w in txt for w in ["tree", "圣诞树", "聖誕樹"]): new_id = 1
-            elif any(w in txt for w in ["boyfriend", "girlfriend", "对象", "脫單", "男朋友"]): new_id = 2
-            elif any(w in txt for w in ["deer", "麋鹿", "鲁道夫"]): new_id = 3
-            elif any(w in txt for w in ["cookie", "food", "饼干", "吃"]): new_id = 4
-            elif any(w in txt for w in ["bell", "铃铛", "鈴鐺"]): new_id = 5
-            elif any(w in txt for w in ["holiday", "work", "下班", "请假", "放假"]): new_id = 6
-            elif any(w in txt for w in ["finland", "芬兰", "芬蘭"]): new_id = 7
-            elif any(w in txt for w in ["santa", "圣诞老人", "禮物"]): new_id = 9
-            elif any(w in txt for w in ["padoru", "圣诞帽", "帽"]): new_id = 10
-            elif any(w in txt for w in ["snow", "下雪", "雪"]): new_id = 11
+            elif any(w in txt for w in ["boyfriend", "girlfriend", "对象", "脱单", "男朋友", "女朋友"]): new_id = 2
+            elif any(w in txt for w in ["deer", "reindeer", "麋鹿", "鲁道夫"]): new_id = 3
+            elif any(w in txt for w in ["cookie", "milk", "饼干", "吃", "饿"]): new_id = 4
+            elif any(w in txt for w in ["bell", "jingle", "铃铛", "鈴鐺"]): new_id = 5
+            elif any(w in txt for w in ["holiday", "work", "下班", "请假", "放假", "摸鱼"]): new_id = 6
+            elif any(w in txt for w in ["finland", "rovaniemi", "芬兰", "芬蘭"]): new_id = 7
+            elif any(w in txt for w in ["santa", "gift", "圣诞老人", "禮物"]): new_id = 9
+            elif any(w in txt for w in ["padoru", "hat", "圣诞帽", "帽"]): new_id = 10
+            elif any(w in txt for w in ["snow", "winter", "下雪", "雪"]): new_id = 11
             elif any(w in txt for w in ["market", "集市", "市集"]): new_id = 12
-            elif any(w in txt for w in ["author", "creator", "作者", "开发者"]): new_id = 13
-            elif any(w in txt for w in ["洋节", "文化入侵"]): new_id = 8
+            elif any(w in txt for w in ["author", "creator", "joe", "作者"]): new_id = 13
+            elif any(w in txt for w in ["洋节", "禁止", "抵制"]): new_id = 8
 
-            # 如果触发了新彩蛋
+            # 如果触发了新彩蛋且不是洋节
             if new_id and new_id not in st.session_state['found_ids']:
                 st.session_state['found_ids'].add(new_id)
+                st.balloons()
                 
-                # 提示逻辑 (洋节 8 除外)
+                # 随机给下一个没找到的彩蛋提示
                 if new_id != 8:
                     remaining = list(MAIN_EGG_IDS - st.session_state['found_ids'])
                     if remaining:
-                        next_hint_id = random.choice(remaining)
-                        h_lang = "Chinese" if "中文" in st.session_state['ui_language'] else "English 🇬🇧🇺🇸"
-                        hint_txt = HINTS[h_lang][next_hint_id]
-                        st.info(f"{ui['new_hint_prefix']} {hint_txt}")
-                st.balloons()
-            
-            # 展示对应内容 (此处简化，仅展示文字提示，结构参考原代码)
-            if new_id == 1: st.success(ui["secret_success"])
-            elif new_id == 2: st.markdown(f"<div class='roast-box gold-mode'>{ui['egg_single']}</div>", unsafe_allow_html=True)
-            elif new_id == 6: st.warning("🎫 SLACK OFF PERMIT UNLOCKED!")
-            # ... 其他彩蛋展示逻辑同理 ...
+                        next_id = random.choice(remaining)
+                        h_lang = "Chinese" if "中文" in st.session_state['ui_language'] else "English"
+                        st.markdown(f"<div class='hint-box'>{ui['new_hint_prefix']} {HINTS[h_lang][next_id]}</div>", unsafe_allow_html=True)
 
-            # AI 吐槽
+            # AI 吐槽请求
             with st.spinner(ui["loading"]):
                 try:
                     genai.configure(api_key=api_key)
                     model = genai.GenerativeModel('gemini-1.5-flash')
-                    prompt = f"You are a tsundere Santa. Roast this wish list but be secretly kind: {gift_list}. Respond in {st.session_state['ui_language']}."
+                    prompt = f"Roleplay: You are a grumpy but tsundere Santa. Roast this wish list in {st.session_state['ui_language']}: {gift_list}. Do not use AI boilerplate."
                     response = model.generate_content(prompt)
                     st.markdown(f"<div class='roast-box'>{response.text}</div>", unsafe_allow_html=True)
                 except Exception as e:
-                    st.error("Santa is busy...")
+                    st.error(f"Error: {str(e)}")
 
-    st.markdown(f"<center style='color:gray; font-size:10px;'>{ui['footer']}</center>", unsafe_allow_html=True)
+    st.markdown("---")
+    st.caption(f"<center>{ui['footer']}</center>", unsafe_allow_html=True)
