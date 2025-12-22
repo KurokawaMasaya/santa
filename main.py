@@ -15,7 +15,7 @@ LANG_DICT = {
         "subtitle": "Let The Great Santa judge your greedy soul... 😏",
         "sidebar_title": "🎅 Settings",
         "api_help": "Key is used for this session only.",
-        "game_rule": "💡 **How to play:**\nEnter your wishlist. Unlock 9 festive secrets!\n\n**Tip:** Most secrets are related to **Christmas items**, but some are about your *relationship*, *work* or *travel*...",
+        "game_rule": "💡 **How to play:**\nEnter your wishlist. Unlock 10 festive secrets!\n\n**Tip:** Most secrets are related to **Christmas items**, but some are about your *relationship*, *work* or *travel*...",
         "input_placeholder": "Your wishlist (e.g., iPhone 17 pro max, a boyfriend, a girlfriend, lots of money)",
         "button": "🎁 Roast My List",
         "loading": "🎅 Santa is assessing your worth...",
@@ -34,14 +34,15 @@ LANG_DICT = {
         "egg_bell": "Ring Ring! 🔔 That's the sound of luck!",
         "egg_finland": "Tervetuloa! You found my home — Finland (Suomi)! 🇫🇮\nThe sauna is ready, come visit Rovaniemi!",
         "egg_surprise": "🎁 SURPRISE! You summoned me directly!",
-        "egg_padoru": "🎵 HASHIRE SORI YO... KAZE NO YOU NI... PADORU PADORU! 🧣"
+        "egg_padoru": "🎵 HASHIRE SORI YO... KAZE NO YOU NI... PADORU PADORU! 🧣",
+        "egg_snow": "❄️ Let it snow! The world is quiet and beautiful now..."
     },
     "Traditional Chinese (繁體中文) 🇹🇼🇭🇰🇲🇴": {
         "title": "🎅 聖誕老人吐槽大會",
         "subtitle": "讓本聖誕老人... 用邏輯粉碎你的夢想... 😏",
         "sidebar_title": "🎅 設定",
         "api_help": "Key 僅用於本次連線，重新整理即消失。",
-        "game_rule": "💡 **玩法說明：**\n輸入願望清單。試著解鎖 9 個節日彩蛋！\n\n**提示：** 彩蛋多與**聖誕物品**有關，但也有關於*感情*、*打工*或*旅行*的...",
+        "game_rule": "💡 **玩法說明：**\n輸入願望清單。試著解鎖 10 個節日彩蛋！\n\n**提示：** 彩蛋多與**聖誕物品**有關，但也有關於*感情*、*打工*或*旅行*的...",
         "input_placeholder": "許願吧 (例如：iPhone 17 pro max、男朋友、女朋友、很多錢...)",
         "button": "🎁 吐槽我的願望",
         "loading": "🎅 本聖誕老人正在審視你的人生...",
@@ -60,14 +61,15 @@ LANG_DICT = {
         "egg_bell": "叮叮噹！🔔 這是幸運的聲音！",
         "egg_finland": "Tervetuloa! (歡迎！) 你竟然找到了我的老家——芬蘭 (Finland)！🇫🇮\n這裡的桑拿房已經熱好了，快來羅瓦涅米找我玩吧！",
         "egg_surprise": "🎁 驚喜！你竟然直接召喚了本尊！",
-        "egg_padoru": "🎵 走れ逸れよ... 風のように... PADORU PADORU !!! 🧣"
+        "egg_padoru": "🎵 走れ逸れよ... 風のように... PADORU PADORU !!! 🧣",
+        "egg_snow": "❄️ 讓雪落下吧！整個世界都安靜了..."
     },
     "Simplified Chinese (简体中文) 🇨🇳": {
         "title": "🎅 圣诞老人吐槽大会",
         "subtitle": "让本圣诞老人... 用逻辑粉碎你的梦想... 😏",
         "sidebar_title": "🎅 设置",
         "api_help": "Key 仅用于本次会话。",
-        "game_rule": "💡 **玩法说明：**\n输入愿望清单。试着解锁 9 个节日彩蛋！\n\n**提示：** 彩蛋多与**圣诞物品**有关，但也有关于*感情*、*打工*或*旅行*的...",
+        "game_rule": "💡 **玩法说明：**\n输入愿望清单。试着解锁 10 个节日彩蛋！\n\n**提示：** 彩蛋多与**圣诞物品**有关，但也有关于*感情*、*打工*或*旅行*的...",
         "input_placeholder": "许愿吧 (例如：iPhone 17 pro max、男朋友、女朋友、很多钱...)",
         "button": "🎁 吐槽我的愿望",
         "loading": "🎅 本圣诞老人正在审视你的人生...",
@@ -86,14 +88,15 @@ LANG_DICT = {
         "egg_bell": "叮叮当！🔔 这是幸运的声音！",
         "egg_finland": "Tervetuloa! (欢迎！) 你竟然找到了我的老家——芬兰 (Finland)！🇫🇮\n这里的桑拿房已经热好了，快来罗瓦涅米找我玩吧！",
         "egg_surprise": "🎁 惊喜！你竟然直接召唤了本尊！",
-        "egg_padoru": "🎵 走れ逸れよ... 風のように... PADORU PADORU !!! 🧣"
+        "egg_padoru": "🎵 走れ逸れよ... 風のように... PADORU PADORU !!! 🧣",
+        "egg_snow": "❄️ 让雪落下吧！整个世界都安静了..."
     },
     "Japanese (日本語) 🇯🇵": {
         "title": "🎅 サンタの毒舌部屋",
         "subtitle": "ワシが... 論理であなたの夢を打ち砕いてやろう... 😏",
         "sidebar_title": "🎅 設定",
         "api_help": "キーはこのセッションでのみ使用されます。",
-        "game_rule": "💡 **遊び方:**\n欲しいものを入力して、9つのクリスマスの秘密を探そう！\n\n**ヒント:** ほとんどは**クリスマスアイテム**ですが、*恋愛*や*仕事*、*旅行*に関するものも...",
+        "game_rule": "💡 **遊び方:**\n欲しいものを入力して、10個のクリスマスの秘密を探そう！\n\n**ヒント:** ほとんどは**クリスマスアイテム**ですが、*恋愛*や*仕事*、*旅行*に関するものも...",
         "input_placeholder": "欲しいものリスト (例: iPhone 17 pro max, 彼氏, 彼女, 大金...)",
         "button": "🎁 リストを斬る",
         "loading": "🎅 サンタがあなたの価値を査定中...",
@@ -112,14 +115,15 @@ LANG_DICT = {
         "egg_bell": "リンリン！🔔 幸運の音だ！",
         "egg_finland": "Tervetuloa! (ようこそ!) ワシの故郷、フィンランドを見つけたな！🇫🇮\nサウナは温まっているぞ、ロヴァニエミにおいで！",
         "egg_surprise": "🎁 サプライズ！ワシを直接召喚するとはな！",
-        "egg_padoru": "🎵 走れ逸れよ... 風のように... パドル パドル !!! 🧣"
+        "egg_padoru": "🎵 走れ逸れよ... 風のように... パドル パドル !!! 🧣",
+        "egg_snow": "❄️ 雪よ降れ！世界が静寂に包まれる..."
     },
     "French 🇫🇷": {
         "title": "🎅 Salle de Rôtissage du Père Noël",
         "subtitle": "Laissez le Père Noël écraser vos rêves... 😏",
         "sidebar_title": "🎅 Paramètres",
         "api_help": "La clé est utilisée uniquement pour cette session.",
-        "game_rule": "💡 **Comment jouer:**\nEntrez votre liste. Débloquez 9 secrets festifs !\n\n**Astuce :** La plupart sont liés à **Noël**, mais certains concernent *l'amour*, *le travail* ou *le voyage*...",
+        "game_rule": "💡 **Comment jouer:**\nEntrez votre liste. Débloquez 10 secrets festifs !\n\n**Astuce :** La plupart sont liés à **Noël**, mais certains concernent *l'amour*, *le travail* ou *le voyage*...",
         "input_placeholder": "Votre liste (ex: iPhone 17 pro max, un petit ami, une petite amie, beaucoup d'argent)",
         "button": "🎁 Rôtir ma liste",
         "loading": "🎅 Le Père Noël évalue votre valeur...",
@@ -138,7 +142,8 @@ LANG_DICT = {
         "egg_bell": "Dring Dring ! 🔔 C'est le son de la chance !",
         "egg_finland": "Tervetuloa ! Tu as trouvé ma maison : la Finlande ! 🇫🇮\nLe sauna est prêt, viens me voir à Rovaniemi !",
         "egg_surprise": "🎁 SURPRISE ! Vous m'avez invoqué directement !",
-        "egg_padoru": "🎵 PADORU PADORU !!! 🧣"
+        "egg_padoru": "🎵 PADORU PADORU !!! 🧣",
+        "egg_snow": "❄️ Qu'il neige ! Le monde est calme maintenant..."
     }
 }
 
@@ -223,8 +228,9 @@ if 'ui_language' not in st.session_state:
 # 1-7: 主線彩蛋
 # 8: 隱藏彩蛋 (不計入分母)
 # 9: 聖誕老人驚喜 (禮物盒)
-# 10: Padoru (新增)
-MAIN_EGG_IDS = {1, 2, 3, 4, 5, 6, 7, 9, 10}
+# 10: Padoru
+# 11: Snow (新增)
+MAIN_EGG_IDS = {1, 2, 3, 4, 5, 6, 7, 9, 10, 11}
 
 if 'found_ids' not in st.session_state:
     st.session_state['found_ids'] = set() 
@@ -316,11 +322,10 @@ add_christmas_magic()
 # 🔧 工具函數：更新主頁面進度條
 # ==========================================
 def update_hunt_progress(placeholder_obj, ui_text):
-    # 只統計主線 (1-7, 9, 10)
-    # ID 9 (Gift Box) 和 ID 10 (Padoru) 都算入進度
-    main_targets = {1, 2, 3, 4, 5, 6, 7, 9, 10}
+    # 只統計主線 (1-7, 9, 10, 11)
+    main_targets = {1, 2, 3, 4, 5, 6, 7, 9, 10, 11}
     found_main_count = len([x for x in st.session_state['found_ids'] if x in main_targets])
-    total_eggs = 9
+    total_eggs = 10
     
     with placeholder_obj.container():
         st.markdown('<div class="hunt-panel">', unsafe_allow_html=True)
@@ -343,7 +348,8 @@ def update_hunt_progress(placeholder_obj, ui_text):
         medals += "📅 " if 6 in st.session_state['found_ids'] else "⚪ " 
         medals += "🇫🇮 " if 7 in st.session_state['found_ids'] else "⚪ " 
         medals += "🎁 " if 9 in st.session_state['found_ids'] else "⚪ " 
-        medals += "🧣 " if 10 in st.session_state['found_ids'] else "⚪ " # New! Padoru
+        medals += "🧣 " if 10 in st.session_state['found_ids'] else "⚪ " 
+        medals += "❄️ " if 11 in st.session_state['found_ids'] else "⚪ " # New! Snow
         
         # 🔥 Extra Hidden Medal (ID 8 - Culture)
         if 8 in st.session_state['found_ids']:
@@ -520,6 +526,14 @@ else:
                 "christmas hat", "hat"
             ]
 
+            # 11. ❄️ Snow (新增 - Snow Effect)
+            triggers_snow = [
+                "snow", "let it snow", "white christmas", "winter", "cold",
+                "雪", "下雪", "雪花", "冬天", "冷", "白",
+                "neige", "froid", "hiver",
+                "雪", "冬", "寒い"
+            ]
+
             # --- 檢測新發現 ---
             new_discovery = False
 
@@ -541,6 +555,8 @@ else:
                 if 9 not in st.session_state['found_ids']: st.session_state['found_ids'].add(9); new_discovery = True
             elif any(t in user_input_lower for t in triggers_padoru):
                 if 10 not in st.session_state['found_ids']: st.session_state['found_ids'].add(10); new_discovery = True
+            elif any(t in user_input_lower for t in triggers_snow):
+                if 11 not in st.session_state['found_ids']: st.session_state['found_ids'].add(11); new_discovery = True
             
             # 🔥 Hidden Bonus Check (ID 8)
             elif any(t in user_input_lower for t in triggers_culture):
@@ -869,7 +885,8 @@ else:
                         6: "提示：一張賦予你自由，但你絕對不敢拿給老闆看的紙。📄😈",
                         7: "提示：比你的心還要冰冷的地方，也是我的老巢。❄️🏠",
                         9: "提示：試著直接呼喚我的名字，或者跟我要「那個」東西？🎁",
-                        10: "提示：一個紅色的、會旋轉的迷因生物... 試試聖誕帽？ 🧣"
+                        10: "提示：一個紅色的、會旋轉的迷因生物... 試試聖誕帽？ 🧣",
+                        11: "提示：我從天上掉下來，又白又冷... ❄️"
                     }
                     
                     hints_cn = {
@@ -880,7 +897,8 @@ else:
                         6: "提示：一张赋予你自由，但你绝对不敢拿给老板看的纸。📄😈",
                         7: "提示：比你的心还要冰冷的地方，也是我的老巢。❄️🏠",
                         9: "提示：试着直接呼唤我的名字，或者跟我要「那个」东西？🎁",
-                        10: "提示：一个红色的、会旋转的迷因生物... 试试圣诞帽？ 🧣"
+                        10: "提示：一个红色的、会旋转的迷因生物... 试试圣诞帽？ 🧣",
+                        11: "提示：我从天上掉下来，又白又冷... ❄️"
                     }
                     
                     hints_en = {
@@ -891,7 +909,8 @@ else:
                         6: "Hint: A piece of paper that grants freedom, but you're too cowardly to use. 📄😈",
                         7: "Hint: A place colder than your ex's heart. My frozen wasteland. ❄️🏠",
                         9: "Hint: Try calling my name directly, or asking for 'it'. 🎁",
-                        10: "Hint: A red, spinning meme creature... Try Christmas hat? 🧣"
+                        10: "Hint: A red, spinning meme creature... Try Christmas hat? 🧣",
+                        11: "Hint: I fall from the sky, white and cold... ❄️"
                     }
                     
                     hints_jp = {
@@ -902,7 +921,8 @@ else:
                         6: "ヒント: 自由をくれるけど、ボスには絶対見せられない紙... 📄😈",
                         7: "ヒント: 元恋人の心より寒い場所。わしの不毛の地... ❄️🏠",
                         9: "ヒント: ワシの名前を呼んでみろ。もしくは「あれ」をねだってみろ。🎁",
-                        10: "ヒント: 赤くて回転するミーム生物... サンタ帽を試してみて？ 🧣"
+                        10: "ヒント: 赤くて回転するミーム生物... サンタ帽を試してみて？ 🧣",
+                        11: "ヒント: 空から落ちてくる、白くて冷たいもの... ❄️"
                     }
 
                     hints_fr = {
@@ -913,7 +933,8 @@ else:
                         6: "Indice : Un papier qui donne la liberté, mais que vous n'oserez pas montrer au patron. 📄😈",
                         7: "Indice : Un endroit plus froid que le cœur de votre ex. Ma terre gelée. ❄️🏠",
                         9: "Indice : Essayez de m'appeler par mon nom, ou demandez 'ça'. 🎁",
-                        10: "Indice : Une créature mème rouge qui tourne... Essayez le chapeau de Père Noël ? 🧣"
+                        10: "Indice : Une créature mème rouge qui tourne... Essayez le chapeau de Père Noël ? 🧣",
+                        11: "Indice : Je tombe du ciel, blanche et froide... ❄️"
                     }
 
                     if not missing_ids:
@@ -927,7 +948,7 @@ else:
                         target = random.choice(missing_ids)
                         # 根據語言切換提示字典
                         if "Traditional" in current_lang_key: hint_msg = hints_tw.get(target, "繼續許願...")
-                        elif "Simplified" in current_lang_key: hint_msg = hints_cn.get(target, "繼續許願...")
+                        elif "Simplified" in current_lang_key: hint_msg = hints_cn.get(target, "继续许愿...")
                         elif "Japanese" in current_lang_key: hint_msg = hints_jp.get(target, "願い事を続けて...")
                         elif "French" in current_lang_key: hint_msg = hints_fr.get(target, "Continuez à souhaiter...")
                         else: hint_msg = hints_en.get(target, "Keep wishing...")
@@ -1119,6 +1140,11 @@ else:
                 """, height=200) # 高度設為 0 或小一點，因為是 fixed 定位
 
                 st.markdown(f"<div class='roast-box gold-mode' style='border-left: 5px solid #D32F2F !important; text-align:center;'>{ui_text['egg_padoru']}</div>", unsafe_allow_html=True)
+
+            # --- 11. ❄️ SNOW (New!) ---
+            elif any(t in user_input_lower for t in triggers_snow):
+                st.snow()
+                st.markdown(f"<div class='roast-box gold-mode' style='border-left: 5px solid #E0F7FA !important; color: #E0F7FA !important;'>{ui_text['egg_snow']}</div>", unsafe_allow_html=True)
 
             # --- 8. AI 正常邏輯 (Only Snow Here) ---
             else:
