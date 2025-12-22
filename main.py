@@ -513,10 +513,10 @@ else:
             # 10. 🧣 Padoru (新增 - Padoru)
             triggers_padoru = [
                 "padoru", "hashire sori yo", "nero", "fate", "tsukimihara",
-                "帕多鲁", "帕多露",
-                "パドル", "走れ逸れよ"
+                "帕多鲁", "帕多露", "聖誕帽", "圣诞帽", "帽子",
+                "パドル", "走れ逸れよ", "サンタ帽",
+                "santa hat", "christmas hat", "hat"
             ]
-
             # --- 檢測新發現 ---
             new_discovery = False
 
