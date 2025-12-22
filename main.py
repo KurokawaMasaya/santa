@@ -1,5 +1,5 @@
 import streamlit as st
-import streamlit.components.v1 as components  # ✅ 新增這行：專門用來跑複雜 HTML/JS
+import streamlit.components.v1 as components
 import google.generativeai as genai
 import random
 import time
@@ -14,7 +14,7 @@ LANG_DICT = {
         "subtitle": "Let The Great Santa judge your greedy soul... 😏",
         "sidebar_title": "🎅 Settings",
         "api_help": "Key is used for this session only.",
-        "game_rule": "💡 **How to play:**\nEnter your wishlist. Unlock 7 festive secrets!\n\n**Tip:** Most secrets are related to **Christmas items**, but some are about your *relationship*, *work* or *travel*...",
+        "game_rule": "💡 **How to play:**\nEnter your wishlist. Unlock 8 festive secrets!\n\n**Tip:** Most secrets are related to **Christmas items**, but some are about your *relationship*, *work* or *travel*...",
         "input_placeholder": "Your wishlist (e.g., iPhone 17 pro max, a boyfriend, a girlfriend, lots of money)",
         "button": "🎁 Roast My List",
         "loading": "🎅 Santa is assessing your worth...",
@@ -31,14 +31,15 @@ LANG_DICT = {
         "egg_deer": "Look! It's Rudolph crawling on your screen! 🔴🦌",
         "egg_food": "Delicious! Since you fed me, here's a hint for the next secret:",
         "egg_bell": "Ring Ring! 🔔 That's the sound of luck!",
-        "egg_finland": "Tervetuloa! You found my home — Finland (Suomi)! 🇫🇮\nThe sauna is ready, come visit Rovaniemi!"
+        "egg_finland": "Tervetuloa! You found my home — Finland (Suomi)! 🇫🇮\nThe sauna is ready, come visit Rovaniemi!",
+        "egg_surprise": "🎁 SURPRISE! You summoned me directly!"
     },
     "Traditional Chinese (繁體中文) 🇹🇼🇭🇰🇲🇴": {
         "title": "🎅 聖誕老人吐槽大會",
         "subtitle": "讓本聖誕老人... 用邏輯粉碎你的夢想... 😏",
         "sidebar_title": "🎅 設定",
         "api_help": "Key 僅用於本次連線，重新整理即消失。",
-        "game_rule": "💡 **玩法說明：**\n輸入願望清單。試著解鎖 7 個節日彩蛋！\n\n**提示：** 彩蛋多與**聖誕物品**有關，但也有關於*感情*、*打工*或*旅行*的...",
+        "game_rule": "💡 **玩法說明：**\n輸入願望清單。試著解鎖 8 個節日彩蛋！\n\n**提示：** 彩蛋多與**聖誕物品**有關，但也有關於*感情*、*打工*或*旅行*的...",
         "input_placeholder": "許願吧 (例如：iPhone 17 pro max、男朋友、女朋友、很多錢...)",
         "button": "🎁 吐槽我的願望",
         "loading": "🎅 本聖誕老人正在審視你的人生...",
@@ -55,14 +56,15 @@ LANG_DICT = {
         "egg_deer": "看！是魯道夫在爬你的螢幕！🔴🦌",
         "egg_food": "真香！既然你請我吃大餐，偷偷給你個線索：",
         "egg_bell": "叮叮噹！🔔 這是幸運的聲音！",
-        "egg_finland": "Tervetuloa! (歡迎！) 你竟然找到了我的老家——芬蘭 (Finland)！🇫🇮\n這裡的桑拿房已經熱好了，快來羅瓦涅米找我玩吧！"
+        "egg_finland": "Tervetuloa! (歡迎！) 你竟然找到了我的老家——芬蘭 (Finland)！🇫🇮\n這裡的桑拿房已經熱好了，快來羅瓦涅米找我玩吧！",
+        "egg_surprise": "🎁 驚喜！你竟然直接召喚了本尊！"
     },
     "Simplified Chinese (简体中文) 🇨🇳": {
         "title": "🎅 圣诞老人吐槽大会",
         "subtitle": "让本圣诞老人... 用逻辑粉碎你的梦想... 😏",
         "sidebar_title": "🎅 设置",
         "api_help": "Key 仅用于本次会话。",
-        "game_rule": "💡 **玩法说明：**\n输入愿望清单。试着解锁 7 个节日彩蛋！\n\n**提示：** 彩蛋多与**圣诞物品**有关，但也有关于*感情*、*打工*或*旅行*的...",
+        "game_rule": "💡 **玩法说明：**\n输入愿望清单。试着解锁 8 个节日彩蛋！\n\n**提示：** 彩蛋多与**圣诞物品**有关，但也有关于*感情*、*打工*或*旅行*的...",
         "input_placeholder": "许愿吧 (例如：iPhone 17 pro max、男朋友、女朋友、很多钱...)",
         "button": "🎁 吐槽我的愿望",
         "loading": "🎅 本圣诞老人正在审视你的人生...",
@@ -79,14 +81,15 @@ LANG_DICT = {
         "egg_deer": "看！是鲁道夫在爬你的屏幕！🔴🦌",
         "egg_food": "真香！既然你请我吃大餐，偷偷给你个线索：",
         "egg_bell": "叮叮当！🔔 这是幸运的声音！",
-        "egg_finland": "Tervetuloa! (欢迎！) 你竟然找到了我的老家——芬兰 (Finland)！🇫🇮\n这里的桑拿房已经热好了，快来罗瓦涅米找我玩吧！"
+        "egg_finland": "Tervetuloa! (欢迎！) 你竟然找到了我的老家——芬兰 (Finland)！🇫🇮\n这里的桑拿房已经热好了，快来罗瓦涅米找我玩吧！",
+        "egg_surprise": "🎁 惊喜！你竟然直接召唤了本尊！"
     },
     "Japanese (日本語) 🇯🇵": {
         "title": "🎅 サンタの毒舌部屋",
         "subtitle": "ワシが... 論理であなたの夢を打ち砕いてやろう... 😏",
         "sidebar_title": "🎅 設定",
         "api_help": "キーはこのセッションでのみ使用されます。",
-        "game_rule": "💡 **遊び方:**\n欲しいものを入力して、7つのクリスマスの秘密を探そう！\n\n**ヒント:** ほとんどは**クリスマスアイテム**ですが、*恋愛*や*仕事*、*旅行*に関するものも...",
+        "game_rule": "💡 **遊び方:**\n欲しいものを入力して、8つのクリスマスの秘密を探そう！\n\n**ヒント:** ほとんどは**クリスマスアイテム**ですが、*恋愛*や*仕事*、*旅行*に関するものも...",
         "input_placeholder": "欲しいものリスト (例: iPhone 17 pro max, 彼氏, 彼女, 大金...)",
         "button": "🎁 リストを斬る",
         "loading": "🎅 サンタがあなたの価値を査定中...",
@@ -103,14 +106,15 @@ LANG_DICT = {
         "egg_deer": "見ろ！ルドルフが画面を這っているぞ！🔴🦌",
         "egg_food": "うまい！食事のお礼にヒントをやろう：",
         "egg_bell": "リンリン！🔔 幸運の音だ！",
-        "egg_finland": "Tervetuloa! (ようこそ!) ワシの故郷、フィンランドを見つけたな！🇫🇮\nサウナは温まっているぞ、ロヴァニエミにおいで！"
+        "egg_finland": "Tervetuloa! (ようこそ!) ワシの故郷、フィンランドを見つけたな！🇫🇮\nサウナは温まっているぞ、ロヴァニエミにおいで！",
+        "egg_surprise": "🎁 サプライズ！ワシを直接召喚するとはな！"
     },
     "French 🇫🇷": {
         "title": "🎅 Salle de Rôtissage du Père Noël",
         "subtitle": "Laissez le Père Noël écraser vos rêves... 😏",
         "sidebar_title": "🎅 Paramètres",
         "api_help": "La clé est utilisée uniquement pour cette session.",
-        "game_rule": "💡 **Comment jouer:**\nEntrez votre liste. Débloquez 7 secrets festifs !\n\n**Astuce :** La plupart sont liés à **Noël**, mais certains concernent *l'amour*, *le travail* ou *le voyage*...",
+        "game_rule": "💡 **Comment jouer:**\nEntrez votre liste. Débloquez 8 secrets festifs !\n\n**Astuce :** La plupart sont liés à **Noël**, mais certains concernent *l'amour*, *le travail* ou *le voyage*...",
         "input_placeholder": "Votre liste (ex: iPhone 17 pro max, un petit ami, une petite amie, beaucoup d'argent)",
         "button": "🎁 Rôtir ma liste",
         "loading": "🎅 Le Père Noël évalue votre valeur...",
@@ -127,7 +131,8 @@ LANG_DICT = {
         "egg_deer": "Regarde ! C'est Rodolphe qui grimpe sur ton écran ! 🔴🦌",
         "egg_food": "Délicieux ! Voici un indice pour le prochain secret :",
         "egg_bell": "Dring Dring ! 🔔 C'est le son de la chance !",
-        "egg_finland": "Tervetuloa ! Tu as trouvé ma maison : la Finlande ! 🇫🇮\nLe sauna est prêt, viens me voir à Rovaniemi !"
+        "egg_finland": "Tervetuloa ! Tu as trouvé ma maison : la Finlande ! 🇫🇮\nLe sauna est prêt, viens me voir à Rovaniemi !",
+        "egg_surprise": "🎁 SURPRISE ! Vous m'avez invoqué directement !"
     }
 }
 
@@ -211,7 +216,8 @@ if 'ui_language' not in st.session_state:
 # 🔥 核心邏輯：彩蛋 ID 映射 🔥
 # 1-7: 主線彩蛋
 # 8: 隱藏彩蛋 (不計入分母)
-MAIN_EGG_IDS = {1, 2, 3, 4, 5, 6, 7}
+# 9: 聖誕老人驚喜 (新增)
+MAIN_EGG_IDS = {1, 2, 3, 4, 5, 6, 7, 9}
 
 if 'found_ids' not in st.session_state:
     st.session_state['found_ids'] = set() 
@@ -293,9 +299,11 @@ add_christmas_magic()
 # 🔧 工具函數：更新主頁面進度條
 # ==========================================
 def update_hunt_progress(placeholder_obj, ui_text):
-    # 只統計主線 (1-7)
-    found_main_count = len([x for x in st.session_state['found_ids'] if x in MAIN_EGG_IDS])
-    total_eggs = 7
+    # 只統計主線 (1-7, 9)
+    # ID 9 是新加的 Surprise Gift，算入收集進度
+    main_targets = {1, 2, 3, 4, 5, 6, 7, 9}
+    found_main_count = len([x for x in st.session_state['found_ids'] if x in main_targets])
+    total_eggs = 8
     
     with placeholder_obj.container():
         st.markdown('<div class="hunt-panel">', unsafe_allow_html=True)
@@ -317,8 +325,9 @@ def update_hunt_progress(placeholder_obj, ui_text):
         medals += "🔔 " if 5 in st.session_state['found_ids'] else "⚪ "
         medals += "📅 " if 6 in st.session_state['found_ids'] else "⚪ " 
         medals += "🇫🇮 " if 7 in st.session_state['found_ids'] else "⚪ " 
+        medals += "🎁 " if 9 in st.session_state['found_ids'] else "⚪ " # New!
         
-        # 🔥 Extra Hidden Medal (ID 8)
+        # 🔥 Extra Hidden Medal (ID 8 - Culture)
         if 8 in st.session_state['found_ids']:
             medals += "👁️ " # The Truth Eye
         
@@ -475,6 +484,15 @@ else:
                 "fête étrangère", "interdire", "invasion culturelle", "boycott" # French
             ]
 
+            # 9. 🎁 Surprise Santa (新增 - 聖誕老人驚喜)
+            triggers_surprise = [
+                "santa", "gift", "present", "box", "claus",
+                "圣诞老人", "礼物", "礼盒", "圣诞老爷爷",
+                "聖誕老人", "禮物", "禮盒", "聖誕老公公", # Traditional Chinese
+                "サンタ", "プレゼント", "ギフト", "サンタクロース", # Japanese
+                "cadeau", "père noël", "surprise" # French
+            ]
+
             # --- 檢測新發現 ---
             new_discovery = False
 
@@ -492,6 +510,8 @@ else:
                 if 6 not in st.session_state['found_ids']: st.session_state['found_ids'].add(6); new_discovery = True
             elif any(t in user_input_lower for t in triggers_finland):
                 if 7 not in st.session_state['found_ids']: st.session_state['found_ids'].add(7); new_discovery = True
+            elif any(t in user_input_lower for t in triggers_surprise):
+                if 9 not in st.session_state['found_ids']: st.session_state['found_ids'].add(9); new_discovery = True
             
             # 🔥 Hidden Bonus Check (ID 8)
             elif any(t in user_input_lower for t in triggers_culture):
@@ -516,11 +536,6 @@ else:
                 if is_chinese:
                     # ✅ 修復版：使用 components.html 生成獨立的 iframe，完美復刻 iconic.html 效果
                     # 這樣可以避免 Streamlit 的 markdown 渲染器破壞 SVG 和 JS
-                   # ✅ 修復版：增加手機適配 (Responsive) CSS
-                    # 1. 加入 * { box-sizing: border-box; } 確保寬度計算不溢出
-                    # 2. 將固定寬度 340px 改為 max-width: 340px; width: 90%;
-                    # 3. 調整 Close Button 位置，防止手機上被切掉
-                    
                     components.html("""
 <!DOCTYPE html>
 <html lang="zh-CN">
@@ -824,7 +839,8 @@ else:
                     3: "提示：一群被我奴役的空中計程車司機，其中有個紅鼻子的。🔴🚕",
                     5: "提示：有金屬舌頭，腦袋空空，一搖晃就會尖叫的東西。🔔😱",
                     6: "提示：一張賦予你自由，但你絕對不敢拿給老闆看的紙。📄😈",
-                    7: "提示：比你的心還要冰冷的地方，也是我的老巢。❄️🏠"
+                    7: "提示：比你的心還要冰冷的地方，也是我的老巢。❄️🏠",
+                    9: "提示：試著直接呼喚我的名字，或者跟我要「那個」東西？🎁"
                 }
                 
                 hints_cn = {
@@ -833,7 +849,8 @@ else:
                     3: "提示：一群被我奴役的空中出租车司机，其中有个红鼻子的。🔴🚕",
                     5: "提示：有金属舌头，脑袋空空，一摇晃就会尖叫的东西。🔔😱",
                     6: "提示：一张赋予你自由，但你绝对不敢拿给老板看的纸。📄😈",
-                    7: "提示：比你的心还要冰冷的地方，也是我的老巢。❄️🏠"
+                    7: "提示：比你的心还要冰冷的地方，也是我的老巢。❄️🏠",
+                    9: "提示：试着直接呼唤我的名字，或者跟我要「那个」东西？🎁"
                 }
                 
                 hints_en = {
@@ -842,7 +859,8 @@ else:
                     3: "Hint: My enslaved aerial taxi drivers. One has a glowing nose. 🔴🚕",
                     5: "Hint: Golden skin, metal tongue, screams when you shake it. 🔔😱",
                     6: "Hint: A piece of paper that grants freedom, but you're too cowardly to use. 📄😈",
-                    7: "Hint: A place colder than your ex's heart. My frozen wasteland. ❄️🏠"
+                    7: "Hint: A place colder than your ex's heart. My frozen wasteland. ❄️🏠",
+                    9: "Hint: Try calling my name directly, or asking for 'it'. 🎁"
                 }
                 
                 hints_jp = {
@@ -851,7 +869,8 @@ else:
                     3: "ヒント: 空飛ぶタクシー運転手。赤鼻のやつ... 🔴🚕",
                     5: "ヒント: 揺らすと叫ぶ金属の舌を持つやつ... 🔔😱",
                     6: "ヒント: 自由をくれるけど、ボスには絶対見せられない紙... 📄😈",
-                    7: "ヒント: 元恋人の心より寒い場所。わしの不毛の地... ❄️🏠"
+                    7: "ヒント: 元恋人の心より寒い場所。わしの不毛の地... ❄️🏠",
+                    9: "ヒント: ワシの名前を呼んでみろ。もしくは「あれ」をねだってみろ。🎁"
                 }
 
                 hints_fr = {
@@ -860,7 +879,8 @@ else:
                     3: "Indice : Mes chauffeurs de taxi volants... Un a le nez rouge. 🔴🚕",
                     5: "Indice : Peau dorée, langue de métal, crie quand on la secoue. 🔔😱",
                     6: "Indice : Un papier qui donne la liberté, mais que vous n'oserez pas montrer au patron. 📄😈",
-                    7: "Indice : Un endroit plus froid que le cœur de votre ex. Ma terre gelée. ❄️🏠"
+                    7: "Indice : Un endroit plus froid que le cœur de votre ex. Ma terre gelée. ❄️🏠",
+                    9: "Indice : Essayez de m'appeler par mon nom, ou demandez 'ça'. 🎁"
                 }
 
                 if not missing_ids:
@@ -1006,6 +1026,230 @@ else:
                 st.markdown(f"""
                 <div class='roast-box gold-mode' style='border-left: 5px solid #003580 !important;'>
                 {ui_text['egg_finland']}
+                </div>
+                """, unsafe_allow_html=True)
+
+            # --- 9. 🎁 SANTA SURPRISE (New!) ---
+            elif any(t in user_input_lower for t in triggers_surprise):
+                st.balloons()
+                
+                # 這裡使用 components.html 來渲染獨立的動畫
+                components.html("""
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Santa Surprise Gift</title>
+<style>
+    body {
+        margin: 0;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: transparent; /* 在 Streamlit 中背景透明 */
+        overflow: hidden;
+    }
+
+    .container {
+        position: relative;
+        width: 300px;
+        height: 300px;
+        display: flex;
+        justify-content: center;
+        align-items: flex-end;
+    }
+
+    /* --- 禮物盒主體 --- */
+    .gift-box {
+        position: relative;
+        width: 160px;
+        height: 120px;
+        z-index: 10;
+    }
+
+    /* 盒身 */
+    .gift-body {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        height: 100%;
+        background-color: #d32f2f; /* 紅色 */
+        border-radius: 0 0 10px 10px;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        z-index: 10;
+        overflow: hidden; /* 隱藏下半身 */
+    }
+
+    /* 盒身絲帶 (直) */
+    .gift-body::before {
+        content: '';
+        position: absolute;
+        left: 50%;
+        width: 30px;
+        height: 100%;
+        background-color: #ffeb3b; /* 金色 */
+        transform: translateX(-50%);
+    }
+
+    /* 盒蓋 */
+    .gift-lid {
+        position: absolute;
+        top: -30px;
+        left: -10px;
+        width: 180px;
+        height: 40px;
+        background-color: #c62828; /* 深紅色 */
+        border-radius: 5px;
+        z-index: 30;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        transition: all 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55); /* 彈跳飛出效果 */
+    }
+
+    /* 盒蓋絲帶 (直) */
+    .gift-lid::before {
+        content: '';
+        position: absolute;
+        left: 50%;
+        width: 30px;
+        height: 100%;
+        background-color: #ffeb3b;
+        transform: translateX(-50%);
+    }
+
+    /* 絲帶結 */
+    .gift-bow {
+        position: absolute;
+        top: -40px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 60px;
+        height: 30px;
+        z-index: 35;
+        transition: all 0.8s ease-out;
+    }
+    .gift-bow::before, .gift-bow::after {
+        content: '';
+        position: absolute;
+        width: 30px;
+        height: 30px;
+        border: 5px solid #ffeb3b;
+        border-radius: 50%;
+        top: 0;
+    }
+    .gift-bow::before { left: -15px; transform: rotate(-30deg); }
+    .gift-bow::after { right: -15px; transform: rotate(30deg); }
+
+    /* --- 聖誕老人 --- */
+    .santa-pop {
+        position: absolute;
+        bottom: 80px; /* 初始位置在盒子裡 */
+        left: 50%;
+        transform: translateX(-50%) scale(0.5);
+        font-size: 100px;
+        z-index: 5; /* 初始在盒子後面/裡面 */
+        opacity: 0;
+        transition: all 1s cubic-bezier(1.000, -0.600, 0.000, 1.650); /* 強力彈跳效果 */
+    }
+    
+    .hohoho {
+        position: absolute;
+        top: -60px;
+        width: 200px;
+        text-align: center;
+        font-family: 'Comic Sans MS', cursive, sans-serif;
+        font-weight: bold;
+        color: #fff;
+        font-size: 24px;
+        text-shadow: 2px 2px 0 #d32f2f, -2px -2px 0 #d32f2f, 2px -2px 0 #d32f2f, -2px 2px 0 #d32f2f;
+        opacity: 0;
+        transform: translateY(20px) translateX(-50%);
+        left: 50%;
+        transition: all 0.5s ease-out 0.8s; /* 延遲顯示 */
+    }
+
+    /* --- 動畫狀態 Classes --- */
+
+    /* 1. 晃動中 */
+    .shaking {
+        animation: shake-box 0.5s infinite;
+    }
+
+    @keyframes shake-box {
+        0% { transform: rotate(0deg); }
+        25% { transform: rotate(2deg) translate(2px, 0); }
+        50% { transform: rotate(-2deg) translate(-2px, 0); }
+        75% { transform: rotate(1deg) translate(1px, 0); }
+        100% { transform: rotate(0deg); }
+    }
+
+    /* 2. 打開狀態 */
+    .open .gift-lid {
+        transform: translateY(-150px) rotate(-20deg) scale(0.8);
+        opacity: 0;
+    }
+    .open .gift-bow {
+        transform: translateX(-50%) translateY(-150px) rotate(-45deg) scale(0.5);
+        opacity: 0;
+    }
+    
+    /* 聖誕老人彈出 */
+    .open .santa-pop {
+        bottom: 110px; /* 彈出高度 */
+        transform: translateX(-50%) scale(1.2); /* 變大 */
+        opacity: 1;
+        z-index: 20; /* 跑到盒子前面 */
+    }
+    
+    /* 文字出現 */
+    .open .hohoho {
+        opacity: 1;
+        transform: translateY(0) translateX(-50%);
+    }
+
+</style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="gift-box" id="giftBox">
+            <div class="santa-pop">
+                🎅
+                <div class="hohoho">Merry Christmas!</div>
+            </div>
+            <div class="gift-lid"></div>
+            <div class="gift-bow"></div>
+            <div class="gift-body"></div>
+        </div>
+    </div>
+
+    <script>
+        // 頁面加載後自動觸發動畫序列
+        window.onload = function() {
+            const box = document.getElementById('giftBox');
+            
+            // 1. 等待 0.5 秒開始晃動
+            setTimeout(() => {
+                box.classList.add('shaking');
+                
+                // 2. 晃動 1 秒後打開
+                setTimeout(() => {
+                    box.classList.remove('shaking');
+                    box.classList.add('open');
+                }, 1000);
+                
+            }, 500);
+        };
+    </script>
+
+</body>
+</html>
+                """, height=400) # 給予足夠高度顯示動畫
+
+                st.markdown(f"""
+                <div class='roast-box gold-mode' style='border-left: 5px solid #FF3D00 !important; text-align:center;'>
+                {ui_text['egg_surprise']}
                 </div>
                 """, unsafe_allow_html=True)
 
