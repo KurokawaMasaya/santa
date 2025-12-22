@@ -15,7 +15,7 @@ LANG_DICT = {
         "subtitle": "Let The Great Santa judge your greedy soul... 😏",
         "sidebar_title": "🎅 Settings",
         "api_help": "Key is used for this session only.",
-        "game_rule": "💡 **How to play:**\nEnter your wishlist. Unlock 11 festive secrets!\n\n**Tip:** Most secrets are related to **Christmas items**, but some are about your *relationship*, *work* or *travel*...",
+        "game_rule": "💡 **How to play:**\nEnter your wishlist. Unlock 12 festive secrets!\n\n**Tip:** Most secrets are related to **Christmas items**, but some are about your *relationship*, *work* or *travel*...",
         "input_placeholder": "Your wishlist (e.g., iPhone 17 pro max, a boyfriend, a girlfriend, lots of money)",
         "button": "🎁 Roast My List",
         "loading": "🎅 Santa is assessing your worth...",
@@ -36,14 +36,15 @@ LANG_DICT = {
         "egg_surprise": "🎁 SURPRISE! You summoned me directly!",
         "egg_padoru": "🎵 HASHIRE SORI YO... KAZE NO YOU NI... PADORU PADORU! 🧣",
         "egg_snow": "❄️ Let it snow! The world is quiet and beautiful now...",
-        "egg_market": "🍷 Welcome to the Christmas Market! Hot Glühwein & Pretzels! 🥨"
+        "egg_market": "🍷 Welcome to the Christmas Market! Hot Glühwein & Pretzels! 🥨",
+        "egg_author": "👨‍💻 Creator found! Sending respect..."
     },
     "Traditional Chinese (繁體中文) 🇹🇼🇭🇰🇲🇴": {
         "title": "🎅 聖誕老人吐槽大會",
         "subtitle": "讓本聖誕老人... 用邏輯粉碎你的夢想... 😏",
         "sidebar_title": "🎅 設定",
         "api_help": "Key 僅用於本次連線，重新整理即消失。",
-        "game_rule": "💡 **玩法說明：**\n輸入願望清單。試著解鎖 11 個節日彩蛋！\n\n**提示：** 彩蛋多與**聖誕物品**有關，但也有關於*感情*、*打工*或*旅行*的...",
+        "game_rule": "💡 **玩法說明：**\n輸入願望清單。試著解鎖 12 個節日彩蛋！\n\n**提示：** 彩蛋多與**聖誕物品**有關，但也有關於*感情*、*打工*或*旅行*的...",
         "input_placeholder": "許願吧 (例如：iPhone 17 pro max、男朋友、女朋友、很多錢...)",
         "button": "🎁 吐槽我的願望",
         "loading": "🎅 本聖誕老人正在審視你的人生...",
@@ -64,14 +65,15 @@ LANG_DICT = {
         "egg_surprise": "🎁 驚喜！你竟然直接召喚了本尊！",
         "egg_padoru": "🎵 走れ逸れよ... 風のように... PADORU PADORU !!! 🧣",
         "egg_snow": "❄️ 讓雪落下吧！整個世界都安靜了...",
-        "egg_market": "🍷 歡迎來到聖誕集市！來杯熱紅酒配扭結餅吧！🥨"
+        "egg_market": "🍷 歡迎來到聖誕集市！來杯熱紅酒配扭結餅吧！🥨",
+        "egg_author": "👨‍💻 作者出現！致敬時刻..."
     },
     "Simplified Chinese (简体中文) 🇨🇳": {
         "title": "🎅 圣诞老人吐槽大会",
         "subtitle": "让本圣诞老人... 用逻辑粉碎你的梦想... 😏",
         "sidebar_title": "🎅 设置",
         "api_help": "Key 仅用于本次会话。",
-        "game_rule": "💡 **玩法说明：**\n输入愿望清单。试着解锁 11 个节日彩蛋！\n\n**提示：** 彩蛋多与**圣诞物品**有关，但也有关于*感情*、*打工*或*旅行*的...",
+        "game_rule": "💡 **玩法说明：**\n输入愿望清单。试着解锁 12 个节日彩蛋！\n\n**提示：** 彩蛋多与**圣诞物品**有关，但也有关于*感情*、*打工*或*旅行*的...",
         "input_placeholder": "许愿吧 (例如：iPhone 17 pro max、男朋友、女朋友、很多钱...)",
         "button": "🎁 吐槽我的愿望",
         "loading": "🎅 本圣诞老人正在审视你的人生...",
@@ -92,14 +94,15 @@ LANG_DICT = {
         "egg_surprise": "🎁 惊喜！你竟然直接召唤了本尊！",
         "egg_padoru": "🎵 走れ逸れよ... 風のように... PADORU PADORU !!! 🧣",
         "egg_snow": "❄️ 让雪落下吧！整个世界都安静了...",
-        "egg_market": "🍷 欢迎来到圣诞集市！来杯热红酒配扭结饼吧！🥨"
+        "egg_market": "🍷 欢迎来到圣诞集市！来杯热红酒配扭结饼吧！🥨",
+        "egg_author": "👨‍💻 作者出现！致敬时刻..."
     },
     "Japanese (日本語) 🇯🇵": {
         "title": "🎅 サンタの毒舌部屋",
         "subtitle": "ワシが... 論理であなたの夢を打ち砕いてやろう... 😏",
         "sidebar_title": "🎅 設定",
         "api_help": "キーはこのセッションでのみ使用されます。",
-        "game_rule": "💡 **遊び方:**\n欲しいものを入力して、11個のクリスマスの秘密を探そう！\n\n**ヒント:** ほとんどは**クリスマスアイテム**ですが、*恋愛*や*仕事*、*旅行*に関するものも...",
+        "game_rule": "💡 **遊び方:**\n欲しいものを入力して、12個のクリスマスの秘密を探そう！\n\n**ヒント:** ほとんどは**クリスマスアイテム**ですが、*恋愛*や*仕事*、*旅行*に関するものも...",
         "input_placeholder": "欲しいものリスト (例: iPhone 17 pro max, 彼氏, 彼女, 大金...)",
         "button": "🎁 リストを斬る",
         "loading": "🎅 サンタがあなたの価値を査定中...",
@@ -120,14 +123,15 @@ LANG_DICT = {
         "egg_surprise": "🎁 サプライズ！ワシを直接召喚するとはな！",
         "egg_padoru": "🎵 走れ逸れよ... 風のように... パドル パドル !!! 🧣",
         "egg_snow": "❄️ 雪よ降れ！世界が静寂に包まれる...",
-        "egg_market": "🍷 クリスマスマーケットへようこそ！ホットワインはいかが？ 🥨"
+        "egg_market": "🍷 クリスマスマーケットへようこそ！ホットワインはいかが？ 🥨",
+        "egg_author": "👨‍💻 作者降臨！リスペクト..."
     },
     "French 🇫🇷": {
         "title": "🎅 Salle de Rôtissage du Père Noël",
         "subtitle": "Laissez le Père Noël écraser vos rêves... 😏",
         "sidebar_title": "🎅 Paramètres",
         "api_help": "La clé est utilisée uniquement pour cette session.",
-        "game_rule": "💡 **Comment jouer:**\nEntrez votre liste. Débloquez 11 secrets festifs !\n\n**Astuce :** La plupart sont liés à **Noël**, mais certains concernent *l'amour*, *le travail* ou *le voyage*...",
+        "game_rule": "💡 **Comment jouer:**\nEntrez votre liste. Débloquez 12 secrets festifs !\n\n**Astuce :** La plupart sont liés à **Noël**, mais certains concernent *l'amour*, *le travail* ou *le voyage*...",
         "input_placeholder": "Votre liste (ex: iPhone 17 pro max, un petit ami, une petite amie, beaucoup d'argent)",
         "button": "🎁 Rôtir ma liste",
         "loading": "🎅 Le Père Noël évalue votre valeur...",
@@ -148,7 +152,8 @@ LANG_DICT = {
         "egg_surprise": "🎁 SURPRISE ! Vous m'avez invoqué directement !",
         "egg_padoru": "🎵 PADORU PADORU !!! 🧣",
         "egg_snow": "❄️ Qu'il neige ! Le monde est calme maintenant...",
-        "egg_market": "🍷 Bienvenue au Marché de Noël ! Vin chaud et bretzels ! 🥨"
+        "egg_market": "🍷 Bienvenue au Marché de Noël ! Vin chaud et bretzels ! 🥨",
+        "egg_author": "👨‍💻 Créateur trouvé ! Respect..."
     }
 }
 
@@ -235,8 +240,9 @@ if 'ui_language' not in st.session_state:
 # 9: 聖誕老人驚喜 (禮物盒)
 # 10: Padoru
 # 11: Snow
-# 12: Market (集市 - 新增)
-MAIN_EGG_IDS = {1, 2, 3, 4, 5, 6, 7, 9, 10, 11, 12}
+# 12: Market
+# 13: Author (作者 - 新增)
+MAIN_EGG_IDS = {1, 2, 3, 4, 5, 6, 7, 9, 10, 11, 12, 13}
 
 if 'found_ids' not in st.session_state:
     st.session_state['found_ids'] = set() 
@@ -328,10 +334,10 @@ add_christmas_magic()
 # 🔧 工具函數：更新主頁面進度條
 # ==========================================
 def update_hunt_progress(placeholder_obj, ui_text):
-    # 只統計主線 (1-7, 9, 10, 11, 12)
-    main_targets = {1, 2, 3, 4, 5, 6, 7, 9, 10, 11, 12}
+    # 只統計主線 (1-7, 9, 10, 11, 12, 13)
+    main_targets = {1, 2, 3, 4, 5, 6, 7, 9, 10, 11, 12, 13}
     found_main_count = len([x for x in st.session_state['found_ids'] if x in main_targets])
-    total_eggs = 11
+    total_eggs = 12
     
     with placeholder_obj.container():
         st.markdown('<div class="hunt-panel">', unsafe_allow_html=True)
@@ -357,6 +363,7 @@ def update_hunt_progress(placeholder_obj, ui_text):
         medals += "🧣 " if 10 in st.session_state['found_ids'] else "⚪ " 
         medals += "❄️ " if 11 in st.session_state['found_ids'] else "⚪ " 
         medals += "🍷 " if 12 in st.session_state['found_ids'] else "⚪ " # Market
+        medals += "👨‍💻 " if 13 in st.session_state['found_ids'] else "⚪ " # Author
         
         # 🔥 Extra Hidden Medal (ID 8 - Culture)
         if 8 in st.session_state['found_ids']:
@@ -524,8 +531,7 @@ else:
                 "cadeau", "père noël", "surprise" # French
             ]
 
-            # 10. 🧣 Padoru (新增 - Padoru)
-            # ⚠️ 修改：移除 "santa hat" 避免與 ID 9 衝突，確保 "christmas hat" 存在
+            # 10. 🧣 Padoru
             triggers_padoru = [
                 "padoru", "hashire sori yo", "nero", "fate", "tsukimihara",
                 "帕多鲁", "帕多露", "聖誕帽", "圣诞帽", "帽子",
@@ -548,6 +554,16 @@ else:
                 "聖誕市集", "熱紅酒", # Traditional Chinese
                 "クリスマスマーケット", "市場", "買い物", # Japanese
                 "marché", "vin chaud", "shopping" # French
+            ]
+
+            # 13. 👨‍💻 Author (Creator)
+            triggers_author = [
+                "joe qiao", "joe", "qyc", "乔钰城", "乔老师", "18岁老师", "乔哥",
+                "author", "creator", "developer", "who made this", "dev", "code",
+                "作者", "开发者", "是谁做的", "开发", "程序员", "代码",
+                "開發者", "是誰做的", "程式", # Traditional Chinese
+                "作者", "開発者", "誰が作った", # Japanese
+                "auteur", "créateur", "développeur" # French
             ]
 
             # --- 檢測新發現 ---
@@ -575,6 +591,8 @@ else:
                 if 11 not in st.session_state['found_ids']: st.session_state['found_ids'].add(11); new_discovery = True
             elif any(t in user_input_lower for t in triggers_market):
                 if 12 not in st.session_state['found_ids']: st.session_state['found_ids'].add(12); new_discovery = True
+            elif any(t in user_input_lower for t in triggers_author):
+                if 13 not in st.session_state['found_ids']: st.session_state['found_ids'].add(13); new_discovery = True
             
             # 🔥 Hidden Bonus Check (ID 8)
             elif any(t in user_input_lower for t in triggers_culture):
@@ -593,8 +611,6 @@ else:
             if any(t in user_input_lower for t in triggers_culture):
                 is_chinese = "Chinese" in current_lang_key or "中文" in current_lang_key
                 if is_chinese:
-                    # ✅ 修復版：使用 components.html 確保樣式正確
-                    # ⚠️ 關鍵修正：加入 style="display: none;" 確保 #card-container 初始隱藏
                     components.html("""
 <!DOCTYPE html>
 <html lang="zh-CN">
@@ -813,7 +829,8 @@ else:
                         9: "提示：試著直接呼喚我的名字，或者跟我要「那個」東西？🎁",
                         10: "提示：一個紅色的、會旋轉的迷因生物... 試試聖誕帽？ 🧣",
                         11: "提示：我從天上掉下來，又白又冷... ❄️",
-                        12: "提示：熱紅酒、扭結餅、人擠人... 🍷"
+                        12: "提示：熱紅酒、扭結餅、人擠人... 🍷",
+                        13: "提示：是誰創造了我？(關於作者) 👨‍💻"
                     }
                     
                     hints_cn = {
@@ -826,7 +843,8 @@ else:
                         9: "提示：试着直接呼唤我的名字，或者跟我要「那个」东西？🎁",
                         10: "提示：一个红色的、会旋转的迷因生物... 试试圣诞帽？ 🧣",
                         11: "提示：我从天上掉下来，又白又冷... ❄️",
-                        12: "提示：热红酒、扭结饼、人挤人... 🍷"
+                        12: "提示：热红酒、扭结饼、人挤人... 🍷",
+                        13: "提示：是谁创造了我？(关于作者) 👨‍💻"
                     }
                     
                     hints_en = {
@@ -839,7 +857,8 @@ else:
                         9: "Hint: Try calling my name directly, or asking for 'it'. 🎁",
                         10: "Hint: A red, spinning meme creature... Try Christmas hat? 🧣",
                         11: "Hint: I fall from the sky, white and cold... ❄️",
-                        12: "Hint: Hot wine, pretzels, and crowded stalls... 🍷"
+                        12: "Hint: Hot wine, pretzels, and crowded stalls... 🍷",
+                        13: "Hint: Who created me? (About the developer) 👨‍💻"
                     }
                     
                     hints_jp = {
@@ -852,7 +871,8 @@ else:
                         9: "ヒント: ワシの名前を呼んでみろ。もしくは「あれ」をねだってみろ。🎁",
                         10: "ヒント: 赤くて回転するミーム生物... サンタ帽を試してみて？ 🧣",
                         11: "ヒント: 空から落ちてくる、白くて冷たいもの... ❄️",
-                        12: "ヒント: ホットワイン、プレッツェル、屋台... 🍷"
+                        12: "ヒント: ホットワイン、プレッツェル、屋台... 🍷",
+                        13: "ヒント: 私を作ったのは誰？ (作者について) 👨‍💻"
                     }
 
                     hints_fr = {
@@ -865,7 +885,8 @@ else:
                         9: "Indice : Essayez de m'appeler par mon nom, ou demandez 'ça'. 🎁",
                         10: "Indice : Une créature mème rouge qui tourne... Essayez le chapeau de Père Noël ? 🧣",
                         11: "Indice : Je tombe du ciel, blanche et froide... ❄️",
-                        12: "Indice : Vin chaud, bretzels et foule... 🍷"
+                        12: "Indice : Vin chaud, bretzels et foule... 🍷",
+                        13: "Indice : Qui m'a créé ? (À propos du développeur) 👨‍💻"
                     }
 
                     if not missing_ids:
@@ -879,7 +900,7 @@ else:
                         target = random.choice(missing_ids)
                         # 根據語言切換提示字典
                         if "Traditional" in current_lang_key: hint_msg = hints_tw.get(target, "繼續許願...")
-                        elif "Simplified" in current_lang_key: hint_msg = hints_cn.get(target, "继续许愿...")
+                        elif "Simplified" in current_lang_key: hint_msg = hints_cn.get(target, "繼續許願...")
                         elif "Japanese" in current_lang_key: hint_msg = hints_jp.get(target, "願い事を続けて...")
                         elif "French" in current_lang_key: hint_msg = hints_fr.get(target, "Continuez à souhaiter...")
                         else: hint_msg = hints_en.get(target, "Keep wishing...")
@@ -930,7 +951,7 @@ else:
             elif any(t in user_input_lower for t in triggers_holiday):
                 st.balloons()
                 
-                # 🔥 獲取當前語言文本
+                # 🔥 获取当前语言文本
                 current_ui_lang = st.session_state['ui_language']
                 h_text = HOLIDAY_TEXT.get(current_ui_lang, HOLIDAY_TEXT["English 🇬🇧🇺🇸"]) # Default to English
 
@@ -1025,13 +1046,15 @@ else:
             elif any(t in user_input_lower for t in triggers_padoru):
                 st.balloons()
                 
-                # 🎵 1. 音樂部分
+                # 🎵 1. 音樂部分：直接使用 st.audio (簡單直接)
+                # 只有當音樂檔案存在時才播放
                 try:
                     st.audio("Merry_Christmas_128KBPS.mp3", format="audio/mp3", start_time=0, autoplay=True)
                 except:
                     st.warning("🎵 Music file not found.")
 
-                # 🏃 2. 動畫部分
+                # 🏃 2. 動畫部分：使用 HTML+CSS+Base64 實現跑馬燈效果
+                # 讀取本地 Padoru 圖片並轉為 Base64 (因為 HTML 裡不能直接讀本地路徑)
                 gif_b64 = get_base64_image("padoru.gif")
                 img_tag = f'<img src="data:image/gif;base64,{gif_b64}" class="padoru-img">' if gif_b64 else '<div style="font-size:50px;">🧣</div>'
 
@@ -1066,11 +1089,11 @@ else:
                     </div>
                 </body>
                 </html>
-                """, height=200)
+                """, height=200) # 高度設為 0 或小一點，因為是 fixed 定位
 
                 st.markdown(f"<div class='roast-box gold-mode' style='border-left: 5px solid #D32F2F !important; text-align:center;'>{ui_text['egg_padoru']}</div>", unsafe_allow_html=True)
 
-            # --- 11. ❄️ SNOW ---
+            # --- 11. ❄️ SNOW (New!) ---
             elif any(t in user_input_lower for t in triggers_snow):
                 st.snow()
                 st.markdown(f"<div class='roast-box gold-mode' style='border-left: 5px solid #E0F7FA !important; color: #E0F7FA !important;'>{ui_text['egg_snow']}</div>", unsafe_allow_html=True)
@@ -1100,7 +1123,28 @@ else:
                 """, unsafe_allow_html=True)
                 st.markdown(f"<div class='roast-box gold-mode' style='border-left: 5px solid #FF5722 !important;'>{ui_text['egg_market']}</div>", unsafe_allow_html=True)
 
-            # --- 8. AI 正常邏輯 (Only Snow Here) ---
+            # --- 13. 👨‍💻 AUTHOR (New!) ---
+            elif any(t in user_input_lower for t in triggers_author):
+                st.balloons()
+                
+                # 获取匹配的关键词用于文案
+                matched_trigger = next((t for t in triggers_author if t in user_input_lower), "Author")
+                
+                # 读取并显示作者图片
+                img_b64 = get_base64_image("pic.jpg")
+                if img_b64:
+                     st.markdown(f'<div style="display: flex; justify-content: center;"><img src="data:image/jpeg;base64,{img_b64}" style="width: 300px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.2);"></div>', unsafe_allow_html=True)
+                else:
+                    st.image("pic.jpg", caption="The Creator", width=300)
+
+                st.markdown(f"""
+                <div class='roast-box gold-mode' style='border-left: 5px solid #4CAF50 !important; margin-top: 20px;'>
+                    <b>👨‍💻 {ui_text['egg_author']}</b><br><br>
+                    👉 请给 <b>{matched_trigger}</b> 私信一句 <b>{matched_trigger}nb</b> 吧～
+                </div>
+                """, unsafe_allow_html=True)
+
+            # --- 8. AI 正常逻辑 (Only Snow Here) ---
             else:
                 with st.spinner(ui_text["loading"]):
                     try:
@@ -1114,7 +1158,7 @@ else:
                         You are Santa Claus with a "Tsundere" (傲嬌 - tough outside, soft inside) personality.
 
                         🔥🔥 MANDATORY IDENTITY RULES (CRITICAL) 🔥🔥
-                        1. **SELF-REFERENCE**: You must ALWAYS refer to yourself as **"本聖誕老人" (The Great Santa)** or **"我" (I)**.
+                        1. **SELF-REFERENCE**: You must ALWAYS refer to yourself as **"本圣诞老人" (The Great Santa)** or **"我" (I)**.
                         2. **NO ROBOTIC SPEECH**: Never say "As an AI...".
 
                         🔥🔥 LANGUAGE INSTRUCTION 🔥🔥
@@ -1122,8 +1166,8 @@ else:
                         2. RESPOND in that **SAME LANGUAGE**.
 
                         🔥🔥 RESPONSE STRUCTURE (The "Tsundere" Flow) 🔥🔥
-                        1. **The Roast (50%):** Start by being grumpy. Use "本聖誕老人" to express disbelief at their audacity.
-                        2. **The Shift:** Use a transition like "*Sigh*...", "*Cough*...", or "不過...".
+                        1. **The Roast (50%):** Start by being grumpy. Use "本圣诞老人" to express disbelief at their audacity.
+                        2. **The Shift:** Use a transition like "*Sigh*...", "*Cough*...", or "不过...".
                         3. **The Grant/Advice (50%):** Reluctantly agree or give realistic advice.
 
                         🔥🔥 EXCEPTION (Heartwarming Override) 🔥🔥:
@@ -1133,11 +1177,13 @@ else:
                         response = model.generate_content(f"{persona}\n\nUser's Wish: {gift_list}")
 
                         if "❤️" in response.text or "🌟" in response.text:
+                            # 暖心时刻也给点特效
                             trigger_jackpot_effect()
                             st.balloons()
                             st.success(ui_text["success_title"])
                             box_style = "roast-box gold-mode"
                         else:
+                            # ❌ 移除了 st.snow()，改为只显示 Toast
                             st.toast("🎅 Santa is judging you...", icon="😒")
                             box_style = "roast-box"
 
