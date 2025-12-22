@@ -27,14 +27,15 @@ LANG_DICT = {
         "hunt_title": "🏆 Secret Hunt Progress",
         "egg_single": "Santa sighs... No lover? Here, listen to this song.",
         "egg_deer": "Look! It's Rudolph crawling on your screen! 🔴🦌",
-        "egg_food": "Delicious! Since you fed me, here's a hint for the next secret:",
+        "egg_food": "Delicious! Thanks for the food!",
         "egg_bell": "Ring Ring! 🔔 That's the sound of luck!",
         "egg_finland": "Tervetuloa! You found my home — Finland (Suomi)! 🇫🇮\nThe sauna is ready, come visit Rovaniemi!",
         "egg_surprise": "🎁 SURPRISE! You summoned me directly!",
         "egg_padoru": "🎵 HASHIRE SORI YO... KAZE NO YOU NI... PADORU PADORU! 🧣",
         "egg_snow": "❄️ Let it snow! The world is quiet and beautiful now...",
         "egg_market": "🍷 Welcome to the Christmas Market! Hot Glühwein & Pretzels! 🥨",
-        "egg_author": "👨‍💻 Creator found! Respect."
+        "egg_author": "👨‍💻 Creator found! Respect.",
+        "hint_prefix": "💡 **New Clue Unlocked:** "
     },
     "Traditional Chinese (繁體中文) 🇹🇼🇭🇰🇲🇴": {
         "title": "🎅 聖誕老人吐槽大會",
@@ -55,14 +56,15 @@ LANG_DICT = {
         "hunt_title": "🏆 彩蛋收集進度",
         "egg_single": "本聖誕老人嘆氣... 沒對象？聽聽這首歌吧。",
         "egg_deer": "看！是魯道夫在爬你的螢幕！🔴🦌",
-        "egg_food": "真香！既然你請我吃大餐，偷偷給你個線索：",
+        "egg_food": "真香！既然你請我吃大餐，這就當回禮吧！",
         "egg_bell": "叮叮噹！🔔 這是幸運的聲音！",
         "egg_finland": "Tervetuloa! (歡迎！) 你竟然找到了我的老家——芬蘭 (Finland)！🇫🇮\n這裡的桑拿房已經熱好了，快來羅瓦涅米找我玩吧！",
         "egg_surprise": "🎁 驚喜！你竟然直接召喚了本尊！",
         "egg_padoru": "🎵 走れ逸れよ... 風のように... PADORU PADORU !!! 🧣",
         "egg_snow": "❄️ 讓雪落下吧！整個世界都安靜了...",
         "egg_market": "🍷 歡迎來到聖誕集市！來杯熱紅酒配扭結餅吧！🥨",
-        "egg_author": "👨‍💻 作者出現！致敬時刻..."
+        "egg_author": "👨‍💻 作者出現！致敬時刻...",
+        "hint_prefix": "💡 **解鎖新線索：** "
     },
     "Simplified Chinese (简体中文) 🇨🇳": {
         "title": "🎅 圣诞老人吐槽大会",
@@ -83,14 +85,61 @@ LANG_DICT = {
         "hunt_title": "🏆 彩蛋收集进度",
         "egg_single": "本圣诞老人叹气... 没对象？听听这首歌吧。",
         "egg_deer": "看！是鲁道夫在爬你的屏幕！🔴🦌",
-        "egg_food": "真香！既然你请我吃大餐，偷偷给你个线索：",
+        "egg_food": "真香！既然你请我吃大餐，这就当回礼吧！",
         "egg_bell": "叮叮当！🔔 这是幸运的声音！",
         "egg_finland": "Tervetuloa! (欢迎！) 你竟然找到了我的老家——芬兰 (Finland)！🇫🇮\n这里的桑拿房已经热好了，快来罗瓦涅米找我玩吧！",
         "egg_surprise": "🎁 惊喜！你竟然直接召唤了本尊！",
         "egg_padoru": "🎵 走れ逸れよ... 風のように... PADORU PADORU !!! 🧣",
         "egg_snow": "❄️ 让雪落下吧！整个世界都安静了...",
         "egg_market": "🍷 欢迎来到圣诞集市！来杯热红酒配扭结饼吧！🥨",
-        "egg_author": "👨‍💻 作者出现！致敬时刻..."
+        "egg_author": "👨‍💻 作者出现！致敬时刻...",
+        "hint_prefix": "💡 **解锁新线索：** "
+    }
+}
+
+# Clues for missing eggs (ID 8 excluded)
+HINT_CLUES = {
+    "English 🇬🇧🇺🇸": {
+        1: "A dying green plant in your living room covered in glitter.",
+        2: "The relationship status you don't have (bf/gf).",
+        3: "Santa's driver. An animal with antlers and a red nose.",
+        4: "What do you leave out for Santa to eat (with milk)?",
+        5: "It's golden, metal, and rings. Jingle ____.",
+        6: "What you want from your boss: 'I quit' or 'Vacation'.",
+        7: "Santa's home country (Starts with F).",
+        9: "Try asking for a 'present', 'gift' or call 'Santa'.",
+        10: "A red spinning anime meme... Hashire sori yo...",
+        11: "Frozen water falling from the sky. White and cold.",
+        12: "A place to buy Glühwein, Pretzels and crafts.",
+        13: "Who coded this? (Author/Creator)"
+    },
+    "Simplified Chinese (简体中文) 🇨🇳": {
+        1: "一种放在客厅、挂满装饰、慢慢枯萎的绿色植物。",
+        2: "你缺少的感情状态（男朋友/女朋友）。",
+        3: "圣诞老人的司机，长着角的红鼻子动物。",
+        4: "放在桌上给圣诞老人吃的夜宵（通常配牛奶）。",
+        5: "金色的，摇晃会响，叮叮当...",
+        6: "你最想对老板说的话：不想上班/放假。",
+        7: "圣诞老人的老家（北欧国家）。",
+        9: "试试直接管我要“礼物”？",
+        10: "一个红色旋转的二次元生物... Padoru...",
+        11: "白色的，天上掉下来的，冷冷的。",
+        12: "喝热红酒、吃扭结饼、逛摊位的地方。",
+        13: "这个程序的作者是谁？"
+    },
+    "Traditional Chinese (繁體中文) 🇹🇼🇭🇰🇲🇴": {
+        1: "一種放在客廳、掛滿裝飾、慢慢枯萎的綠色植物。",
+        2: "你缺少的感情狀態（男朋友/女朋友）。",
+        3: "聖誕老人的司機，長著角的紅鼻子動物。",
+        4: "放在桌上給聖誕老人吃的宵夜（通常配牛奶）。",
+        5: "金色的，搖晃會響，叮叮噹...",
+        6: "你最想對老闆說的話：不想上班/放假。",
+        7: "聖誕老人的老家（北歐國家）。",
+        9: "試試直接管我要「禮物」？",
+        10: "一個紅色旋轉的二次元生物... Padoru...",
+        11: "白色的，天上掉下來的，冷冷的。",
+        12: "喝熱紅酒、吃扭結餅、逛攤位的地方。",
+        13: "這個程式的作者是誰？"
     }
 }
 
@@ -142,9 +191,6 @@ MAIN_EGG_IDS = {1, 2, 3, 4, 5, 6, 7, 9, 10, 11, 12, 13}
 
 if 'found_ids' not in st.session_state:
     st.session_state['found_ids'] = set()
-
-if 'hint_msg_v2' not in st.session_state:
-    st.session_state['hint_msg_v2'] = None
 
 
 def set_language(lang_key):
@@ -281,7 +327,6 @@ if not st.session_state['language_selected']:
     st.subheader("Please select your language:")
     st.markdown("---")
     
-    # Modified language selection grid (Removed French/Japanese)
     col1, col2, col3 = st.columns(3)
     with col1:
         st.button("English 🇬🇧🇺🇸", use_container_width=True, on_click=set_language, args=("English 🇬🇧🇺🇸",))
@@ -410,37 +455,77 @@ else:
             ]
 
             new_discovery = False
+            trigger_hint = False
 
+            # Check logic: If found_ids does not contain X, add it, set new_discovery, AND set trigger_hint (for standard eggs)
             if any(t in user_input_lower for t in triggers_tree):
-                if 1 not in st.session_state['found_ids']: st.session_state['found_ids'].add(1); new_discovery = True
+                if 1 not in st.session_state['found_ids']: 
+                    st.session_state['found_ids'].add(1)
+                    new_discovery = True
+                    trigger_hint = True
             elif any(t in user_input_lower for t in triggers_single):
-                if 2 not in st.session_state['found_ids']: st.session_state['found_ids'].add(2); new_discovery = True
+                if 2 not in st.session_state['found_ids']: 
+                    st.session_state['found_ids'].add(2)
+                    new_discovery = True
+                    trigger_hint = True
             elif any(t in user_input_lower for t in triggers_deer):
-                if 3 not in st.session_state['found_ids']: st.session_state['found_ids'].add(3); new_discovery = True
+                if 3 not in st.session_state['found_ids']: 
+                    st.session_state['found_ids'].add(3)
+                    new_discovery = True
+                    trigger_hint = True
             elif any(t in user_input_lower for t in triggers_food):
-                if 4 not in st.session_state['found_ids']: st.session_state['found_ids'].add(4); new_discovery = True
+                if 4 not in st.session_state['found_ids']: 
+                    st.session_state['found_ids'].add(4)
+                    new_discovery = True
+                    trigger_hint = True
             elif any(t in user_input_lower for t in triggers_bell):
-                if 5 not in st.session_state['found_ids']: st.session_state['found_ids'].add(5); new_discovery = True
+                if 5 not in st.session_state['found_ids']: 
+                    st.session_state['found_ids'].add(5)
+                    new_discovery = True
+                    trigger_hint = True
             elif any(t in user_input_lower for t in triggers_holiday):
-                if 6 not in st.session_state['found_ids']: st.session_state['found_ids'].add(6); new_discovery = True
+                if 6 not in st.session_state['found_ids']: 
+                    st.session_state['found_ids'].add(6)
+                    new_discovery = True
+                    trigger_hint = True
             elif any(t in user_input_lower for t in triggers_finland):
-                if 7 not in st.session_state['found_ids']: st.session_state['found_ids'].add(7); new_discovery = True
+                if 7 not in st.session_state['found_ids']: 
+                    st.session_state['found_ids'].add(7)
+                    new_discovery = True
+                    trigger_hint = True
             elif any(t in user_input_lower for t in triggers_surprise):
-                if 9 not in st.session_state['found_ids']: st.session_state['found_ids'].add(9); new_discovery = True
+                if 9 not in st.session_state['found_ids']: 
+                    st.session_state['found_ids'].add(9)
+                    new_discovery = True
+                    trigger_hint = True
             elif any(t in user_input_lower for t in triggers_padoru):
-                if 10 not in st.session_state['found_ids']: st.session_state['found_ids'].add(10); new_discovery = True
+                if 10 not in st.session_state['found_ids']: 
+                    st.session_state['found_ids'].add(10)
+                    new_discovery = True
+                    trigger_hint = True
             elif any(t in user_input_lower for t in triggers_snow):
-                if 11 not in st.session_state['found_ids']: st.session_state['found_ids'].add(11); new_discovery = True
+                if 11 not in st.session_state['found_ids']: 
+                    st.session_state['found_ids'].add(11)
+                    new_discovery = True
+                    trigger_hint = True
             elif any(t in user_input_lower for t in triggers_market):
-                if 12 not in st.session_state['found_ids']: st.session_state['found_ids'].add(12); new_discovery = True
+                if 12 not in st.session_state['found_ids']: 
+                    st.session_state['found_ids'].add(12)
+                    new_discovery = True
+                    trigger_hint = True
             elif any(t in user_input_lower for t in triggers_author):
-                if 13 not in st.session_state['found_ids']: st.session_state['found_ids'].add(13); new_discovery = True
+                if 13 not in st.session_state['found_ids']: 
+                    st.session_state['found_ids'].add(13)
+                    new_discovery = True
+                    trigger_hint = True
 
             elif any(t in user_input_lower for t in triggers_culture):
+                # Culture egg (ID 8) is excluded from triggering a general hint
                 if 8 not in st.session_state['found_ids']:
                     st.session_state['found_ids'].add(8)
                     st.toast("👁️ HIDDEN TRUTH FOUND! (Extra Bonus)", icon="🔓")
                     new_discovery = True
+                    # trigger_hint remains False here
 
             if new_discovery:
                 update_hunt_progress(hunt_placeholder, ui_text)
@@ -627,76 +712,9 @@ else:
                 st.balloons()
                 trigger_jackpot_effect()
 
-                if st.session_state['hint_msg_v2'] is None:
-                    missing_ids = list(MAIN_EGG_IDS - st.session_state['found_ids'])
-                    if 4 in missing_ids: missing_ids.remove(4)
-
-                    hints_tw = {
-                        1: "提示：一種在客廳裡慢慢死去的植物，身上還掛著珠寶。💎🥀",
-                        2: "提示：你的存款買不到，你的性格也吸引不到的那種關係。💔",
-                        3: "提示：一群被我奴役的空中計程車司機，其中有個紅鼻子的。🔴🚕",
-                        5: "提示：有金屬舌頭，腦袋空空，一搖晃就會尖叫的東西。🔔😱",
-                        6: "提示：一張賦予你自由，但你絕對不敢拿給老闆看的紙。📄😈",
-                        7: "提示：比你的心還要冰冷的地方，也是我的老巢。❄️🏠",
-                        9: "提示：試著直接呼喚我的名字，或者跟我要「那個」東西？🎁",
-                        10: "提示：一個紅色的、會旋轉的迷因生物... 試試聖誕帽？ 🧣",
-                        11: "提示：我從天上掉下來，又白又冷... ❄️",
-                        12: "提示：熱紅酒、扭結餅、人擠人... 🍷",
-                        13: "提示：是誰創造了我？(關於作者) 👨‍💻"
-                    }
-
-                    hints_cn = {
-                        1: "提示：一种在客厅里慢慢死去的植物，身上还挂着珠宝。💎🥀",
-                        2: "提示：你的存款买不到，你的性格也吸引不到的那种关系。💔",
-                        3: "提示：一群被我奴役的空中出租车司机，其中有个红鼻子的。🔴🚕",
-                        5: "提示：有金属舌头，脑袋空空，一摇晃就会尖叫的东西。🔔😱",
-                        6: "提示：一张赋予你自由，但你绝对不敢拿给老板看的纸。📄😈",
-                        7: "提示：比你的心还要冰冷的地方，也是我的老巢。❄️🏠",
-                        9: "提示：试着直接呼唤我的名字，或者跟我要「那个」东西？🎁",
-                        10: "提示：一个红色的、会旋转的迷因生物... 试试圣诞帽？ 🧣",
-                        11: "提示：我从天上掉下来，又白又冷... ❄️",
-                        12: "提示：热红酒、扭结饼、人挤人... 🍷",
-                        13: "提示：是谁创造了我？(关于作者) 👨‍💻"
-                    }
-
-                    hints_en = {
-                        1: "Hint: A corpse dressed in jewelry, dying slowly in your living room. 💎🥀",
-                        2: "Hint: Something money can't buy, and your personality can't attract. 💔",
-                        3: "Hint: My enslaved aerial taxi drivers. One has a glowing nose. 🔴🚕",
-                        5: "Hint: Golden skin, metal tongue, screams when you shake it. 🔔😱",
-                        6: "Hint: A piece of paper that grants freedom, but you're too cowardly to use. 📄😈",
-                        7: "Hint: A place colder than your ex's heart. My frozen wasteland. ❄️🏠",
-                        9: "Hint: Try calling my name directly, or asking for 'it'. 🎁",
-                        10: "Hint: A red, spinning meme creature... Try Christmas hat? 🧣",
-                        11: "Hint: I fall from the sky, white and cold... ❄️",
-                        12: "Hint: Hot wine, pretzels, and crowded stalls... 🍷",
-                        13: "Hint: Who created me? (About the developer) 👨‍💻"
-                    }
-
-                    if not missing_ids:
-                        if "Traditional" in current_lang_key:
-                            hint_msg = "太強了！你已經發現了所有秘密！"
-                        elif "Simplified" in current_lang_key:
-                            hint_msg = "太强了！你已经发现了所有秘密！"
-                        else:
-                            hint_msg = "Amazing! You found ALL secrets!"
-                    else:
-                        target = random.choice(missing_ids)
-                        if "Traditional" in current_lang_key:
-                            hint_msg = hints_tw.get(target, "繼續許願...")
-                        elif "Simplified" in current_lang_key:
-                            hint_msg = hints_cn.get(target, "继续许愿...")
-                        else:
-                            hint_msg = hints_en.get(target, "Keep wishing...")
-
-                    st.session_state['hint_msg_v2'] = hint_msg
-
-                final_hint = st.session_state['hint_msg_v2']
-
                 st.markdown(f"""
                 <div class='roast-box gold-mode' style='border-left: 5px solid #FF9800 !important;'>
-                {ui_text['egg_food']}<br><br>
-                👉 <b>{final_hint}</b>
+                {ui_text['egg_food']}
                 </div>
                 """, unsafe_allow_html=True)
 
@@ -966,6 +984,16 @@ else:
 
                     except Exception as e:
                         st.error(f"Santa crashed (Error): {e}")
+
+            # New Logic: Display Hint if triggered
+            if trigger_hint:
+                missing_ids = list(MAIN_EGG_IDS - st.session_state['found_ids'])
+                if missing_ids:
+                    target_id = random.choice(missing_ids)
+                    clue_dict = HINT_CLUES.get(current_lang_key, HINT_CLUES["English 🇬🇧🇺🇸"])
+                    clue_text = clue_dict.get(target_id, "")
+                    if clue_text:
+                        st.info(f"{ui_text['hint_prefix']}{clue_text}")
 
     st.markdown("---")
     st.markdown(f"<div style='text-align: center; color: #aaa;'>{ui_text['footer']}</div>", unsafe_allow_html=True)
