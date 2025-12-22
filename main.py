@@ -106,7 +106,7 @@ LANG_DICT = {
         "hint_prefix": "💡 **解锁新谜题：** ",
         # --- 修改了这里的文案 ---
         "final_hint_title": "🔒 最终封印已解除",
-        "final_hint_msg": "🎅 **吼吼吼，本圣诞老人找到了一份来自中国的宝贝，真是讽刺啊。**\n\n想看吗？想看请输入 **圣诞快乐**。"
+        "final_hint_msg": "🎅 **吼吼吼，本圣诞老人找到了一份来自中国大陆的宝贝。**\n\n请输入 **圣诞快乐**查看。"
     }
 }
 
@@ -434,7 +434,7 @@ def render_culture_egg(current_lang_key):
                 container.classList.add('hacked');
                 document.getElementById('card-icon').innerHTML = '<svg viewBox="0 0 24 24"><path d="M12 2L8 7h3v3H7v3h3v4h-3v3h10v-3h-3v-4h3V10h-4V7h3L12 2z"/></svg>';
                 document.getElementById('card-title').innerText = "REALITY DECODED";
-                document.getElementById('card-message').innerHTML = `🎅 <b>圣诞老人的判决：</b><br><div class="quote-box">“洋节并不更可怕，更可怕的是中国人遗忘自己。”</div>“不过洋节=文化自信”？这是对2014年冯骥才讲话的<b>断章取义</b>。<br>生活已经够苦了，<b>我们只是借着节日的名义，去见想见的人，去吃顿热乎的饭。</b><br>这不是崇洋媚外，这是<b>对生活的热爱</b>。`;
+                document.getElementById('card-message').innerHTML = `🎅 <b>圣诞老人的判决：</b><br><div class="quote-box">“洋节并不更可怕，更可怕的是中国人遗忘自己。”</div>“不过洋节=文化自信”？这是对2014年冯骥才讲话的<b>断章取义</b>。<br>生活已经够苦了，<b>我们只是借着节日的名义，去见想见的人，去吃顿热乎的饭。</b><br>这不是崇洋媚外，这是<b>对生活的热爱,再次祝大家圣诞快乐</b>。`;
                 document.getElementById('card-actions').innerHTML = `<a class="brutalist-card__button brutalist-card__button--read" style="background-color:#d35400; border-color:#d35400;">MERRY CHRISTMAS 🍎</a>`;
             }, 600);
         }
