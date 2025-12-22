@@ -948,7 +948,7 @@ else:
                         target = random.choice(missing_ids)
                         # 根據語言切換提示字典
                         if "Traditional" in current_lang_key: hint_msg = hints_tw.get(target, "繼續許願...")
-                        elif "Simplified" in current_lang_key: hint_msg = hints_cn.get(target, "继续许愿...")
+                        elif "Simplified" in current_lang_key: hint_msg = hints_cn.get(target, "繼續許願...")
                         elif "Japanese" in current_lang_key: hint_msg = hints_jp.get(target, "願い事を続けて...")
                         elif "French" in current_lang_key: hint_msg = hints_fr.get(target, "Continuez à souhaiter...")
                         else: hint_msg = hints_en.get(target, "Keep wishing...")
@@ -1185,7 +1185,8 @@ else:
                             st.success(ui_text["success_title"])
                             box_style = "roast-box gold-mode"
                         else:
-                            st.snow() # 只有被罵的時候才下雪，凄涼感 MAX
+                            # ❌ 移除了 st.snow()，因為那是 ID 11 的專屬特效
+                            # 改為只顯示 Toast
                             st.toast("🎅 Santa is judging you...", icon="😒")
                             box_style = "roast-box"
 
