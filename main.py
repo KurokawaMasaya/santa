@@ -322,7 +322,7 @@ def update_hunt_progress(placeholder_obj, ui_text):
 
 def render_culture_egg(current_lang_key):
     """
-    显示隐藏的红头文件彩蛋 (True Ending)
+    显示隐藏的红头文件彩蛋 (True Ending) - 最终文案修正版
     """
     is_chinese = "Chinese" in current_lang_key or "中文" in current_lang_key
     
@@ -354,7 +354,7 @@ def render_culture_egg(current_lang_key):
     .brutalist-card__icon { flex-shrink: 0; display: flex; align-items: center; justify-content: center; background-color: #000; padding: 0.5rem; transition: background 0.3s; }
     .brutalist-card__icon svg { height: 1.5rem; width: 1.5rem; fill: #fff; }
     .brutalist-card__alert { font-weight: 900; color: #000; font-size: 1.1rem; text-transform: uppercase; transition: color 0.3s; }
-    .brutalist-card__message { margin-top: 1rem; color: #000; font-size: 0.9rem; line-height: 1.6; border-bottom: 2px solid #000; padding-bottom: 1rem; font-weight: 600; min-height: 140px; }
+    .brutalist-card__message { margin-top: 1rem; color: #000; font-size: 0.85rem; line-height: 1.5; border-bottom: 2px solid #000; padding-bottom: 1rem; font-weight: 600; min-height: 140px; }
     .brutalist-card__actions { margin-top: 1rem; display: flex; flex-direction: column; gap: 10px; }
     .brutalist-card__button { display: block; width: 100%; padding: 0.75rem; text-align: center; font-size: 0.95rem; font-weight: 700; text-transform: uppercase; border: 3px solid #000; background-color: #fff; color: #000; position: relative; transition: all 0.2s; box-shadow: 4px 4px 0 #000; text-decoration: none; cursor: pointer; box-sizing: border-box; }
     .brutalist-card__button--read { background-color: #000; color: #fff; }
@@ -364,7 +364,7 @@ def render_culture_egg(current_lang_key):
     .hacked .brutalist-card__alert { color: #d35400; }
     .hacked .brutalist-card__message { border-bottom-color: #d35400; font-family: "Noto Serif SC", serif; font-size: 0.85rem; line-height: 1.6; font-weight: normal; }
     .hacked .brutalist-card__button--read { background-color: #d35400; border-color: #d35400; box-shadow: 4px 4px 0 #a04000; }
-    .quote-box { background-color: #f9f9f9; border-left: 4px solid #d35400; padding: 6px 10px; margin: 10px 0; font-style: italic; color: #555; font-family: "FangSong", serif; font-size: 0.85rem; }
+    .quote-box { background-color: #f9f9f9; border-left: 4px solid #d35400; padding: 6px 10px; margin: 8px 0; font-style: italic; color: #555; font-family: "FangSong", serif; font-size: 0.85rem; }
     .pop-in { display: flex !important; animation: pop-in 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; }
     .fly-out { animation: fly-away 0.8s cubic-bezier(0.6, -0.28, 0.735, 0.045) forwards; pointer-events: none; }
     .glitching { animation: glitch-shake 0.3s cubic-bezier(.36,.07,.19,.97) both infinite; filter: invert(1); }
@@ -433,8 +433,22 @@ def render_culture_egg(current_lang_key):
                 card.classList.remove('glitching');
                 container.classList.add('hacked');
                 document.getElementById('card-icon').innerHTML = '<svg viewBox="0 0 24 24"><path d="M12 2L8 7h3v3H7v3h3v4h-3v3h10v-3h-3v-4h3V10h-4V7h3L12 2z"/></svg>';
+                
+                // === 文案逻辑 ===
                 document.getElementById('card-title').innerText = "REALITY DECODED";
-                document.getElementById('card-message').innerHTML = `🎅 <b>圣诞老人的判决：</b><br><div class="quote-box">“洋节并不更可怕，更可怕的是中国人遗忘自己。”</div>“不过洋节=文化自信”？这是对2014年冯骥才讲话的<b>断章取义</b>。<br>生活已经够苦了，<b>我们只是借着节日的名义，去见想见的人，去吃顿热乎的饭。</b><br>这不是崇洋媚外，这是<b>对生活的热爱,再次祝大家圣诞快乐</b>。`;
+                document.getElementById('card-message').innerHTML = `
+                    <div class="quote-box">“洋节并不更可怕，更可怕的是中国人遗忘自己。” —— 冯骥才</div>
+                    官方从未禁止过民间庆祝圣诞。所谓的“禁令”，往往是部分地方拿着鸡毛当令箭，是对这段讲话的断章取义，是一场将“不过洋节=文化自信”划等号的形式主义闹剧。<br><br>
+                    节日无非是给了普通人一个放纵和娱乐的契机。<b>吃想吃的饭，见想见的人，做想做的事情。</b>给自己在这个紧绷的社会中多一点热爱生活的理由。<br>
+                    我们永远不要忘记，<b>真正的自信不是排他的，而是海纳百川的。</b><br>
+                    
+                    <div class="quote-box" style="border-left: 4px solid #27ae60; margin-top: 10px;">
+                    最后祝大家：“在追求高素质生活的同时，也要有<b>乐天、惜福</b>的人生态度。”
+                    </div>
+                    生活不易，再次祝大家<b>圣诞快乐</b>！🍎
+                `;
+                // === 文案结束 ===
+                
                 document.getElementById('card-actions').innerHTML = `<a class="brutalist-card__button brutalist-card__button--read" style="background-color:#d35400; border-color:#d35400;">MERRY CHRISTMAS 🍎</a>`;
             }, 600);
         }
@@ -450,7 +464,6 @@ def render_culture_egg(current_lang_key):
             <p style='color: #ccc; font-size: 0.9em;'>Switch to Simplified Chinese to experience the full interactive story about "Cultural Confidence".</p>
         </div>
         """, unsafe_allow_html=True)
-
 
 if not st.session_state['language_selected']:
     st.markdown("<br><br>", unsafe_allow_html=True)
