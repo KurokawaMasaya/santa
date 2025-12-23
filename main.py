@@ -695,7 +695,7 @@ else:
             elif any(t in user_input_lower for t in triggers_tree):
                 st.success(ui_text["secret_success"])
                 st.markdown(ui_text["secret_title"])
-                st.link_button(ui_text["secret_button"], "hthttps://wkpsyvxy8njhxmuqyy6gpr.streamlit.app")
+                st.link_button(ui_text["secret_button"], "https://wkpsyvxy8njhxmuqyy6gpr.streamlit.app")
 
             elif any(t in user_input_lower for t in triggers_single):
                 try:
