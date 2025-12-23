@@ -590,7 +590,7 @@ else:
             ]
 
             triggers_author = [
-                "joe qiao", "joe", "qyc", "乔钰城", "乔老师", "18岁老师", "乔哥","小乔"
+                "joe qiao", "joe", "qyc", "乔钰城", "乔老师", "18岁老师", "乔哥","小乔",
                 "author", "creator", "developer", "who made this", "dev", "code",
                 "作者", "开发者", "是谁做的", "开发", "程序员", "代码",
                 "開發者", "是誰做的", "程式"
