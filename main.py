@@ -752,6 +752,13 @@ else:
                 """, unsafe_allow_html=True)
 
             elif any(t in user_input_lower for t in triggers_bell):
+                # === 新增：播放钟声音效 ===
+                try:
+                    st.audio("bell.mp3", format="audio/mp3", start_time=0, autoplay=True)
+                except:
+                    st.warning("🎵 Audio file (bell.mp3) not found.")
+                # ========================
+
                 st.markdown("""
                 <style>
                     .slot-machine-container { display: flex; justify-content: center; gap: 15px; padding: 15px; margin-bottom: 20px; }
