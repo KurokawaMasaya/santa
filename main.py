@@ -8,9 +8,7 @@ import base64
 
 st.set_page_config(page_title="Roast Santa AI", page_icon="🎅", layout="centered")
 
-# ==========================================
-# 1. 核心配置与文案 (Updated)
-# ==========================================
+
 LANG_DICT = {
     "English 🇬🇧🇺🇸": {
         "title": "🎅 Santa's Roast Room",
@@ -104,7 +102,6 @@ LANG_DICT = {
         "egg_market": "🍷 欢迎来到圣诞集市！来杯热红酒配扭结饼吧！🥨",
         "egg_author": "👨‍💻 作者出现！致敬时刻...",
         "hint_prefix": "💡 **解锁新谜题：** ",
-        # --- 修改了这里的文案 ---
         "final_hint_title": "🔒 最终封印已解除",
         "final_hint_msg": "🎅 **吼吼吼，本圣诞老人找到了一份来自中国大陆的宝贝。**\n\n请输入 **圣诞快乐**查看。"
     }
@@ -321,9 +318,7 @@ def update_hunt_progress(placeholder_obj, ui_text):
 
 
 def render_culture_egg(current_lang_key):
-    """
-    显示隐藏的红头文件彩蛋 (True Ending) - 最终文案修正版
-    """
+
     is_chinese = "Chinese" in current_lang_key or "中文" in current_lang_key
     
     if is_chinese:
@@ -596,7 +591,7 @@ else:
                 "開發者", "是誰做的", "程式"
             ]
 
-            # 最终的咒语触发词
+           
             triggers_final = [
                 "merry christmas", "merry xmas",
                 "圣诞快乐", "圣旦快乐", "生蛋快乐",
@@ -606,11 +601,11 @@ else:
             new_discovery = False
             trigger_hint = False
 
-            # === 先计算已经找到的普通彩蛋数量 ===
+         
             standard_eggs = {1, 2, 3, 4, 5, 6, 7, 9, 10, 11, 12, 13}
             found_standard_count_before = len([x for x in st.session_state['found_ids'] if x in standard_eggs])
 
-            # === 判定逻辑 ===
+          
             if any(t in user_input_lower for t in triggers_tree):
                 if 1 not in st.session_state['found_ids']:
                     st.session_state['found_ids'].add(1)
@@ -672,17 +667,14 @@ else:
                     new_discovery = True
                     trigger_hint = True
             
-            # === 如果有新发现，先更新进度条 ===
+            
             if new_discovery:
                 update_hunt_progress(hunt_placeholder, ui_text)
 
-            # === 计算当前的彩蛋数量 (包含刚才找到的) ===
+           
             found_standard_count_now = len([x for x in st.session_state['found_ids'] if x in standard_eggs])
 
-            # === 显示对应彩蛋的内容 ===
-            
-            # 1. 最终隐藏彩蛋触发逻辑 (必须集齐12个 + 输入了圣诞快乐)
-            # =========================================================================
+          
             if found_standard_count_now >= 12 and any(t in user_input_lower for t in triggers_final):
                 if 8 not in st.session_state['found_ids']:
                     st.session_state['found_ids'].add(8)
@@ -691,7 +683,7 @@ else:
                     st.success("🎉 TRUTH REVEALED!")
                 render_culture_egg(current_lang_key)
 
-            # 2. 普通彩蛋逻辑
+          
             elif any(t in user_input_lower for t in triggers_tree):
                 st.success(ui_text["secret_success"])
                 st.markdown(ui_text["secret_title"])
@@ -757,7 +749,7 @@ else:
                     st.audio("bell.mp3", format="audio/mp3", start_time=0, autoplay=True)
                 except:
                     st.warning("🎵 Audio file (bell.mp3) not found.")
-                # ========================
+              
 
                 st.markdown("""
                 <style>
@@ -1035,16 +1027,14 @@ else:
                     if clue_text:
                         st.info(f"{ui_text['hint_prefix']}{clue_text}")
 
-            # ======================================================
-            # [关键修改]：检测是否集齐12个普通彩蛋，如果集齐则提示输入密码
-            # ======================================================
+   
             found_standard_count_final = len([x for x in st.session_state['found_ids'] if x in standard_eggs])
 
-            # 如果集齐了12个，且还没有触发过ID 8，显示最终引导信息
+         
             if found_standard_count_final == 12 and 8 not in st.session_state['found_ids']:
                 time.sleep(1) # 稍作停顿
                 
-                # 播放满屏气球庆祝集齐
+              
                 if new_discovery:
                     st.balloons()
 
