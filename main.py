@@ -877,7 +877,7 @@ else:
 
             elif any(t in user_input_lower for t in triggers_author):
                 st.balloons()
-                st.image("pic.png", caption="The Creator", width=900)
+                st.image("pic.png", caption="The Creator", width=600)
                 st.markdown(f"<div class='roast-box gold-mode' style='border-left: 5px solid #4CAF50 !important;'>{ui_text['egg_author']}</div>", unsafe_allow_html=True)
 
             else:
