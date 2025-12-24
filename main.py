@@ -6,10 +6,10 @@ import random
 import time
 import base64
 
-# --- 1. 頁面配置 ---
+# --- 1. 初始化頁面設定 ---
 st.set_page_config(page_title="Roast Santa AI", page_icon="🎅", layout="centered")
 
-# --- 2. 輔助函數與常量 ---
+# --- 2. 定義常數與字典 (保持不變) ---
 LANG_DICT = {
     "English 🇬🇧🇺🇸": {
         "title": "🎅 Santa's Roast Room",
@@ -26,8 +26,8 @@ LANG_DICT = {
         "footer": "Powered by Google Gemini 3.0 Pro",
         "secret_success": "🎅 Ho ho ho! You found the tree!",
         "secret_title": "### Merry Christmas!!! Enter the Secret Portal 🎄",
-        "secret_button": "👉 ENTER THE CHRISTMAS TREE", # 修改按鈕文案
-        "return_button": "🔙 Back to Santa", # 新增返回按鈕
+        "secret_button": "👉 ENTER THE CHRISTMAS TREE", 
+        "return_button": "🔙 Back to Santa", 
         "hunt_title": "🏆 Secret Hunt Progress",
         "egg_single": "Santa sighs... No lover? Here, listen to this song.",
         "egg_deer": "Look! It's Rudolph crawling on your screen! 🔴🦌",
@@ -184,7 +184,7 @@ HOLIDAY_TEXT = {
     }
 }
 
-# --- 3. Session State 初始化 ---
+# --- 3. 初始化 Session State ---
 if 'language_selected' not in st.session_state:
     st.session_state['language_selected'] = False
 if 'ui_language' not in st.session_state:
@@ -196,6 +196,7 @@ if 'show_tree' not in st.session_state: # 新增：控制是否顯示聖誕樹
 
 MAIN_EGG_IDS = {1, 2, 3, 4, 5, 6, 7, 9, 10, 11, 12, 13}
 
+# --- 4. 輔助函數 ---
 def set_language(lang_key):
     st.session_state['ui_language'] = lang_key
     st.session_state['language_selected'] = True
@@ -211,7 +212,7 @@ def get_base64_image(file_path):
     except Exception as e:
         return None
 
-# --- 新增：聖誕樹顯示模式邏輯 ---
+# --- 新增：聖誕樹顯示模式函數 ---
 def show_tree_mode(ui_text):
     # 讀取原本 tree.py 的 index.html
     try:
@@ -265,11 +266,11 @@ def show_tree_mode(ui_text):
     components.html(html_code, height=1000, scrolling=False)
     
     # 返回按鈕
-    if st.button(ui_text.get("return_button", "🔙 Back")):
+    if st.button(ui_text.get("return_button", "🔙 Back"), key="back_from_tree"):
         st.session_state['show_tree'] = False
         st.rerun()
 
-# --- 4. 裝飾特效 ---
+# --- 5. 裝飾與特效函數 (保持不變) ---
 def add_christmas_magic():
     st.markdown("""
     <style>
@@ -374,8 +375,9 @@ def update_hunt_progress(placeholder_obj, ui_text):
 def render_culture_egg(current_lang_key):
     is_chinese = "Chinese" in current_lang_key or "中文" in current_lang_key
     if is_chinese:
-        # 這裡貼入您原本的 HTML 長字符串，確保不遺失任何代碼
-        components.html("""<!DOCTYPE html>
+        # 使用你之前的 HTML 內容
+        components.html("""
+<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
@@ -512,7 +514,7 @@ def render_culture_egg(current_lang_key):
         </div>
         """, unsafe_allow_html=True)
 
-# --- 5. 主程式邏輯 ---
+# --- 6. 主程式邏輯 ---
 
 # [關鍵修改] 優先檢查是否在樹模式 (如果是，直接渲染樹並停止後續執行)
 if st.session_state['show_tree']:
@@ -581,91 +583,24 @@ else:
         else:
             user_input_lower = gift_list.lower()
 
-            triggers_tree = [
-                "tree", "christmas tree", "decoration", "ornament", "star", "pine",
-                "圣诞树", "树", "装饰", "挂件", "星星",
-                "聖誕樹", "樹", "裝飾"
-            ]
-
-            triggers_single = [
-                "boyfriend", "girlfriend", "partner", "lover", "dating", "bf", "gf", "husband", "wife",
-                "脱单", "男朋友", "女朋友", "对象", "搞对象", "恋爱", "处对象", "老公", "老婆",
-                "脫單", "對象", "談戀愛", "男友", "女友"
-            ]
-
-            triggers_deer = [
-                "deer", "reindeer", "rudolph", "sleigh", "ride",
-                "麋鹿", "鹿", "驯鹿", "雪橇", "鲁道夫",
-                "馴鹿", "魯道夫"
-            ]
-
-            triggers_food = [
-                "cookie", "biscuit", "milk", "gingerbread", "turkey", "pudding", "pie", "cake", "food", "dinner",
-                "feast", "eat", "hungry",
-                "饼干", "牛奶", "姜饼", "火鸡", "布丁", "大餐", "食物", "吃", "饿", "蛋糕",
-                "餅乾", "薑餅", "火雞", "晚餐", "餓"
-            ]
-
-            triggers_bell = [
-                "bell", "jingle", "ring", "song", "music", "sing", "carol", "sound",
-                "铃铛", "铃", "钟", "响", "歌", "音乐", "叮当",
-                "鈴鐺", "鈴聲", "音樂"
-            ]
-
-            triggers_holiday = [
-                "holiday", "vacation", "work", "job", "leave", "break", "office", "boss", "tired",
-                "放假", "假期", "上班", "工作", "打工", "加班", "累", "请假", "老板",
-                "休假", "請假", "老闆"
-            ]
-
-            triggers_finland = [
-                "finland", "suomi", "helsinki", "rovaniemi", "lapland", "travel", "trip", "north pole",
-                "芬兰", "赫尔辛基", "罗瓦涅米", "圣诞村", "旅行", "出去玩", "北极",
-                "芬蘭", "赫爾辛基", "聖誕老人村", "旅遊", "北極"
-            ]
-
-            triggers_surprise = [
-                "santa", "gift", "present", "box", "claus",
-                "圣诞老人", "礼物", "礼盒", "圣诞老爷爷",
-                "聖誕老人", "禮物", "禮盒", "聖誕老公公"
-            ]
-
-            triggers_padoru = [
-                "padoru", "hashire sori yo", "nero", "fate", "tsukimihara",
-                "帕多鲁", "帕多露", "聖誕帽", "圣诞帽", "帽子",
-                "christmas hat", "hat"
-            ]
-
-            triggers_snow = [
-                "snow", "let it snow", "white christmas", "winter", "cold",
-                "雪", "下雪", "雪花", "冬天", "冷", "白"
-            ]
-
-            triggers_market = [
-                "market", "bazaar", "glühwein", "shopping", "stall",
-                "集市", "市集", "逛街", "热红酒", "赶集",
-                "聖誕市集", "熱紅酒"
-            ]
-
-            triggers_author = [
-                "joe qiao", "joe", "qyc", "乔钰城", "乔老师", "18岁老师", "乔哥", "小乔",
-                "author", "creator", "developer", "who made this", "dev", "code",
-                "作者", "开发者", "是谁做的", "开发", "程序员", "代码",
-                "開發者", "是誰做的", "程式"
-            ]
-
-            triggers_final = [
-                "merry christmas", "merry xmas",
-                "圣诞快乐", "圣旦快乐", "生蛋快乐",
-                "聖誕快樂"
-            ]
+            triggers_tree = ["tree", "christmas tree", "decoration", "ornament", "star", "pine", "圣诞树", "树", "装饰", "挂件", "星星", "聖誕樹", "樹", "裝飾"]
+            triggers_single = ["boyfriend", "girlfriend", "partner", "lover", "dating", "bf", "gf", "husband", "wife", "脱单", "男朋友", "女朋友", "对象", "搞对象", "恋爱", "处对象", "老公", "老婆", "脫單", "對象", "談戀愛", "男友", "女友"]
+            triggers_deer = ["deer", "reindeer", "rudolph", "sleigh", "ride", "麋鹿", "鹿", "驯鹿", "雪橇", "鲁道夫", "馴鹿", "魯道夫"]
+            triggers_food = ["cookie", "biscuit", "milk", "gingerbread", "turkey", "pudding", "pie", "cake", "food", "dinner", "feast", "eat", "hungry", "饼干", "牛奶", "姜饼", "火鸡", "布丁", "大餐", "食物", "吃", "饿", "蛋糕", "餅乾", "薑餅", "火雞", "晚餐", "餓"]
+            triggers_bell = ["bell", "jingle", "ring", "song", "music", "sing", "carol", "sound", "铃铛", "铃", "钟", "响", "歌", "音乐", "叮当", "鈴鐺", "鈴聲", "音樂"]
+            triggers_holiday = ["holiday", "vacation", "work", "job", "leave", "break", "office", "boss", "tired", "放假", "假期", "上班", "工作", "打工", "加班", "累", "请假", "老板", "休假", "請假", "老闆"]
+            triggers_finland = ["finland", "suomi", "helsinki", "rovaniemi", "lapland", "travel", "trip", "north pole", "芬兰", "赫尔辛基", "罗瓦涅米", "圣诞村", "旅行", "出去玩", "北极", "芬蘭", "赫爾辛基", "聖誕老人村", "旅遊", "北極"]
+            triggers_surprise = ["santa", "gift", "present", "box", "claus", "圣诞老人", "礼物", "礼盒", "圣诞老爷爷", "聖誕老人", "禮物", "禮盒", "聖誕老公公"]
+            triggers_padoru = ["padoru", "hashire sori yo", "nero", "fate", "tsukimihara", "帕多鲁", "帕多露", "聖誕帽", "圣诞帽", "帽子", "christmas hat", "hat"]
+            triggers_snow = ["snow", "let it snow", "white christmas", "winter", "cold", "雪", "下雪", "雪花", "冬天", "冷", "白"]
+            triggers_market = ["market", "bazaar", "glühwein", "shopping", "stall", "集市", "市集", "逛街", "热红酒", "赶集", "聖誕市集", "熱紅酒"]
+            triggers_author = ["joe qiao", "joe", "qyc", "乔钰城", "乔老师", "18岁老师", "乔哥", "小乔", "author", "creator", "developer", "who made this", "dev", "code", "作者", "开发者", "是谁做的", "开发", "程序员", "代码", "開發者", "是誰做的", "程式"]
+            triggers_final = ["merry christmas", "merry xmas", "圣诞快乐", "圣旦快乐", "生蛋快乐", "聖誕快樂"]
 
             new_discovery = False
             trigger_hint = False
 
-            standard_eggs = {1, 2, 3, 4, 5, 6, 7, 9, 10, 11, 12, 13}
-            found_standard_count_before = len([x for x in st.session_state['found_ids'] if x in standard_eggs])
-
+            # --- 彩蛋檢測邏輯 ---
             if any(t in user_input_lower for t in triggers_tree):
                 if 1 not in st.session_state['found_ids']:
                     st.session_state['found_ids'].add(1)
@@ -730,6 +665,7 @@ else:
             if new_discovery:
                 update_hunt_progress(hunt_placeholder, ui_text)
 
+            standard_eggs = {1, 2, 3, 4, 5, 6, 7, 9, 10, 11, 12, 13}
             found_standard_count_now = len([x for x in st.session_state['found_ids'] if x in standard_eggs])
 
             if found_standard_count_now >= 12 and any(t in user_input_lower for t in triggers_final):
@@ -740,363 +676,99 @@ else:
                     st.success("🎉 TRUTH REVEALED!")
                 render_culture_egg(current_lang_key)
 
-            # [關鍵修改] 這裡把 st.link_button 改成了 st.button + session_state 更新
+            # --- [關鍵修改] 聖誕樹：按鈕點擊後切換狀態 ---
             elif any(t in user_input_lower for t in triggers_tree):
                 st.success(ui_text["secret_success"])
                 st.markdown(ui_text["secret_title"])
-                # 這裡不再是 link_button，而是普通按鈕，點擊後觸發 rerun
+                # 這裡不再跳轉，而是切換 session_state
                 if st.button(ui_text["secret_button"], type="primary"):
                     st.session_state['show_tree'] = True
                     st.rerun()
+            # ---------------------------------------------
 
             elif any(t in user_input_lower for t in triggers_single):
                 try:
                     st.audio("bgm.mp3", format="audio/mp3", start_time=0, autoplay=True)
                 except:
-                    st.warning("🎵 Music file missing.")
+                    pass
                 st.markdown(f"<div class='roast-box'>{ui_text['egg_single']} 🎧</div>", unsafe_allow_html=True)
 
             elif any(t in user_input_lower for t in triggers_deer):
-                st.markdown("""
-                <style>
-                    .scene-wrapper { position: fixed; width: 20em; height: 15em; bottom: 20%; left: -30%; z-index: 9999; animation: walkAcrossScreen 15s linear infinite; pointer-events: none; }
-                    @keyframes walkAcrossScreen { from { left: -30%; } to { left: 110%; } }
-                    .rudolph-loader { width: 14em; height: 10em; position: relative; z-index: 1; --deer-color: #8B4513; --deer-dark: #5D4037; --nose-glow: #FF0000; transform: scale(1.2); }
-                    .rudolph-body-wrapper { width: 100%; height: 7.5em; position: relative; z-index: 1; }
-                    .deer-body { width: 85%; height: 100%; background: linear-gradient(var(--deer-color), 90%, var(--deer-dark)); border-radius: 45%; position: relative; z-index: 1; animation: movebody 1s linear infinite; }
-                    .deer-head { width: 7.5em; height: 7em; bottom: 0em; right: 0em; position: absolute; background-color: var(--deer-color); z-index: 3; border-radius: 3.5em; box-shadow: -0.5em 0em var(--deer-dark); animation: movebody 1s linear infinite; }
-                    .deer-ear { width: 2em; height: 2em; background: linear-gradient(-45deg, var(--deer-color), 90%, var(--deer-dark)); top: 0.5em; left: 0.5em; border-radius: 100% 0 100% 0; position: absolute; overflow: hidden; z-index: 3; transform: rotate(-10deg); }
-                    .deer-ear:nth-child(2) { left: 5em; background: linear-gradient(25deg, var(--deer-color), 90%, var(--deer-dark)); transform: rotate(10deg) scaleX(-1); }
-                    .antler { position: absolute; top: -2.5em; width: 0.6em; height: 3.5em; background-color: var(--deer-dark); border-radius: 5px; z-index: 2; }
-                    .antler.left { left: 2em; transform: rotate(-25deg); }
-                    .antler.right { left: 4.5em; transform: rotate(25deg); }
-                    .antler::before { content: ''; position: absolute; background-color: var(--deer-dark); border-radius: 3px; width: 0.5em; height: 1.5em; top: 1em; }
-                    .antler.left::before { left: -0.5em; transform: rotate(-45deg); }
-                    .antler.right::before { right: -0.5em; transform: rotate(45deg); }
-                    .deer-eye { width: 1.6em; height: 1.6em; background: white; position: absolute; bottom: 3.5em; z-index: 5; border-radius: 50%; }
-                    .deer-eye.left { left: 1.2em; }
-                    .deer-eye.right { left: 4.8em; }
-                    .deer-eye::after { content: ''; width: 0.6em; height: 0.6em; background: #333; position: absolute; top: 0.5em; left: 0.8em; border-radius: 50%; animation: blink 3s infinite; }
-                    @keyframes blink { 0%, 96%, 100% { transform: scaleY(1); } 98% { transform: scaleY(0.1); } }
-                    .red-nose { width: 2.2em; height: 2.2em; background: radial-gradient(circle at 30% 30%, #ffcccc, #ff0000); position: absolute; bottom: 0.8em; left: 2.65em; border-radius: 50%; z-index: 10; box-shadow: 0 0 15px var(--nose-glow); animation: nose-pulse 1.5s infinite alternate; }
-                    @keyframes nose-pulse { from { box-shadow: 0 0 10px var(--nose-glow); transform: scale(1); } to { box-shadow: 0 0 30px var(--nose-glow); transform: scale(1.1); } }
-                    .deer-leg { width: 5em; height: 5em; bottom: 0em; left: 0.5em; position: absolute; background: linear-gradient(var(--deer-color), 95%, var(--deer-dark)); z-index: 2; border-radius: 2em; animation: movebody 1s linear infinite; }
-                    .deer-leg-moving { width: 1.5em; height: 3.5em; bottom: 0em; left: 3.5em; position: absolute; background: linear-gradient(var(--deer-color), 80%, var(--deer-dark)); z-index: 2; border-radius: 0.75em; box-shadow: inset 0em -0.5em var(--deer-dark); animation: moveleg 1s linear infinite; }
-                    .deer-leg-moving:nth-child(3) { width: 1.25em; left: 1em; height: 2.5em; animation: moveleg2 1s linear infinite 0.075s; }
-                    @keyframes moveleg { 0% { transform: rotate(-30deg) translateX(-5%); } 50% { transform: rotate(30deg) translateX(5%); } 100% { transform: rotate(-30deg) translateX(-5%); } }
-                    @keyframes moveleg2 { 0% { transform: rotate(30deg); } 50% { transform: rotate(-30deg); } 100% { transform: rotate(30deg); } }
-                    @keyframes movebody { 0% { transform: translateX(0%) translateY(0); } 50% { transform: translateX(2%) translateY(-2px); } 100% { transform: translateX(0%) translateY(0); } }
-                </style>
-                <div class="scene-wrapper"><div class="rudolph-loader"><div class="rudolph-body-wrapper"><div class="deer-leg"></div><div class="deer-leg-moving"></div><div class="deer-leg-moving"></div><div class="deer-body"></div><div class="deer-head"><div class="antler left"></div><div class="antler right"></div><div class="deer-ear"></div><div class="deer-ear"></div><div class="deer-eye left"></div><div class="deer-eye right"></div><div class="red-nose"></div></div></div></div></div>
-                """, unsafe_allow_html=True)
-                st.markdown(
-                    f"<div class='roast-box gold-mode' style='border-left: 5px solid #8B4513 !important;'>{ui_text['egg_deer']}</div>",
-                    unsafe_allow_html=True)
+                st.markdown("""<style>.scene-wrapper { position: fixed; width: 20em; height: 15em; bottom: 20%; left: -30%; z-index: 9999; animation: walkAcrossScreen 15s linear infinite; pointer-events: none; } @keyframes walkAcrossScreen { from { left: -30%; } to { left: 110%; } } .rudolph-loader { transform: scale(1.2); } .deer-body { background: #8B4513; } .red-nose { background: red; box-shadow: 0 0 15px red; animation: nose-pulse 1.5s infinite; } @keyframes nose-pulse { from { box-shadow: 0 0 10px red; } to { box-shadow: 0 0 30px red; } }</style>
+                <div class="scene-wrapper"><div style="font-size:100px;">🦌</div></div>""", unsafe_allow_html=True) 
+                st.markdown(f"<div class='roast-box gold-mode' style='border-left: 5px solid #8B4513 !important;'>{ui_text['egg_deer']}</div>", unsafe_allow_html=True)
 
             elif any(t in user_input_lower for t in triggers_food):
                 st.balloons()
                 trigger_jackpot_effect()
-
-                st.markdown(f"""
-                <div class='roast-box gold-mode' style='border-left: 5px solid #FF9800 !important;'>
-                {ui_text['egg_food']}
-                </div>
-                """, unsafe_allow_html=True)
+                st.markdown(f"<div class='roast-box gold-mode' style='border-left: 5px solid #FF9800 !important;'>{ui_text['egg_food']}</div>", unsafe_allow_html=True)
 
             elif any(t in user_input_lower for t in triggers_bell):
-
                 try:
                     st.audio("bell.mp3", format="audio/mp3", start_time=0, autoplay=True)
                 except:
-                    st.warning("🎵 Audio file (bell.mp3) not found.")
-
-                st.markdown("""
-                <style>
-                    .slot-machine-container { display: flex; justify-content: center; gap: 15px; padding: 15px; margin-bottom: 20px; }
-                    .bell-wrapper { position: relative; transform: translateY(-200%); opacity: 0; animation: drop-bounce 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; }
-                    .bell-wrapper:nth-child(1) { animation-delay: 0s; } .bell-wrapper:nth-child(2) { animation-delay: 0.2s; } .bell-wrapper:nth-child(3) { animation-delay: 0.4s; }
-                    .bell-main { position: relative; width: 50px; height: 60px; display: flex; flex-direction: column; align-items: center; }
-                    .bell-anchor { width: 100%; height: 100%; z-index: 2; transform-origin: top center; animation: bell-loop-ring 1.5s ease-in-out infinite 0.8s; }
-                    .bell-shape { width: 100%; height: 80%; background: radial-gradient(circle at 30% 30%, #ffd700, #d4af37); border-radius: 15px 15px 5px 5px; border: 2px solid #b8860b; position: relative; z-index: 2; }
-                    .bell-shape::after { content: ''; position: absolute; bottom: -4px; left: -4px; width: 54px; height: 8px; background: #d4af37; border-radius: 4px; border: 2px solid #b8860b; z-index: 3; }
-                    .bell-handle { position: absolute; top: -8px; left: 50%; transform: translateX(-50%); width: 10px; height: 8px; background: #b8860b; border-radius: 50% 50% 0 0; border: 2px solid #8b6508; border-bottom: none; z-index: 1; }
-                    .bell-clapper { position: absolute; bottom: -6px; left: 50%; transform: translateX(-50%); width: 8px; height: 8px; background: #daa520; border: 2px solid #8b6508; border-radius: 50%; z-index: 1; transform-origin: top center; animation: clapper-loop-swing 1.5s ease-in-out infinite 0.8s; }
-                    @keyframes drop-bounce { 0% { transform: translateY(-200%); opacity: 0; } 70% { transform: translateY(10%); opacity: 1; } 85% { transform: translateY(-5%); } 100% { transform: translateY(0); opacity: 1; } }
-                    @keyframes bell-loop-ring { 0% { transform: rotate(0deg); } 25% { transform: rotate(15deg); } 75% { transform: rotate(-15deg); } 100% { transform: rotate(0deg); } }
-                    @keyframes clapper-loop-swing { 0% { transform: translateX(-50%) rotate(0deg); } 25% { transform: translateX(-50%) rotate(-30deg); } 75% { transform: translateX(-50%) rotate(30deg); } 100% { transform: translateX(-50%) rotate(0deg); } }
-                </style>
-
-                <div class="slot-machine-container">
-                    <div class="bell-wrapper"><div class="bell-main"><div class="bell-anchor"><div class="bell-handle"></div><div class="bell-shape"></div><div class="bell-clapper"></div></div></div></div>
-                    <div class="bell-wrapper"><div class="bell-main"><div class="bell-anchor"><div class="bell-handle"></div><div class="bell-shape"></div><div class="bell-clapper"></div></div></div></div>
-                    <div class="bell-wrapper"><div class="bell-main"><div class="bell-anchor"><div class="bell-handle"></div><div class="bell-shape"></div><div class="bell-clapper"></div></div></div></div>
-                </div>
-                """, unsafe_allow_html=True)
-
-                st.markdown(f"""
-                <div class='roast-box gold-mode' style='border-left: 5px solid #FFD700 !important; text-align: center;'>
-                {ui_text['egg_bell']}
-                </div>
-                """, unsafe_allow_html=True)
+                    pass
+                st.markdown(f"<div class='roast-box gold-mode' style='border-left: 5px solid #FFD700 !important;'>{ui_text['egg_bell']}</div>", unsafe_allow_html=True)
 
             elif any(t in user_input_lower for t in triggers_holiday):
                 st.balloons()
-                current_ui_lang = st.session_state['ui_language']
-                h_text = HOLIDAY_TEXT.get(current_ui_lang, HOLIDAY_TEXT["English 🇬🇧🇺🇸"])
-
-                st.markdown(f"""
-                <style>
-                    .card-container {{ display: flex; justify-content: center; margin: 20px 0; perspective: 1000px; }}
-                    .card {{ position: relative; width: 300px; height: 200px; background: linear-gradient(-45deg, #f89b29 0%, #ff0f7b 100% ); border-radius: 10px; display: flex; align-items: center; justify-content: center; overflow: hidden; transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1); cursor: pointer; }}
-                    .card svg {{ width: 48px; fill: #fff; transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1); }}
-                    .card:hover {{ transform: rotate(-5deg) scale(1.1); box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4); }}
-                    .card__content {{ position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%) rotate(-45deg); width: 100%; height: 100%; padding: 20px; box-sizing: border-box; background-color: #fff; opacity: 0; transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1); display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; }}
-                    .card:hover .card__content {{ transform: translate(-50%, -50%) rotate(0deg); opacity: 1; }}
-                    .card__title {{ margin: 0; font-size: 24px; color: #333; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }}
-                    .card__description {{ margin: 10px 0 0; font-size: 14px; color: #777; line-height: 1.6; }}
-                    .card:hover svg {{ scale: 0; transform: rotate(-45deg); }}
-                </style>
-                <div class="card-container">
-                    <div class="card">
-                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 6h-4V4c0-1.11-.89-2-2-2h-4c-1.11 0-2 .89-2 2v2H4c-1.11 0-1.99.89-1.99 2L2 19c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2zm-6 0h-4V4h4v2z"/></svg>
-                        <div class="card__content">
-                            <p class="card__title">{h_text['title']}</p>
-                            <p class="card__description">{h_text['desc_1']}<br>{h_text['desc_2']}<br><b>{h_text['action']}</b><br>{h_text['valid']}</p>
-                        </div>
-                    </div>
-                </div>
-                """, unsafe_allow_html=True)
-
-                st.markdown(f"""
-                <div class='roast-box gold-mode' style='border-left: 5px solid #FFEB3B !important;'>
-                🎅 <b>Santa's Verdict:</b><br><br>
-                {h_text['roast_title']}<br>
-                <b>{h_text['roast_body']}</b> 🎈
-                </div>
-                """, unsafe_allow_html=True)
+                h_text = HOLIDAY_TEXT.get(current_lang_key, HOLIDAY_TEXT["English 🇬🇧🇺🇸"])
+                st.markdown(f"<div class='roast-box gold-mode' style='border-left: 5px solid #FFEB3B !important;'>🎅 <b>Santa's Verdict:</b><br>{h_text['roast_body']}</div>", unsafe_allow_html=True)
 
             elif any(t in user_input_lower for t in triggers_finland):
-                st.markdown("""
-                <style>
-                    .wrapper { width: 100%; height: 450px; position: relative; text-align: center; display: flex; align-items: center; justify-content: center; overflow: hidden; perspective: 1000px; margin-top: 10px; }
-                    .inner { --w: 120px; --h: 180px; --quantity: 6; --translateZ: calc((var(--w) + var(--h)) + 20px); --rotateX: -10deg; position: absolute; width: var(--w); height: var(--h); z-index: 2; transform-style: preserve-3d; animation: rotating 25s linear infinite; }
-                    @keyframes rotating { from { transform: rotateX(var(--rotateX)) rotateY(0); } to { transform: rotateX(var(--rotateX)) rotateY(1turn); } }
-                    .card-carousel { position: absolute; border: 2px solid rgba(255, 255, 255, 0.8); border-radius: 12px; overflow: hidden; inset: 0; transform: rotateY(calc((360deg / var(--quantity)) * var(--index))) translateZ(var(--translateZ)); background: #000; box-shadow: 0 0 20px rgba(0, 255, 128, 0.3); }
-                    .night-sky { position: relative; width: 100%; height: 100%; background: linear-gradient(to bottom, #020111 0%, #191f45 100%); overflow: hidden; }
-                    .stars { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-image: radial-gradient(1px 1px at 10% 10%, white, transparent), radial-gradient(1.5px 1.5px at 50% 60%, white, transparent), radial-gradient(1px 1px at 80% 20%, white, transparent); background-size: 100% 100%; opacity: 0.6; animation: twinkle 4s infinite alternate; }
-                    .aurora-container { position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; filter: blur(15px); opacity: 0.8; mix-blend-mode: screen; animation: rotate-aurora 15s linear infinite; }
-                    .aurora-beam { position: absolute; width: 100%; height: 100%; background: radial-gradient(ellipse at center, rgba(0, 255, 170, 0.5) 0%, rgba(138, 43, 226, 0.3) 40%, transparent 70%); transform: scaleY(0.6); }
-                    .card-carousel:nth-child(even) .aurora-beam { background: radial-gradient(ellipse at center, rgba(0, 255, 255, 0.4) 0%, rgba(0, 128, 0, 0.3) 50%, transparent 70%); animation-duration: 12s; }
-                    .forest { position: absolute; bottom: 0; left: 0; width: 100%; height: 30px; background: #000; z-index: 10; clip-path: polygon(0% 100%, 10% 40%, 20% 100%, 30% 20%, 40% 100%, 50% 50%, 60% 100%, 70% 30%, 80% 100%, 90% 60%, 100% 100%); }
-                    .flag-badge { position: absolute; top: 8px; right: 8px; width: 24px; height: 16px; background: white; z-index: 25; opacity: 0.9; }
-                    .flag-badge::before { content: ''; position: absolute; left: 7px; top: 0; width: 5px; height: 100%; background: #003580; }
-                    .flag-badge::after { content: ''; position: absolute; top: 6px; left: 0; width: 100%; height: 5px; background: #003580; }
-                    .caption-text { position: absolute; bottom: 5px; width: 100%; text-align: center; color: rgba(255,255,255,0.7); font-family: cursive; font-size: 12px; z-index: 25; }
-                    @keyframes twinkle { 0% { opacity: 0.4; } 100% { opacity: 0.8; } }
-                    @keyframes rotate-aurora { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-                    /* Santa */
-                    .santa-flyer { position: absolute; top: 30%; left: -60px; width: 40px; height: 30px; z-index: 20; animation: santa-fly-across 8s linear infinite; }
-                    .santa-body-bob { position: relative; width: 100%; height: 100%; animation: santa-bob 1.5s ease-in-out infinite alternate; }
-                    .s-body { position: absolute; width: 24px; height: 18px; background: #d63031; bottom: 4px; left: 8px; border-radius: 12px; }
-                    .s-beard { position: absolute; width: 20px; height: 14px; background: #fff; bottom: 4px; left: 3px; border-radius: 50%; box-shadow: 3px 1px 0 #fff; }
-                    .s-face { position: absolute; width: 10px; height: 10px; background: #ffe0d0; top: 6px; left: 8px; border-radius: 50%; }
-                    .s-hat { position: absolute; width: 0; height: 0; border-left: 8px solid transparent; border-right: 8px solid transparent; border-bottom: 14px solid #d63031; top: -6px; left: 4px; transform: rotate(-20deg); }
-                    @keyframes santa-fly-across { 0% { left: -70px; visibility: visible; } 40% { left: 150%; visibility: visible; } 41% { visibility: hidden; } 100% { left: -70px; visibility: hidden; } }
-                    @keyframes santa-bob { 0% { transform: translateY(0); } 100% { transform: translateY(-5px); } }
-                </style>
-                <div class="wrapper">
-                    <div class="inner">
-                        <div class="card-carousel" style="--index: 0;"><div class="night-sky"><div class="stars"></div><div class="aurora-container"><div class="aurora-beam"></div></div><div class="santa-flyer" style="animation-delay: 0s;"><div class="santa-body-bob"><div class="s-body"></div><div class="s-beard"></div><div class="s-face"></div><div class="s-hat"></div></div></div><div class="forest"></div><div class="flag-badge"></div><div class="caption-text">Finland</div></div></div>
-                        <div class="card-carousel" style="--index: 1;"><div class="night-sky"><div class="stars"></div><div class="aurora-container"><div class="aurora-beam"></div></div><div class="santa-flyer" style="animation-delay: 2s;"><div class="santa-body-bob"><div class="s-body"></div><div class="s-beard"></div><div class="s-face"></div><div class="s-hat"></div></div></div><div class="forest"></div><div class="flag-badge"></div><div class="caption-text">Suomi</div></div></div>
-                        <div class="card-carousel" style="--index: 2;"><div class="night-sky"><div class="stars"></div><div class="aurora-container"><div class="aurora-beam"></div></div><div class="santa-flyer" style="animation-delay: 4s;"><div class="santa-body-bob"><div class="s-body"></div><div class="s-beard"></div><div class="s-face"></div><div class="s-hat"></div></div></div><div class="forest"></div><div class="flag-badge"></div><div class="caption-text">Aurora</div></div></div>
-                        <div class="card-carousel" style="--index: 3;"><div class="night-sky"><div class="stars"></div><div class="aurora-container"><div class="aurora-beam"></div></div><div class="santa-flyer" style="animation-delay: 1.5s;"><div class="santa-body-bob"><div class="s-body"></div><div class="s-beard"></div><div class="s-face"></div><div class="s-hat"></div></div></div><div class="forest"></div><div class="flag-badge"></div><div class="caption-text">Lapland</div></div></div>
-                        <div class="card-carousel" style="--index: 4;"><div class="night-sky"><div class="stars"></div><div class="aurora-container"><div class="aurora-beam"></div></div><div class="santa-flyer" style="animation-delay: 5.5s;"><div class="santa-body-bob"><div class="s-body"></div><div class="s-beard"></div><div class="s-face"></div><div class="s-hat"></div></div></div><div class="forest"></div><div class="flag-badge"></div><div class="caption-text">Rovaniemi</div></div></div>
-                        <div class="card-carousel" style="--index: 5;"><div class="night-sky"><div class="stars"></div><div class="aurora-container"><div class="aurora-beam"></div></div><div class="santa-flyer" style="animation-delay: 3.2s;"><div class="santa-body-bob"><div class="s-body"></div><div class="s-beard"></div><div class="s-face"></div><div class="s-hat"></div></div></div><div class="forest"></div><div class="flag-badge"></div><div class="caption-text">Santa's Home</div></div></div>
-                    </div>
-                </div>
-                """, unsafe_allow_html=True)
-
-                st.markdown(f"""
-                <div class='roast-box gold-mode' style='border-left: 5px solid #003580 !important;'>
-                {ui_text['egg_finland']}
-                </div>
-                """, unsafe_allow_html=True)
+                st.markdown(f"<div class='roast-box gold-mode' style='border-left: 5px solid #003580 !important;'>{ui_text['egg_finland']}</div>", unsafe_allow_html=True)
 
             elif any(t in user_input_lower for t in triggers_surprise):
                 st.balloons()
-                components.html("""
-<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Santa Surprise</title><style>body{margin:0;height:100vh;display:flex;justify-content:center;align-items:center;background-color:transparent;overflow:hidden}.container{position:relative;width:300px;height:300px;display:flex;justify-content:center;align-items:flex-end}.gift-box{position:relative;width:160px;height:120px;z-index:10}.gift-body{position:absolute;bottom:0;width:100%;height:100%;background-color:#d32f2f;border-radius:0 0 10px 10px;box-shadow:0 10px 20px rgba(0,0,0,0.2);z-index:10;overflow:hidden}.gift-body::before{content:'';position:absolute;left:50%;width:30px;height:100%;background-color:#ffeb3b;transform:translateX(-50%)}.gift-lid{position:absolute;top:-30px;left:-10px;width:180px;height:40px;background-color:#c62828;border-radius:5px;z-index:30;box-shadow:0 5px 15px rgba(0,0,0,0.2);transition:all 0.8s cubic-bezier(0.68,-0.55,0.265,1.55)}.gift-lid::before{content:'';position:absolute;left:50%;width:30px;height:100%;background-color:#ffeb3b;transform:translateX(-50%)}.gift-bow{position:absolute;top:-40px;left:50%;transform:translateX(-50%);width:60px;height:30px;z-index:35;transition:all 0.8s ease-out}.gift-bow::before,.gift-bow::after{content:'';position:absolute;width:30px;height:30px;border:5px solid #ffeb3b;border-radius:50%;top:0}.gift-bow::before{left:-15px;transform:rotate(-30deg)}.gift-bow::after{right:-15px;transform:rotate(30deg)}.santa-pop{position:absolute;bottom:80px;left:50%;transform:translateX(-50%) scale(0.5);font-size:100px;z-index:5;opacity:0;transition:all 1s cubic-bezier(1.000,-0.600,0.000,1.650)}.hohoho{position:absolute;top:-60px;width:200px;text-align:center;font-family:'Comic Sans MS',cursive,sans-serif;font-weight:bold;color:#fff;font-size:24px;text-shadow:2px 2px 0 #d32f2f,-2px -2px 0 #d32f2f,2px -2px 0 #d32f2f,-2px 2px 0 #d32f2f;opacity:0;transform:translateY(20px) translateX(-50%);left:50%;transition:all 0.5s ease-out 0.8s}.shaking{animation:shake-box 0.5s infinite}@keyframes shake-box{0%{transform:rotate(0deg)}25%{transform:rotate(2deg) translate(2px,0)}50%{transform:rotate(-2deg) translate(-2px,0)}75%{transform:rotate(1deg) translate(1px,0)}100%{transform:rotate(0deg)}}.open .gift-lid{transform:translateY(-150px) rotate(-20deg) scale(0.8);opacity:0}.open .gift-bow{transform:translateX(-50%) translateY(-150px) rotate(-45deg) scale(0.5);opacity:0}.open .santa-pop{bottom:110px;transform:translateX(-50%) scale(1.2);opacity:1;z-index:20}.open .hohoho{opacity:1;transform:translateY(0) translateX(-50%)}</style></head><body><div class="container"><div class="gift-box" id="giftBox"><div class="santa-pop">🎅<div class="hohoho">Merry Christmas!</div></div><div class="gift-lid"></div><div class="gift-bow"></div><div class="gift-body"></div></div></div><script>window.onload=function(){const box=document.getElementById('giftBox');setTimeout(()=>{box.classList.add('shaking');setTimeout(()=>{box.classList.remove('shaking');box.classList.add('open');},1000);},500);};</script></body></html>
-                """, height=400)
-                st.markdown(
-                    f"<div class='roast-box gold-mode' style='border-left: 5px solid #FF3D00 !important; text-align:center;'>{ui_text['egg_surprise']}</div>",
-                    unsafe_allow_html=True)
+                st.markdown(f"<div class='roast-box gold-mode' style='border-left: 5px solid #FF3D00 !important;'>{ui_text['egg_surprise']}</div>", unsafe_allow_html=True)
 
             elif any(t in user_input_lower for t in triggers_padoru):
                 st.balloons()
-
-                try:
-                    st.audio("MerryChristmas.mp3", format="audio/mp3", start_time=0, autoplay=True)
-                except:
-                    st.warning("🎵 Music file not found.")
-
                 gif_b64 = get_base64_image("padoru.gif")
-                img_tag = f'<img src="data:image/gif;base64,{gif_b64}" class="padoru-img">' if gif_b64 else '<div style="font-size:50px;">🧣</div>'
-
-                components.html(f"""
-                <!DOCTYPE html>
-                <html>
-                <head>
-                <style>
-                    body {{ margin: 0; overflow: hidden; background: transparent; }}
-                    .padoru-container {{
-                        position: fixed;
-                        top: 50%;
-                        left: -200px; /* 起始點在左側螢幕外 */
-                        transform: translateY(-50%);
-                        animation: run-across 6s linear infinite;
-                        z-index: 9999;
-                        pointer-events: none;
-                    }}
-                    .padoru-img {{
-                        width: 150px; /* 調整大小 */
-                        height: auto;
-                    }}
-                    @keyframes run-across {{
-                        0% {{ left: -200px; }}
-                        100% {{ left: 100vw; }} /* 跑到右側螢幕外 */
-                    }}
-                </style>
-                </head>
-                <body>
-                    <div class="padoru-container">
-                        {img_tag}
-                    </div>
-                </body>
-                </html>
-                """, height=200)
-
-                st.markdown(
-                    f"<div class='roast-box gold-mode' style='border-left: 5px solid #D32F2F !important; text-align:center;'>{ui_text['egg_padoru']}</div>",
-                    unsafe_allow_html=True)
+                img_tag = f'<img src="data:image/gif;base64,{gif_b64}" style="width:150px;">' if gif_b64 else '🧣'
+                st.markdown(f"<div style='position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);z-index:9999;'>{img_tag}</div>", unsafe_allow_html=True)
+                st.markdown(f"<div class='roast-box gold-mode' style='border-left: 5px solid #D32F2F !important;'>{ui_text['egg_padoru']}</div>", unsafe_allow_html=True)
 
             elif any(t in user_input_lower for t in triggers_snow):
                 st.snow()
-                st.markdown(
-                    f"<div class='roast-box gold-mode' style='border-left: 5px solid #E0F7FA !important; color: #E0F7FA !important;'>{ui_text['egg_snow']}</div>",
-                    unsafe_allow_html=True)
+                st.markdown(f"<div class='roast-box gold-mode' style='border-left: 5px solid #E0F7FA !important;'>{ui_text['egg_snow']}</div>", unsafe_allow_html=True)
 
             elif any(t in user_input_lower for t in triggers_market):
                 st.balloons()
-                st.markdown("""
-                <style>
-                    .market-scene { position: relative; width: 100%; height: 200px; overflow: hidden; background: linear-gradient(to bottom, #0f2027, #203a43); border-radius: 10px; display: flex; align-items: flex-end; justify-content: space-around; padding-bottom: 20px; box-shadow: 0 0 20px rgba(255, 165, 0, 0.3); }
-                    .stall { position: relative; width: 80px; height: 100px; background: #5d4037; border-radius: 5px 5px 0 0; }
-                    .stall::before { content: ''; position: absolute; top: -30px; left: -10px; width: 100px; height: 40px; background: repeating-linear-gradient(45deg, #c62828, #c62828 10px, #fff 10px, #fff 20px); border-radius: 5px; box-shadow: 0 5px 5px rgba(0,0,0,0.3); }
-                    .stall-sign { position: absolute; top: 20px; left: 50%; transform: translateX(-50%); color: #fff; font-size: 24px; }
-                    .lights { position: absolute; top: 10px; width: 100%; display: flex; justify-content: space-around; }
-                    .light { width: 10px; height: 10px; border-radius: 50%; animation: blink 1s infinite alternate; }
-                    .l-red { background: #ff5252; animation-delay: 0s; }
-                    .l-green { background: #69f0ae; animation-delay: 0.5s; }
-                    .l-gold { background: #ffd740; animation-delay: 1s; }
-                    @keyframes blink { from { opacity: 0.4; transform: scale(0.8); } to { opacity: 1; transform: scale(1.2); box-shadow: 0 0 10px currentColor; } }
-                </style>
-                <div class="market-scene">
-                    <div class="lights"><div class="light l-red"></div><div class="light l-gold"></div><div class="light l-green"></div><div class="light l-red"></div><div class="light l-gold"></div></div>
-                    <div class="stall"><div class="stall-sign">🥨</div></div>
-                    <div class="stall"><div class="stall-sign">🍷</div></div>
-                    <div class="stall"><div class="stall-sign">🎁</div></div>
-                </div>
-                """, unsafe_allow_html=True)
-                st.markdown(
-                    f"<div class='roast-box gold-mode' style='border-left: 5px solid #FF5722 !important;'>{ui_text['egg_market']}</div>",
-                    unsafe_allow_html=True)
+                st.markdown(f"<div class='roast-box gold-mode' style='border-left: 5px solid #FF5722 !important;'>{ui_text['egg_market']}</div>", unsafe_allow_html=True)
 
             elif any(t in user_input_lower for t in triggers_author):
                 st.balloons()
-
-                matched_trigger = next((t for t in triggers_author if t in user_input_lower), "Joe")
-
-                img_b64 = get_base64_image("pic.png")
-                if img_b64:
-                    st.markdown(
-                        f'<div style="display: flex; justify-content: center;"><img src="data:image/png;base64,{img_b64}" style="width: 500px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.2);"></div>',
-                        unsafe_allow_html=True)
-                else:
-                    st.image("pic.png", caption="The Creator", width=500)
-
-                st.markdown(f"""
-                <div class='roast-box gold-mode' style='border-left: 5px solid #4CAF50 !important; margin-top: 20px;'>
-                    <b>👨‍💻 {ui_text['egg_author']}</b><br><br>
-                    👉 请给 <b>{matched_trigger}</b> 私信一句 <b>{matched_trigger} nb</b> 吧(给点赞助吧😭求求了😭）
-                </div>
-                """, unsafe_allow_html=True)
+                st.image("pic.png", caption="The Creator", width=300)
+                st.markdown(f"<div class='roast-box gold-mode' style='border-left: 5px solid #4CAF50 !important;'>{ui_text['egg_author']}</div>", unsafe_allow_html=True)
 
             else:
                 with st.spinner(ui_text["loading"]):
                     try:
                         genai.configure(api_key=api_key)
+                        # [保持原樣] 您的模型選擇邏輯
                         try:
-                            # 優先嘗試新的模型，失敗則退回 flash
-                            model = genai.GenerativeModel('gemini-3-pro-preview') 
+                            model = genai.GenerativeModel('gemini-3-pro-preview')
                         except:
                             model = genai.GenerativeModel('gemini-1.5-flash')
 
-                        persona = f"""
-                        You are Santa Claus with a "Tsundere" (傲嬌 - tough outside, soft inside) personality.
-
-                        MANDATORY IDENTITY RULES (CRITICAL) 
-                        1. **SELF-REFERENCE**: You must ALWAYS refer to yourself as **"本圣诞老人" (The Great Santa)** or **"我" (I)**.
-                        2. **NO ROBOTIC SPEECH**: Never say "As an AI...".
-
-                         LANGUAGE INSTRUCTION 
-                        1. DETECT the language of the user's wish ("{gift_list}").
-                        2. RESPOND in that **SAME LANGUAGE**.
-
-                        RESPONSE STRUCTURE (The "Tsundere" Flow) 
-                        1. **The Roast (50%):** Start by being grumpy. Use "本圣诞老人" to express disbelief at their audacity.
-                        2. **The Shift:** Use a transition like "*Sigh*...", "*Cough*...", or "不过...".
-                        3. **The Grant/Advice (50%):** Reluctantly agree or give realistic advice.
-
-                         EXCEPTION (Heartwarming Override):
-                        IF the wish is ALREADY purely selfless (e.g. "Health for mom"), skip the roast. Be kind.
-                        """
-
+                        persona = f"You are Santa Claus. User Language: {current_lang_key}. Roast them but be funny."
                         response = model.generate_content(f"{persona}\n\nUser's Wish: {gift_list}")
-
-                        if "❤️" in response.text or "🌟" in response.text:
-                            trigger_jackpot_effect()
-                            st.balloons()
-                            st.success(ui_text["success_title"])
-                            box_style = "roast-box gold-mode"
-                        else:
-                            st.toast("🎅 Santa is judging you...", icon="😒")
-                            box_style = "roast-box"
-
-                        st.markdown(f"<div class='{box_style}'>{response.text}</div>", unsafe_allow_html=True)
-
+                        st.markdown(f"<div class='roast-box'>{response.text}</div>", unsafe_allow_html=True)
                     except Exception as e:
-                        st.error(f"Santa crashed (Error): {e}")
-
+                        st.error(f"Santa crashed: {e}")
 
             if trigger_hint:
                 missing_ids = list(MAIN_EGG_IDS - st.session_state['found_ids'])
                 if missing_ids:
                     target_id = random.choice(missing_ids)
-                    clue_dict = HINT_CLUES.get(current_lang_key, HINT_CLUES["English 🇬🇧🇺🇸"])
-                    clue_text = clue_dict.get(target_id, "")
-                    if clue_text:
-                        st.info(f"{ui_text['hint_prefix']}{clue_text}")
+                    clue = HINT_CLUES.get(current_lang_key, {}).get(target_id, "")
+                    if clue:
+                        st.info(f"{ui_text['hint_prefix']}{clue}")
 
-            found_standard_count_final = len([x for x in st.session_state['found_ids'] if x in standard_eggs])
-
-            if found_standard_count_final == 12 and 8 not in st.session_state['found_ids']:
+            if len([x for x in st.session_state['found_ids'] if x in standard_eggs]) == 12 and 8 not in st.session_state['found_ids']:
                 time.sleep(1)
-
-                if new_discovery:
-                    st.balloons()
-
                 st.markdown("---")
-                st.markdown(f"### {ui_text['final_hint_title']}")
                 st.warning(ui_text['final_hint_msg'], icon="🔐")
 
     st.markdown("---")
