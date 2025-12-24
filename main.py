@@ -372,7 +372,6 @@ def update_hunt_progress(placeholder_obj, ui_text):
 def render_culture_egg(current_lang_key):
     is_chinese = "Chinese" in current_lang_key or "中文" in current_lang_key
     if is_chinese:
-        # 使用你之前的 HTML 內容
         components.html("""
 <!DOCTYPE html>
 <html lang="zh-CN">
@@ -808,7 +807,7 @@ else:
 
             elif any(t in user_input_lower for t in triggers_padoru):
                 st.balloons()
-                # 补回了音乐播放
+                # 補回了音樂播放
                 try:
                     st.audio("MerryChristmas.mp3", format="audio/mp3", start_time=0, autoplay=True)
                 except:
@@ -817,7 +816,7 @@ else:
                 gif_b64 = get_base64_image("padoru.gif")
                 img_tag = f'<img src="data:image/gif;base64,{gif_b64}" style="width:150px;">' if gif_b64 else '🧣'
                 
-                # 恢复 Padoru 跑动动画
+                # 恢復 Padoru 跑動動畫
                 components.html(f"""
                 <!DOCTYPE html>
                 <html>
@@ -853,7 +852,7 @@ else:
 
             elif any(t in user_input_lower for t in triggers_market):
                 st.balloons()
-                # 恢复集市场景 UI
+                # 恢復集市場景 UI
                 st.markdown("""
                 <style>
                     .market-scene { position: relative; width: 100%; height: 200px; overflow: hidden; background: linear-gradient(to bottom, #0f2027, #203a43); border-radius: 10px; display: flex; align-items: flex-end; justify-content: space-around; padding-bottom: 20px; box-shadow: 0 0 20px rgba(255, 165, 0, 0.3); }
