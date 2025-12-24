@@ -372,7 +372,6 @@ def update_hunt_progress(placeholder_obj, ui_text):
 def render_culture_egg(current_lang_key):
     is_chinese = "Chinese" in current_lang_key or "中文" in current_lang_key
     if is_chinese:
-        # 使用你之前的 HTML 內容
         components.html("""
 <!DOCTYPE html>
 <html lang="zh-CN">
@@ -684,8 +683,34 @@ else:
 
             elif any(t in user_input_lower for t in triggers_deer):
                 # 移除了缩进，确保 Markdown 识别为 HTML 而非代码块
-                st.markdown("""<style>.scene-wrapper { position: fixed; width: 20em; height: 15em; bottom: 20%; left: -30%; z-index: 9999; animation: walkAcrossScreen 15s linear infinite; pointer-events: none; } @keyframes walkAcrossScreen { from { left: -30%; } to { left: 110%; } } .rudolph-loader { transform: scale(1.2); } .deer-body { background: #8B4513; } .red-nose { background: red; box-shadow: 0 0 15px red; animation: nose-pulse 1.5s infinite; } @keyframes nose-pulse { from { box-shadow: 0 0 10px red; } to { box-shadow: 0 0 30px red; } }</style>
-<div class="scene-wrapper"><div style="font-size:100px;">🦌</div></div>""", unsafe_allow_html=True) 
+                st.markdown("""<style>.scene-wrapper { position: fixed; width: 20em; height: 15em; bottom: 20%; left: -30%; z-index: 9999; animation: walkAcrossScreen 15s linear infinite; pointer-events: none; } @keyframes walkAcrossScreen { from { left: -30%; } to { left: 110%; } } .rudolph-loader { transform: scale(1.2); } .deer-body { background: #8B4513; } .red-nose { background: red; box-shadow: 0 0 15px red; animation: nose-pulse 1.5s infinite; } @keyframes nose-pulse { from { box-shadow: 0 0 10px red; } to { box-shadow: 0 0 30px red; } }
+.rudolph-loader { width: 14em; height: 10em; position: relative; z-index: 1; --deer-color: #8B4513; --deer-dark: #5D4037; --nose-glow: #FF0000; transform: scale(1.2); }
+.rudolph-body-wrapper { width: 100%; height: 7.5em; position: relative; z-index: 1; }
+.deer-body { width: 85%; height: 100%; background: linear-gradient(var(--deer-color), 90%, var(--deer-dark)); border-radius: 45%; position: relative; z-index: 1; animation: movebody 1s linear infinite; }
+.deer-head { width: 7.5em; height: 7em; bottom: 0em; right: 0em; position: absolute; background-color: var(--deer-color); z-index: 3; border-radius: 3.5em; box-shadow: -0.5em 0em var(--deer-dark); animation: movebody 1s linear infinite; }
+.deer-ear { width: 2em; height: 2em; background: linear-gradient(-45deg, var(--deer-color), 90%, var(--deer-dark)); top: 0.5em; left: 0.5em; border-radius: 100% 0 100% 0; position: absolute; overflow: hidden; z-index: 3; transform: rotate(-10deg); }
+.deer-ear:nth-child(2) { left: 5em; background: linear-gradient(25deg, var(--deer-color), 90%, var(--deer-dark)); transform: rotate(10deg) scaleX(-1); }
+.antler { position: absolute; top: -2.5em; width: 0.6em; height: 3.5em; background-color: var(--deer-dark); border-radius: 5px; z-index: 2; }
+.antler.left { left: 2em; transform: rotate(-25deg); }
+.antler.right { left: 4.5em; transform: rotate(25deg); }
+.antler::before { content: ''; position: absolute; background-color: var(--deer-dark); border-radius: 3px; width: 0.5em; height: 1.5em; top: 1em; }
+.antler.left::before { left: -0.5em; transform: rotate(-45deg); }
+.antler.right::before { right: -0.5em; transform: rotate(45deg); }
+.deer-eye { width: 1.6em; height: 1.6em; background: white; position: absolute; bottom: 3.5em; z-index: 5; border-radius: 50%; }
+.deer-eye.left { left: 1.2em; }
+.deer-eye.right { left: 4.8em; }
+.deer-eye::after { content: ''; width: 0.6em; height: 0.6em; background: #333; position: absolute; top: 0.5em; left: 0.8em; border-radius: 50%; animation: blink 3s infinite; }
+@keyframes blink { 0%, 96%, 100% { transform: scaleY(1); } 98% { transform: scaleY(0.1); } }
+.red-nose { width: 2.2em; height: 2.2em; background: radial-gradient(circle at 30% 30%, #ffcccc, #ff0000); position: absolute; bottom: 0.8em; left: 2.65em; border-radius: 50%; z-index: 10; box-shadow: 0 0 15px var(--nose-glow); animation: nose-pulse 1.5s infinite alternate; }
+@keyframes nose-pulse { from { box-shadow: 0 0 10px var(--nose-glow); transform: scale(1); } to { box-shadow: 0 0 30px var(--nose-glow); transform: scale(1.1); } }
+.deer-leg { width: 5em; height: 5em; bottom: 0em; left: 0.5em; position: absolute; background: linear-gradient(var(--deer-color), 95%, var(--deer-dark)); z-index: 2; border-radius: 2em; animation: movebody 1s linear infinite; }
+.deer-leg-moving { width: 1.5em; height: 3.5em; bottom: 0em; left: 3.5em; position: absolute; background: linear-gradient(var(--deer-color), 80%, var(--deer-dark)); z-index: 2; border-radius: 0.75em; box-shadow: inset 0em -0.5em var(--deer-dark); animation: moveleg 1s linear infinite; }
+.deer-leg-moving:nth-child(3) { width: 1.25em; left: 1em; height: 2.5em; animation: moveleg2 1s linear infinite 0.075s; }
+@keyframes moveleg { 0% { transform: rotate(-30deg) translateX(-5%); } 50% { transform: rotate(30deg) translateX(5%); } 100% { transform: rotate(-30deg) translateX(-5%); } }
+@keyframes moveleg2 { 0% { transform: rotate(30deg); } 50% { transform: rotate(-30deg); } 100% { transform: rotate(30deg); } }
+@keyframes movebody { 0% { transform: translateX(0%) translateY(0); } 50% { transform: translateX(2%) translateY(-2px); } 100% { transform: translateX(0%) translateY(0); } }
+</style>
+<div class="scene-wrapper"><div class="rudolph-loader"><div class="rudolph-body-wrapper"><div class="deer-leg"></div><div class="deer-leg-moving"></div><div class="deer-leg-moving"></div><div class="deer-body"></div><div class="deer-head"><div class="antler left"></div><div class="antler right"></div><div class="deer-ear"></div><div class="deer-ear"></div><div class="deer-eye left"></div><div class="deer-eye right"></div><div class="red-nose"></div></div></div></div></div>""", unsafe_allow_html=True) 
                 st.markdown(f"<div class='roast-box gold-mode' style='border-left: 5px solid #8B4513 !important;'>{ui_text['egg_deer']}</div>", unsafe_allow_html=True)
 
             elif any(t in user_input_lower for t in triggers_food):
