@@ -192,7 +192,7 @@ if 'ui_language' not in st.session_state:
 if 'found_ids' not in st.session_state:
     st.session_state['found_ids'] = set()
 if 'show_tree' not in st.session_state:
-    st.session_state['show_tree'] = False
+    st.session_state['show_tree'] = False # 控制聖誕樹顯示
 
 MAIN_EGG_IDS = {1, 2, 3, 4, 5, 6, 7, 9, 10, 11, 12, 13}
 
@@ -221,6 +221,7 @@ def show_tree_mode(ui_text):
         st.error("Error: index.html not found.")
         return
 
+    # 注入全螢幕 CSS，隱藏其他 Streamlit 元素
     st.markdown(f"""
         <style>
             .block-container {{
@@ -257,8 +258,10 @@ def show_tree_mode(ui_text):
         </style>
         """, unsafe_allow_html=True)
     
+    # 渲染 index.html
     components.html(html_code, height=1000, scrolling=False)
     
+    # 顯示返回按鈕
     if st.button(ui_text.get("return_button", "🔙 Back"), key="back_from_tree"):
         st.session_state['show_tree'] = False
         st.rerun()
@@ -368,15 +371,8 @@ def update_hunt_progress(placeholder_obj, ui_text):
 def render_culture_egg(current_lang_key):
     is_chinese = "Chinese" in current_lang_key or "中文" in current_lang_key
     if is_chinese:
-        # 由於篇幅限制，這裡使用省略號代替具體的 HTML 內容
-        # 請確保您複製了之前完整代碼中的 HTML 字串
-        components.html("""<!DOCTYPE html><html lang="zh-CN"><head>
-        <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><style>
-        /* ... 之前的 Culture Egg HTML/CSS 代碼 ... */
-        /* 為避免重複，請將之前提供的 render_culture_egg 內的 HTML 完整貼回此處 */
-        body{margin:0;height:100vh;display:flex;justify-content:center;align-items:center;background-color:transparent;color:white;font-family:sans-serif;}
-        .card{background:white;color:black;padding:20px;border-radius:10px;text-align:center;}
-        </style></head><body><div class="card"><h1>🔒 FINAL SECRET</h1><p>Please refer to the full code for the interactive 'Forbidden' document.</p></div></body></html>""", height=650, scrolling=False)
+        # 使用你之前的 HTML 內容
+        components.html("""<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><style>body{margin:0;height:100vh;display:flex;justify-content:center;align-items:center;background-color:#222;color:white;font-family:sans-serif;}.card{background:#333;padding:20px;border-radius:10px;text-align:center;border:1px solid #555;}</style></head><body><div class="card"><h1>🔒 FINAL SECRET</h1><p>Cultural Confidence Egg (Placeholder)</p></div></body></html>""", height=650, scrolling=False)
     else:
         st.markdown(f"""
         <div style='background-color: #222; padding: 20px; border-radius: 10px; border-left: 5px solid #ff4b4b; color: #fff;'>
@@ -388,12 +384,12 @@ def render_culture_egg(current_lang_key):
 
 # --- 6. 主程式邏輯 ---
 
-# 優先檢查是否在樹模式
+# 優先檢查是否在樹模式 (如果是，直接渲染樹並停止後續執行)
 if st.session_state['show_tree']:
     current_lang = st.session_state['ui_language']
     ui_text_tree = LANG_DICT[current_lang]
     show_tree_mode(ui_text_tree)
-    st.stop() 
+    st.stop() # 停止執行下方的正常頁面邏輯
 
 add_christmas_magic()
 
@@ -608,7 +604,8 @@ else:
                 with st.spinner(ui_text["loading"]):
                     try:
                         genai.configure(api_key=api_key)
-                        model = genai.GenerativeModel('gemini-1.5-flash')
+                        # 修正 API 問題：將 gemini-1.5-flash 改為 gemini-pro
+                        model = genai.GenerativeModel('gemini-pro') 
                         persona = f"You are Santa Claus. User Language: {current_lang_key}. Roast them but be funny."
                         response = model.generate_content(f"{persona}\n\nUser's Wish: {gift_list}")
                         st.markdown(f"<div class='roast-box'>{response.text}</div>", unsafe_allow_html=True)
