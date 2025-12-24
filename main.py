@@ -26,8 +26,8 @@ LANG_DICT = {
         "footer": "Powered by Google Gemini 3.0 Pro",
         "secret_success": "🎅 Ho ho ho! You found the tree!",
         "secret_title": "### Merry Christmas!!! Enter the Secret Portal 🎄",
-        "secret_button": "👉 ENTER THE CHRISTMAS TREE",
-        "return_button": "🔙 Back to Santa",
+        "secret_button": "👉 ENTER THE CHRISTMAS TREE", 
+        "return_button": "🔙 Back to Santa", 
         "hunt_title": "🏆 Secret Hunt Progress",
         "egg_single": "Santa sighs... No lover? Here, listen to this song.",
         "egg_deer": "Look! It's Rudolph crawling on your screen! 🔴🦌",
@@ -191,7 +191,7 @@ if 'ui_language' not in st.session_state:
     st.session_state['ui_language'] = "English 🇬🇧🇺🇸"
 if 'found_ids' not in st.session_state:
     st.session_state['found_ids'] = set()
-if 'show_tree' not in st.session_state: 
+if 'show_tree' not in st.session_state:
     st.session_state['show_tree'] = False
 
 MAIN_EGG_IDS = {1, 2, 3, 4, 5, 6, 7, 9, 10, 11, 12, 13}
@@ -204,7 +204,7 @@ def set_language(lang_key):
 def reset_language():
     st.session_state['language_selected'] = False
 
-# 進入聖誕樹的回調函數，解決按鈕嵌套失效問題
+# [新增] 進入聖誕樹的回調函數，解決按鈕嵌套失效問題
 def go_to_tree():
     st.session_state['show_tree'] = True
 
@@ -242,14 +242,14 @@ def show_tree_mode(ui_text):
                 width: 100vw;
                 height: 100vh;
                 border: none;
-                z-index: 10;
+                z-index: 999999; /* 提高層級，確保不被覆蓋 */
             }}
             /* 返回按鈕樣式 */
             .stButton > button {{
                 position: fixed !important;
                 top: 20px !important;
                 left: 20px !important;
-                z-index: 99999 !important;
+                z-index: 1000000 !important;
                 background-color: rgba(0,0,0,0.5) !important;
                 color: white !important;
                 border: 1px solid rgba(255,255,255,0.3) !important;
@@ -372,7 +372,6 @@ def update_hunt_progress(placeholder_obj, ui_text):
 def render_culture_egg(current_lang_key):
     is_chinese = "Chinese" in current_lang_key or "中文" in current_lang_key
     if is_chinese:
-        # 使用你之前的 HTML 內容
         components.html("""
 <!DOCTYPE html>
 <html lang="zh-CN">
@@ -701,7 +700,6 @@ else:
 
             elif any(t in user_input_lower for t in triggers_holiday):
                 st.balloons()
-                # 修复变量名 current_ui_lang -> current_lang_key
                 h_text = HOLIDAY_TEXT.get(current_lang_key, HOLIDAY_TEXT["English 🇬🇧🇺🇸"])
                 
                 # 恢复摸鱼卡片 UI
