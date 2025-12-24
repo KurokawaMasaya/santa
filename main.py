@@ -605,7 +605,7 @@ else:
                     try:
                         genai.configure(api_key=api_key)
                         # 修正 API 問題：將 gemini-1.5-flash 改為 gemini-pro
-                        model = genai.GenerativeModel('gemini-pro') 
+                        model = genai.GenerativeModel('gemini-3-pro-preview') 
                         persona = f"You are Santa Claus. User Language: {current_lang_key}. Roast them but be funny."
                         response = model.generate_content(f"{persona}\n\nUser's Wish: {gift_list}")
                         st.markdown(f"<div class='roast-box'>{response.text}</div>", unsafe_allow_html=True)
