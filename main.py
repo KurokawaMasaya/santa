@@ -70,7 +70,7 @@ LANG_DICT = {
         "egg_padoru": "🎵 走れ逸れよ... 風のように... PADORU PADORU !!! 🧣",
         "egg_snow": "❄️ 讓雪落下吧！整個世界都安靜了...",
         "egg_market": "🍷 歡迎來到聖誕集市！來杯熱紅酒配扭結餅吧！🥨",
-        "egg_author": "👨‍💻 作者出現！致敬時刻一人一句qyc nb!!",
+        "egg_author": "👨‍💻 作者出現！致敬時刻一人一句qyc nb!!（給點贊助吧😭求求了😭）",
         "hint_prefix": "💡 **解鎖新謎題：** ",
         "final_hint_title": "🔒 最終封印已解除",
         "final_hint_msg": "🎅 **吼吼吼，本聖誕老人找到了一份來自中國的寶貝，真是諷刺啊。**\n\n想看嗎？想看請輸入 **聖誕快樂**。"
@@ -102,7 +102,7 @@ LANG_DICT = {
         "egg_padoru": "🎵 走れ逸れよ... 風のように... PADORU PADORU !!! 🧣",
         "egg_snow": "❄️ 让雪落下吧！整个世界都安静了...",
         "egg_market": "🍷 欢迎来到圣诞集市！来杯热红酒配扭结饼吧！🥨",
-        "egg_author": "👨‍💻 作者出现！致敬时刻，一人一句qyc nb！",
+        "egg_author": "👨‍💻 作者出现！致敬时刻，一人一句qyc nb！(给点赞助吧😭求求了😭）",
         "hint_prefix": "💡 **解锁新谜题：** ",
         "final_hint_title": "🔒 最终封印已解除",
         "final_hint_msg": "🎅 **吼吼吼，本圣诞老人找到了一份来自中国大陆的宝贝。**\n\n请输入 **圣诞快乐**查看。"
