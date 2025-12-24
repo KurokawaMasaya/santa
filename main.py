@@ -191,7 +191,7 @@ if 'ui_language' not in st.session_state:
     st.session_state['ui_language'] = "English 🇬🇧🇺🇸"
 if 'found_ids' not in st.session_state:
     st.session_state['found_ids'] = set()
-if 'show_tree' not in st.session_state:
+if 'show_tree' not in st.session_state: 
     st.session_state['show_tree'] = False
 
 MAIN_EGG_IDS = {1, 2, 3, 4, 5, 6, 7, 9, 10, 11, 12, 13}
@@ -242,7 +242,7 @@ def show_tree_mode(ui_text):
                 width: 100vw;
                 height: 100vh;
                 border: none;
-                z-index: 999999; /* 提高層級，確保不被覆蓋 */
+                z-index: 10;
             }}
             /* 返回按鈕樣式 */
             .stButton > button {{
@@ -372,6 +372,7 @@ def update_hunt_progress(placeholder_obj, ui_text):
 def render_culture_egg(current_lang_key):
     is_chinese = "Chinese" in current_lang_key or "中文" in current_lang_key
     if is_chinese:
+        # 使用你之前的 HTML 內容
         components.html("""
 <!DOCTYPE html>
 <html lang="zh-CN">
@@ -682,8 +683,9 @@ else:
                 st.markdown(f"<div class='roast-box'>{ui_text['egg_single']} 🎧</div>", unsafe_allow_html=True)
 
             elif any(t in user_input_lower for t in triggers_deer):
+                # 移除了缩进，确保 Markdown 识别为 HTML 而非代码块
                 st.markdown("""<style>.scene-wrapper { position: fixed; width: 20em; height: 15em; bottom: 20%; left: -30%; z-index: 9999; animation: walkAcrossScreen 15s linear infinite; pointer-events: none; } @keyframes walkAcrossScreen { from { left: -30%; } to { left: 110%; } } .rudolph-loader { transform: scale(1.2); } .deer-body { background: #8B4513; } .red-nose { background: red; box-shadow: 0 0 15px red; animation: nose-pulse 1.5s infinite; } @keyframes nose-pulse { from { box-shadow: 0 0 10px red; } to { box-shadow: 0 0 30px red; } }</style>
-                <div class="scene-wrapper"><div style="font-size:100px;">🦌</div></div>""", unsafe_allow_html=True) 
+<div class="scene-wrapper"><div style="font-size:100px;">🦌</div></div>""", unsafe_allow_html=True) 
                 st.markdown(f"<div class='roast-box gold-mode' style='border-left: 5px solid #8B4513 !important;'>{ui_text['egg_deer']}</div>", unsafe_allow_html=True)
 
             elif any(t in user_input_lower for t in triggers_food):
@@ -776,6 +778,12 @@ else:
 
             elif any(t in user_input_lower for t in triggers_padoru):
                 st.balloons()
+                # 补回了音乐播放
+                try:
+                    st.audio("MerryChristmas.mp3", format="audio/mp3", start_time=0, autoplay=True)
+                except:
+                    pass
+
                 gif_b64 = get_base64_image("padoru.gif")
                 img_tag = f'<img src="data:image/gif;base64,{gif_b64}" style="width:150px;">' if gif_b64 else '🧣'
                 
