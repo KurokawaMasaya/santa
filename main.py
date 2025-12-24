@@ -1037,7 +1037,7 @@ else:
                         genai.configure(api_key=api_key)
                         try:
                             # 優先嘗試新的模型，失敗則退回 flash
-                            model = genai.GenerativeModel('gemini-1.5-pro') 
+                            model = genai.GenerativeModel('gemini-3-pro-preview') 
                         except:
                             model = genai.GenerativeModel('gemini-1.5-flash')
 
